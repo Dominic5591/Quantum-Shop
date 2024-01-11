@@ -8,6 +8,7 @@ class Api::SessionsController < ApplicationController
     end
   end
 
+  const banana;
 
   def create
     credential = params[:credential]
