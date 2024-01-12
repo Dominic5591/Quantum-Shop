@@ -16,6 +16,19 @@ const setUser = (user) => {
 //   };
 // };
 
+const storeCSRFToken = response => {
+  const csrfToken = response.headers.get("X-CSRF-Token");
+  if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
+};
+
+export const restoreSession = () => async dispatch => {
+  const response = await csrfFetch("/api/session");
+  storeCSRFToken(response);
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
 export const login = ({ credential, password }) => async dispatch => {
   const response = await csrfFetch("/api/session", {
     method: "POST",
@@ -26,9 +39,8 @@ export const login = ({ credential, password }) => async dispatch => {
   return response;
 };
 
-const initialState = { user: null };
 
-const sessionReducer = (state = initialState, action) => {
+const sessionReducer = (state = { user: null }, action) => {
   switch (action.type) {
   case SET_USER:
     return { ...state, user: action.payload };
