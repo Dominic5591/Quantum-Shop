@@ -32,7 +32,7 @@ function LoginForm() {
 
   return (
     <>
-      <h1>Log In</h1>
+      <h1></h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map(error => <li key={error}>{error}</li>)}
@@ -56,6 +56,7 @@ function LoginForm() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button>Demo Log In</button>
       </form>
     </>
   );
