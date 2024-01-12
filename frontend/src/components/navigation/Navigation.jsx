@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import * as sessionActions from '../../store/session';
+import './Navigation.css';
 
 function Navigation() {
+
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
