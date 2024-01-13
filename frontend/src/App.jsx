@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Outlet, createBrowserRouter, RouterProvider, useNavigate, useLocation } from 'react-router-dom';
 import LoginForm from './components/session/LoginForm';
 import SignupForm from './components/session/SignupForm';
 import Navigation from './components/navigation/Navigation';
 import * as sessionActions from './store/session';
-// import Navbar from './components/navigation/NavBar';
 
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showNavigation, setShowNavigation] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(sessionActions.restoreSession()).then(() => {
@@ -17,9 +19,17 @@ function Layout() {
     });
   }, [dispatch]);
 
+  useEffect(() => {
+    // Check if the current location is '/login' or '/signup'
+    const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
+
+    // Update showNavigation state based on the current location
+    setShowNavigation(!isAuthPage);
+  }, [location.pathname]);
+
   return (
     <>
-      <Navigation />
+      {showNavigation && <Navigation />}
       {isLoaded && <Outlet />}
     </>
   );
@@ -34,11 +44,11 @@ const router = createBrowserRouter([
         element: <h1>Welcome!</h1>,
       },
       {
-        path: "login",
+        path: 'login',
         element: <LoginForm />,
       },
       {
-        path: "signup",
+        path: 'signup',
         element: <SignupForm />,
       },
     ],

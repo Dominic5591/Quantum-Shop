@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
+import arrow2 from '../../images/arrow2.png';
 import './LoginForm.css';
 
 function LoginForm() {
@@ -31,14 +32,20 @@ function LoginForm() {
   };
 
   return (
-    <>
-      <h1></h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+    <div className="loginPage">
+      <div className='LoginHome'>
+        <NavLink to='/'>
+          <img src={arrow2} alt="" />
+        </NavLink>
+      </div>
+
+      <form className='loginForm' onSubmit={handleSubmit}>
+        <h1 className='signInH1'>Sign In</h1>
+        {/* <ul className='errors' style={}>
           {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
-        <label>
-          Username or Email
+        </ul> */}
+        <label className='loginLabel'>
+          Email
           <input
             type="text"
             value={credential}
@@ -46,7 +53,7 @@ function LoginForm() {
             required
           />
         </label>
-        <label>
+        <label className='loginLabel'>
           Password
           <input
             type="password"
@@ -55,10 +62,12 @@ function LoginForm() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
-        <button>Demo Log In</button>
+        <button className='loginBtn' type="submit">Log In</button>
+        <button className='demoLoginBtn'>Demo Log In</button>
       </form>
-    </>
+      <p className='newAccount'>New to Quantum Shop?</p>
+      <button className='createAccountBtn'>Create account</button>
+    </div>
   );
 }
 

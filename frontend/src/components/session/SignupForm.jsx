@@ -41,9 +41,9 @@ function SignupForm() {
     <>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
+        {/* <ul>
           {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
+        </ul> */}
         <label>
           Email
           <input

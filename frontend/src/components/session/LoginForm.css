@@ -1,0 +1,105 @@
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  margin: 0;
+
+}
+
+.LoginHome {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+
+.loginForm {
+  max-width: 600px;
+  width: 300px;
+  height: 350px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.signInH1 {
+  font-size: 26px;
+  margin-bottom: 40px;
+  color: #111;
+  margin-right: 200px;
+}
+
+.loginLabel {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+
+.loginLabel input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #afafaf;
+  box-sizing: border-box;
+}
+.loginBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: #fcb64e;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  background-color: #e68a00;
+}
+
+
+.newAccount {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #555;
+}
+
+.createAccountBtn {
+  width: 350px;
+  padding: 12px;
+  background-color: #ffffff;
+  color: #111;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.createAccountBtn:hover {
+  background-color: #ddd;
+}
+
+.demoLoginBtn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.demoLoginBtn:hover {
+  background-color: #ddd;
+}
