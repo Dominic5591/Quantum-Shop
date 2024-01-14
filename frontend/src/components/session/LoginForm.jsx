@@ -31,6 +31,14 @@ function LoginForm() {
       });
   };
 
+
+  const loginDemo = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}));
+  }
+
+
+
   return (
     <div className="loginPage">
       <div className='LoginHome'>
@@ -62,11 +70,11 @@ function LoginForm() {
             required
           />
         </label>
-        <button className='loginBtn' type="submit">Log In</button>
-        <button className='demoLoginBtn'>Demo Log In</button>
+        <button className='loginBtn' type="submit">Continue</button>
+        <button className='demoLoginBtn' onClick={loginDemo}>Demo Log In</button>
       </form>
       <p className='newAccount'>New to Quantum Shop?</p>
-      <button className='createAccountBtn'>Create account</button>
+      <button className='createAccountBtn'><NavLink className='signupBtn' to='/signup'>Create account</NavLink></button>
     </div>
   );
 }
