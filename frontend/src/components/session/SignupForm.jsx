@@ -49,14 +49,15 @@ function SignupForm() {
       </div>
       <form className='signUpForm' onSubmit={handleSubmit}>
         <h1 className='signUpH1'>Create account</h1>
-        {/* <ul>
-          {errors.map(error => <li key={error}>{error}</li>)}
-        </ul> */}
+        <ul className='errors'>
+          <cite>{errors.map(error => <li key={error}>{error}</li>)}
+          </cite></ul>
         <label className='signUpLabel'>
           Your name
           <input
             type="text"
             value={username}
+            placeholder="First and last name"
             onChange={(e) => setUsername(e.target.value)}
             required
           />
@@ -75,6 +76,7 @@ function SignupForm() {
           <input
             type="password"
             value={password}
+            placeholder="At least 6 characters"
             onChange={(e) => setPassword(e.target.value)}
             required
           />

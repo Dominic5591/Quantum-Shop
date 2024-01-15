@@ -79,7 +79,7 @@
   width: 350px;
   padding: 12px;
   background-color: #ffffff;
-  color: #111;
+  color: #555555;
   font-weight: bold;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -89,11 +89,9 @@
 
 .createAccountBtn:hover {
   background-color: #f1f1f1;
-}
-
-.signupBtn {
   color: #555555;
 }
+
 
 .demoLoginBtn {
   width: 100%;

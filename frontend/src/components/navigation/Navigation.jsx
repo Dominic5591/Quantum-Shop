@@ -16,16 +16,18 @@ function Navigation() {
     dispatch(sessionActions.logout());
   };
 
+
+
   const sessionLinks = sessionUser ? (
     <>
       <li>
-        <button onClick={logout}>Log Out</button>
+        <button className='dropdwnSignoutBtn' onClick={logout}>Log Out</button>
       </li>
     </>
   ) : (
     <>
-      <li>
-        <NavLink to="/login">Log In</NavLink>
+      <li className='dropdwnSign'>
+        <NavLink id='dropdwnLoginBtn' to='/login'>Log in</NavLink>
       </li>
       <li>
         <NavLink id='signup' to="/signup">New costumer? Start here</NavLink>

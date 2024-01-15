@@ -35,7 +35,7 @@ function LoginForm() {
   const loginDemo = (e) => {
     e.preventDefault();
     dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}));
-  }
+  };
 
 
 
@@ -49,9 +49,10 @@ function LoginForm() {
 
       <form className='loginForm' onSubmit={handleSubmit}>
         <h1 className='signInH1'>Sign In</h1>
-        {/* <ul className='errors' style={}>
-          {errors.map(error => <li key={error}>{error}</li>)}
-        </ul> */}
+        
+        <ul className='errors'>
+          <cite>{errors.map(error => <li key={error}>{error}</li>)}
+          </cite></ul>
         <label className='loginLabel'>
           Email
           <input
@@ -74,7 +75,7 @@ function LoginForm() {
         <button className='demoLoginBtn' onClick={loginDemo}>Demo Log In</button>
       </form>
       <p className='newAccount'>New to Quantum Shop?</p>
-      <button className='createAccountBtn'><NavLink className='signupBtn' to='/signup'>Create account</NavLink></button>
+      <NavLink to='/signup'><button className='createAccountBtn'>Create account</button></NavLink>
     </div>
   );
 }
