@@ -51,7 +51,7 @@ function SignupForm() {
       </div>
 
       <div>
-        <form className='signUpForm' onSubmit={handleSubmit}>
+        <form noValidate="novalidate" className='signUpForm' onSubmit={handleSubmit}>
           <h1 className='signUpH1'>Create account</h1>
           <ul className='errors'>
             <cite>{errors.map(error => <li key={error}>{error}</li>)}

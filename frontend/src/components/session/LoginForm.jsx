@@ -39,10 +39,17 @@ function LoginForm() {
     dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}));
   };
 
+  const displayErrors = (errors) => {
+    return Array.isArray(errors[0]) ? (errors[0].map((error) => <li key={error} className="form-text-red">{error}</li>)) : ""
+  } ;
+
 
 
   return (
     <div className="loginPage">
+      <ul className='errors'>
+          <cite>{errors.map(error => <li key={error}>{error}</li>)}</cite>
+      </ul>
 
       <div className='LoginHome'>
         <NavLink to='/'>
@@ -51,12 +58,12 @@ function LoginForm() {
       </div>
 
 
-      <form className='loginForm' onSubmit={handleSubmit}>
+      <form noValidate="novalidate" className='loginForm' onSubmit={handleSubmit}>
         <h1 className='signInH1'>Sign In</h1>
         
         <ul className='errors'>
-          <cite>{errors.map(error => <li key={error}>{error}</li>)}
-          </cite></ul>
+          {displayErrors(errors)}
+        </ul>
         <label className='loginLabel'>
           Email
           <input
@@ -64,6 +71,7 @@ function LoginForm() {
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
+            noValidate
           />
         </label>
         <label className='loginLabel'>
@@ -73,6 +81,7 @@ function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            noValidate
           />
         </label>
         <button className='loginBtn' type="submit">Continue</button>

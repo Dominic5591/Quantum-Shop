@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
   wrap_parameters include: User.attribute_names + ['password']
+
   def create
     @user = User.create(user_params)
     if @user.save!

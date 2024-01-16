@@ -15,6 +15,35 @@ ApplicationRecord.transaction do
     password: 'password'
   )
 
+
+  # db/seeds.rb
+
+# Categories
+categories = ['Electronics', 'Books', 'Clothing', 'Home & Kitchen', 'Toys']
+
+categories.each do |category|
+  Category.create(name: category)
+end
+
+# Products
+Product.create(
+  title: 'Smartphone',
+  description: 'High-end smartphone with advanced features.',
+  price: 799.99,
+
+  category: Category.find_by(name: 'Electronics')
+)
+
+Product.create(
+  title: 'Bestseller Book',
+  description: 'A captivating bestseller that everyone is talking about.',
+  price: 19.99,
+  category: Category.find_by(name: 'Books')
+)
+
+# Add more products as needed
+
+
   # More users
   10.times do 
     User.create!({
