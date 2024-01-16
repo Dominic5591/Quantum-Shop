@@ -4,14 +4,12 @@
   align-items: center;
   height: 695px;
   justify-content: flex-start;
-  /* min-height: 80vh; */
   margin: 0;
 
 }
 
 .LoginHome {
   position: relative;
-  /* gap: 30px; */
   padding-top: 15px;
   padding-bottom: 15px;
   z-index: 1;
@@ -20,18 +18,13 @@
 
 
 .loginForm {
-  /* gap: 30px; */
-  /* padding: 100px; */
-  /* margin-top: 10px; */
   max-width: 600px;
   width: 300px;
   height: 350px;
   padding: 20px;
-  /* margin-bottom: 50px; */
-  border: 1px solid #d3d2d2;
+  border: 1px solid #dad8d8;
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
@@ -44,17 +37,28 @@
 
 .loginLabel {
   display: block;
-  text-align: left;
-  margin-bottom: 8px;
-  font-size: 15px;
+  text-align: start;
+  margin: 0px;
+  padding: 0px 0px 2px 2px;
+  word-spacing: 0px;
+  color: #111111;
+  font-size: 13px;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-kerning: auto;
+  text-decoration: none solid rgb(17, 17, 17);
+  font-optical-sizing: auto;
+  line-height: 19px;
 }
 
 
 .loginLabel input {
   width: 100%;
   padding: 10px;
+  margin-top: 5px;
   margin-bottom: 15px;
-  border: 1px solid #afafaf;
+  border: 1px solid #a7a6a6;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
@@ -68,14 +72,19 @@
 }
 
 .loginBtn {
+  margin-top: 5px;
   width: 100%;
-  padding: 12px;
+  height: 33px;
+  padding: 1px 6px;
   background-color: #FFD814;
-  color: #555555;
-  font-weight: bold;
+  color: #464646;
+  font-weight: 400;
+  text-align: center;
+  line-height: 19px;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .loginBtn:hover {
@@ -96,7 +105,6 @@
   background-color: #ffffff;
   color: #464646;
   font-weight: bold;
-  /* margin-bottom: 20px; */
   border: 1px solid #d3d2d2;
   border-radius: 10px;
   cursor: pointer;
@@ -109,16 +117,19 @@
 
 
 .demoLoginBtn {
+  margin-top: 15px;
   width: 100%;
-  padding: 12px;
-  border-radius: 4px;
-  border: none;
-  margin-top: 20px;
+  height: 33px;
+  padding: 1px 6px;
   background-color: #FFD814;
   color: #464646;
-  font-weight: bold;
+  font-weight: 400;
+  text-align: center;
+  line-height: 19px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
 }
 
 .demoLoginBtn:hover {
@@ -171,7 +182,6 @@
   background-color: #FFFFFF;
   margin: 20px 0;
   background: linear-gradient(to right, white, #cecccc, white);
-  /* box-shadow: 0 2px 3px rgb(168, 168, 168); */
   box-shadow:  3 2px 20px  #7e7d7d;
 }
 
