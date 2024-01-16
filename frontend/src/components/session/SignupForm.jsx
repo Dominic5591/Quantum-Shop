@@ -47,52 +47,62 @@ function SignupForm() {
           <img src={arrow2} alt="" />
         </NavLink>
       </div>
-      <form className='signUpForm' onSubmit={handleSubmit}>
-        <h1 className='signUpH1'>Create account</h1>
-        <ul className='errors'>
-          <cite>{errors.map(error => <li key={error}>{error}</li>)}
-          </cite></ul>
-        <label className='signUpLabel'>
-          Your name
-          <input
-            type="text"
-            value={username}
-            placeholder="First and last name"
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label className='signUpLabel'>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label className='signUpLabel'>
-          Password
-          <input
-            type="password"
-            value={password}
-            placeholder="At least 6 characters"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label className='signUpLabel'>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button className='signUpBtn' type="submit">Continue</button>
-        <p className='signupP'>Already have an account?<NavLink className='existingAcc' to='/login'> Sign in</NavLink></p>
-      </form>
+
+      <div>
+        <form className='signUpForm' onSubmit={handleSubmit}>
+          <h1 className='signUpH1'>Create account</h1>
+          <ul className='errors'>
+            <cite>{errors.map(error => <li key={error}>{error}</li>)}
+            </cite></ul>
+          <label className='signUpLabel'>
+            Your name
+            <input
+              type="text"
+              value={username}
+              placeholder="First and last name"
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          <label className='signUpLabel'>
+            Email
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label className='signUpLabel'>
+            Password
+            <input
+              type="password"
+              value={password}
+              placeholder="At least 6 characters"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <label className='signUpLabel'>
+            Confirm Password
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </label>
+          <button className='signUpBtn' type="submit">Continue</button>
+
+          <div className="signupDivider"></div>
+
+          <p className='signupP'>Already have an account?<NavLink className='existingAcc' to='/login'> Sign in</NavLink></p>
+        </form>
+
+
+        
+      </div>
+      <div className="createAccountDivider"></div>
     </div>
   );
 }

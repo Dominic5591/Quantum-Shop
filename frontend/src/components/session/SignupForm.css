@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 80vh;
   margin: 0;
 }
@@ -12,21 +12,22 @@
 .signUpForm {
   max-width: 600px;
   width: 300px;
-  height: 450px;
+  height: 500px;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #d3d2d2;
+  border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 .signupHome {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  /* gap: 30px; */
+  padding-top: 15px;
+  padding-bottom: 15px;
   z-index: 1;
+  align-items: center;
 }
 
 .signUpH1 {
@@ -41,25 +42,36 @@
   text-align: left;
   margin-bottom: 8px;
   font-size: 15px;
+  /* font-weight: bold; */
 }
 
 .signUpLabel input {
   width: 100%;
   padding: 10px;
+  margin-top: 5px;
   margin-bottom: 15px;
-  border: 1px solid #afafaf; /* Light grey border like in the login form */
+  border: 1px solid #a7a6a6;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.signUpLabel input:focus {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #838383;
+  border-radius: 4px;
+  outline: rgba(109, 255, 255, 0.747) solid 2px;
 }
 
 .signUpBtn {
   width: 100%;
   padding: 12px;
   background-color: #FFD814;
-  color: #555555;
+  color: #464646;
   font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   margin-bottom: 20px;
 }
@@ -74,5 +86,17 @@
 }
 
 .signupP {
+  margin-top: 10px;
+  margin-bottom: 200px;
   margin-right: 50px;
+}
+
+
+.signupDivider {
+  width: 300px;
+  height: 1.5px;
+  background-color: #FFFFFF;
+  margin: 20px 0;
+  background: linear-gradient(to right, white, #cecccc, white);
+  box-shadow:  3 2px 20px  #7e7d7d;
 }

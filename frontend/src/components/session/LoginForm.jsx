@@ -3,6 +3,8 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, NavLink } from 'react-router-dom';
 import arrow2 from '../../images/arrow2.png';
+import git from '../../images/github.png';
+import linkedin from '../../images/linkedin.png';
 import './LoginForm.css';
 
 function LoginForm() {
@@ -41,11 +43,13 @@ function LoginForm() {
 
   return (
     <div className="loginPage">
+
       <div className='LoginHome'>
         <NavLink to='/'>
-          <img src={arrow2} alt="" />
+          <img src={arrow2} alt="no" />
         </NavLink>
       </div>
+
 
       <form className='loginForm' onSubmit={handleSubmit}>
         <h1 className='signInH1'>Sign In</h1>
@@ -74,8 +78,36 @@ function LoginForm() {
         <button className='loginBtn' type="submit">Continue</button>
         <button className='demoLoginBtn' onClick={loginDemo}>Demo Log In</button>
       </form>
-      <p className='newAccount'>New to Quantum Shop?</p>
+
+      <div className='line'> 
+        <p className='newAccount'> New to Quantum Shop?</p>
+      </div>
+      
+
+
+      
+      
+
       <NavLink to='/signup'><button className='createAccountBtn'>Create account</button></NavLink>
+
+      <div className="createAccountDivider"></div>
+
+      <div className='loginLinks'>
+        <span className='loginGit'>
+          <a href="https://github.com/Dominic5591">
+            <img src={git} alt="" />
+          </a>
+        </span>
+        <span className='loginLinkedin'>
+          <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
+            <img src={linkedin} alt="" />
+          </a>
+          
+        </span>
+        <p className='loginLinkP'>2024 QuantumShop</p>
+      </div>
+
+      
     </div>
   );
 }
