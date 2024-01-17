@@ -48,7 +48,7 @@ function LoginForm() {
   return (
     <div className="loginPage">
       <ul className='errors'>
-          <cite>{errors.map(error => <li key={error}>{error}</li>)}</cite>
+        <cite>{errors.map(error => <li key={error}>{error}</li>)}</cite>
       </ul>
 
       <div className='LoginHome'>
