@@ -19,14 +19,14 @@ ApplicationRecord.transaction do
   # db/seeds.rb
 
 # Categories
+puts "Creating products..."
 
-# Products
 Product.create(
   name: 'Smartphone',
   description: 'High-end smartphone with advanced features.',
   price: 799.99,
-
-  category: 'Electronics'
+  category: 'Electronics',
+  rating: 4
 )
 
 Product.create(
