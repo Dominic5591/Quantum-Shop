@@ -1,22 +1,26 @@
-.card-content {
+.cardContent {
   margin-top: 30px;
   border-radius: 10px;
 }
-.product-card {
+.productCard {
   border: 1px solid rgb(190, 190, 190);
   border-radius: 7px;
   padding: 25px;
   max-width: 200px;
+  /* max-height: 300px; */
+  height: 350px;
 }
 
-.products-container {
+.productsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 30px;
   gap: 25px;
-  margin-right: 150px;
-  margin-left: 150px;
+  margin-right: 100px;
+  margin-left: 100px;
+
+  /* border: 1px solid black; */
 }
 
 .productPrice {

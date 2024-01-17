@@ -53,19 +53,24 @@ function Navigation() {
             <img src={arrow} alt="arrow" className='homeArrow' />
           </NavLink>
         </div>
+        <div className='home'>
+          <NavLink to="products">
+            <p className='ProductIndexLink'>ProductIndex</p>
+          </NavLink>
+        </div>
         <li className="dropdown">
           <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
           <div className="dropdown-content">
             {sessionLinks}
           </div>
         </li>
+
+
         <div>
-          <NavLink to="/">
+          <NavLink to="">
             <div className='cartDivOne'>
-              <div className='cartDivTwo'>
-                <p className='cartNum'>0</p>
-                <img src={cart} alt="cart" className='cartPng'/>
-              </div>
+              <p className='cartNum'>0</p>
+              <img src={cart} alt="cart" className='cartPng'/>
             </div>
           </NavLink>
         </div>

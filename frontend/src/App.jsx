@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet, createBrowserRouter, RouterProvider, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, createBrowserRouter, RouterProvider, Route, Routes, useLocation } from 'react-router-dom';
 import LoginForm from './components/session/LoginForm';
 import SignupForm from './components/session/SignupForm';
 import Navigation from './components/navigation/Navigation';
@@ -14,7 +14,7 @@ function Layout() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showNavigation, setShowNavigation] = useState(true);
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(sessionActions.restoreSession()).then(() => {

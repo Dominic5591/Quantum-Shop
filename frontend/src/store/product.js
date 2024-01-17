@@ -2,16 +2,23 @@ export const RECEIVE_PRODUCT = 'products/RECEIVE_PRODUCT';
 export const RECEIVE_PRODUCTS = 'products/RECEIVE_PRODUCTS';
 
 
-export const recieveProducts = (products) => ({
+export const receiveProducts = (products) => ({
   type: RECEIVE_PRODUCTS,
   products,
 });
 
 
-export const recieveProduct = (product) => ({
+export const receiveProduct = (product) => ({
   type: RECEIVE_PRODUCT,
   product,
 });
+
+export const selectProductsArray = (state) => Object.values(state.products);
+
+
+export const selectProduct = (productId) => (state) => {
+  return state?.products[productId] || null;
+};
 
 
 export const fetchProducts = () => async (dispatch) => {
@@ -22,23 +29,18 @@ export const fetchProducts = () => async (dispatch) => {
     },
   });
   const productData = await res.json();
-  dispatch(recieveProducts(productData));
+  dispatch(receiveProducts(productData));
 };
 
 
 export const fetchProduct = (productId) => async (dispatch) => {
-  const res = await fetch(`/api/products/${productId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const res = await fetch(`/api/products/${productId}`);
   const productData = await res.json();
-  dispatch(recieveProducts(productData));
+  dispatch(receiveProduct(productData));
 };
 
 
-const productReducer = (state = [], action) => {
+const productReducer = (state = {}, action) => {
   const newState = { ...state };
 
   switch (action.type) {
