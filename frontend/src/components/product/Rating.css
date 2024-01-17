@@ -1,3 +1,15 @@
+
+
+
 .star-rating {
+  display: inline-block;
   padding-top: 10px;
+}
+
+.star {
+  color: #979797; /* Color for unfilled stars */
+}
+
+.filled {
+  color: gold; /* Color for filled stars */
 }

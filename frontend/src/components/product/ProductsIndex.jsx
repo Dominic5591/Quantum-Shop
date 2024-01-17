@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { fetchProducts } from '../../store/product';
 import placeholder from '../../images/placeholder.svg';
 import Rating from './Rating';
@@ -16,23 +17,24 @@ const ProductsIndex = () => {
 
   return (
 
-    <>
+    <ul className='productsIndexPage'>
       <div className="productsIndexDivider"></div>
       <div className="products-container">
         {products.map((product) => (
-          <div key={product.id} className="product-card">
-            <img src={placeholder} alt={product.name} />
-            <div className="card-content">
-              <h3>{product.name}</h3>
-              <Rating rating={product.rating} />
-              <p className='productPrice'>${product.price}</p>
-              {/* Add other product details as needed */}
+          <NavLink key={product.id} to={`/products/${product.id}`}>
+            <div key={product.id} className="product-card">
+              <img src={placeholder} alt={product.name} />
+              <div className="card-content">
+                <p className='productNameH3'>{product.name}</p>
+                <Rating rating={product.rating} />
+                <p className='productPrice'>${product.price}</p>
+              </div>
             </div>
-          </div>
+          </NavLink>
         ))}
       </div>
-    
-    </>
+          
+    </ul>
 
   );
 };

@@ -7,6 +7,7 @@ import Navigation from './components/navigation/Navigation';
 import HomePage from './components/homepage/HomePage';
 import * as sessionActions from './store/session';
 import ProductsIndex from './components/product/ProductsIndex';
+import ProductIndexItem from './components/product/ProductIndexItem';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <ProductsIndex />,
+      },
+      {
+        path: "products/:productId",
+        element: <ProductIndexItem />,
       },
     ],
   },

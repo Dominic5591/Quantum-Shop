@@ -69,6 +69,40 @@ Product.create(
   rating: 5
 )
 
+
+Product.create(
+  name: 'Smartwatch',
+  description: 'Stay connected and track your fitness with this advanced smartwatch.',
+  price: 149.99,
+  category: 'Electronics',
+  rating: 4
+)
+
+Product.create(
+  name: 'Gourmet Coffee Beans',
+  description: 'Experience the rich flavors of gourmet coffee with these premium beans.',
+  price: 19.99,
+  category: 'Groceries',
+  rating: 4
+)
+
+Product.create(
+  name: 'Wireless Noise-Canceling Headphones',
+  description: 'Immerse yourself in music with these high-quality wireless headphones.',
+  price: 129.99,
+  category: 'Electronics',
+  rating: 5
+)
+
+Product.create(
+  name: 'Mystery Thriller Book',
+  description: 'Unravel the secrets and suspense with this gripping mystery thriller.',
+  price: 18.99,
+  category: 'Books',
+  rating: 4
+)
+
+
 # Add more products as needed
 
 

@@ -3,9 +3,10 @@
   border-radius: 10px;
 }
 .product-card {
-  border: 1px solid rgb(165, 165, 165);
+  border: 1px solid rgb(190, 190, 190);
   border-radius: 7px;
   padding: 25px;
+  max-width: 200px;
 }
 
 .products-container {
@@ -13,13 +14,24 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 30px;
-  gap: 20px;
+  gap: 25px;
+  margin-right: 150px;
+  margin-left: 150px;
 }
 
-
 .productPrice {
+  color: black;
   padding-top: 10px;
-  font-size: 17px;
+  font-size: 22px;
+}
+
+.productNameH3 {
+  color: black;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  /* white-space: nowrap; 
+  text-overflow: ellipsis; */
 }
 
 .productsIndexDivider {
