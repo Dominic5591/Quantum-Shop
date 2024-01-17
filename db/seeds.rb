@@ -19,39 +19,67 @@ ApplicationRecord.transaction do
   # db/seeds.rb
 
 # Categories
-categories = ['Electronics', 'Books', 'Clothing', 'Home & Kitchen', 'Toys']
-
-categories.each do |category|
-  Category.create(name: category)
-end
 
 # Products
 Product.create(
-  title: 'Smartphone',
+  name: 'Smartphone',
   description: 'High-end smartphone with advanced features.',
   price: 799.99,
 
-  category: Category.find_by(name: 'Electronics')
+  category: 'Electronics'
 )
 
 Product.create(
-  title: 'Bestseller Book',
+  name: 'Bestseller Book',
   description: 'A captivating bestseller that everyone is talking about.',
   price: 19.99,
-  category: Category.find_by(name: 'Books')
+  category: 'Books',
+  rating: 3
+)
+
+Product.create(
+  name: 'Ultra HD Smart TV',
+  description: 'Experience stunning visuals with our Ultra HD Smart TV.',
+  price: 1299.99,
+  category: 'Electronics',
+  rating: 4
+)
+
+Product.create(
+  name: 'Cookbook Collection',
+  description: 'Unlock your culinary skills with this collection of popular cookbooks.',
+  price: 49.99,
+  category: 'Books',
+  rating: 1
+)
+
+Product.create(
+  name: 'Wireless Bluetooth Earbuds',
+  description: 'Enjoy high-quality sound and wireless freedom with our Bluetooth earbuds.',
+  price: 79.99,
+  category: 'Electronics',
+  rating: 3
+)
+
+Product.create(
+  name: 'Sci-Fi Adventure Novel',
+  description: 'Embark on an epic sci-fi journey with this thrilling adventure novel.',
+  price: 24.99,
+  category: 'Books',
+  rating: 5
 )
 
 # Add more products as needed
 
 
   # More users
-  10.times do 
-    User.create!({
-      username: Faker::Internet.unique.username(specifier: 3),
-      email: Faker::Internet.unique.email,
-      password: 'password'
-    }) 
-  end
+  # 10.times do 
+  #   User.create!({
+  #     username: Faker::Internet.unique.username(specifier: 3),
+  #     email: Faker::Internet.unique.email,
+  #     password: 'password'
+  #   }) 
+  # end
 
   puts "Done!"
 end

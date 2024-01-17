@@ -19,20 +19,20 @@ function Navigation() {
 
 
   const sessionLinks = sessionUser ? (
-    <>
+    <ul>
       <li>
         <button className='dropdwnSignoutBtn' onClick={logout}>Log Out</button>
       </li>
-    </>
+    </ul>
   ) : (
-    <>
+    <ul>
       <li className='dropdwnSign'>
         <NavLink id='dropdwnLoginBtn' to='/login'>Log in</NavLink>
       </li>
       <li>
         <NavLink id='signup' to="/signup">New costumer? Start here</NavLink>
       </li>
-    </>
+    </ul>
   );
 
   return (

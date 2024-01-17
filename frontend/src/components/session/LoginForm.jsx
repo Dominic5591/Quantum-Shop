@@ -39,30 +39,18 @@ function LoginForm() {
     dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}));
   };
 
-  const displayErrors = (errors) => {
-    return Array.isArray(errors[0]) ? (errors[0].map((error) => <li key={error} className="form-text-red">{error}</li>)) : ""
-  } ;
-
-
 
   return (
     <div className="loginPage">
-      <ul className='errors'>
-        <cite>{errors.map(error => <li key={error}>{error}</li>)}</cite>
-      </ul>
-
       <div className='LoginHome'>
         <NavLink to='/'>
           <img src={arrow2} alt="no" />
         </NavLink>
       </div>
-
-
       <form noValidate="novalidate" className='loginForm' onSubmit={handleSubmit}>
         <h1 className='signInH1'>Sign In</h1>
-        
         <ul className='errors'>
-          {displayErrors(errors)}
+          {errors.map(error => <li key={error}>{error}</li>)}
         </ul>
         <label className='loginLabel'>
           Email

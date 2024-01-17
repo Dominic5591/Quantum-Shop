@@ -29,6 +29,7 @@
 
 .signUpH1 {
   font-size: 26px;
+  font-weight: 400;
   margin-bottom: 40px;
   margin-right: 122px;
   color: #111;
@@ -107,4 +108,10 @@
   margin: 20px 0;
   background: linear-gradient(to right, white, #cecccc, white);
   box-shadow:  3 2px 20px  #7e7d7d;
+}
+
+
+.errors {
+  color: red;
+  font-size: small;
 }

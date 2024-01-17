@@ -194,3 +194,8 @@
   font-size: small;
   color: #767676;
 }
+
+.errors {
+  color: red;
+  font-size: small;
+}

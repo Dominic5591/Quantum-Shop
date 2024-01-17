@@ -6,6 +6,7 @@ import SignupForm from './components/session/SignupForm';
 import Navigation from './components/navigation/Navigation';
 import HomePage from './components/homepage/HomePage';
 import * as sessionActions from './store/session';
+import ProductsIndex from './components/product/ProductsIndex';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: '*',
         element: <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>,
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: 'signup',
         element: <SignupForm />,
+      },
+      {
+        path: 'products',
+        element: <ProductsIndex />,
       },
     ],
   },
