@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet, createBrowserRouter, RouterProvider, Route, Routes, useLocation } from 'react-router-dom';
+import { Outlet, createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom';
 import LoginForm from './components/session/LoginForm';
 import SignupForm from './components/session/SignupForm';
 import Navigation from './components/navigation/Navigation';
-import HomePage from './components/homepage/HomePage';
+// import HomePage from './components/homepage/HomePage';
 import * as sessionActions from './store/session';
+
+
 import ProductsIndex from './components/product/ProductsIndex';
 import ProductIndexItem from './components/product/ProductIndexItem';
 
@@ -43,12 +45,6 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '*',
-        element: <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>,
-      },
-      {
         path: 'login',
         element: <LoginForm />,
       },
@@ -67,6 +63,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 function App() {
   return <RouterProvider router={router} />;

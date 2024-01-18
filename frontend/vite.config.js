@@ -16,4 +16,8 @@ export default defineConfig(({ mode }) => ({
       '/api': 'http://localhost:5000',
     },
   },
+  build: {
+    outDir: '../public',
+    emptyOutDir: true,
+  },
 }));

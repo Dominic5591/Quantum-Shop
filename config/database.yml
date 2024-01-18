@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: quantum_shop_production
-  username: quantum_shop
-  password: <%= ENV["QUANTUM_SHOP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

@@ -7,24 +7,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const ProductIndexItem = () => {
   const dispatch = useDispatch();
-  const { productId } = useParams()
+  const { productId } = useParams();
   const product = useSelector(selectProduct(productId));
-  console.log(productId);
   useEffect(() => {
-    console.log(productId);
     dispatch(fetchProduct(productId));
   }, [dispatch, productId]);
 
-  console.log('Product:', product);
-
   // Check if the product is not yet available
   if (!product) {
-    console.log('Product is still loading...');
-    console.log(product);
     return <div>Loading...</div>;
   }
-
-  console.log('Rendering product:', product);
 
   return (
     <div className="productCardItem">
