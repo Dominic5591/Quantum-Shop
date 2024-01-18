@@ -1,3 +1,4 @@
-json.extract! @product, :id, :name, :description, :price, :category, :rating
+json.extract! @product, :id, :name, :price, :category, :rating
 
 
+json.description @product.description.split("\n")

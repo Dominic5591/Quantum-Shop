@@ -10,7 +10,11 @@ const ProductIndexItem = () => {
   const dispatch = useDispatch();
   const { productId } = useParams();
   const product = useSelector(selectProduct(productId));
+  
+
+  
   useEffect(() => {
+    
     dispatch(fetchProduct(productId));
   }, [dispatch, productId]);
 
@@ -19,15 +23,38 @@ const ProductIndexItem = () => {
     return <div>Loading...</div>;
   }
 
+  let productDetails = JSON.parse(product.description[0]);
+
+
+  if (!Array.isArray(product.description)) {
+    let productDetails = [product.description]
+  }
+
   return (
     <div className="productIndexItemPage">
       <div className='productImageContainer'>
         <img src={placeholder} alt={product.name} />
       </div>
       <div className="cardContentItem">
-        <h3>{product.name}</h3>
-        <Rating rating={product.rating} />
-        <p className='productPriceItem'>${product.price}</p>
+        <div className='middleProductPriceDiv'>
+          <h3 className='middleProductPriceH3'>{product.name}</h3>
+        </div>
+        <div className='middleRatingDiv'>
+          <span className='ratingsNum'>{product.rating}.0 </span>
+          <Rating rating={product.rating} />
+          <span className='numRatings'>1 rating</span>
+        </div>
+        <div className="middlePriceDivider"></div>
+        <div className='middleProductPriceDiv'>
+          <p className='middleProductPriceP'>${product.price}</p>
+        </div>
+        <div>
+          <ul className='productDetailList'>
+            {productDetails.map((detail, index) => (
+              <li className='productDetail' key={`${product.id}_${index}`}>{detail}</li>
+            ))}
+          </ul>
+        </div>
       </div>
       <div className='addToCartDiv'>
         <div className='buyNowDiv'>
@@ -36,20 +63,24 @@ const ProductIndexItem = () => {
         <div className='productPriceDiv'>
           <h1 className='productPriceH1'>${product.price}</h1>
         </div>
-
-        <h1 className='inStockH1'>In Stock</h1>
-        <span>Quantity: </span>
-        <select className='quantityDropDown' name="quantity" id="">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-        </select>
+        <div className='inStockDiv'>
+          <h1 className='inStockH1'>In Stock</h1>
+        </div>
+        <div className='quantityDiv'>
+          <span>Quantity: </span>
+          <select className='quantityDropDown' name="quantity" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+        </div>
+ 
         <div className='addToCartBtnDiv'>
-          <button>Add to cart</button>
+          <button className='addToCartBtn'>Add to cart</button>
         </div>
       </div>
 
