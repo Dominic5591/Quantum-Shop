@@ -6,6 +6,7 @@ import SignupForm from './components/session/SignupForm';
 import Navigation from './components/navigation/Navigation';
 import * as sessionActions from './store/session';
 
+
 import ProductsIndex from './components/product/ProductsIndex';
 import ProductIndexItem from './components/product/ProductIndexItem';
 
@@ -15,6 +16,7 @@ function Layout() {
   const [showNavigation, setShowNavigation] = useState(true);
   const location = useLocation();
 
+
   useEffect(() => {
     dispatch(sessionActions.restoreSession()).then(() => {
       setIsLoaded(true);
@@ -22,7 +24,8 @@ function Layout() {
   }, [dispatch]);
 
   useEffect(() => {
-    const isAuthPage = ['/login', '/signup'].includes(location.pathname);
+
+    const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
     setShowNavigation(!isAuthPage);
   }, [location.pathname]);
 
@@ -34,33 +37,30 @@ function Layout() {
   );
 }
 
-const router = createBrowserRouter({
-  routes: [
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        {
-          path: 'login',
-          element: <LoginForm />,
-        },
-        {
-          path: 'signup',
-          element: <SignupForm />,
-        },
-        {
-          index: 'products',
-          element: <ProductsIndex />,
-        },
-        {
-          path: 'products/:productId',
-          element: <ProductIndexItem />,
-        },
-      ],
-    },
-  ],
-});
-
+const router = createBrowserRouter([
+  { 
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: 'login',
+        element: <LoginForm />,
+      },
+      {
+        path: 'signup',
+        element: <SignupForm />,
+      },
+      {
+        path: 'products',
+        element: <ProductsIndex />,
+      },
+      {
+        path: "products/:productId",
+        element: <ProductIndexItem />,
+      },
+    ],
+  },
+]);
 
 
 function App() {
