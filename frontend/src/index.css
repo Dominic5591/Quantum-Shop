@@ -3,6 +3,10 @@
   font-family: "Amazon Ember";
   src: url('./fonts/Amazon-Ember-Medium.ttf')
 }
+@font-face {
+  font-family: "Amazon Ember Lite";
+  src: url('./fonts/AmazonEmber_Lt.ttf')
+}
 
 #root {
   font-family: Amazon Ember;

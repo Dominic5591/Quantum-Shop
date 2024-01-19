@@ -4,6 +4,8 @@ import Rating from './Rating';
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import git from '../../images/github.png';
+import linkedin from '../../images/linkedin.png';
 import './ProductIndexItem.css';
 
 const ProductIndexItem = () => {
@@ -11,30 +13,33 @@ const ProductIndexItem = () => {
   const { productId } = useParams();
   const product = useSelector(selectProduct(productId));
   
-
-  
   useEffect(() => {
     
     dispatch(fetchProduct(productId));
   }, [dispatch, productId]);
 
-  // Check if the product is not yet available or if the description is not an array
   if (!product) {
     return <div>Loading...</div>;
   }
 
-  // Check if product.description is not an array or is empty
   if (!Array.isArray(product.description) || product.description.length === 0) {
     return <div>No description available</div>;
   }
 
   const parsedDescription = JSON.parse(product.description[0]);
 
-  console.log(product.description);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
 
   return (
     <div className="productIndexItemPage">
+      <div className='topIndexPageDivider'></div>
       <div className='productImageContainer'>
         <img src={placeholder} alt={product.name} />
       </div>
@@ -49,15 +54,19 @@ const ProductIndexItem = () => {
         </div>
         <div className="middlePriceDivider"></div>
         <div className='middleProductPriceDiv'>
-          <p className='middleProductPriceP'>${product.price}</p>
+          <p className='middleProductPriceP'><span className='salePrice'>-10%  </span>${product.price}</p>
         </div>
+        <div className="middlePriceDivider"></div>
         <div>
+          <p className='aboutItemP'>About this item</p>
           <ul className='productDetailList'>
             {parsedDescription.map((detail, index) => (
               <li className='productDetail' key={`${product.id}_${index}`}>{detail}</li>
             ))}
           </ul>
+          
         </div>
+        
       </div>
       <div className='addToCartDiv'>
         <div className='buyNowDiv'>
@@ -81,25 +90,47 @@ const ProductIndexItem = () => {
             <option value="7">7</option>
           </select>
         </div>
- 
+
         <div className='addToCartBtnDiv'>
           <button className='addToCartBtn'>Add to cart</button>
         </div>
+        
       </div>
 
 
       <div className='reviewContainer'>
-        <Rating rating={product.rating} />
-        <h1>Customer reviews</h1>
-        <h2>Review this product</h2>
-        <button>Write a customer review</button>
+        <div className="reviewDivider"></div>
+        <div className='reviewItemsDiv'>
+          <Rating rating={product.rating} />
+          <h1>Customer reviews</h1>
+          <h2>Review this product</h2>
+          <button className='writeReviewBtn'>Write a customer review</button>
+        </div>
+        <div className="reviewDivider2"></div>
+        <div className="reviewDivider"></div>
       </div>
 
 
-
-      <div className='productIndexItemFooter'>
+      <ul className='upperProductFooter' onClick={scrollToTop}>
         
-      </div>
+        <p className='backToTopP'>Back to top</p>
+      </ul>
+      <ul className='productFooter'>
+        <div className='loginLinks'>
+          <span className='loginGit'>
+            <a href="https://github.com/Dominic5591">
+              <img src={git} alt="" />
+            </a>
+          </span>
+          <span className='loginLinkedin'>
+            <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
+              <img src={linkedin} alt="" />
+            </a>
+            
+          </span>
+          <p className='loginLinkP'>2024 QuantumShop</p>
+        </div>
+      </ul>
     </div>
   );
 };

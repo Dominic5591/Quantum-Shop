@@ -41,7 +41,7 @@
   height: 0.5px;
   background-color: #5a5a5a;
   margin: 35px 0;
-  background: linear-gradient(to right, rgb(184, 184, 184), rgb(184, 184, 184), rgb(184, 184, 184));
-  box-shadow:  1px 4px 8px  #636262;
+  background: linear-gradient(to right,#d3d3d3, #d3d3d3, #d3d3d3);
+  box-shadow:  1px 2px 10px  #858585;
 }
 
