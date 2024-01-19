@@ -18,17 +18,20 @@ const ProductIndexItem = () => {
     dispatch(fetchProduct(productId));
   }, [dispatch, productId]);
 
-  // Check if the product is not yet available
+  // Check if the product is not yet available or if the description is not an array
   if (!product) {
     return <div>Loading...</div>;
   }
 
-  let productDetails = JSON.parse(product.description[0]);
-
-
-  if (!Array.isArray(product.description)) {
-    let productDetails = [product.description]
+  // Check if product.description is not an array or is empty
+  if (!Array.isArray(product.description) || product.description.length === 0) {
+    return <div>No description available</div>;
   }
+
+  const parsedDescription = JSON.parse(product.description[0]);
+
+  console.log(product.description);
+
 
   return (
     <div className="productIndexItemPage">
@@ -50,7 +53,7 @@ const ProductIndexItem = () => {
         </div>
         <div>
           <ul className='productDetailList'>
-            {productDetails.map((detail, index) => (
+            {parsedDescription.map((detail, index) => (
               <li className='productDetail' key={`${product.id}_${index}`}>{detail}</li>
             ))}
           </ul>
@@ -90,6 +93,12 @@ const ProductIndexItem = () => {
         <h1>Customer reviews</h1>
         <h2>Review this product</h2>
         <button>Write a customer review</button>
+      </div>
+
+
+
+      <div className='productIndexItemFooter'>
+        
       </div>
     </div>
   );

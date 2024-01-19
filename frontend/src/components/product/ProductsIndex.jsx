@@ -21,7 +21,7 @@ const ProductsIndex = () => {
         {products.map((product) => (
           <NavLink key={product.id} to={`/products/${product.id}`}>
             <div key={product.id} className="productCard">
-              <img src={placeholder} alt={product.name} />
+              <img src={placeholder} />
               <div className="cardContent">
                 <p className='productNameH3'>{product.name}</p>
                 <Rating rating={product.rating} />

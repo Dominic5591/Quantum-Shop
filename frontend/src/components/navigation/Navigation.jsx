@@ -76,7 +76,8 @@ function Navigation() {
         </div>
       </ul>
       <ul className='lowerNavBar'>
-        <li className='liPlaceholder'>Books</li>
+
+        
         <li className='liPlaceholder'>Electronics</li>
         <li className='liPlaceholder'>Groceries</li>
         <li className='liPlaceholder'>Today&apos;s Deals</li>
