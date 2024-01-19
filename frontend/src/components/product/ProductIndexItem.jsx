@@ -58,7 +58,7 @@ const ProductIndexItem = () => {
         </div>
         <div className="middlePriceDivider"></div>
         <div>
-          <p className='aboutItemP'>About this item</p>
+          <p className='aboutItemP'>About this item:</p>
           <ul className='productDetailList'>
             {parsedDescription.map((detail, index) => (
               <li className='productDetail' key={`${product.id}_${index}`}>{detail}</li>
@@ -112,7 +112,6 @@ const ProductIndexItem = () => {
 
 
       <ul className='upperProductFooter' onClick={scrollToTop}>
-        
         <p className='backToTopP'>Back to top</p>
       </ul>
       <ul className='productFooter'>
