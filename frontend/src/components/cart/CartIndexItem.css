@@ -1,0 +1,120 @@
+/* CartIndexItem.css */
+
+.cartIndexItem {
+  /* border: 1px solid #000000; */
+  margin-bottom: 10px;
+  width: 70%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* height: 1400px; */
+  /* width: 100%; */
+  border: 1px solid black;
+}
+
+.cartIndexItem div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; */
+
+}
+
+.cartIndexItem h1 {
+  margin: 0;
+
+}
+
+.cartItem  {
+  /* border: 1px solid #000000; */
+  margin-bottom: 10px;
+  /* width: 100%; */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Optional: Style for the entire cart */
+.cart-container {
+  width: 100%; /* Adjust the max-width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  
+
+}
+
+
+.cartItemNameH1 {
+  color: black;
+  font-size: 22px;
+  margin-right: 100px;
+}
+
+.cartItemIndexDivider {
+  width: 100%;
+  height: 0.5px;
+  background-color: #5a5a5a;
+  margin: 35px 0;
+  background: linear-gradient(to right,#d3d3d3, #d3d3d3, #d3d3d3);
+  /* box-shadow:  1px 2px 10px  #858585; */
+}
+
+.cartItemPriceDiv {
+  display: flex;
+  margin-top: 40px;
+  position: relative;
+  left: 15%;
+  bottom: 80px
+  /* margin-bottom: 15%; */
+}
+
+.cartProductNameDiv {
+  display: flex;
+  width: 1900px;
+  flex-wrap: wrap;
+  margin-left: 4%;
+  margin-bottom: 10%;
+}
+
+.cartItemQuantityDiv {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 20%;
+  margin-left: 0;
+  margin-top: 150px;
+  max-width: calc(100% - 90px);
+}
+.cartItemImgDiv {
+  width: 100%;
+  height: 100%;
+  top: 5px;
+  left: 0px;
+  display: flex;
+  /* z-index: 2 !important; */
+  /* position: relative; */
+  width: 100%;
+}
+
+.deleteLink {
+  color: #62bef3;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Amazon Ember Lite;
+}
+
+.quantityCartItemDropdown {
+  width: 60px;
+  height: 24px;
+  background-color: #F0F2F2;
+  border-radius: 6px;
+
+}
+
+
+.quantityCartItemDropdown:focus {
+  border: 1px solid #838383;
+  border-radius: 6px;
+  outline: rgba(109, 255, 255, 0.747) solid 2px;
+}

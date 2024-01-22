@@ -92,7 +92,9 @@
 .quantityDropDown {
   width: 60px;
   background-color: #F0F2F2;
+  border: none;
   border-radius: 6px;
+  box-shadow:  1px 2px 6px  #000000;
 }
 
 

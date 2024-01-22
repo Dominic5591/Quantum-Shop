@@ -6,15 +6,19 @@ import arrow from '../../images/arrow.png';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import './Navigation.css';
+import { memoizedSelectCartItems } from '../../store/cartItem';
 
 function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const cartItems = useSelector(memoizedSelectCartItems);
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
+
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const sessionLinks = sessionUser ? (
     <ul>
@@ -67,7 +71,7 @@ function Navigation() {
         <div>
           <NavLink to="cart">
             <div className='cartDivOne'>
-              <p className='cartNum'>0</p>
+              <p className='cartNum'>{totalQuantity}</p>
               <img src={cart} alt="cart" className='cartPng'/>
             </div>
           </NavLink>

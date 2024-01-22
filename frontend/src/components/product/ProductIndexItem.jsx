@@ -9,6 +9,7 @@ import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import './ProductIndexItem.css';
 
+
 const ProductIndexItem = () => {
   const cartItems = useSelector(memoizedSelectCartItems);
   const dispatch = useDispatch();
