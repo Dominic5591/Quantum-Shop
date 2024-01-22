@@ -67,7 +67,7 @@ function Navigation() {
 
 
         <div>
-          <NavLink to="">
+          <NavLink to="cart">
             <div className='cartDivOne'>
               <p className='cartNum'>0</p>
               <img src={cart} alt="cart" className='cartPng'/>

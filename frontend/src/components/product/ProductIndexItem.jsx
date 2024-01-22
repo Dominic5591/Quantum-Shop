@@ -1,18 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import placeholder from '../../images/placeholder.svg';
 import Rating from './Rating';
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import './ProductIndexItem.css';
 
 const ProductIndexItem = () => {
+  const cartItems = useSelector(memoizedSelectCartItems);
   const dispatch = useDispatch();
   const { productId } = useParams();
+  const product_id = parseInt(productId);
+  const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
-  
+  const sessionUser = useSelector(state => state.session.user);
+  // const cartItem = useSelector()
   useEffect(() => {
     
     dispatch(fetchProduct(productId));
@@ -36,6 +41,29 @@ const ProductIndexItem = () => {
     });
   };
 
+  // console.log(cartItems);
+  // console.log(productId);
+  const handleAddCartItem = async (e) => {
+    e.preventDefault();
+    const user_id = sessionUser.id;
+    const productToAdd = { quantity, product_id, user_id };
+  
+    const existingCartItem = cartItems.find(
+      (item) => item.productId === product.id
+    );
+  
+    if (existingCartItem) {
+      const updatedCartItem = {
+        ...existingCartItem,
+        quantity: existingCartItem.quantity + quantity,
+      };
+
+      dispatch(updateCartItem(updatedCartItem));
+    } else {
+      dispatch(createCartItem(productToAdd));
+    }
+  };
+  
 
   return (
     <div className="productIndexItemPage">
@@ -92,7 +120,7 @@ const ProductIndexItem = () => {
         </div>
 
         <div className='addToCartBtnDiv'>
-          <button className='addToCartBtn'>Add to cart</button>
+          <button onClick={handleAddCartItem} className='addToCartBtn'>Add to cart</button>
         </div>
         
       </div>
