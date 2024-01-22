@@ -16,8 +16,6 @@ function Navigation() {
     dispatch(sessionActions.logout());
   };
 
-
-
   const sessionLinks = sessionUser ? (
     <ul>
       <li>

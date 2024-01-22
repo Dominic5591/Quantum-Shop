@@ -8,8 +8,6 @@ import { memoizedSelectCartItems } from '../../store/cartItem';
 const CartIndex = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(memoizedSelectCartItems);
-  // const cartItems = useSelector(state => Object.values(state.cartItems));
-  // const products = useSelector(state => Object.values(state.products));
 
   useEffect(() => {
     dispatch(fetchCart());
@@ -18,6 +16,7 @@ const CartIndex = () => {
   return (
     <div>
       <h2>Your Cart</h2>
+      <br />
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (

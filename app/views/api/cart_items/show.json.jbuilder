@@ -1,5 +1,5 @@
 json.cartItem do
-  json.extract! @cart_item, :id, :quantity, :user_id, :product_id
+  json.extract! @cart_item, :id, :quantity, :product_id, :user_id
 end
 
 json.product do

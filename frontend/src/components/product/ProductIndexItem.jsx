@@ -17,7 +17,7 @@ const ProductIndexItem = () => {
   const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
   const sessionUser = useSelector(state => state.session.user);
-  // const cartItem = useSelector()
+
   useEffect(() => {
     
     dispatch(fetchProduct(productId));
@@ -41,8 +41,7 @@ const ProductIndexItem = () => {
     });
   };
 
-  // console.log(cartItems);
-  // console.log(productId);
+
   const handleAddCartItem = async (e) => {
     e.preventDefault();
     const user_id = sessionUser.id;
@@ -62,6 +61,10 @@ const ProductIndexItem = () => {
     } else {
       dispatch(createCartItem(productToAdd));
     }
+  };
+
+  const handleQuantityChange = (e) => {
+    setQuantity(parseInt(e.target.value, 10));
   };
   
 
@@ -107,8 +110,15 @@ const ProductIndexItem = () => {
           <h1 className='inStockH1'>In Stock</h1>
         </div>
         <div className='quantityDiv'>
+          <form></form>
           <span>Quantity: </span>
-          <select className='quantityDropDown' name="quantity" id="">
+          <select 
+            className='quantityDropDown'
+            name="quantity"
+            value={quantity}
+            onChange={handleQuantityChange}
+
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

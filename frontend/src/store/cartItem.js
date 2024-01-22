@@ -67,7 +67,7 @@ export const createCartItem = (cartItem) => async (dispatch) => {
 
   if (res.ok) {
     const cartData = await res.json();
-    dispatch(receiveCartItem(cartData));
+    dispatch(receiveCartItem(cartData.cartItem));
   }
 };
 
@@ -111,9 +111,10 @@ const cartReducer = (state = {}, action) => {
     delete newState[action.cartItemId];
     return newState;
   case RECEIVE_CART_ITEM:
+    // debugger
     return {
       ...state,
-      [action.cartItem.productId]: action.cartItem,
+      [action.cartItem.id]: action.cartItem,
     };
   default:
     return state;
