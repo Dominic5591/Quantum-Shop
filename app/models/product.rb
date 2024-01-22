@@ -3,5 +3,5 @@ class Product < ApplicationRecord
   validates :rating, inclusion: {in: 1..5}, presence: true
 
   
-
+  has_many :cart_items
 end
