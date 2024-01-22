@@ -18,9 +18,9 @@ const ProductsIndex = () => {
     <ul className='productsIndexPage'>
       <div className="productsIndexDivider"></div>
       <div className="productsContainer">
-        {products.map((product) => (
-          <NavLink key={product.id} to={`/products/${product.id}`}>
-            <div key={product.id} className="productCard">
+        {products.map((product, index) => (
+          <NavLink key={`${product.id}_${index}`} to={`/products/${product.id}`}>
+            <div className="productCard">
               <img src={placeholder} />
               <div className="cardContent">
                 <p className='productNameH3'>{product.name}</p>
