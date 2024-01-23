@@ -111,7 +111,6 @@ const cartReducer = (state = {}, action) => {
     delete newState[action.cartItemId];
     return newState;
   case RECEIVE_CART_ITEM:
-    // debugger
     return {
       ...state,
       [action.cartItem.id]: action.cartItem,

@@ -1,25 +1,82 @@
 
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart } from '../../store/cartItem';
 import CartIndexItem from './CartIndexItem';
+import git from '../../images/github.png';
+import linkedin from '../../images/linkedin.png';
+import cartImg from '../../images/empty-cart.svg';
 import { memoizedSelectCartItems } from '../../store/cartItem';
 import './CartIndex.css';
-
+import { selectProductsArray } from '../../store/product';
+import { NavLink } from 'react-router-dom';
 const CartIndex = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(memoizedSelectCartItems);
-
+  const products = useSelector(selectProductsArray);
+  const sessionUser = useSelector((state) => state.session.user);
   useEffect(() => {
     dispatch(fetchCart());
   }, [dispatch]);
 
+  let total = 0.00;
+  let quantity = 0;
+
+  cartItems.forEach(item => {
+    products.forEach(product => {
+      if (item.productId === product.id) {
+        quantity += item.quantity;
+        total += Math.round(item.quantity * product.price);
+      }
+    });
+  });
+
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className='CartPageDiv'>
-      <h2>Your Cart</h2>
+      {cartItems.length === 0 ? 
+        <div className='cartImgDiv'>
+          <img src={cartImg} alt="" />
+        </div>
+        : 
+        <p></p>
+      }
+
       <br />
+      <br />
+      <br />
+
       {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <div className='emptyCartDiv'>
+
+          <div className='emptyCartDealsDiv'>
+            <h1 className='emptyCartH1'>Your QuantumShop Cart is empty</h1>
+            <NavLink>
+              <p className='emptyCartP'>Shop today&apos;s deals</p>
+            </NavLink>
+          </div>
+
+          {!sessionUser ? 
+            <div className='cartSessionBtns'>
+              <NavLink to='/login'>
+                <button className='emptyCartBtnSignIn'>Sign in to your account</button> 
+              </NavLink>
+              <NavLink to='/signup'>
+                <button className='emptyCartBtnSignUp'>Sign up now</button>  
+              </NavLink>
+              
+            </div>
+            : <p></p>
+          }
+
+        </div>
       ) : (
         <ul className='CartIndexUl'>
           {cartItems.map((cartItem, index) => (
@@ -29,6 +86,36 @@ const CartIndex = () => {
           ))}
         </ul>
       )}
+
+      <div className='checkoutSideDiv'>
+        <p>Part of your order qualifies for FREE Shipping.</p>
+        <p>Subtotal({quantity}): ${total}.00</p>
+        <label htmlFor="radio">This order contains a gift
+          <input type="radio" value="This order contains a gift"/>
+        </label>
+        <button className='checkoutBtn'>Checkout</button>
+        
+      </div>
+
+      <ul className='upperCartFooter' onClick={scrollToTop}>
+        <p className='backToTopP'>Back to top</p>
+      </ul>
+      <ul className='cartFooter'>
+        <div className='loginLinks'>
+          <span className='loginGit'>
+            <a href="https://github.com/Dominic5591">
+              <img src={git} alt="" />
+            </a>
+          </span>
+          <span className='loginLinkedin'>
+            <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
+              <img src={linkedin} alt="" />
+            </a>
+            
+          </span>
+          <p className='loginLinkP'>2024 QuantumShop</p>
+        </div>
+      </ul>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import placeholder from '../../images/placeholder.svg';
 import Rating from './Rating';
 import { fetchProduct, selectProduct } from '../../store/product';
@@ -18,6 +19,7 @@ const ProductIndexItem = () => {
   const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
   const sessionUser = useSelector(state => state.session.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -45,23 +47,29 @@ const ProductIndexItem = () => {
 
   const handleAddCartItem = async (e) => {
     e.preventDefault();
-    const user_id = sessionUser.id;
-    const productToAdd = { quantity, product_id, user_id };
-  
-    const existingCartItem = cartItems.find(
-      (item) => item.productId === product.id
-    );
-  
-    if (existingCartItem) {
-      const updatedCartItem = {
-        ...existingCartItem,
-        quantity: existingCartItem.quantity + quantity,
-      };
+    if (sessionUser) {
+      const user_id = sessionUser.id;
+      const productToAdd = { quantity, product_id, user_id };
 
-      dispatch(updateCartItem(updatedCartItem));
+      const existingCartItem = cartItems.find(
+        (item) => item.productId === product.id
+      );
+      
+      if (existingCartItem) {
+        const updatedCartItem = {
+          ...existingCartItem,
+          quantity: existingCartItem.quantity + quantity,
+        };
+
+        dispatch(updateCartItem(updatedCartItem));
+      } else {
+        dispatch(createCartItem(productToAdd));
+      }
     } else {
-      dispatch(createCartItem(productToAdd));
+      navigate('/login');
     }
+  
+
   };
 
   const handleQuantityChange = (e) => {
@@ -127,6 +135,9 @@ const ProductIndexItem = () => {
             <option value="5">5</option>
             <option value="6">6</option>
             <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
           </select>
         </div>
 
