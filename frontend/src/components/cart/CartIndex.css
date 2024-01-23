@@ -4,7 +4,6 @@
   height: 100%;
   width: 100%;
   background-color: #EAEDED;
-
 }
 
 .CartIndexUl {
@@ -24,7 +23,7 @@
 }
 
 .checkoutSideDiv {
-  z-index: 1; 
+  /* z-index: 1;  */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +42,6 @@
   width: 80%;
   background-color: #FFD814;
   color: #555555;
-  font-weight: bold;
   border: none;
   text-align: center;
   font-size: 14px;
@@ -91,7 +89,6 @@
   top: 2px;
 }
 
-
 .totalPriceP {
   font-size: 22px;
   font-weight: 600;
@@ -109,8 +106,13 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 3%;
+  height: 30px;
 }
+
+.upperCartFooter:hover {
+  background-color: #4b5968;
+}
+  
 
 .cartFooter {
   z-index: 2;
@@ -148,22 +150,17 @@
   margin-bottom: 90px;
 }
 
-
 .emptyCartH1 {
   font-size: 30px;
   margin-bottom: 14px;
-  /* font-weight: bold; */
 }
 
 .emptyCartP {
-
   cursor: pointer;
   color: #007185;
 }
 
-
 .emptyCartBtnSignIn {
-  /* margin-top: 40px; */
   padding: 10px;
   width: 100%;
   margin-left: 20px;
@@ -181,7 +178,6 @@
   background-color: #f8d318;
 }
 .emptyCartBtnSignUp {
-  /* margin-top: 40px; */
   padding: 10px;
   width: 100%;
   margin-left: 20px;

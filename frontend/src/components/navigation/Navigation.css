@@ -45,6 +45,7 @@ a {
 
 .dropdown {
   display: inline-block;
+  z-index: 1;
 }
 
 .dropbtn {
@@ -76,9 +77,9 @@ a {
 }
 
 
-.dropdown-content a:hover {
+/* .dropdown-content a:hover {
   background-color: #ddd;
-}
+} */
 
 
 .dropdown:hover .dropdown-content {
@@ -121,7 +122,12 @@ a {
 }
 
 #signup {
-  color: blue;
+  color: #007185;
+  margin-right: auto;
+  margin-left: 0;
+}
+#signup:hover {
+  color: #856200;
   margin-right: auto;
   margin-left: 0;
 }

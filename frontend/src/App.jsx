@@ -10,7 +10,7 @@ import * as sessionActions from './store/session';
 import ProductsIndex from './components/product/ProductsIndex';
 import ProductIndexItem from './components/product/ProductIndexItem';
 import CartIndex from './components/cart/CartIndex';
-import Checkout from './components/checkout/checkout';
+import Checkout from './components/checkout/Checkout';
 
 function Layout() {
   const dispatch = useDispatch();

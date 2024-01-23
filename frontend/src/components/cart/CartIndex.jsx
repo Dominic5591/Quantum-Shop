@@ -49,11 +49,9 @@ const CartIndex = () => {
         : 
         <p></p>
       }
-
       <br />
       <br />
       <br />
-
       {cartItems.length === 0 ? (
         <div className='emptyCartDiv'>
 
@@ -63,7 +61,6 @@ const CartIndex = () => {
               <p className='emptyCartP'>Shop today&apos;s deals</p>
             </NavLink>
           </div>
-
           {!sessionUser ? 
             <div className='cartSessionBtns'>
               <NavLink to='/login'>
@@ -76,7 +73,6 @@ const CartIndex = () => {
             </div>
             : <p></p>
           }
-
         </div>
       ) : (
         <ul className='CartIndexUl'>
@@ -92,18 +88,17 @@ const CartIndex = () => {
         { total > 25 ? 
           <p className='freeShip'>Your order qualifies for FREE Shipping.</p>
           :
-          <p className='addMoreItems'>Add <span className='amount'>${amount}</span> to your order to qualify for FREE shipping</p>
+          <p className='addMoreItems'>Add <span className='amount'>${amount}.00</span> to your order to qualify for FREE shipping</p>
         }
         <p className='totalPriceP'>Subtotal({quantity}): ${total}.00</p>
         <label className='giftOrderLabel' htmlFor="radio">This order contains a gift
           <input className='giftRadio' type="checkbox" value="This order contains a gift"/>
         </label>
-        <NavLink>
-
-        </NavLink>
-        <NavLink className='checkoutBtn' to='/checkout'>Checkout</NavLink>
-        
-        
+        { quantity ? 
+          <NavLink className='checkoutBtn' to='/checkout'>Checkout</NavLink>
+          :
+          <NavLink className='checkoutBtn' to=''>Checkout</NavLink>
+        }
       </div>
 
       <ul className='upperCartFooter' onClick={scrollToTop}>

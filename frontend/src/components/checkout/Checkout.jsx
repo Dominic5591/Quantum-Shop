@@ -4,7 +4,7 @@ import linkedin from '../../images/linkedin.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import './Checkout.css';
-import { clearCart, deleteCartItem, memoizedSelectCartItems } from '../../store/cartItem';
+import { deleteCartItem, memoizedSelectCartItems } from '../../store/cartItem';
 const Checkout = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(memoizedSelectCartItems);
@@ -20,7 +20,7 @@ const Checkout = () => {
       dispatch(deleteCartItem(item.id));
     });
 
-  }, [dispatch]);
+  }, [dispatch, cartItems]);
 
   return (
     <div className='checkoutMain'>

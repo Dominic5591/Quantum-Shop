@@ -4,7 +4,6 @@ import { createSelector } from 'reselect';
 export const RECEIVE_CART = "cart/RECEIVE_CART";
 export const RECEIVE_CART_ITEM = "cart/RECEIVE_CART_ITEM";
 export const REMOVE_CART_ITEM = "cart/REMOVE_CART_ITEM";
-export const CLEAR_CART = "cart/CLEAR_CART";
 
 export const receiveCart = (cartItems) => ({
   type: RECEIVE_CART,
@@ -22,15 +21,6 @@ export const removeCartItem = (cartItemId) => ({
   cartItemId,
 });
 
-
-export const clearCart = (cart) => ({
-  type: CLEAR_CART,
-  cart,
-});
-
-
-
-
 export const selectCartItem = (cartItemId) => state => {
   return state?.cartItems ? state.cartItems[cartItemId] : null;
 };
@@ -41,8 +31,6 @@ export const memoizedSelectCartItems = createSelector(
   [selectCartItems],
   (cartItems) => Object.values(cartItems)
 );
-
-
 
 export const fetchCart = () => async (dispatch) => {
   const res = await csrfFetch(`/api/cart_items`);
@@ -121,8 +109,6 @@ const cartReducer = (state = {}, action) => {
       ...state,
       [action.cartItem.id]: action.cartItem,
     };
-  case CLEAR_CART:
-    return {};
   default:
     return state;
   }

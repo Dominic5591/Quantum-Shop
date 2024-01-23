@@ -39,8 +39,10 @@
 
 .cartItemNameH1 {
   color: black;
-  font-size: 22px;
+  font-size: 26px;
+  font-weight: 700;
   margin-right: 0px;
+  font-family: Amazon Ember Lite;
 }
 
 
@@ -58,7 +60,6 @@
 .cartItemPriceDiv {
   display: flex;
   flex-wrap: wrap;
-  /* width: 1000px; */
   position: relative;
   left: 500px;
   bottom: 30px;
@@ -127,4 +128,8 @@
   border: 1px solid #838383;
   border-radius: 6px;
   outline: rgba(109, 255, 255, 0.747) solid 2px;
+}
+
+.cartItemPriceH1 {
+  font-size: 19px;
 }
