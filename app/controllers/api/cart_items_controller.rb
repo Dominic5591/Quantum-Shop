@@ -1,6 +1,6 @@
 class Api::CartItemsController < ApplicationController
   wrap_parameters include: CartItem.attribute_names + ['quantity', 'userId', 'productId']
-
+  
   def index 
     @cart_items = current_user.cart_items 
     render :index

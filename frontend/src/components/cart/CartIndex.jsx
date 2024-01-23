@@ -98,7 +98,11 @@ const CartIndex = () => {
         <label className='giftOrderLabel' htmlFor="radio">This order contains a gift
           <input className='giftRadio' type="checkbox" value="This order contains a gift"/>
         </label>
-        <button className='checkoutBtn'>Checkout</button>
+        <NavLink>
+
+        </NavLink>
+        <NavLink className='checkoutBtn' to='/checkout'>Checkout</NavLink>
+        
         
       </div>
 

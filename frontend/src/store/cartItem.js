@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 export const RECEIVE_CART = "cart/RECEIVE_CART";
 export const RECEIVE_CART_ITEM = "cart/RECEIVE_CART_ITEM";
 export const REMOVE_CART_ITEM = "cart/REMOVE_CART_ITEM";
-
+export const CLEAR_CART = "cart/CLEAR_CART";
 
 export const receiveCart = (cartItems) => ({
   type: RECEIVE_CART,
@@ -20,6 +20,12 @@ export const receiveCartItem = (cartItem) => ({
 export const removeCartItem = (cartItemId) => ({
   type: REMOVE_CART_ITEM,
   cartItemId,
+});
+
+
+export const clearCart = (cart) => ({
+  type: CLEAR_CART,
+  cart,
 });
 
 
@@ -115,6 +121,8 @@ const cartReducer = (state = {}, action) => {
       ...state,
       [action.cartItem.id]: action.cartItem,
     };
+  case CLEAR_CART:
+    return {};
   default:
     return state;
   }
