@@ -33,14 +33,14 @@
   margin-top: 50px;
   right: 50px;
   width: 300px;
-  height: 300px;
+  height: 250px;
   background-color: #FFFFFF;
 }
 
 .checkoutBtn {
-  margin-top: 40px;
+  margin-top: 30px;
   padding: 10px;
-  width: 60%;
+  width: 80%;
   background-color: #FFD814;
   color: #555555;
   font-weight: bold;
@@ -51,6 +51,51 @@
 
 .checkoutBtn:hover {
   background-color: #f8d318;
+}
+
+.freeShip {
+  color: green;
+  font-size: 14px;
+  padding: 16px;
+  padding-bottom: 40px;
+  padding-left: 60px;
+}
+
+.amount {
+  color: rgb(249, 87, 87);
+  font-weight: 700;
+  font-family: Amazon Ember Lite;
+}
+
+.addMoreItems {
+  color: rgb(124, 126, 124);
+  font-size: 14px;
+  padding: 12px;
+  padding-bottom: 40px;
+  padding-left: 35px;
+}
+
+.giftOrderLabel {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Amazon Ember Lite;
+  margin-right: 60px;
+  padding-top: 15px;
+  color: #252525;
+}
+
+.giftRadio {
+  position: relative;
+  top: 2px;
+}
+
+
+.totalPriceP {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: Amazon Ember Lite;
+  margin-right: 50px;
+  color: #252525;
 }
 
 .upperCartFooter {

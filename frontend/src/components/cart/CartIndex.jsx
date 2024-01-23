@@ -21,12 +21,13 @@ const CartIndex = () => {
 
   let total = 0.00;
   let quantity = 0;
-
+  let amount = 25;
   cartItems.forEach(item => {
     products.forEach(product => {
       if (item.productId === product.id) {
         quantity += item.quantity;
         total += Math.round(item.quantity * product.price);
+        amount -= Math.round(item.quantity * product.price);
       }
     });
   });
@@ -88,10 +89,14 @@ const CartIndex = () => {
       )}
 
       <div className='checkoutSideDiv'>
-        <p>Part of your order qualifies for FREE Shipping.</p>
-        <p>Subtotal({quantity}): ${total}.00</p>
-        <label htmlFor="radio">This order contains a gift
-          <input type="radio" value="This order contains a gift"/>
+        { total > 25 ? 
+          <p className='freeShip'>Your order qualifies for FREE Shipping.</p>
+          :
+          <p className='addMoreItems'>Add <span className='amount'>${amount}</span> to your order to qualify for FREE shipping</p>
+        }
+        <p className='totalPriceP'>Subtotal({quantity}): ${total}.00</p>
+        <label className='giftOrderLabel' htmlFor="radio">This order contains a gift
+          <input className='giftRadio' type="checkbox" value="This order contains a gift"/>
         </label>
         <button className='checkoutBtn'>Checkout</button>
         
