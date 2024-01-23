@@ -1,0 +1,85 @@
+.electronics {
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+}
+
+.categoryElectronicsDiv {
+  z-index: 1;
+  border: 1px solid rgb(161, 161, 161);
+  border-radius: 10px;
+  width: 18%;
+  height: 340px;
+  margin-top: 40PX;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #FFFFFF;
+}
+
+
+
+.homepageMain {
+  gap: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  /* margin-top: 30px; */
+  margin-bottom: 30px;
+  height: 1100px;
+  width: 100%;
+  background-color: #EAEDED;
+  /* background-image: url('../../images/gradient.jpg'); */
+}
+
+.electronicsH1 {
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: Amazon Ember Lite;
+}
+
+.electImg {
+  width: 290px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+.homeFooter {
+  /* z-index: 2; */
+  list-style: none;
+  margin: 0;
+  /* padding: 12px; */
+  background-color: #232F3E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+}
+
+.upperHomeFooter {
+  list-style: none;
+  /* margin-top: 50px; */
+  position: relative;
+  top: 60px;
+  padding: 10px;
+  background-color: #37475A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 35px;
+}
+
+.upperHomeFooter:hover {
+  background-color: #4b5968;
+}

@@ -14,12 +14,14 @@ const ProductsIndex = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+
   return (
     <ul className='productsIndexPage'>
       <div className="productsIndexDivider"></div>
       <div className="productsContainer">
         {products.map((product, index) => (
           <NavLink key={`${product.id}_${index}`} to={`/products/${product.id}`}>
+            { console.log(product.category) }
             <div className="productCard">
               <img src={placeholder} />
               <div className="cardContent">

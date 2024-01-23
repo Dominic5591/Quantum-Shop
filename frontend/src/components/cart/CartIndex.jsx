@@ -57,7 +57,7 @@ const CartIndex = () => {
 
           <div className='emptyCartDealsDiv'>
             <h1 className='emptyCartH1'>Your QuantumShop Cart is empty</h1>
-            <NavLink>
+            <NavLink to='/products' >
               <p className='emptyCartP'>Shop today&apos;s deals</p>
             </NavLink>
           </div>
