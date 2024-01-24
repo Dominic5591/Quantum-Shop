@@ -3,7 +3,7 @@ import { fetchCart } from './cartItem';
 import { fetchProducts } from './product';
 
 const SET_USER = "session/setUser";
-const REMOVE_USER = "session/removeUser";
+export const REMOVE_USER = "session/removeUser";
 
 const setUser = (user) => {
   return {
@@ -12,7 +12,7 @@ const setUser = (user) => {
   };
 };
 
-const removeUser = () => {
+export const removeUser = () => {
   return {
     type: REMOVE_USER,
   };
@@ -41,7 +41,7 @@ export const login = ({ credential, password }) => async dispatch => {
   });
   const data = await response.json();
   dispatch(setUser(data.user));
-  // dispatch(fetchProducts());
+  dispatch(fetchProducts());
   dispatch(fetchCart());
   return response;
 };

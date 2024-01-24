@@ -12,7 +12,7 @@ const CartIndexItem = ({ cartItem }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(cartItem.quantity);
   const sessionUser = useSelector((state) => state.session.user);
-
+  console.log(product);
   if (!product) return null;
 
   const deleteItem = (e) => {

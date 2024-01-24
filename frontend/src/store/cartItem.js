@@ -1,8 +1,16 @@
 import csrfFetch from "./csrf";
 import { createSelector } from 'reselect';
+import { REMOVE_USER } from "./session";
+
 export const RECEIVE_CART = "cart/RECEIVE_CART";
+
+
 export const RECEIVE_CART_ITEM = "cart/RECEIVE_CART_ITEM";
 export const REMOVE_CART_ITEM = "cart/REMOVE_CART_ITEM";
+
+
+
+
 
 export const receiveCart = (cartItems) => ({
   type: RECEIVE_CART,
@@ -108,6 +116,8 @@ const cartReducer = (state = {}, action) => {
       ...state,
       [action.cartItem.id]: action.cartItem,
     };
+  case REMOVE_USER:
+    return {};
   default:
     return state;
   }

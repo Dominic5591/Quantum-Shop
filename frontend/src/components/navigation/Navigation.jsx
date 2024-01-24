@@ -7,6 +7,7 @@ import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import './Navigation.css';
 import { memoizedSelectCartItems } from '../../store/cartItem';
+import SearchBar from './SearchBar';
 
 function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -38,7 +39,7 @@ function Navigation() {
   );
 
   return (
-    <>
+    <div className='navMain'>
       <ul className='navBar'>
         <div className='git'>
           <a href="https://github.com/Dominic5591">
@@ -49,17 +50,20 @@ function Navigation() {
           <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
             <img src={linkedin} alt="" />
           </a>
-        </div>
+        </div>      
         <div className='home'>
           <NavLink to="/">
             <img src={arrow} alt="arrow" className='homeArrow' />
           </NavLink>
         </div>
         <div className='home'>
-          <NavLink to="products">
+          {/* <NavLink to="products">
             <p className='ProductIndexLink'>ProductIndex</p>
-          </NavLink>
+          </NavLink> */}
         </div>
+
+        <SearchBar />
+
         <li className="dropdown">
           <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
           <div className="dropdown-content">
@@ -82,7 +86,7 @@ function Navigation() {
         <li className='liPlaceholder'>Groceries</li>
         <li className='liPlaceholder'>Today&apos;s Deals</li>
       </ul>
-    </>
+    </div>
 
   );
 }

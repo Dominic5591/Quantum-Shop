@@ -15,7 +15,7 @@ class Api::CartItemsController < ApplicationController
       render json: @cart_item.errors.full_messages, status: :unprocessable_entity
     end
   end 
-  
+
   def destroy 
     @cart_item = CartItem.find(params[:id])
     if @cart_item 

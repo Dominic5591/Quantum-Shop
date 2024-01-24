@@ -1,23 +1,27 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import { fetchProducts, selectProductsArray } from '../../store/product';
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchSearch } from "../../store/search";
 import placeholder from '../../images/placeholder.svg';
-import Rating from './Rating';
-import './ProductsIndex.css';
+import { NavLink } from 'react-router-dom';
+import Rating from "../product/Rating";
 
-const ProductsIndex = ({ product }) => {
+const SearchIndex = () => {
   const dispatch = useDispatch();
-  const products = useSelector(selectProductsArray);
-
-
-
+  const location = useLocation();
+  
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    const query = location.search.split("=")[1];
+    if (query) {
+      dispatch(fetchSearch(query));
+    }
+  }, [dispatch, location]);
 
 
+  
+  const results = useSelector((state) => state.search);
+  const searchResults = results?.search || [];
+  const products = Object.values(searchResults);
 
   return (
     <ul className='productsIndexPage'>
@@ -41,4 +45,5 @@ const ProductsIndex = ({ product }) => {
   );
 };
 
-export default ProductsIndex;
+export default SearchIndex;
+

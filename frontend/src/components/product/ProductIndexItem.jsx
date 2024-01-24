@@ -14,8 +14,12 @@ import './ProductIndexItem.css';
 const ProductIndexItem = () => {
   const cartItems = useSelector(memoizedSelectCartItems);
   const dispatch = useDispatch();
+
   const { productId } = useParams();
+
   const product_id = parseInt(productId);
+
+
   const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
   const sessionUser = useSelector(state => state.session.user);
@@ -52,16 +56,16 @@ const ProductIndexItem = () => {
       const productToAdd = { quantity, product_id, user_id };
 
       const existingCartItem = cartItems.find(
-        (item) => item.productId === product.id
+        (item) => item.productId === productId
       );
-      
+      console.log(existingCartItem);
       if (existingCartItem) {
         const updatedCartItem = {
           ...existingCartItem,
           quantity: existingCartItem.quantity + quantity,
         };
-
         dispatch(updateCartItem(updatedCartItem));
+
       } else {
         dispatch(createCartItem(productToAdd));
       }
