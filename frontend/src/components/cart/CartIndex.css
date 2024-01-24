@@ -4,6 +4,9 @@
   height: 100%;
   width: 100%;
   background-color: #EAEDED;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
 }
 
 .CartIndexUl {
@@ -23,7 +26,6 @@
 }
 
 .checkoutSideDiv {
-  /* z-index: 1;  */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,6 +101,7 @@
 }
 
 .upperCartFooter {
+  overflow-x: hidden;
   list-style: none;
   margin: 0;
   padding: 10px;
@@ -115,6 +118,7 @@
 }
 
 .cartFooter {
+  overflow-x: hidden;
   z-index: 2;
   list-style: none;
   margin: 0;
@@ -128,17 +132,20 @@
 }
 
 .emptyCartDiv {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
   left: 500px;
   bottom: 300px;
   gap: 30px;
+  max-width: 300px;
 }
 
 .cartSessionBtns {
   display: flex;
   flex-direction: row;
+  margin-left: 15px;
 }
 
 .cartImgDiv {
@@ -194,4 +201,10 @@
 
 .emptyCartBtnSignUp:hover {
   background-color: #EAEDED;
+}
+
+
+.emptyCartDealsDiv {
+  margin: none;
+  max-width: 300px;
 }

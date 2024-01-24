@@ -19,7 +19,7 @@ function Navigation() {
   };
 
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-
+  
   const sessionLinks = sessionUser ? (
     <ul>
       <li>
@@ -66,8 +66,6 @@ function Navigation() {
             {sessionLinks}
           </div>
         </li>
-
-
         <div>
           <NavLink to="cart">
             <div className='cartDivOne'>

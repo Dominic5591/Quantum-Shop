@@ -4,7 +4,6 @@
 }
 
 .categoryElectronicsDiv {
-  z-index: 1;
   border: 1px solid rgb(161, 161, 161);
   border-radius: 10px;
   width: 18%;
@@ -18,7 +17,6 @@
 }
 
 
-
 .homepageMain {
   gap: 60px;
   display: flex;
@@ -26,12 +24,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  /* margin-top: 30px; */
   margin-bottom: 30px;
   height: 1100px;
   width: 100%;
   background-color: #EAEDED;
-  /* background-image: url('../../images/gradient.jpg'); */
 }
 
 .electronicsH1 {
@@ -42,22 +38,14 @@
 }
 
 .electImg {
-  width: 290px;
+  width: 200px;
   border-radius: 5px;
 }
 
 
-
-
-
-
-
-
 .homeFooter {
-  /* z-index: 2; */
   list-style: none;
   margin: 0;
-  /* padding: 12px; */
   background-color: #232F3E;
   display: flex;
   align-items: center;
@@ -68,7 +56,6 @@
 
 .upperHomeFooter {
   list-style: none;
-  /* margin-top: 50px; */
   position: relative;
   top: 60px;
   padding: 10px;

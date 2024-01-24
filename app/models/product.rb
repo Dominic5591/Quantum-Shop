@@ -7,4 +7,11 @@ class Product < ApplicationRecord
     foreign_key: :product_id,
     class_name: :CartItem,
     dependent: :destroy
+
+
+  def self.search_names(query)
+    where("lower(name) LIKE ?", "%#{sanitize_sql_like(query)}%")
+  end
+
+
 end

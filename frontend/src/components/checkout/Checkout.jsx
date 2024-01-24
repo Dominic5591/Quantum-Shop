@@ -8,6 +8,7 @@ import { deleteCartItem, memoizedSelectCartItems } from '../../store/cartItem';
 const Checkout = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(memoizedSelectCartItems);
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -19,16 +20,13 @@ const Checkout = () => {
     cartItems.forEach(item => {
       dispatch(deleteCartItem(item.id));
     });
-
   }, [dispatch, cartItems]);
 
   return (
     <div className='checkoutMain'>
       <div className='checkoutPageDiv'>
         <h1 className='OrderPlaced'>Thank you for placing order</h1>
-
       </div>
-
       <ul className='upperCartFooter' onClick={scrollToTop}>
         <p className='backToTopP'>Back to top</p>
       </ul>

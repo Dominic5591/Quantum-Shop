@@ -8,6 +8,10 @@
   src: url('./fonts/AmazonEmber_Lt.ttf')
 }
 
+body {
+  overflow-x: hidden;
+}
+
 #root {
   font-family: Amazon Ember;
   display: flex;
@@ -16,4 +20,5 @@
   flex-wrap: wrap;
   margin: auto;
   position: relative;
+  overflow-x: hidden;
 }

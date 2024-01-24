@@ -22,7 +22,10 @@ class Api::ProductsController < ApplicationController
     end
   end
 
-
+  def search
+    @products = Product.search_names(params[:q])
+    render :search
+  end
 
   private
 

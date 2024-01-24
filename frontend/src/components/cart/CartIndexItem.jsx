@@ -1,10 +1,11 @@
 import { selectProduct } from "../../store/product";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "./CartIndexItem.css";
 import { useState } from "react";
 import { deleteCartItem, updateCartItem } from "../../store/cartItem";
 import placeholder from "../../images/placeholder.svg";
+import "./CartIndexItem.css";
+
 
 const CartIndexItem = ({ cartItem }) => {
   const product = useSelector(selectProduct(cartItem.productId));
@@ -27,7 +28,6 @@ const CartIndexItem = ({ cartItem }) => {
       userId: sessionUser.id,
       productId: product.id,
     };
-
     setQuantity(updatedQuantity);
     dispatch(updateCartItem(updatedCartItem));
   };
