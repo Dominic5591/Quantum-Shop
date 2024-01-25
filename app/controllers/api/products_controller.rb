@@ -1,26 +1,18 @@
 class Api::ProductsController < ApplicationController
-  before_action :set_product, only: [ :show ]
-
-  def index
-    @products = Product.all
+  def index 
+    @products = Product.all 
+    render 'api/products/index'
   end
 
-  def show
-    Product.find(params[:id])
-    render :show
-  end
+  def show 
+    @product = Product.find_by(id: params[:id])
+    if @product 
+        render '/api/products/show'
+    else 
+        render json: { product: nil }
+    end 
+  end 
 
-
-
-  def create
-    @product = Product.new(product_params)
-
-    if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
-    else
-      render json: @product.errors.full_messages, status: 422
-    end
-  end
 
   def search
     @products = Product.search_names(params[:q])
@@ -32,6 +24,7 @@ class Api::ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
+
 
   def product_params
     params.require(:product).permit(:name, :description, :price, :category)

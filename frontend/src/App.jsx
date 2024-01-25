@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         element: <ProductIndexItem />,
       },
       {
-        path: "/products/:category",
+        path: "/categories/:category",
         element: <ProductsIndex />,
       },
       {

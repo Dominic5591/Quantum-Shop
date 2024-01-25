@@ -4,11 +4,13 @@
 }
 
 .categoryElectronicsDiv {
-  border: 1px solid rgb(161, 161, 161);
-  border-radius: 10px;
+  z-index: 1;
+  /* border: 1px solid rgb(161, 161, 161); */
+  border-radius: 4px;
   width: 18%;
   height: 340px;
-  margin-top: 40PX;
+  margin-top: 150PX;
+  margin-bottom: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,12 +25,14 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  margin-bottom: 30px;
-  height: 1100px;
+
+  height: 100%;
   width: 100%;
   background-color: #EAEDED;
   overflow: hidden;
+  background-image: url(../../images/wallpaper-orange.jpg);
+  background-size: 100%;
+  background-position-x: center;
 }
 
 .electronicsH1 {
@@ -45,14 +49,12 @@
 
 
 .homeFooter {
-  list-style: none;
-  margin: 0;
   background-color: #232F3E;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100px;
+  height: 270px;
 }
 
 .upperHomeFooter {
@@ -70,4 +72,12 @@
 
 .upperHomeFooter:hover {
   background-color: #4b5968;
+}
+
+
+
+
+.homeWallPaperDiv {
+  height: 600p;
+  z-index: 2;
 }

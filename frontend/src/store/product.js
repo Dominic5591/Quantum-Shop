@@ -23,9 +23,14 @@ export const selectProduct = (productId) => (state) => {
 };
 
 const selectProductsState = (state) => state.products;
+const selectProductsStateCat = (state) => state.products.undefined;
 
 export const selectProductsArray = createSelector(
   [selectProductsState],
+  (products) => Object.values(products)
+);
+export const selectProductsArrayCat = createSelector(
+  [selectProductsStateCat],
   (products) => Object.values(products)
 );
 
@@ -51,14 +56,18 @@ export const fetchProduct = (productId) => async (dispatch) => {
 
 
 const productReducer = (state = {}, action) => {
+  console.log('Reducer Action:', action);
+  console.log('Reducer State:', state);
   const newState = { ...state };
 
   switch (action.type) {
-  case RECEIVE_PRODUCTS:
+  case RECEIVE_PRODUCTS: {
     return { ...state, ...action.products };
-  case RECEIVE_PRODUCT:
+  } 
+  case RECEIVE_PRODUCT: {
     newState[action.product.id] = action.product;
     return newState;
+  }
   default:
     return state;
   }

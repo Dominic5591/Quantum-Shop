@@ -3,11 +3,13 @@ Rails.application.routes.draw do
     resources :users, only: :create
     resource :session, only: [:show, :create, :destroy]
     resources :cart_items, only: [:index, :show, :create, :update, :destroy]
-
+    
     resources :products, only: [:index, :show] do
       collection do
         get 'search', to: 'products#search'
       end
+
+      # get 'categories/:category', to: 'products#index', as: :products_by_category
     end
 
     
