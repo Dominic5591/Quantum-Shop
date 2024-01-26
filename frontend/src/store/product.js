@@ -56,8 +56,6 @@ export const fetchProduct = (productId) => async (dispatch) => {
 
 
 const productReducer = (state = {}, action) => {
-  console.log('Reducer Action:', action);
-  console.log('Reducer State:', state);
   const newState = { ...state };
 
   switch (action.type) {

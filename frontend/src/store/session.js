@@ -2,6 +2,7 @@ import csrfFetch from './csrf';
 import { fetchCart } from './cartItem';
 import { fetchProducts } from './product';
 
+
 const SET_USER = "session/setUser";
 export const REMOVE_USER = "session/removeUser";
 
@@ -19,6 +20,8 @@ export const removeUser = () => {
 };
 
 
+
+
 const storeCSRFToken = response => {
   const csrfToken = response.headers.get("X-CSRF-Token");
   if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
@@ -29,6 +32,8 @@ export const restoreSession = () => async dispatch => {
   storeCSRFToken(response);
   const data = await response.json();
   dispatch(setUser(data.user));
+
+
   dispatch(fetchCart());
   dispatch(fetchProducts());
   return response;
@@ -39,10 +44,14 @@ export const login = ({ credential, password }) => async dispatch => {
     method: "POST",
     body: JSON.stringify({ credential, password }),
   });
+
+
   const data = await response.json();
   dispatch(setUser(data.user));
   dispatch(fetchProducts());
   dispatch(fetchCart());
+  
+
   return response;
 };
 
@@ -67,7 +76,7 @@ export const logout = () => async (dispatch) => {
     method: "DELETE",
   });
   dispatch(removeUser());
-  dispatch(fetchCart());
+  // dispatch(fetchCart());
   return response;
 };
 

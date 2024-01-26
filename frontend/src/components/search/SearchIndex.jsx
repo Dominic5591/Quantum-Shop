@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchSearch } from "../../store/search";
-import placeholder from '../../images/placeholder.svg';
+// import placeholder from '../../images/placeholder.svg';
 import { NavLink } from 'react-router-dom';
 import Rating from "../product/Rating";
+import '../../index.css';
 
 const SearchIndex = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const SearchIndex = () => {
           <NavLink key={`${product.id}_${index}`} to={`/products/${product.id}`}>
 
             <div className="productCard">
-              <img src={placeholder} />
+              <img className='productImg' src={product.photoUrl} />
               <div className="cardContent">
                 <p className='productNameH3'>{product.name}</p>
                 <Rating rating={product.rating} />

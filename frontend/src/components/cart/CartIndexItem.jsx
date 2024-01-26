@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { deleteCartItem, updateCartItem } from "../../store/cartItem";
-import placeholder from "../../images/placeholder.svg";
+// import placeholder from "../../images/placeholder.svg";
 import "./CartIndexItem.css";
 
 
@@ -12,7 +12,7 @@ const CartIndexItem = ({ cartItem }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(cartItem.quantity);
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(product);
+
   if (!product) return null;
 
   const deleteItem = (e) => {
@@ -32,12 +32,14 @@ const CartIndexItem = ({ cartItem }) => {
     dispatch(updateCartItem(updatedCartItem));
   };
 
+  console.log(product.photoUrl);
+
   return (
     <div className="cartIndexItem">
       <div className="cartItem" key={cartItem.id}>
         <NavLink to={`/products/${product.id}`}>
           <div className="cartItemImgDiv">
-            <img src={placeholder} alt="" />
+            <img className='productImg' src={product.photoUrl} alt="" />
           </div>
         </NavLink>
         <div className="hi">

@@ -39,7 +39,8 @@ li:not(#starthere) {
 .liPlaceholder {
   color: #FFFFFF;
   align-items: center;
-  margin-right: 100px;
+  padding: 34px;
+  /* margin-right: 100px; */
 }
 
 a {
@@ -49,7 +50,11 @@ a {
   font-size: 14px;
   padding: 10px;
   border-radius: 3px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+}
+
+.navBarCategory {
+  margin: none;
 }
 
 .dropdown {

@@ -1,5 +1,5 @@
 
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import electronics from '../../images/electronics.webp';
 import books from '../../images/books.jpg';
 import fashion from '../../images/fashion.jpg';
@@ -10,39 +10,38 @@ import './Homepage.css';
 
 
 const Homepage = () => {
-  const { category } = useParams();
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   };
-  console.log(category);
+
   return (
     <div className='homepageMain'>
 
 
       <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/Electronics`}>
+        <NavLink className='electronics' to={`/categories/electronics`}>
           <h1 className='electronicsH1'>Shop the latest electronics</h1>
           <img className='electImg' src={electronics} alt="" />
         </NavLink>
       </div>
       <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/Books`}>
+        <NavLink className='electronics' to={`/categories/books`}>
           <h1 className='electronicsH1'>Shop the best selling books</h1>
           <img className='electImg' src={books} alt="" />
         </NavLink>
       </div>
       <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/Books`}>
+        <NavLink className='electronics' to={`/categories/fashion`}>
           <h1 className='electronicsH1'>Shop the latest fashion trends</h1>
           <img className='electImg' src={fashion} alt="" />
         </NavLink>
       </div>
       <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/Books`}>
-          <h1 className='electronicsH1'>Shop the latest fashion trends</h1>
+        <NavLink className='electronics' to={`/categories/home`}>
+          <h1 className='electronicsH1'>Home Goods</h1>
           <img className='electImg' src={homeGoods} alt="" />
         </NavLink>
       </div>

@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   validates :name, :description, :price, :category, presence: true
   validates :rating, inclusion: {in: 1..5}, presence: true
 
+  has_one_attached :photo
   
   has_many :cart_items,
     foreign_key: :product_id,

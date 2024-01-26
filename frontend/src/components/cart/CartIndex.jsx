@@ -15,9 +15,14 @@ const CartIndex = () => {
   const cartItems = useSelector(memoizedSelectCartItems);
   const products = useSelector(selectProductsArray);
   const sessionUser = useSelector((state) => state.session.user);
+
+
   useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+    if (sessionUser) {
+      dispatch(fetchCart());
+    }
+
+  }, [dispatch, sessionUser]);
 
   let total = 0.00;
   let quantity = 0;

@@ -1,26 +1,35 @@
 .productIndexItemPage {
+  overflow: hidden;
+  gap: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 1400px;
+  /* height: 1400px; */
   width: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  z-index: 1;
 }
 
 
 .productImageContainer {
-  position: relative;
-  top: 10%;
-  right: 30%;
+  z-index: 2;
+  position: absolute;
+  top: 20%;
+  right: 75%;
 }
 
 .cardContentItem {
-  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
   width: 30%;
   margin-left: 50px;
   margin-right: 50px;
-  height: 3000px;
-  bottom: 8%;
+  margin-top: 90px;
+  /* height: 000px; */
+  /* bottom: 500px; */
+  bottom: 150px;
 }
 
 .addToCartDiv {
@@ -135,6 +144,7 @@
 
 .middleProductPriceH3 {
   font-size: 26px;
+  /* margin-top: 50px; */
   line-height: 32px;
 }
 
@@ -204,8 +214,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top: 13px;
   width: 100%;
-  height: 20%;
+  height: 60px;
 }
 
 .upperProductFooter:hover {
@@ -227,7 +239,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 60px;
 }
 
 .scrollToTopBtn:hover {
@@ -291,4 +303,15 @@
 
 .loginLinkP {
   font-family: Amazon Ember Lite;
+}
+
+.productImgShow {
+  z-index: 4;
+  /* overflow: hidden; */
+
+  width: 200px;
+  /* height: 200px; */
+  position: relative;
+  display: block;
+
 }

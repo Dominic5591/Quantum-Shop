@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import placeholder from '../../images/placeholder.svg';
+// import placeholder from '../../images/placeholder.svg';
 import Rating from './Rating';
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useParams } from 'react-router-dom';
@@ -58,7 +58,7 @@ const ProductIndexItem = () => {
       const existingCartItem = cartItems.find(
         (item) => item.productId === productId
       );
-      console.log(existingCartItem);
+
       if (existingCartItem) {
         const updatedCartItem = {
           ...existingCartItem,
@@ -85,7 +85,7 @@ const ProductIndexItem = () => {
     <div className="productIndexItemPage">
       <div className='topIndexPageDivider'></div>
       <div className='productImageContainer'>
-        <img src={placeholder} alt={product.name} />
+        <img className='productImgShow' src={product.photoUrl} alt={product.name} />
       </div>
       <div className="cardContentItem">
         <div className='middleProductPriceDiv'>

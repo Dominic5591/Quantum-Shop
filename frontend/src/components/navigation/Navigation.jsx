@@ -12,6 +12,7 @@ import SearchBar from './SearchBar';
 function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  
   const cartItems = useSelector(memoizedSelectCartItems);
 
   const logout = (e) => {
@@ -81,10 +82,18 @@ function Navigation() {
       </ul>
       <ul className='lowerNavBar'>
 
-        
-        <li className='liPlaceholder'>Electronics</li>
-        <li className='liPlaceholder'>Groceries</li>
-        <li className='liPlaceholder'>Today&apos;s Deals</li>
+        <NavLink className='navBarCategory' to='/categories/electronics'>
+          <li className='liPlaceholder'>Electronics</li>
+        </NavLink>
+        <NavLink className='navBarCategory' to='/categories/fashion'>
+          <li className='liPlaceholder'>Fashion</li>
+        </NavLink>
+        <NavLink className='navBarCategory' to='/categories/home'>
+          <li className='liPlaceholder'>Home Goods</li>
+        </NavLink>
+        <NavLink className='navBarCategory' to='/categories/books'>
+          <li className='liPlaceholder'>Books</li>
+        </NavLink>
       </ul>
     </div>
 

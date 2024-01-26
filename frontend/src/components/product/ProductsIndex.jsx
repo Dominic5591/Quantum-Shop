@@ -7,21 +7,23 @@ import ProductItem from './ProductItem';
 import './ProductsIndex.css';
 
 const ProductsIndex = () => {
-  console.log('Rendering ProductsIndex');
+
   const dispatch = useDispatch();
   const products = useSelector(selectProductsArray);
   const { category } = useParams();
 
-  console.log(category);
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
 
-  if (category !== 'Electronics' && category !== 'Books' && category !== 'all') {
+  if (category !== 'electronics' && category !== 'books' &&  category !== 'home' && category !== 'fashion' && category !== 'all') {
     return <h1>hello</h1>;
   }
-  console.log(products.category);
+
+
+  
   return (
     <ul className='productsIndexPage'>
       <div className="productsIndexDivider"></div>

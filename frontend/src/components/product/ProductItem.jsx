@@ -1,7 +1,7 @@
 import './ProductsIndex.css';
 import { useParams } from 'react-router-dom';
 import Rating from './Rating';
-import placeholder from '../../images/placeholder.svg';
+// import placeholder from '../../images/placeholder.svg';
 
 const ProductItem = (({product}) => {
   const { category } = useParams();
@@ -14,13 +14,14 @@ const ProductItem = (({product}) => {
     return null;
   }
 
+  console.log(product.photoUrl);
     
   return (
     <ul className='productsIndexPage'>
       
       <div className="productsContainer">
         <div className="productCard">
-          <img src={placeholder} />
+          <img className='productImg' src={product.photoUrl} />
           <div className="cardContent">
             <p className='productNameH3'>{product.name}</p>
             <Rating rating={product.rating} />
