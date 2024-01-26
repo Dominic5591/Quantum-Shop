@@ -1,6 +1,7 @@
 
 import { NavLink } from 'react-router-dom';
-import electronics from '../../images/electronics.webp';
+// import banner from '../../images/banner.jpg';
+import electronics from '../../images/electronics.jpg';
 import books from '../../images/books.jpg';
 import fashion from '../../images/fashion.jpg';
 import homeGoods from '../../images/home-goods.jpg';
@@ -20,11 +21,12 @@ const Homepage = () => {
   return (
     <div className='homepageMain'>
 
+ 
 
       <div className='categoryElectronicsDiv'>
         <NavLink className='electronics' to={`/categories/electronics`}>
-          <h1 className='electronicsH1'>Shop the latest electronics</h1>
-          <img className='electImg' src={electronics} alt="" />
+          <h1 className='electronicsH1'>Best sellers in electronics</h1>
+          <img className='electImgs' src={electronics} alt="" />
         </NavLink>
       </div>
       <div className='categoryElectronicsDiv'>
@@ -41,7 +43,7 @@ const Homepage = () => {
       </div>
       <div className='categoryElectronicsDiv'>
         <NavLink className='electronics' to={`/categories/home`}>
-          <h1 className='electronicsH1'>Home Goods</h1>
+          <h1 className='electronicsH1'>Essential home goods</h1>
           <img className='electImg' src={homeGoods} alt="" />
         </NavLink>
       </div>

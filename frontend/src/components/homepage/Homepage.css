@@ -4,23 +4,25 @@
 }
 
 .categoryElectronicsDiv {
-  z-index: 1;
-  /* border: 1px solid rgb(161, 161, 161); */
-  border-radius: 4px;
-  width: 18%;
-  height: 340px;
-  margin-top: 150PX;
-  margin-bottom: 500px;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 7px;
+  padding: 30px;
+  margin-right: 40px;
+  margin-top: 150px;
+  margin-bottom: 200px;
+  max-width: 220px;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  background-color: #FFFFFF;
+  background-color: #f7f7f7;
+  height: 300px;
 }
 
 
 .homepageMain {
-  gap: 60px;
+  gap: 40px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -28,22 +30,28 @@
 
   height: 100%;
   width: 100%;
-  background-color: #EAEDED;
+  /* background-color: #EAEDED; */
   overflow: hidden;
-  background-image: url(../../images/wallpaper-orange.jpg);
-  background-size: 100%;
-  background-position-x: center;
+  background: linear-gradient(to bottom, #ff9901, #FFFFFF);;
+  /* background-size: 100%;
+  background-position-x: center; */
 }
 
 .electronicsH1 {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 24px;
   font-weight: 700;
   font-family: Amazon Ember Lite;
 }
 
 .electImg {
-  width: 200px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.electImgs {
+  width: 240px;
+  height: 190px;
   border-radius: 5px;
 }
 
