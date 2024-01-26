@@ -72,8 +72,6 @@ const ProductIndexItem = () => {
     } else {
       navigate('/login');
     }
-  
-
   };
 
   const handleQuantityChange = (e) => {

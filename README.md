@@ -8,19 +8,19 @@
 QuantumShop stands as an innovative Amazon clone, offering users a familiar e-commerce experience. QuantumShop offers, User authentication (create account and sign up),  Shopping cart (add products to cart and edit your cart), Search through products (search through products and browse categories).
 
 ## Homepage
-![Alt text](homepage.png)
+![Alt text](./images/homepage.png)
 
 
 ## Signup Form
-![Alt text](signup.png)
+![Alt text](./images/signup.png)
 
 
 ## Products Index
-![Alt text](index.png)
+![Alt text](./images/index.png)
 
 
 ## Product Show
-![Alt text](show.png)
+![Alt text](./images/show.png)
 ___
 
 ## Technologies used
