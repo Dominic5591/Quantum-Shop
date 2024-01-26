@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { deleteCartItem, updateCartItem } from "../../store/cartItem";
-// import placeholder from "../../images/placeholder.svg";
 import "./CartIndexItem.css";
 
 
@@ -31,8 +30,6 @@ const CartIndexItem = ({ cartItem }) => {
     setQuantity(updatedQuantity);
     dispatch(updateCartItem(updatedCartItem));
   };
-
-  console.log(product.photoUrl);
 
   return (
     <div className="cartIndexItem">

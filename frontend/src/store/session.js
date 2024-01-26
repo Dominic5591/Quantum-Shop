@@ -76,7 +76,7 @@ export const logout = () => async (dispatch) => {
     method: "DELETE",
   });
   dispatch(removeUser());
-  // dispatch(fetchCart());
+  dispatch(fetchCart());
   return response;
 };
 

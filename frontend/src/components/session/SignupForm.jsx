@@ -22,7 +22,7 @@ function SignupForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ email, username, password }))
+    return dispatch(sessionActions.login({ username, email,  password }))
       .catch(async (res) => {
         let data;
         try {
@@ -47,7 +47,7 @@ function SignupForm() {
       </div>
 
       <div>
-        <form noValidate="novalidate" className='signUpForm' onSubmit={handleSubmit}>
+        <form  className='signUpForm' onSubmit={handleSubmit}>
           <h1 className='signUpH1'>Create account</h1>
           <ul className='errors'>
             {errors.map(error => <li key={error}>{error}</li>)}

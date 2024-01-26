@@ -1,7 +1,6 @@
 import './ProductsIndex.css';
 import { useParams } from 'react-router-dom';
 import Rating from './Rating';
-// import placeholder from '../../images/placeholder.svg';
 
 const ProductItem = (({product}) => {
   const { category } = useParams();
@@ -13,8 +12,6 @@ const ProductItem = (({product}) => {
   if((product.category !== category) && (category !== "all")){
     return null;
   }
-
-  console.log(product.photoUrl);
     
   return (
     <ul className='productsIndexPage'>
