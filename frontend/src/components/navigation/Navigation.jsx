@@ -9,8 +9,14 @@ import './Navigation.css';
 import { memoizedSelectCartItems } from '../../store/cartItem';
 import SearchBar from './SearchBar';
 
+
 function Navigation() {
+
+  
   const sessionUser = useSelector((state) => state.session.user);
+
+
+
   const dispatch = useDispatch();
   
   const cartItems = useSelector(memoizedSelectCartItems);
