@@ -20,9 +20,6 @@ const Homepage = () => {
 
   return (
     <div className='homepageMain'>
-
- 
-
       <div className='categoryElectronicsDiv'>
         <NavLink className='electronics' to={`/categories/electronics`}>
           <h1 className='electronicsH1'>Best sellers in electronics</h1>

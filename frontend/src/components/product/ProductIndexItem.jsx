@@ -152,12 +152,6 @@ const ProductIndexItem = () => {
 
       <div className='reviewContainer'>
         <div className="reviewDivider"></div>
-        <div className='reviewItemsDiv'>
-          <Rating rating={product.rating} />
-          <h1>Customer reviews</h1>
-          <h2>Review this product</h2>
-          <button className='writeReviewBtn'>Write a customer review</button>
-        </div>
         <div className="reviewDivider2"></div>
         <div className="reviewDivider"></div>
       </div>
