@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import placeholder from '../../images/placeholder.svg';
 import Rating from './Rating';
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useParams } from 'react-router-dom';
@@ -18,7 +17,6 @@ const ProductIndexItem = () => {
   const { productId } = useParams();
   const product_id = parseInt(productId);
   const [loaded, setLoaded] = useState(false);
-
   const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
   const sessionUser = useSelector(state => state.session.user);
@@ -30,7 +28,6 @@ const ProductIndexItem = () => {
       .catch(() => setLoaded(true));
   }, [dispatch, product_id]);
 
-  
   if (!loaded) {
     return (
       <div>
@@ -38,21 +35,6 @@ const ProductIndexItem = () => {
       </div>
     );
   }
-  
-  
-  if (!product) {
-    return <div>Loading...</div>;
-  }
-
-  if (Array.isArray(product.description) || product.description.length === 0) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
-  }
-  const parsedDescription = JSON.parse(product.description[0]);
-
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -69,7 +51,7 @@ const ProductIndexItem = () => {
       const productToAdd = { quantity, product_id, user_id };
 
       const existingCartItem = cartItems.find(
-        (item) => item.productId === productId
+        (item) => item.productId === product.id
       );
 
       if (existingCartItem) {
@@ -78,7 +60,6 @@ const ProductIndexItem = () => {
           quantity: existingCartItem.quantity + quantity,
         };
         dispatch(updateCartItem(updatedCartItem));
-
       } else {
         dispatch(createCartItem(productToAdd));
       }
@@ -86,6 +67,8 @@ const ProductIndexItem = () => {
       navigate('/login');
     }
   };
+
+  const parsedDescription = JSON.parse(product.description[0]);
 
   const handleQuantityChange = (e) => {
     setQuantity(parseInt(e.target.value, 10));
