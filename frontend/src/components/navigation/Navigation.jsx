@@ -64,11 +64,6 @@ function Navigation() {
             <img src={arrow} alt="arrow" className='homeArrow' />
           </NavLink>
         </div>
-        <div className='home'>
-          {/* <NavLink to="products">
-            <p className='ProductIndexLink'>ProductIndex</p>
-          </NavLink> */}
-        </div>
 
         <SearchBar />
 
