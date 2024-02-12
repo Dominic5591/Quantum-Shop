@@ -1,5 +1,5 @@
 import csrfFetch from './csrf';
-import { fetchCart } from './cartItem';
+// import { fetchCart } from './cartItem';
 import { fetchProducts } from './product';
 
 
@@ -34,7 +34,7 @@ export const restoreSession = () => async dispatch => {
   dispatch(setUser(data.user));
 
 
-  dispatch(fetchCart());
+  // dispatch(fetchCart());
   dispatch(fetchProducts());
   return response;
 };
@@ -47,7 +47,7 @@ export const login = ({ credential, password }) => async dispatch => {
   const data = await response.json();
   dispatch(setUser(data.user));
   dispatch(fetchProducts());
-  dispatch(fetchCart());
+  // dispatch(fetchCart());
   return response;
 };
 
