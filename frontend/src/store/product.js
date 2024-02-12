@@ -15,8 +15,20 @@ export const receiveProduct = (product) => ({
   product,
 });
 
-// export const selectProductsArray = (state) => Object.values(state.products);
 
+const selectProductState = (state) => state.products;
+
+export const selectProductById = (productId) =>
+  createSelector(
+    [selectProductState],
+    (products) => products[productId] || null
+  );
+
+
+export const isProductDescriptionArray = (productId) =>
+  createSelector([selectProductById(productId)], (product) =>
+    Array.isArray(product?.description)
+  );
 
 export const selectProduct = (productId) => (state) => {
   return state?.products[productId] || null;
@@ -29,6 +41,8 @@ export const selectProductsArray = createSelector(
   [selectProductsState],
   (products) => Object.values(products)
 );
+
+
 export const selectProductsArrayCat = createSelector(
   [selectProductsStateCat],
   (products) => Object.values(products)

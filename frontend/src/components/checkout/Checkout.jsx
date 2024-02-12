@@ -1,14 +1,14 @@
-
-import git from '../../images/github.png';
-import linkedin from '../../images/linkedin.png';
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../../store/cartItem';
+import linkedin from '../../images/linkedin.png';
+import git from '../../images/github.png';
 import './Checkout.css';
-import { deleteCartItem, memoizedSelectCartItems } from '../../store/cartItem';
+
+
 const Checkout = () => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(memoizedSelectCartItems);
-  
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -17,10 +17,8 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    cartItems.forEach(item => {
-      dispatch(deleteCartItem(item.id));
-    });
-  }, [dispatch, cartItems]);
+    dispatch(clearCart());
+  }, [dispatch]);
 
   return (
     <div className='checkoutMain'>
@@ -41,7 +39,6 @@ const Checkout = () => {
             <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
               <img src={linkedin} alt="" />
             </a>
-            
           </span>
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>

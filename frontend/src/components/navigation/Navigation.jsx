@@ -1,30 +1,31 @@
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { memoizedSelectCartItems, fetchCart} from '../../store/cartItem';
 import * as sessionActions from '../../store/session';
+import SearchBar from './SearchBar';
 import cart from '../../images/cart.png';
 import arrow from '../../images/arrow.png';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import './Navigation.css';
-import { memoizedSelectCartItems } from '../../store/cartItem';
-import SearchBar from './SearchBar';
-
 
 function Navigation() {
-
-  
-  const sessionUser = useSelector((state) => state.session.user);
-
-
-
   const dispatch = useDispatch();
-  
+  const sessionUser = useSelector((state) => state.session.user);
   const cartItems = useSelector(memoizedSelectCartItems);
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
+  
+  useEffect(() => {
+    if (sessionUser) {
+      dispatch(fetchCart());
+    }
+
+  }, [dispatch, sessionUser]);
 
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   
