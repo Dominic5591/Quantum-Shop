@@ -1,7 +1,7 @@
 .searchBar {
   z-index: 1;
   background-color: white;
-  width: 100%;
+  width: 90%;
   height: 32px;
   border: none;
   border-radius: 4px;
@@ -12,10 +12,12 @@
   border-top: 1px solid #FEBD69;
   border-bottom: 1px solid #FEBD69;
   border-radius: 4px;
+  height: 30px;
 }
 
 .searchBarMain {
-  width: 70%;
+  margin-left: 50px;
+  width: 60%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -30,6 +32,8 @@
   position: relative;
   right: 7px;
   top: 0px;
+  min-height: 40px;
+  min-width: 40px;
 }
 
 @media (max-width: 1550px) {

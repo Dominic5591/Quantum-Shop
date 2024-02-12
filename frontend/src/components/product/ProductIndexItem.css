@@ -209,18 +209,20 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 13px;
+  cursor: pointer;
+  top: 12px;
   width: 100%;
-  height: 60px;
+  height: 50px;
 }
 
 .upperProductFooter:hover {
   background-color: #4b5968;
+  cursor: pointer;
 }
 
 .backToTopP {
   color: white;
-  font-size: 13px;
+  font-size: 14px;
   font-family: Amazon Ember Lite;
 }
 
@@ -233,11 +235,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 60px;
-}
-
-.scrollToTopBtn:hover {
-  background-color: #f8d318;
+  height: 150px;
 }
 
 
