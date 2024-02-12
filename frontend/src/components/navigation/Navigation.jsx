@@ -11,22 +11,14 @@ import linkedin from '../../images/linkedin.png';
 import './Navigation.css';
 
 function Navigation() {
-
-  
-  const sessionUser = useSelector((state) => state.session.user);
-
-
-
   const dispatch = useDispatch();
-  
+  const sessionUser = useSelector((state) => state.session.user);
   const cartItems = useSelector(memoizedSelectCartItems);
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
-
-
   
   useEffect(() => {
     if (sessionUser) {

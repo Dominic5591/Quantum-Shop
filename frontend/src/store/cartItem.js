@@ -1,6 +1,6 @@
-import csrfFetch from "./csrf";
 import { createSelector } from 'reselect';
 import { REMOVE_USER } from "./session";
+import csrfFetch from "./csrf";
 
 export const RECEIVE_CART = "cart/RECEIVE_CART";
 export const RECEIVE_CART_ITEM = "cart/RECEIVE_CART_ITEM";

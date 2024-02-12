@@ -1,32 +1,44 @@
 
-import { useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCart } from '../../store/cartItem';
+import { NavLink } from 'react-router-dom';
+import { fetchCart, memoizedSelectCartItems } from '../../store/cartItem';
+import { selectProductsArray } from '../../store/product';
 import CartIndexItem from './CartIndexItem';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import cartImg from '../../images/empty-cart.svg';
-import { memoizedSelectCartItems } from '../../store/cartItem';
+import loading from '../../images/loading.gif';
 import './CartIndex.css';
-import { selectProductsArray } from '../../store/product';
-import { NavLink } from 'react-router-dom';
+
+
 const CartIndex = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(memoizedSelectCartItems);
   const products = useSelector(selectProductsArray);
   const sessionUser = useSelector((state) => state.session.user);
-
-
-  useEffect(() => {
-    if (sessionUser) {
-      dispatch(fetchCart());
-    }
-
-  }, [dispatch, sessionUser]);
-
+  const [loaded, setLoaded] = useState(false);
   let total = 0.00;
   let quantity = 0;
   let amount = 25;
+
+  useEffect(() => {
+    if (sessionUser) {
+      dispatch(fetchCart())
+        .then(() => setLoaded(true))
+        .catch(() => setLoaded(true));
+    }
+  }, [dispatch, sessionUser]);
+
+  if (!loaded) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
+  }
+
+
   cartItems.forEach(item => {
     products.forEach(product => {
       if (item.productId === product.id) {

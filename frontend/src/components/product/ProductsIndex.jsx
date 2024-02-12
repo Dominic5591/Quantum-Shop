@@ -13,12 +13,6 @@ const ProductsIndex = () => {
   const { category } = useParams();
   const [loaded, setLoaded] = useState(false);
 
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  //     then(() => setLoaded(true))
-  // }, [dispatch]);
-
   useEffect(() => {
     dispatch(fetchProducts())
       .then(() => setLoaded(true))
@@ -33,13 +27,14 @@ const ProductsIndex = () => {
     );
   }
 
-
   if (category !== 'electronics' && category !== 'books' &&  category !== 'home' && category !== 'fashion' && category !== 'all') {
-    return <h1>hello</h1>;
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
   }
 
-
-  
   return (
     <ul className='productsIndexPage'>
       <div className="productsIndexDivider"></div>
@@ -49,7 +44,6 @@ const ProductsIndex = () => {
             <ProductItem  product={product}/>
           </NavLink>
         ))}
-    
       </div>
     </ul>
   );

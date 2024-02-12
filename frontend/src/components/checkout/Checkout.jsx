@@ -1,6 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { clearCart } from '../../store/cartItem';
-import { useEffect } from 'react';
 import linkedin from '../../images/linkedin.png';
 import git from '../../images/github.png';
 import './Checkout.css';
@@ -9,7 +9,6 @@ import './Checkout.css';
 const Checkout = () => {
   const dispatch = useDispatch();
 
-  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -40,7 +39,6 @@ const Checkout = () => {
             <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
               <img src={linkedin} alt="" />
             </a>
-            
           </span>
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>

@@ -1,6 +1,6 @@
-import './ProductsIndex.css';
 import { useParams } from 'react-router-dom';
 import Rating from './Rating';
+import './ProductsIndex.css';
 
 const ProductItem = (({product}) => {
   const { category } = useParams();
