@@ -8,17 +8,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
+import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
 
 
 const ProductIndexItem = () => {
   const cartItems = useSelector(memoizedSelectCartItems);
   const dispatch = useDispatch();
-
   const { productId } = useParams();
-
   const product_id = parseInt(productId);
-
+  const [loaded, setLoaded] = useState(false);
 
   const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
@@ -26,18 +25,32 @@ const ProductIndexItem = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
-    dispatch(fetchProduct(productId));
-  }, [dispatch, productId]);
+    dispatch(fetchProduct(product_id))
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true));
+  }, [dispatch, product_id]);
 
+  
+  if (!loaded) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
+  }
+  
+  
   if (!product) {
     return <div>Loading...</div>;
   }
 
-  if (!Array.isArray(product.description) || product.description.length === 0) {
-    return <div>No description available</div>;
+  if (Array.isArray(product.description) || product.description.length === 0) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
   }
-
   const parsedDescription = JSON.parse(product.description[0]);
 
 

@@ -58,3 +58,9 @@
 .productImg {
   width: 150px;
 }
+
+.loadingGif {
+  margin-top: 50px;
+  width: 50px;
+  height: 50px;
+}
