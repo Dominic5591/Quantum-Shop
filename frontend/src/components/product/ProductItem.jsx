@@ -1,33 +1,27 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink  } from 'react-router-dom';
 import Rating from './Rating';
 import './ProductsIndex.css';
 
-const ProductItem = (({product}) => {
+const ProductItem = (({ product }) => {
   const { category } = useParams();
 
-  if(!product.category){
+  if (!product.category) {
     return <h1>No</h1>;
   }
     
-  if((product.category !== category) && (category !== "all")){
+  if ((product.category !== category) && (category !== "all")) {
     return null;
   }
     
   return (
-    <ul className='productsIndexPage'>
-      
-      <div className="productsContainer">
-        <div className="productCard">
-          <img className='productImg' src={product.photoUrl} />
-          <div className="cardContent">
-            <p className='productNameH3'>{product.name}</p>
-            <Rating rating={product.rating} />
-            <p className='productPrice'>${product.price}</p>
-          </div>
-        </div>
+    <NavLink className="productCard" to={`/products/${product.id}`}>
+      <img className='productImg' src={product.photoUrl} />
+      <div className="cardContent">
+        <p className='productNameH3'>{product.name}</p>
+        <Rating rating={product.rating} />
+        <p className='productPrice'>${product.price}</p>
       </div>
-    </ul>
-
+    </NavLink>
   );
 });
 

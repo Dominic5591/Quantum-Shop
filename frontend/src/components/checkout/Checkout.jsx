@@ -1,13 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { clearCart } from '../../store/cartItem';
 import linkedin from '../../images/linkedin.png';
 import git from '../../images/github.png';
 import './Checkout.css';
 
 
 const Checkout = () => {
-  const dispatch = useDispatch();
+
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -15,10 +12,6 @@ const Checkout = () => {
       behavior: 'smooth',
     });
   };
-
-  useEffect(() => {
-    dispatch(clearCart());
-  }, [dispatch]);
 
   return (
     <div className='checkoutMain'>

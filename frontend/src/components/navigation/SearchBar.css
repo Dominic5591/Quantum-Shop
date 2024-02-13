@@ -6,6 +6,7 @@
   border: none;
   border-radius: 4px;
 }
+
 .searchBar:focus {
   outline: none;
   border-left: 1px solid #FEBD69;
@@ -24,8 +25,6 @@
   align-items: center;
 }
 
-
-
 .magImg {
   width: 3.3%;
   cursor: pointer;
@@ -34,6 +33,55 @@
   top: 0px;
   min-height: 40px;
   min-width: 40px;
+}
+
+.searchDropdown {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: 800px;
+  max-width: 740px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.searchProductResult {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchProductResult:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 1280px) {
+  .searchDropdown {
+    position: absolute;
+    top: 45px;
+    left: 50.9%;
+    max-height: 250px;
+    width: 1100px;
+    max-width: 530px;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 1550px) {
+  .searchDropdown {
+    position: absolute;
+    top: 45px;
+    left: 48.4%;
+    max-height: 250px;
+    width: 1100px;
+    max-width: 1030px;
+  }
 }
 
 @media (max-width: 1550px) {
