@@ -1,15 +1,17 @@
 .cardContent {
   margin-top: 30px;
   border-radius: 10px;
+  /* padding: 35px; */
 }
 
 .productCard {
+  /* box-sizing: border-box; */
   border: 1px solid rgb(190, 190, 190);
   border-radius: 7px;
   padding: 35px;
-  margin-right: 40px;
-  margin-top: 40px;
-  max-width: 220px;
+  margin-right: 70px;
+  margin-top: 35px;
+  max-width: 250px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,6 +22,7 @@
 .productsIndexPage {
   gap: 12px;
   width: 100%;
+  height: 100%;
 }
 
 .productsContainer {
@@ -44,7 +47,6 @@
 }
 
 .productsIndexDivider {
-  width: 100%;
   height: 0.5px;
   background-color: #5a5a5a;
   margin: 35px 0;

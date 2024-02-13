@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductItem from './ProductItem';
 import git from '../../images/github.png';
@@ -50,9 +49,10 @@ const ProductsIndex = () => {
       <div className="productsIndexDivider"></div>
       <div className="productsContainer">
         {products.map((product, index) => (
-          <NavLink key={`${product.id}_${index}`} to={`/products/${product.id}`}>
-            <ProductItem  product={product}/>
-          </NavLink>
+          <div key={`${product.id}_${index}`}>
+            <ProductItem product={product}/>
+          </div>
+          
         ))}
       </div>
       <ul className='upperHomeFooter' onClick={scrollToTop}>

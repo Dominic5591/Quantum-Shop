@@ -1,14 +1,14 @@
 import './SearchBar.css';
 import magnifying from '../../images/magnifying50.png';
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearch } from '../../store/search';
 import { useNavigate } from 'react-router-dom'; 
-
-import { useState, useEffect, useRef } from "react";
+// import { Modal } from 'react-bootstrap';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     if (clickedOutside) {
-      setShowDropdown(false);
+      setShowModal(false);
     }
   }, [clickedOutside]);
 
@@ -43,26 +43,26 @@ const SearchBar = () => {
     const query = e.target.value;
     setSearch(query);
     dispatch(fetchSearch(query));
-    setShowDropdown(true);
+    setShowModal(true);
   };
 
   const handleSearchEnter = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       navigate(`/products/search?q=${search}`);
-      setShowDropdown(false);
+      setShowModal(false);
     }
   };
 
   const handleClick = (e) => {
     e.preventDefault();
     navigate(`/products/search?q=${search}`);
-    setShowDropdown(false);
+    setShowModal(false);
   };
 
   const handleSelectProduct = (productId) => {
     navigate(`/products/${productId}`);
-    setShowDropdown(false);
+    setShowModal(false);
   };
 
   const truncateName = (name, maxLength) => {
@@ -73,28 +73,29 @@ const SearchBar = () => {
   };
 
   return (
-    <div className='searchBarMain' ref={dropdownRef}>
-      <input
-        placeholder='  Search QuantumShop'
-        className='searchBar'
-        type="text"
-        value={search}
-        onChange={handleSearch}
-        onKeyDown={handleSearchEnter}
-      />
-      <img onClick={handleClick} className='magImg' src={magnifying} alt="" />
-      {showDropdown && (
-        <div className="searchDropdown">
-          {products.slice(0, maxResultsToShow).map(product => (
-            <div key={product.id} onClick={() => handleSelectProduct(product.id)}>
-              {truncateName(product.name, 80)}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <>
+      <div className='searchBarMain' ref={dropdownRef}>
+        <input
+          placeholder='  Search QuantumShop'
+          className='searchBar'
+          type="text"
+          value={search}
+          onChange={handleSearch}
+          onKeyDown={handleSearchEnter}
+        />
+        <img onClick={handleClick} className='magImg' src={magnifying} alt="" />
+        {showModal && (
+          <div className="searchDropdown">
+            {products.slice(0, maxResultsToShow).map(product => (
+              <div className='searchProductResult' key={product.id} onClick={() => handleSelectProduct(product.id)}>
+                {truncateName(product.name, 80)}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
-
 
 export default SearchBar;
