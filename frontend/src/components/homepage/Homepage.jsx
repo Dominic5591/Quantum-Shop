@@ -1,6 +1,5 @@
 
 import { NavLink } from 'react-router-dom';
-// import banner from '../../images/banner.jpg';
 import electronics from '../../images/electronics.jpg';
 import books from '../../images/books.jpg';
 import fashion from '../../images/fashion.jpg';

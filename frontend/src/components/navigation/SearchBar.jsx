@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearch } from '../../store/search';
 import { useNavigate } from 'react-router-dom'; 
-// import { Modal } from 'react-bootstrap';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
