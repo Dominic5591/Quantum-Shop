@@ -2,20 +2,19 @@ import { useParams } from 'react-router-dom';
 import Rating from './Rating';
 import './ProductsIndex.css';
 
-const ProductItem = (({product}) => {
+const ProductItem = (({ product }) => {
   const { category } = useParams();
 
-  if(!product.category){
+  if (!product.category) {
     return <h1>No</h1>;
   }
     
-  if((product.category !== category) && (category !== "all")){
+  if ((product.category !== category) && (category !== "all")) {
     return null;
   }
     
   return (
     <ul className='productsIndexPage'>
-      
       <div className="productsContainer">
         <div className="productCard">
           <img className='productImg' src={product.photoUrl} />

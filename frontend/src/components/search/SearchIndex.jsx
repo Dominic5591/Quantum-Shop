@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchSearch } from "../../store/search";
-// import placeholder from '../../images/placeholder.svg';
 import { NavLink } from 'react-router-dom';
 import Rating from "../product/Rating";
 import '../../index.css';

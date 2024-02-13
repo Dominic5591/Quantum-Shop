@@ -2,6 +2,7 @@
   margin-top: 30px;
   border-radius: 10px;
 }
+
 .productCard {
   border: 1px solid rgb(190, 190, 190);
   border-radius: 7px;
@@ -13,7 +14,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
   height: 400px;
 }
 
@@ -22,12 +22,10 @@
   width: 100%;
 }
 
-
 .productsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* gap: 24px; */
   justify-content: center;
   align-items: center;
 }
@@ -43,7 +41,6 @@
   display: block;
   max-width: 100%;
   overflow: hidden;
-
 }
 
 .productsIndexDivider {
