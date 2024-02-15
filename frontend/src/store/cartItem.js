@@ -22,11 +22,6 @@ export const removeCartItem = (cartItemId) => ({
   cartItemId,
 });
 
-
-export const clearCart = () => ({
-  type: CLEAR_CART,
-});
-
 export const selectCartItem = (cartItemId) => state => {
   return state?.cartItems ? state.cartItems[cartItemId] : null;
 };
@@ -115,8 +110,6 @@ const cartReducer = (state = {}, action) => {
       ...state,
       [action.cartItem.id]: action.cartItem,
     };
-  case CLEAR_CART:
-    return {};
   case REMOVE_USER:
     return {};
   default:

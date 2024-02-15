@@ -1,11 +1,11 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { memoizedSelectCartItems } from '../../store/cartItem';
+import { memoizedSelectCartItems, fetchCart } from '../../store/cartItem';
 import * as sessionActions from '../../store/session';
 import SearchBar from './SearchBar';
 import cart from '../../images/cart.png';
-import arrow from '../../images/arrow.png';
+import arrow from '../../images/Quantum_Logo.png';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import './Navigation.css';
@@ -20,12 +20,12 @@ function Navigation() {
     dispatch(sessionActions.logout());
   };
   
-  // useEffect(() => {
-  //   if (sessionUser) {
-  //     dispatch(fetchCart());
-  //   }
+  useEffect(() => {
+    if (sessionUser) {
+      dispatch(fetchCart());
+    }
 
-  // }, [dispatch, sessionUser]);
+  }, [dispatch, sessionUser]);
 
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   

@@ -1,6 +1,6 @@
 import csrfFetch from './csrf';
-import { fetchCart } from './cartItem';
-import { fetchProducts } from './product';
+// import { fetchCart } from './cartItem';
+// import { fetchProducts } from './product';
 
 
 const SET_USER = "session/setUser";
@@ -35,7 +35,7 @@ export const restoreSession = () => async dispatch => {
 
 
   // dispatch(fetchCart());
-  dispatch(fetchProducts());
+  // dispatch(fetchProducts());
   return response;
 };
 
@@ -46,8 +46,8 @@ export const login = ({ credential, password }) => async dispatch => {
   });
   const data = await response.json();
   dispatch(setUser(data.user));
-  dispatch(fetchProducts());
-  dispatch(fetchCart());
+  // dispatch(fetchProducts());
+  // dispatch(fetchCart());
   return response;
 };
 
