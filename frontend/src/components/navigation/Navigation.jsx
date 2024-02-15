@@ -5,7 +5,7 @@ import { memoizedSelectCartItems, fetchCart } from '../../store/cartItem';
 import * as sessionActions from '../../store/session';
 import SearchBar from './SearchBar';
 import cart from '../../images/cart.png';
-import arrow from '../../images/Quantum_Logo.png';
+import arrow from '../../images/arrow.png';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import './Navigation.css';

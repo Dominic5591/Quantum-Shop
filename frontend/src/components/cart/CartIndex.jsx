@@ -23,11 +23,9 @@ const CartIndex = () => {
   let amount = 25;
 
   useEffect(() => {
-    if (sessionUser) {
-      dispatch(fetchCart())
-        .then(() => setLoaded(true))
-        .catch(() => setLoaded(true));
-    } 
+    dispatch(fetchCart())
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true));
   }, [dispatch, sessionUser]);
 
 
