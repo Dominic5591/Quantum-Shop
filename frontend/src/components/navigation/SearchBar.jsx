@@ -2,13 +2,16 @@ import './SearchBar.css';
 import magnifying from '../../images/magnifying50.png';
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from '../../store/product';
 import { fetchSearch } from '../../store/search';
 import { useNavigate } from 'react-router-dom'; 
+import loading from '../../images/loading.gif';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -44,6 +47,23 @@ const SearchBar = () => {
     dispatch(fetchSearch(query));
     setShowModal(true);
   };
+
+
+  useEffect(() => {
+    dispatch(fetchProducts())
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true));
+  }, [dispatch]);
+
+
+
+  if (!loaded) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
+  }
 
   const handleSearchEnter = (e) => {
     if (e.key === 'Enter') {
@@ -85,9 +105,9 @@ const SearchBar = () => {
         <img onClick={handleClick} className='magImg' src={magnifying} alt="" />
         {showModal && (
           <div className="searchDropdown">
-            {products.slice(0, maxResultsToShow).map(product => (
-              <div className='searchProductResult' key={product.id} onClick={() => handleSelectProduct(product.id)}>
-                {truncateName(product.name, 80)}
+            {products.slice(0, maxResultsToShow).map((product, index) => (
+              <div className='searchProductResult' key={`${product.id}_${index}`} onClick={() => handleSelectProduct(product.id)}>
+                {truncateName(product.name, 50)}
               </div>
             ))}
           </div>

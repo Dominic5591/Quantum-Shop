@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { clearCart, fetchCart, memoizedSelectCartItems } from '../../store/cartItem';
+import { fetchCart, memoizedSelectCartItems, deleteCartItem } from '../../store/cartItem';
 import { selectProductsArray } from '../../store/product';
 import CartIndexItem from './CartIndexItem';
 import git from '../../images/github.png';
@@ -17,26 +17,27 @@ const CartIndex = () => {
   const cartItems = useSelector(memoizedSelectCartItems);
   const products = useSelector(selectProductsArray);
   const sessionUser = useSelector((state) => state.session.user);
-  // const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   let total = 0.00;
   let quantity = 0;
   let amount = 25;
 
-  // useEffect(() => {
-  //   if (sessionUser) {
-  //     dispatch(fetchCart())
-  //       .then(() => setLoaded(true))
-  //       .catch(() => setLoaded(true));
-  //   }
-  // }, [dispatch, sessionUser]);
+  useEffect(() => {
+    dispatch(fetchCart())
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true));
+  }, [dispatch, sessionUser]);
 
-  // if (!loaded) {
-  //   return (
-  //     <div>
-  //       <img src={loading} alt="loading" className='loadingGif' />
-  //     </div>
-  //   );
-  // }
+
+
+
+  if (!loaded) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
+  }
 
 
   cartItems.forEach(item => {
@@ -50,9 +51,10 @@ const CartIndex = () => {
   });
 
 
-  const handleCheckout = (e) => {
-    e.preventDefualt();
-    dispatch(clearCart);
+  const handleDelete = () => {
+    cartItems.forEach(item => {
+      dispatch(deleteCartItem(item.id));
+    });
   };
 
   
@@ -69,7 +71,7 @@ const CartIndex = () => {
         <div className='cartImgDiv'>
           <img src={cartImg} alt="" />
         </div>
-        : 
+        :
         <p></p>
       }
       <br />
@@ -77,7 +79,6 @@ const CartIndex = () => {
       <br />
       {cartItems.length === 0 ? (
         <div className='emptyCartDiv'>
-
           <div className='emptyCartDealsDiv'>
             <h1 className='emptyCartH1'>Your QuantumShop Cart is empty</h1>
             <NavLink to='/products' >
@@ -118,7 +119,7 @@ const CartIndex = () => {
           <input className='giftRadio' type="checkbox" value="This order contains a gift"/>
         </label>
         { quantity ? 
-          <NavLink onClick={handleCheckout} className='checkoutBtn' to='/checkout'>Checkout</NavLink>
+          <NavLink onClick={handleDelete} className='checkoutBtn' to='/checkout'>Checkout</NavLink>
           :
           <NavLink className='checkoutBtn' to=''>Checkout</NavLink>
         }

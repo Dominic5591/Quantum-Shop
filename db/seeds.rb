@@ -184,7 +184,7 @@ description: [
   'High sound quality and well-balanced sound tuning.'
 ],
 price: 148.99,
-category: 'electronics',
+category: 'electronics',    
 rating: 5
 )
 
