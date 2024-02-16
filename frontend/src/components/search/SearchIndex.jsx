@@ -1,27 +1,42 @@
+import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import { fetchSearch } from "../../store/search";
 import { NavLink } from 'react-router-dom';
 import Rating from "../product/Rating";
+import _debounce from 'lodash.debounce';
+import loading from '../../images/loading.gif';
 import '../../index.css';
 
 const SearchIndex = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  
+
+
+  const debouncedDispatchRef = useRef(_debounce((query) => {
+    dispatch(fetchSearch(query));
+  }, 1000)).current;
+
   useEffect(() => {
     const query = location.search.split("=")[1];
     if (query) {
-      dispatch(fetchSearch(query));
+      debouncedDispatchRef(query);
     }
-  }, [dispatch, location]);
+  }, [debouncedDispatchRef, location]);
 
-
-  
   const results = useSelector((state) => state.search);
   const searchResults = results?.search || [];
   const products = Object.values(searchResults);
+
+  if (products.length === 0) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
+  }
+
+
 
   return (
     <ul className='productsIndexPage'>
@@ -29,7 +44,6 @@ const SearchIndex = () => {
       <div className="productsContainer">
         {products.map((product, index) => (
           <NavLink key={`${product.id}_${index}`} to={`/products/${product.id}`}>
-
             <div className="productCard">
               <img className='productImg' src={product.photoUrl} />
               <div className="cardContent">
@@ -46,4 +60,3 @@ const SearchIndex = () => {
 };
 
 export default SearchIndex;
-

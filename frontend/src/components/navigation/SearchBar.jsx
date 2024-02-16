@@ -2,16 +2,14 @@ import './SearchBar.css';
 import magnifying from '../../images/magnifying50.png';
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from '../../store/product';
 import { fetchSearch } from '../../store/search';
 import { useNavigate } from 'react-router-dom'; 
-import loading from '../../images/loading.gif';
+import _debounce from 'lodash.debounce';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,29 +39,16 @@ const SearchBar = () => {
     }
   }, [clickedOutside]);
 
+  const debouncedSearch = _debounce((query) => {
+    dispatch(fetchSearch(query));
+    setShowModal(true);
+  }, 700);
+
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearch(query);
-    dispatch(fetchSearch(query));
-    setShowModal(true);
+    debouncedSearch(query);
   };
-
-
-  useEffect(() => {
-    dispatch(fetchProducts())
-      .then(() => setLoaded(true))
-      .catch(() => setLoaded(true));
-  }, [dispatch]);
-
-
-
-  if (!loaded) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
-  }
 
   const handleSearchEnter = (e) => {
     if (e.key === 'Enter') {

@@ -169,6 +169,8 @@ a {
 .homeArrow {
   position: relative;
   bottom: 30px;
+  margin-left: 200px;
+    margin-right: 40px;
 }
 
 .git {
