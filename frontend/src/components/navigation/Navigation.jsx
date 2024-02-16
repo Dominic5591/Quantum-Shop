@@ -6,8 +6,6 @@ import * as sessionActions from '../../store/session';
 import SearchBar from './SearchBar';
 import cart from '../../images/cart.png';
 import arrow from '../../images/arrow.png';
-import git from '../../images/github.png';
-import linkedin from '../../images/linkedin.png';
 import './Navigation.css';
 
 function Navigation() {
@@ -49,24 +47,12 @@ function Navigation() {
   return (
     <div className='navMain'>
       <ul className='navBar'>
-        <div className='git'>
-          <a href="https://github.com/Dominic5591">
-            <img src={git} alt="" />
-          </a>
-        </div>
-        <div className='linkedin'>
-          <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
-            <img src={linkedin} alt="" />
-          </a>
-        </div>      
         <div className='home'>
           <NavLink to="/">
             <img src={arrow} alt="arrow" className='homeArrow' />
           </NavLink>
         </div>
-
         <SearchBar />
-
         <li className="dropdown">
           <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
           <div className="dropdown-content">
