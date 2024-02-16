@@ -1,10 +1,10 @@
-import './SearchBar.css';
 import magnifying from '../../images/magnifying50.png';
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearch } from '../../store/search';
 import { useNavigate } from 'react-router-dom'; 
 import _debounce from 'lodash.debounce';
+import './SearchBar.css';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
@@ -19,6 +19,7 @@ const SearchBar = () => {
   const maxResultsToShow = 5;
 
   useEffect(() => {
+    
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setClickedOutside(true);
