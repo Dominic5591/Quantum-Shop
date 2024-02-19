@@ -1,15 +1,13 @@
 class Api::ProductsController < ApplicationController
   def index 
-    ActiveStorage::Current.url_options = { host: request.base_url }
     @products = Product.all 
-    render 'api/products/index'
+    render :index
   end
 
   def show 
-    ActiveStorage::Current.url_options = { host: request.base_url }
     @product = Product.find_by(id: params[:id])
     if @product 
-        render '/api/products/show'
+        render :show
     else 
         render json: { product: nil }
     end 
@@ -17,7 +15,6 @@ class Api::ProductsController < ApplicationController
 
 
   def search
-    ActiveStorage::Current.url_options = { host: request.base_url }
     @products = Product.search_names(params[:q])
     render :search
   end
