@@ -83,8 +83,8 @@ const CartIndex = () => {
           <div className='emptyCartDiv'>
             <div className='emptyCartDealsDiv'>
               <h1 className='emptyCartH1'>Your QuantumShop Cart is empty</h1>
-              <NavLink to='/products' >
-                <p className='emptyCartP'>Shop today&apos;s deals</p>
+              <NavLink to='/' >
+                <p className='emptyCartP'>Home</p>
               </NavLink>
             </div>
             {!sessionUser ? 

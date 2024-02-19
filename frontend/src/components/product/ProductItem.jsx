@@ -5,9 +5,9 @@ import './ProductsIndex.css';
 const ProductItem = (({ product }) => {
   const { category } = useParams();
 
-  if (!product.category) {
-    return <h1>No</h1>;
-  }
+  // if (!product.category) {
+  //   return <h1>No</h1>;
+  // }
     
   if ((product.category !== category) && (category !== "all")) {
     return null;
