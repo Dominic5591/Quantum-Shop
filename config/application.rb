@@ -23,11 +23,11 @@ module QuantumShop
     config.load_defaults 7.0
     
     config.railties_order = [:all, :main_app]
-    config.api_only = true
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore,
-      key: '_auth_me_session',
-      same_site: :lax, 
-      secure: Rails.env.production?
+    key: '_auth_me_session',
+    same_site: :lax, 
+    secure: Rails.env.production?
+    config.api_only = true
   end
 end
