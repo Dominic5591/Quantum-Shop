@@ -1,12 +1,11 @@
 .CartPageDiv {
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 100%;
   background-color: #EAEDED;
   overflow-y: hidden;
   overflow-x: hidden;
-
+  min-height: 100vh;
 }
 
 .CartIndexUl {

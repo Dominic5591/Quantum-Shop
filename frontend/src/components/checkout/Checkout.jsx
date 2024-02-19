@@ -31,10 +31,13 @@ const Checkout = () => {
 
 
   return (
-    <div className='checkoutMain'>
-      <div className='checkoutPageDiv'>
-        <h1 className='OrderPlaced'>Thank you for placing order</h1>
+    <>
+      <div className='checkoutMain'>
+        <div className='checkoutPageDiv'>
+          <h1 className='OrderPlaced'>Thank you for placing order</h1>
+        </div>
       </div>
+    
       <ul className='upperCartFooter' onClick={scrollToTop}>
         <p className='backToTopP'>Back to top</p>
       </ul>
@@ -53,7 +56,9 @@ const Checkout = () => {
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>
       </ul>
-    </div>
+    
+    
+    </>
   );
 };
 

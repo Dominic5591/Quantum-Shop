@@ -66,65 +66,69 @@ const CartIndex = () => {
   };
 
   return (
-    <div className='CartPageDiv'>
-      {cartItems.length === 0 ? 
-        <div className='cartImgDiv'>
-          <img src={cartImg} alt="" />
-        </div>
-        :
-        <p></p>
-      }
-      <br />
-      <br />
-      <br />
-      {cartItems.length === 0 ? (
-        <div className='emptyCartDiv'>
-          <div className='emptyCartDealsDiv'>
-            <h1 className='emptyCartH1'>Your QuantumShop Cart is empty</h1>
-            <NavLink to='/products' >
-              <p className='emptyCartP'>Shop today&apos;s deals</p>
-            </NavLink>
+
+    <>
+      <div className='CartPageDiv'>
+        {cartItems.length === 0 ? 
+          <div className='cartImgDiv'>
+            <img src={cartImg} alt="" />
           </div>
-          {!sessionUser ? 
-            <div className='cartSessionBtns'>
-              <NavLink to='/login'>
-                <button className='emptyCartBtnSignIn'>Sign in to your account</button> 
+          :
+          <p></p>
+        }
+        <br />
+        <br />
+        <br />
+        {cartItems.length === 0 ? (
+          <div className='emptyCartDiv'>
+            <div className='emptyCartDealsDiv'>
+              <h1 className='emptyCartH1'>Your QuantumShop Cart is empty</h1>
+              <NavLink to='/products' >
+                <p className='emptyCartP'>Shop today&apos;s deals</p>
               </NavLink>
-              <NavLink to='/signup'>
-                <button className='emptyCartBtnSignUp'>Sign up now</button>  
-              </NavLink>
-              
             </div>
-            : <p></p>
+            {!sessionUser ? 
+              <div className='cartSessionBtns'>
+                <NavLink to='/login'>
+                  <button className='emptyCartBtnSignIn'>Sign in to your account</button> 
+                </NavLink>
+                <NavLink to='/signup'>
+                  <button className='emptyCartBtnSignUp'>Sign up now</button>  
+                </NavLink>
+                
+              </div>
+              : <p></p>
+            }
+          </div>
+        ) : (
+          <ul className='CartIndexUl'>
+            {cartItems.map((cartItem, index) => (
+              <li className='cartIndexLi' key={`${cartItem.id}_${index}`}>
+                <CartIndexItem cartItem={cartItem} />
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className='checkoutSideDiv'>
+          { total > 25 ? 
+            <p className='freeShip'>Your order qualifies for FREE Shipping.</p>
+            :
+            <p className='addMoreItems'>Add <span className='amount'>${amount}.00</span> to your order to qualify for FREE shipping</p>
+          }
+          <p className='totalPriceP'>Subtotal({quantity}): ${total}.00</p>
+          <label className='giftOrderLabel' htmlFor="radio">This order contains a gift
+            <input className='giftRadio' type="checkbox" value="This order contains a gift"/>
+          </label>
+          { quantity ? 
+            <NavLink onClick={handleDelete} className='checkoutBtn' to='/checkout'>Checkout</NavLink>
+            :
+            <NavLink className='checkoutBtn' to=''>Checkout</NavLink>
           }
         </div>
-      ) : (
-        <ul className='CartIndexUl'>
-          {cartItems.map((cartItem, index) => (
-            <li className='cartIndexLi' key={`${cartItem.id}_${index}`}>
-              <CartIndexItem cartItem={cartItem} />
-            </li>
-          ))}
-        </ul>
-      )}
 
-      <div className='checkoutSideDiv'>
-        { total > 25 ? 
-          <p className='freeShip'>Your order qualifies for FREE Shipping.</p>
-          :
-          <p className='addMoreItems'>Add <span className='amount'>${amount}.00</span> to your order to qualify for FREE shipping</p>
-        }
-        <p className='totalPriceP'>Subtotal({quantity}): ${total}.00</p>
-        <label className='giftOrderLabel' htmlFor="radio">This order contains a gift
-          <input className='giftRadio' type="checkbox" value="This order contains a gift"/>
-        </label>
-        { quantity ? 
-          <NavLink onClick={handleDelete} className='checkoutBtn' to='/checkout'>Checkout</NavLink>
-          :
-          <NavLink className='checkoutBtn' to=''>Checkout</NavLink>
-        }
       </div>
-
+    
       <ul className='upperCartFooter' onClick={scrollToTop}>
         <p className='backToTopP'>Back to top</p>
       </ul>
@@ -144,7 +148,9 @@ const CartIndex = () => {
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>
       </ul>
-    </div>
+    
+    </>
+
   );
 };
 
