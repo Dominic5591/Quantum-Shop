@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearch } from '../../store/search';
 import { useNavigate } from 'react-router-dom'; 
-import _debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 import './SearchBar.css';
 
 const SearchBar = () => {
@@ -17,9 +17,9 @@ const SearchBar = () => {
   const searchResults = results?.search || [];
   const products = Object.values(searchResults);
   const maxResultsToShow = 5;
+  const searchTimeoutRef = useRef(null);
 
   useEffect(() => {
-    
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setClickedOutside(true);
@@ -40,15 +40,22 @@ const SearchBar = () => {
     }
   }, [clickedOutside]);
 
-  const debouncedSearch = _debounce((query) => {
+  const debouncedSearch = debounce((query) => {
     dispatch(fetchSearch(query));
     setShowModal(true);
-  }, 700);
+  }, 1000);
 
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearch(query);
-    debouncedSearch(query);
+
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    searchTimeoutRef.current = setTimeout(() => {
+      debouncedSearch(query);
+    }, 1000);
   };
 
   const handleSearchEnter = (e) => {
