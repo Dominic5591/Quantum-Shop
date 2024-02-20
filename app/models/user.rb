@@ -7,9 +7,12 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..40 }, allow_nil: true
 
   before_validation :ensure_session_token
+
+
+  has_many :cart_items, dependent: :destroy
   
   has_many :cart_items,
-    foreign_key: :user_id, 
+    foreign_key: :user_id,
     class_name: :CartItem, 
     dependent: :destroy
 

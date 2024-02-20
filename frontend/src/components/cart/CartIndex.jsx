@@ -9,7 +9,7 @@ import linkedin from '../../images/linkedin.png';
 import cartImg from '../../images/empty-cart.svg';
 import loading from '../../images/loading.gif';
 import './CartIndex.css';
-
+import { createOrder } from '../../store/order';
 
 const CartIndex = () => {
   const dispatch = useDispatch();
@@ -45,11 +45,30 @@ const CartIndex = () => {
     });
   });
 
-  const handleDelete = () => {
-    cartItems.forEach(item => {
-      dispatch(deleteCartItem(item.id));
-    });
+  const handleDelete = async () => {
+    // Delete cart items
+    await Promise.all(cartItems.map(item => dispatch(deleteCartItem(item.id))));
+
+    // Create new order with the deleted cart items
+    const orderItems = cartItems.map(item => ({
+      productId: item.productId,
+      quantity: item.quantity,
+      // Add any additional properties needed for your order items
+    }));
+
+    const newOrder = {
+      userId: sessionUser.id,
+      orderItems: orderItems, // Correct key name here
+      // Add any additional properties needed for your order
+    };
+    
+    await dispatch(createOrder(newOrder));
+
+    // Reset the loaded state to trigger a reload of the cart
+    setLoaded(false);
   };
+
+
 
   const scrollToTop = () => {
     window.scrollTo({

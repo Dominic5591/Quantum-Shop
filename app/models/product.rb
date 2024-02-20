@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   validates :rating, inclusion: {in: 1..5}, presence: true
 
   has_one_attached :photo
+
+  has_many :order_items, dependent: :destroy
   
   has_many :cart_items,
     foreign_key: :product_id,
