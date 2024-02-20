@@ -118,3 +118,31 @@ const cartReducer = (state = {}, action) => {
 };
 
 export default cartReducer;
+
+
+
+
+
+
+
+// how should this look, i need my redux state to have a outer key of orders: {
+//   1: {
+//    productid: {productid, userid}
+//    productid: {productid, userid}
+//    productid: {productid, userid}
+//   }
+//   2: {
+//    productid: {productid, userid}
+//    productid: {productid, userid}
+//    productid: {productid, userid}
+//   }
+
+//   3 {
+//    productid: {productid, userid}
+//    productid: {productid, userid}
+//    productid: {productid, userid}
+//   }
+// }
+
+
+// the order redux state is a object with orderid - '1' pointing to a object with each item having its own object

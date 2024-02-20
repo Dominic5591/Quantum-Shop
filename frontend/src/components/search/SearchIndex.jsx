@@ -17,7 +17,7 @@ const SearchIndex = () => {
 
   const debouncedDispatchRef = useRef(_debounce((query) => {
     dispatch(fetchSearch(query));
-  }, 1000)).current;
+  }, 5000)).current;
 
   useEffect(() => {
     const query = location.search.split("=")[1];

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -10,7 +9,7 @@ import linkedin from '../../images/linkedin.png';
 import cartImg from '../../images/empty-cart.svg';
 import loading from '../../images/loading.gif';
 import './CartIndex.css';
-
+import { createOrder } from '../../store/order';
 
 const CartIndex = () => {
   const dispatch = useDispatch();
@@ -28,9 +27,6 @@ const CartIndex = () => {
       .catch(() => setLoaded(true));
   }, [dispatch, sessionUser]);
 
-
-
-
   if (!loaded) {
     return (
       <div>
@@ -39,25 +35,41 @@ const CartIndex = () => {
     );
   }
 
-
   cartItems.forEach(item => {
     products.forEach(product => {
       if (item.productId === product.id) {
         quantity += item.quantity;
-        total += Math.round(item.quantity * product.price);
-        amount -= Math.round(item.quantity * product.price);
+        total += item.quantity * product.price;
+        amount -= item.quantity * product.price;
       }
     });
   });
 
+  const handleDelete = async () => {
+    // Delete cart items
+    await Promise.all(cartItems.map(item => dispatch(deleteCartItem(item.id))));
 
-  const handleDelete = () => {
-    cartItems.forEach(item => {
-      dispatch(deleteCartItem(item.id));
-    });
+    // Create new order with the deleted cart items
+    const orderItems = cartItems.map(item => ({
+      productId: item.productId,
+      quantity: item.quantity,
+      // Add any additional properties needed for your order items
+    }));
+
+    const newOrder = {
+      userId: sessionUser.id,
+      orderItems: orderItems, // Correct key name here
+      // Add any additional properties needed for your order
+    };
+    
+    await dispatch(createOrder(newOrder));
+
+    // Reset the loaded state to trigger a reload of the cart
+    setLoaded(false);
   };
 
-  
+
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -66,7 +78,6 @@ const CartIndex = () => {
   };
 
   return (
-
     <>
       <div className='CartPageDiv'>
         {cartItems.length === 0 ? 
@@ -114,9 +125,9 @@ const CartIndex = () => {
           { total > 25 ? 
             <p className='freeShip'>Your order qualifies for FREE Shipping.</p>
             :
-            <p className='addMoreItems'>Add <span className='amount'>${amount}.00</span> to your order to qualify for FREE shipping</p>
+            <p className='addMoreItems'>Add <span className='amount'>${amount.toFixed(2)}</span> to your order to qualify for FREE shipping</p>
           }
-          <p className='totalPriceP'>Subtotal({quantity}): ${total}.00</p>
+          <p className='totalPriceP'>Subtotal({quantity}): ${total.toFixed(2)}</p>
           <label className='giftOrderLabel' htmlFor="radio">This order contains a gift
             <input className='giftRadio' type="checkbox" value="This order contains a gift"/>
           </label>
