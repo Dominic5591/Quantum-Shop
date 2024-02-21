@@ -1,7 +1,8 @@
 json.order do
-  json.extract! @order, :id, :quantity, :product_id, :user_id
-end
-
-json.product do
-  json.extract! @order.product, :id, :name, :category, :price
+  json.id @order.id
+  json.user_id @order.user_id
+  json.items @order.order_items do |order_item|
+    json.id order_item.id
+    json.product_id order_item.product_id
+  end
 end

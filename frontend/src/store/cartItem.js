@@ -125,7 +125,8 @@ export default cartReducer;
 
 
 
-// how should this look, i need my redux state to have a outer key of orders: {
+// how should this look, i need my redux state to have a outer key of 
+// orders: {
 //   1: {
 //    productid: {productid, userid}
 //    productid: {productid, userid}

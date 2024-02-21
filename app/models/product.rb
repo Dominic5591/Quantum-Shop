@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many :order_items, dependent: :destroy
+  has_many :order_items
   
   has_many :cart_items,
     foreign_key: :product_id,

@@ -1,31 +1,47 @@
+# class Api::OrdersController < ApplicationController
+#   def index
+#     @orders = current_user.orders
+#     render :index
+#   end
+
+#   def create
+#     @order = current_user.orders.build
+
+#     if @order.save
+#       render :show
+#     else
+#       render json: @order.errors, status: :unprocessable_entity
+#     end
+#   end
+# end
+
+
+
 class Api::OrdersController < ApplicationController
-  wrap_parameters include: Order.attribute_names + ['quantity', 'userId', 'productId', 'orderItems']
-  before_action :require_logged_in, only: [:index]
 
   def index
     @orders = current_user.orders
     render :index
   end
 
+
   def create
-    @order = Order.new(order_params)
-    order_items_params = params.require(:orderItems).permit!.to_h
-    order_items = order_items_params.map do |order_item_params|
-      OrderItem.new(order_item_params)
-    end
-    @order.order_items = order_items
+    @order = current_user.orders.build
 
     if @order.save
+      order_items_params[:items].each do |item_params|
+        @order.order_items.create(item_params)
+      end
+
       render :show
     else
-      render json: @order.errors.full_messages, status: :unprocessable_entity
+      render json: @order.errors, status: :unprocessable_entity
     end
   end
 
-
   private
 
-  def order_params
-    params.permit(:userId, orderItems: [:productId, :quantity])
+  def order_items_params
+    params.require(:order).permit(items: [:product_id, :quantity])
   end
 end
