@@ -14,6 +14,7 @@ import CartIndex from './components/cart/CartIndex';
 import Checkout from './components/checkout/Checkout';
 import Homepage from './components/homepage/Homepage';
 import SearchIndex from './components/search/SearchIndex';
+import Orders from './components/order/Orders';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: "products/search",
         element: <SearchIndex />,
+      },
+      {
+        path: "orders",
+        element: <Orders />,
       },
     ],
   },

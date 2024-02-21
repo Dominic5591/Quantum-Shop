@@ -1,0 +1,36 @@
+/* Orders.css */
+
+.orders-container {
+  margin: 20px;
+}
+
+.orders-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.order-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.order-id {
+  font-size: 18px;
+}
+
+.user-id {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.order-items-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.order-item {
+  font-size: 14px;
+  margin-bottom: 5px;
+}

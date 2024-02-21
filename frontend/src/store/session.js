@@ -1,4 +1,5 @@
 import csrfFetch from './csrf';
+import { fetchOrders } from './order';
 // import { fetchCart } from './cartItem';
 // import { fetchProducts } from './product';
 
@@ -33,7 +34,7 @@ export const restoreSession = () => async dispatch => {
   const data = await response.json();
   dispatch(setUser(data.user));
 
-
+  dispatch(fetchOrders());
   // dispatch(fetchCart());
   // dispatch(fetchProducts());
   return response;
