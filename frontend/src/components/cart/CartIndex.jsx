@@ -75,7 +75,7 @@ const CartIndex = () => {
   return (
     <>
       <div className='CartPageDiv'>
-        {cartItems.length === 0 ? 
+        {cartItems.length === 0 ?
           <div className='cartImgDiv'>
             <img src={cartImg} alt="" />
           </div>

@@ -1,27 +1,37 @@
-/* Orders.css */
-
 .orders-container {
-  margin: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .orders-title {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .order-container {
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1px solid #ddd;
+  padding: 20px;
   margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .order-id {
   font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .user-id {
   margin-top: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  color: #666;
 }
 
 .order-items-list {
@@ -32,5 +42,35 @@
 
 .order-item {
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+.order-item span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.order-item span:last-child {
+  margin-right: 0;
+}
+
+.orderImg {
+  width: 45px;
+}
+
+
+.order-item-details {
+  display: flex;
+  align-items: center;
+  /* Align items vertically in the center */
+  gap: 10px;
+  /* Space between the image and the text */
+}
+
+.orderImg {
+  width: 45px;
+  height: auto;
+  /* Maintain the aspect ratio of the image */
 }
