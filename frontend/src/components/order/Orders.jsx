@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { fetchOrders } from '../../store/order';
 import { fetchProducts, selectProductsArray } from '../../store/product';
 import loading from '../../images/loading.gif';
+import git from '../../images/github.png';
+import linkedin from '../../images/linkedin.png';
 import './Orders.css';
 
 const Orders = () => {
@@ -13,14 +15,12 @@ const Orders = () => {
   const sessionUser = useSelector(state => state.session.user);
   const [loaded, setLoaded] = useState(false);
 
-
   useEffect(() => {
     dispatch(fetchOrders());
     dispatch(fetchProducts())
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
   }, [dispatch]);
-
 
   if (!loaded) {
     return (
@@ -49,7 +49,6 @@ const Orders = () => {
     return total;
   };
 
-
   const truncateName = (name, maxLength) => {
     if (name.length > maxLength) {
       return `${name.slice(0, maxLength)}...`;
@@ -57,53 +56,85 @@ const Orders = () => {
     return name;
   };
 
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
 
   return (
-    <div className="orders-container">
-      <h2 className="orders-title">Your orders</h2>
-      {userOrders.length >  0 ? (
-        userOrders.map((order, index) => (
-          <div key={`${order.id}_${index}`} className="order-container">
-            <div className="order-total-bar">
-              <p>Total: ${calculateTotalPrice(order).toFixed(2)}</p>
-            </div>
-            <ul className="order-items-list">
-              {order.items.map((item, index) => {
-                const product = products.find(product => product.id === item.productId);
-                if (product) {
-                  return (
-                    <li key={`${item.productId}_${index}`} className="order-item">
-                      <div className="order-item-details">
-                        <img src={product.photoUrl} alt="productImg" className="orderImg" />
-                        <div className="product-info">
-                          <span><NavLink className='orderProductName' to={`/products/${product.id}`}>{truncateName(product.name, 50)}</NavLink></span>
-                          <span>${product.price}</span>
-                          <span>Quantity: {item.quantity}</span>
+    <>
+      <div className="orders-container">
+        <h2 className="orders-title">Your orders</h2>
+        {userOrders.length >   0 ? (
+          userOrders.map((order, index) => (
+            <div key={`${order.id}_${index}`} className="order-container">
+              <div className="order-total-bar">
+                <p>Total: ${calculateTotalPrice(order).toFixed(2)}</p>
+              </div>
+              <ul className="order-items-list">
+                {order.items.map((item, index) => {
+                  const product = products.find(product => product.id === item.productId);
+                  if (product) {
+                    return (
+                      <li key={`${item.productId}_${index}`} className="order-item">
+                        <div className="order-item-details">
+                          <img src={product.photoUrl} alt="productImg" className="orderImg" />
+                          <div className="product-info">
+                            <span><NavLink className='orderProductName' to={`/products/${product.id}`}>{truncateName(product.name,   100)}</NavLink></span>
+                            <span>${product.price}</span>
+                            <span>Quantity: {item.quantity}</span>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  );
-                } else {
-                  return null;
-                }
-              })}
-            </ul>
-            <br />
-          </div>
-        ))
-      ) : (
-        <>
-          <p>You must be logged in to place orders</p>
-          <NavLink to='/login'>
-            <button id='emptyOrdersBtnSignIn'>Sign in to your account</button>  
-          </NavLink>
-          <NavLink to='/signup'>
-            <button id='emptyOrdersBtnSignUp'>Sign up now</button>   
-          </NavLink>
-        </>
-      )}
-    </div>
+                      </li>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </ul>
+              <br />
+            </div>
+          ))
+        ) : (
+          <>
+            <p>You must be logged in to place orders</p>
+            <NavLink to='/login'>
+              <button id='emptyOrdersBtnSignIn'>Sign in to your account</button>   
+            </NavLink>
+            <NavLink to='/signup'>
+              <button id='emptyOrdersBtnSignUp'>Sign up now</button>   
+            </NavLink>
+          </>
+        )}
+      </div>
+      <ul className='upperCartFooter' onClick={scrollToTop}>
+        <p className='backToTopP'>Back to top</p>
+      </ul>
+      <ul className='cartFooter'>
+        <div className='loginLinks'>
+          <span className='loginGit'>
+            <a href="https://github.com/Dominic5591">
+              <img src={git} alt="" />
+            </a>
+          </span>
+          <span className='loginLinkedin'>
+            <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
+              <img src={linkedin} alt="" />
+            </a>
+          </span>
+          <p className='loginLinkP'>2024 QuantumShop</p>
+        </div>
+      </ul>
+
+
+    
+    </>
+
   );
 };
 

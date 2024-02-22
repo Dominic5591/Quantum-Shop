@@ -1,7 +1,8 @@
 .orders-container {
   margin: 20px auto;
-  max-width: 1200px;
-  width: 1200px;
+  max-width: 1400px;
+  width: 1500px;
+  height: 100vh;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -22,6 +23,8 @@
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .order-id {
   font-size: 18px;
@@ -54,6 +57,7 @@
 }
 
 .orderProductName {
+    display: inline-block;
   color: black;
 }
 
@@ -63,25 +67,27 @@
 
 .orderImg {
   margin-top: 30px;
-  width: 45px;
+  width: 65px;
 }
 
 .order-item-details {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
 }
 
 .order-item-details img {
-  width: 45px;
+  width: 100px;
   height: auto;
   margin-bottom: 10px;
 }
 
 .order-item-details .product-info {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -93,8 +99,8 @@
 #emptyOrdersBtnSignIn {
   margin-top: 20px;
   padding: 10px;
-  width: 80%;
-  margin-left: 20px;
+  width: 25%;
+  /* margin-left: 20px; */
   background-color: #FFD814;
   color: #555555;
   position: relative;
@@ -107,7 +113,7 @@
 #emptyOrdersBtnSignUp {
   margin-top: 10px;
   padding: 10px;
-  width: 80%;
+  width: 25%;
   margin-left: 20px;
   background-color: #f3f3f3;
   color: #555555;
