@@ -32,6 +32,9 @@ function Navigation() {
       <li>
         <button className='dropdwnSignoutBtn' onClick={logout}>Log Out</button>
       </li>
+      <li>
+        <NavLink id='yourOrdersLink' to='/orders'>Your Orders</NavLink>
+      </li>
     </ul>
   ) : (
     <ul>
