@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { fetchOrders } from '../../store/order';
 import { fetchProducts, selectProductsArray } from '../../store/product';
+import loading from '../../images/loading.gif';
 import './Orders.css';
 
 const Orders = () => {
@@ -9,14 +11,31 @@ const Orders = () => {
   const products = useSelector(selectProductsArray);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const [loaded, setLoaded] = useState(false);
+
 
   useEffect(() => {
-    dispatch(fetchProducts());
     dispatch(fetchOrders());
+    dispatch(fetchProducts())
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true));
   }, [dispatch]);
 
+
+  if (!loaded) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
+  }
+
   if (!products) {
-    return null;
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
   }
 
   const calculateTotalPrice = (order) => {
@@ -30,7 +49,6 @@ const Orders = () => {
     return total;
   };
 
-  // Filter orders to only include those that match the current session user's ID
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
 
   return (
@@ -39,6 +57,9 @@ const Orders = () => {
       {userOrders.length >  0 ? (
         userOrders.map((order, index) => (
           <div key={`${order.id}_${index}`} className="order-container">
+            <div className="order-total-bar">
+              <p>Total: ${calculateTotalPrice(order).toFixed(2)}</p>
+            </div>
             <ul className="order-items-list">
               {order.items.map((item, index) => {
                 const product = products.find(product => product.id === item.productId);
@@ -47,7 +68,11 @@ const Orders = () => {
                     <li key={`${item.productId}_${index}`} className="order-item">
                       <div className="order-item-details">
                         <img src={product.photoUrl} alt="productImg" className="orderImg" />
-                        <span>{product.name}, ${product.price}, Quantity: {item.quantity}</span>
+                        <div className="product-info">
+                          <span>{product.name}</span>
+                          <span>${product.price}</span>
+                          <span>Quantity: {item.quantity}</span>
+                        </div>
                       </div>
                     </li>
                   );
@@ -57,11 +82,18 @@ const Orders = () => {
               })}
             </ul>
             <br />
-            <p>Total Price: ${calculateTotalPrice(order).toFixed(2)}</p>
           </div>
         ))
       ) : (
-        <p>You are not logged in or you have no orders.</p>
+        <>
+          <p>You must be logged in to place orders</p>
+          <NavLink to='/login'>
+            <button id='emptyOrdersBtnSignIn'>Sign in to your account</button>  
+          </NavLink>
+          <NavLink to='/signup'>
+            <button id='emptyOrdersBtnSignUp'>Sign up now</button>   
+          </NavLink>
+        </>
       )}
     </div>
   );
