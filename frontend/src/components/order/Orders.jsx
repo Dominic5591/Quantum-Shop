@@ -49,6 +49,14 @@ const Orders = () => {
     return total;
   };
 
+
+  const truncateName = (name, maxLength) => {
+    if (name.length > maxLength) {
+      return `${name.slice(0, maxLength)}...`;
+    }
+    return name;
+  };
+
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
 
   return (
@@ -69,7 +77,7 @@ const Orders = () => {
                       <div className="order-item-details">
                         <img src={product.photoUrl} alt="productImg" className="orderImg" />
                         <div className="product-info">
-                          <span>{product.name}</span>
+                          <span><NavLink className='orderProductName' to={`/products/${product.id}`}>{truncateName(product.name, 50)}</NavLink></span>
                           <span>${product.price}</span>
                           <span>Quantity: {item.quantity}</span>
                         </div>

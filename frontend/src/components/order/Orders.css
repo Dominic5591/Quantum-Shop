@@ -1,6 +1,7 @@
 .orders-container {
   margin: 20px auto;
   max-width: 1200px;
+  width: 1200px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -52,11 +53,16 @@
   margin-right: 10px;
 }
 
+.orderProductName {
+  color: black;
+}
+
 .order-item span:last-child {
   margin-right: 0;
 }
 
 .orderImg {
+  margin-top: 30px;
   width: 45px;
 }
 
