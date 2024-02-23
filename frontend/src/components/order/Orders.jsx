@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrders } from '../../store/order';
 import './Orders.css';
-import { fetchProducts, selectProductById, selectProductsArray } from '../../store/product';
+import { fetchProducts, selectProductsArray } from '../../store/product';
 
 const Orders = () => {
   const orders = useSelector(state => state.orders);
