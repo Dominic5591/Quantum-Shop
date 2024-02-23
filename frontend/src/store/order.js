@@ -50,9 +50,6 @@ export const selectOrders = createSelector(
 const orderReducer = (state = {}, action) => {
   switch (action.type) {
   case RECEIVE_ORDERS: {
-    // console.log(action.orders);
-    // const newState = { ...action.orders.orders };
-    // return newState;
     return {
       ...state,
       ...action.orders.orders,

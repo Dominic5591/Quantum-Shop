@@ -1,27 +1,41 @@
-/* Orders.css */
-
 .orders-container {
-  margin: 20px;
+  margin: 20px auto;
+  max-width: 1400px;
+  width: 1500px;
+  height: 100vh;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .orders-title {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .order-container {
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1px solid #ddd;
+  padding: 20px;
   margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .order-id {
   font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .user-id {
   margin-top: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  color: #666;
 }
 
 .order-items-list {
@@ -32,5 +46,111 @@
 
 .order-item {
   font-size: 14px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+.order-item span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.orderProductName {
+    display: inline-block;
+  color: black;
+}
+
+.order-item span:last-child {
+  margin-right: 0;
+}
+
+.orderImg {
+  margin-top: 30px;
+  width: 65px;
+}
+
+.order-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.order-item-details img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.order-item-details .product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.order-item-details .product-info span {
+  display: block;
   margin-bottom: 5px;
+}
+
+#emptyOrdersBtnSignIn {
+  margin-top: 20px;
+  padding: 10px;
+  width: 25%;
+  /* margin-left: 20px; */
+  background-color: #FFD814;
+  color: #555555;
+  position: relative;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#emptyOrdersBtnSignUp {
+  margin-top: 10px;
+  padding: 10px;
+  width: 25%;
+  margin-left: 20px;
+  background-color: #f3f3f3;
+  color: #555555;
+  position: relative;
+  font-weight: bold;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+#emptyOrdersBtnSignIn:hover {
+  background-color: #f8d318;
+}
+
+#emptyOrdersBtnSignUp:hover {
+  background-color: #EAEDED;
+}
+
+
+.order-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.order-total-bar {
+  background-color: #f0f0f0;
+  padding: 10px;
+  width: 98.3%;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }

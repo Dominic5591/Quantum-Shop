@@ -95,7 +95,7 @@ a {
 }
 
 .dropdwnSignoutBtn {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: 35px;
   padding: 12px;
   background-color: #FFD814;
@@ -109,6 +109,25 @@ a {
 .dropdwnSignoutBtn:hover {
   background-color: #f8d318;
 }
+
+
+#yourOrdersLink {
+  margin-top: 20px;
+  margin-left: 35px;
+  font-size: 13px;
+  width: 45px;
+  height: 25px;
+  background-color: #FFD814;
+  color: #555555;
+  font-weight: bold;
+  border: none;
+  text-wrap: none;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
 
 #dropdwnLoginBtn {
   margin-top: 20px;
