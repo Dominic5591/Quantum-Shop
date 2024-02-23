@@ -61,10 +61,6 @@ const CartIndex = () => {
   };
 
 
-
-
-
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -75,7 +71,7 @@ const CartIndex = () => {
   return (
     <>
       <div className='CartPageDiv'>
-        {cartItems.length === 0 ? 
+        {cartItems.length === 0 ?
           <div className='cartImgDiv'>
             <img src={cartImg} alt="" />
           </div>
@@ -101,7 +97,6 @@ const CartIndex = () => {
                 <NavLink to='/signup'>
                   <button className='emptyCartBtnSignUp'>Sign up now</button>  
                 </NavLink>
-                
               </div>
               : <p></p>
             }
@@ -149,7 +144,6 @@ const CartIndex = () => {
             <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
               <img src={linkedin} alt="" />
             </a>
-            
           </span>
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>

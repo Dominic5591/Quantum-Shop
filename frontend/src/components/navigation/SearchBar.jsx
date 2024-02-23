@@ -17,7 +17,7 @@ const SearchBar = () => {
   const searchResults = results?.search || [];
   const products = Object.values(searchResults);
   const maxResultsToShow = 5;
-  // const searchTimeoutRef = useRef(null);
+  const searchTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -50,12 +50,12 @@ const SearchBar = () => {
     setSearch(query);
     debouncedSearch(query);
 
-    // if (searchTimeoutRef.current) {
-    //   clearTimeout(searchTimeoutRef.current);
-    // }
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
 
-    // searchTimeoutRef.current = setTimeout(() => {
-    // }, 1000);
+    searchTimeoutRef.current = setTimeout(() => {
+    }, 1000);
   };
 
   const handleSearchEnter = (e) => {
