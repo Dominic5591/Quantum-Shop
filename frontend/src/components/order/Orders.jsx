@@ -56,7 +56,6 @@ const Orders = () => {
     return name;
   };
 
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
