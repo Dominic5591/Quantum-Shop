@@ -4,7 +4,6 @@ import csrfFetch from "./csrf";
 const RECEIVE_ORDERS = "order/RECEIVE_ORDERS";
 const RECEIVE_ORDER = "order/RECEIVE_ORDER";
 
-
 export const receiveOrders = (orders) => ({
   type: RECEIVE_ORDERS,
   orders,
@@ -14,7 +13,6 @@ export const receiveOrder = (order) => ({
   type: RECEIVE_ORDER,
   order,
 });
-
 
 export const fetchOrders = () => async (dispatch) => {
   const res = await csrfFetch("/api/orders");
@@ -38,14 +36,12 @@ export const createOrder = (order) => async (dispatch) => {
   }
 };
 
-
 const selectOrderState = (state) => state.order;
 
 export const selectOrders = createSelector(
   [selectOrderState],
   (order) => order.orders
 );
-
 
 const orderReducer = (state = {}, action) => {
   switch (action.type) {
@@ -65,6 +61,5 @@ const orderReducer = (state = {}, action) => {
     return state;
   }
 };
-
 
 export default orderReducer;
