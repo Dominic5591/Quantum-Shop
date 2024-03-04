@@ -70,7 +70,7 @@ const Orders = () => {
     <>
       <div className="orders-container">
         <h2 className="orders-title">Your orders</h2>
-        {userOrders.length >   0 ? (
+        {userOrders.length > 0 ? (
           userOrders.map((order, index) => (
             <div key={`${order.id}_${index}`} className="order-container">
               <div className="order-total-bar">
@@ -130,11 +130,7 @@ const Orders = () => {
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>
       </ul>
-
-
-    
     </>
-
   );
 };
 
