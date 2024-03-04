@@ -1,89 +1,94 @@
-.orders-container {
+#ordersMainPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.ordersContainer {
   margin: 20px auto;
   max-width: 1400px;
-  width: 1500px;
-  height: 100vh;
+  width: 100%;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 20px;
 }
 
-.orders-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.order-container {
+.orderDiv {
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 20px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
+.orderTotalBar {
+  background-color: #f0f0f0;
+  padding: 10px;
+  width: 98.3%;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 
-
-.order-id {
-  font-size: 18px;
+.ordersTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
   color: #333;
-  margin-bottom: 10px;
 }
 
-.user-id {
-  margin-top: 5px;
-  font-size: 14px;
-  color: #666;
-}
-
-.order-items-list {
+.orderItemsList {
   list-style-type: none;
   padding: 0;
   margin-top: 10px;
 }
 
-.order-item {
+.orderItem {
   font-size: 14px;
   margin-bottom: 10px;
   color: #333;
 }
 
 
-.order-item span {
+.orderItem span {
   display: inline-block;
   margin-right: 10px;
 }
 
+.orderItem span:last-child {
+  margin-right: 0;
+}
+
 .orderProductName {
-    display: inline-block;
+  display: inline-block;
   color: black;
 }
 
-.order-item span:last-child {
-  margin-right: 0;
-}
 
 .orderImg {
   margin-top: 30px;
   width: 65px;
 }
 
-.order-item-details {
+.orderItemInfo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
 }
 
-.order-item-details img {
+.orderItemInfo img {
   width: 100px;
   height: auto;
   margin-bottom: 10px;
 }
 
-.order-item-details .product-info {
+.orderItemInfo .productInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -91,7 +96,7 @@
   width: 100%;
 }
 
-.order-item-details .product-info span {
+.orderItemInfo .productInfo span {
   display: block;
   margin-bottom: 5px;
 }
@@ -130,26 +135,4 @@
 
 #emptyOrdersBtnSignUp:hover {
   background-color: #EAEDED;
-}
-
-
-.order-container {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.order-total-bar {
-  background-color: #f0f0f0;
-  padding: 10px;
-  width: 98.3%;
-  text-align: right;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }

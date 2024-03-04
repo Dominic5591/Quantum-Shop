@@ -67,24 +67,24 @@ const Orders = () => {
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
 
   return (
-    <>
-      <div className="orders-container">
-        <h2 className="orders-title">Your orders</h2>
+    <div id='ordersMainPage'>
+      <div className="ordersContainer">
+        <h2 className="ordersTitle">Your orders</h2>
         {userOrders.length > 0 ? (
           userOrders.map((order, index) => (
-            <div key={`${order.id}_${index}`} className="order-container">
-              <div className="order-total-bar">
+            <div key={`${order.id}_${index}`} className="orderDiv">
+              <div className="orderTotalBar">
                 <p>Total: ${calculateTotalPrice(order).toFixed(2)}</p>
               </div>
-              <ul className="order-items-list">
+              <ul className="orderItemsList">
                 {order.items.map((item, index) => {
                   const product = products.find(product => product.id === item.productId);
                   if (product) {
                     return (
-                      <li key={`${item.productId}_${index}`} className="order-item">
-                        <div className="order-item-details">
+                      <li key={`${item.productId}_${index}`} className="orderItem">
+                        <div className="orderItemInfo">
                           <img src={product.photoUrl} alt="productImg" className="orderImg" />
-                          <div className="product-info">
+                          <div className="productInfo">
                             <span><NavLink className='orderProductName' to={`/products/${product.id}`}>{truncateName(product.name,   100)}</NavLink></span>
                             <span>${product.price}</span>
                             <span>Quantity: {item.quantity}</span>
@@ -130,7 +130,7 @@ const Orders = () => {
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>
       </ul>
-    </>
+    </div>
   );
 };
 
