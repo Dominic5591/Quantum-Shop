@@ -36,6 +36,8 @@ function SignupForm() {
       });
   };
 
+  console.log(errors)
+
   return (
 
 
@@ -47,7 +49,7 @@ function SignupForm() {
       </div>
 
       <div>
-        <form  className='signUpForm' onSubmit={handleSubmit}>
+        <form  className='signUpForm' noValidate="novalidate" onSubmit={handleSubmit}>
           <h1 className='signUpH1'>Create account</h1>
           <ul className='errors'>
             {errors.map(error => <li key={error}>{error}</li>)}

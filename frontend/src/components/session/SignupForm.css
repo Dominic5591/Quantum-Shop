@@ -112,6 +112,7 @@
 
 
 .errors {
+  z-index: 1;
   color: red;
   font-size: small;
 }
