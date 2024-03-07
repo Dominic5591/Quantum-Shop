@@ -93,6 +93,10 @@ const router = createBrowserRouter([
         path: "orders",
         element: <Orders />,
       },
+      {
+        path: "/home",
+        element: <Homepage />,
+      },
     ],
   },
 ]);

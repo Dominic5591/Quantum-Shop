@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { memoizedSelectCartItems, fetchCart } from '../../store/cartItem';
 import * as sessionActions from '../../store/session';
@@ -12,10 +12,14 @@ function Navigation() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const cartItems = useSelector(memoizedSelectCartItems);
+  const navigate = useNavigate();
+
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+
+    navigate("/home");
   };
   
   useEffect(() => {
