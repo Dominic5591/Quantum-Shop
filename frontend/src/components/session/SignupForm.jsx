@@ -21,22 +21,36 @@ function SignupForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.signup({ username, email,  password }))
-      .catch(async (res) => {
-        let data;
-        try {
-          data = await res.clone().json();
-        } catch {
-          data = await res.text();
+
+    if (password === confirmPassword && email.includes("@")) {
+      setErrors([]);
+      return dispatch(sessionActions.signup({ email, username, password })).catch(
+        async (res) => {
+          let data;
+          try {
+            data = await res.clone().json();
+          } catch {
+            data = await res.text();
+          }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors([data]);
+          else setErrors([res.statusText]);
         }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
-      });
+      );
+    }
+    if (password !== confirmPassword) {
+      return setErrors([
+        "Password must match confirmed password",
+      ]);
+    } else if (email.includes("@")) {
+      return setErrors([
+        "Must be a valid email",
+      ]);
+    }
+    return setErrors(["Must be a valid email"]);
   };
 
-  console.log(errors);
+
 
   return (
 
