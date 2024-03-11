@@ -22,7 +22,7 @@ function SignupForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (password === confirmPassword && email.includes("@")) {
+    if (password === confirmPassword && email.includes("@") && email.includes(".")) {
       setErrors([]);
       return dispatch(sessionActions.signup({ email, username, password })).catch(
         async (res) => {
