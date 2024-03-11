@@ -4,16 +4,18 @@ require 'open-uri'
 
 puts "Destroying tables..."
 # Unnecessary if using `rails db:seed:replant`
+Order_Item.destroy_all
+Order.destroy_all
 User.destroy_all
 Product.destroy_all
-Order.destroy_all
 
 
 puts "Resetting primary keys..."
 # For easy testing, so that after seeding, the first `User` has `id` of 1
+ApplicationRecord.connection.reset_pk_sequence!('orders')
+ApplicationRecord.connection.reset_pk_sequence!('order_items')
 ApplicationRecord.connection.reset_pk_sequence!('users')
 ApplicationRecord.connection.reset_pk_sequence!('products')
-ApplicationRecord.connection.reset_pk_sequence!('orders')
 
 puts "Creating users..."
 # Create one user with an easy to remember username, email, and password:
