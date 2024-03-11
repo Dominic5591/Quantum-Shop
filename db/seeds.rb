@@ -4,7 +4,7 @@ require 'open-uri'
 
 puts "Destroying tables..."
 # Unnecessary if using `rails db:seed:replant`
-Order_Item.destroy_all
+OrderItem.destroy_all
 Order.destroy_all
 User.destroy_all
 Product.destroy_all
