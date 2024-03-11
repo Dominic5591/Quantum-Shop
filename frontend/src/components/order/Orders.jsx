@@ -66,50 +66,56 @@ const Orders = () => {
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
 
   return (
-    <div id='ordersMainPage'>
-      <div className="ordersContainer">
-        <h2 className="ordersTitle">Your orders</h2>
-        {userOrders.length > 0 ? (
-          userOrders.map((order, index) => (
-            <div key={`${order.id}_${index}`} className="orderDiv">
-              <div className="orderTotalBar">
-                <p>Total: ${calculateTotalPrice(order).toFixed(2)}</p>
-              </div>
-              <ul className="orderItemsList">
-                {order.items.map((item, index) => {
-                  const product = products.find(product => product.id === item.productId);
-                  if (product) {
-                    return (
-                      <li key={`${item.productId}_${index}`} className="orderItem">
-                        <div className="orderItemInfo">
-                          <img src={product.photoUrl} alt="productImg" className="orderImg" />
-                          <div className="productInfo">
-                            <span><NavLink className='orderProductName' to={`/products/${product.id}`}>{truncateName(product.name,   100)}</NavLink></span>
-                            <span>${product.price}</span>
-                            <span>Quantity: {item.quantity}</span>
+    <>
+      <div id='ordersMainPage'>
+        <div className="ordersContainer">
+          <h2 className="ordersTitle">Your orders</h2>
+          {userOrders.length > 0 ? (
+            userOrders.map((order, index) => (
+              <div key={`${order.id}_${index}`} className="orderDiv">
+                <div className="orderTotalBar">
+                  <p>Total: ${calculateTotalPrice(order).toFixed(2)}</p>
+                </div>
+                <ul className="orderItemsList">
+                  {order.items.map((item, index) => {
+                    const product = products.find(product => product.id === item.productId);
+                    if (product) {
+                      return (
+                        <li key={`${item.productId}_${index}`} className="orderItem">
+                          <div className="orderItemInfo">
+                            <img src={product.photoUrl} alt="productImg" className="orderImg" />
+                            <div className="productInfo">
+                              <span><NavLink className='orderProductName' to={`/products/${product.id}`}>{truncateName(product.name,   100)}</NavLink></span>
+                              <span>${product.price}</span>
+                              <span>Quantity: {item.quantity}</span>
+                            </div>
                           </div>
-                        </div>
-                      </li>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-              </ul>
-              <br />
+                        </li>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+                </ul>
+                <br />
+              </div>
+            ))
+          ) : (
+            <div>
+              {!sessionUser ? 
+                <div className='cartSessionBtns'>
+                  <NavLink to='/login'>
+                    <button className='emptyCartBtnSignIn'>Sign in to your account</button> 
+                  </NavLink>
+                  <NavLink to='/signup'>
+                    <button className='emptyCartBtnSignUp'>Sign up now</button>  
+                  </NavLink>
+                </div>
+                : <p></p>
+              }
             </div>
-          ))
-        ) : (
-          <>
-            <p>You must be logged in to place orders</p>
-            <NavLink to='/login'>
-              <button id='emptyOrdersBtnSignIn'>Sign in to your account</button>   
-            </NavLink>
-            <NavLink to='/signup'>
-              <button id='emptyOrdersBtnSignUp'>Sign up now</button>   
-            </NavLink>
-          </>
-        )}
+          )}
+        </div>
       </div>
       <ul className='upperCartFooter' onClick={scrollToTop}>
         <p className='backToTopP'>Back to top</p>
@@ -129,7 +135,7 @@ const Orders = () => {
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>
       </ul>
-    </div>
+    </>
   );
 };
 
