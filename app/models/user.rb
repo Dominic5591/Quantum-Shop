@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  has_many :reviews
 
   has_many :orders, dependent: :destroy
   

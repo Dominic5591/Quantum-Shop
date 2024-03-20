@@ -4,6 +4,8 @@ class Product < ApplicationRecord
 
   has_one_attached :photo
 
+  has_many :reviews
+
   has_many :order_items
   
   has_many :cart_items,
