@@ -9,6 +9,7 @@ import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
+import { fetchReviews } from '../../store/review';
 
 
 const ProductIndexItem = () => {
@@ -22,11 +23,40 @@ const ProductIndexItem = () => {
   const sessionUser = useSelector(state => state.session.user);
   const navigate = useNavigate();
 
+  // let reviewSum = 0;
+  let reviewCount = 0;
+  // let reviewAverage = 0;
+  // let hasReview = false;
+
+
+
   useEffect(() => {
     dispatch(fetchProduct(product_id))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
+    dispatch(fetchReviews());
   }, [dispatch, product_id]);
+
+  const reviews = useSelector(state => Object.values(state.reviews));
+
+  reviews.forEach(review => {
+    if (review && product) {
+      // reviewSum += review.rating;
+      reviewCount += 1;
+    } else if (sessionUser) {
+      if (review.productId === product.id && review.userId === sessionUser.id) {
+        // hasReview = true;
+      }
+    }
+  });
+
+  if (reviewCount > 0) {
+    // reviewAverage = reviewSum / reviewCount
+  }
+
+  // let reviewAmount;
+
+
 
   if (!loaded) {
     return (
