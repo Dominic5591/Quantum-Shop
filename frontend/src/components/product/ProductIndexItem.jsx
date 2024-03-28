@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Rating from './Rating';
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useParams } from 'react-router-dom';
@@ -23,10 +23,10 @@ const ProductIndexItem = () => {
   const sessionUser = useSelector(state => state.session.user);
   const navigate = useNavigate();
 
-  // let reviewSum = 0;
+  let reviewSum = 0;
   let reviewCount = 0;
-  // let reviewAverage = 0;
-  // let hasReview = false;
+  let reviewAverage = 0;
+  let hasReview = false;
 
 
 
@@ -41,21 +41,54 @@ const ProductIndexItem = () => {
 
   reviews.forEach(review => {
     if (review && product) {
-      // reviewSum += review.rating;
+      reviewSum += review.rating;
       reviewCount += 1;
     } else if (sessionUser) {
       if (review.productId === product.id && review.userId === sessionUser.id) {
-        // hasReview = true;
+        hasReview = true;
       }
     }
   });
 
   if (reviewCount > 0) {
-    // reviewAverage = reviewSum / reviewCount
+    reviewAverage = reviewSum / reviewCount;
   }
 
-  // let reviewAmount;
+  let reviewAmount;
 
+
+
+  if (reviewCount === 1) {
+    reviewAmount = (
+      <h1>{reviewCount} rating</h1>
+    );
+  } else {
+    reviewAmount = (
+      <h1>{reviewCount} ratings</h1>
+    );
+  }
+
+  let reviewForm;
+
+  if (sessionUser && !hasReview) {
+    reviewForm = (
+      <NavLink to={`/reviews/${product.id}`}>
+        <button id='reviewButtonOne'> Write a customer review</button>
+      </NavLink>
+    );
+  } else if (sessionUser) {
+    reviewForm = (
+      <NavLink to={`/reviews/${product.id}`}>
+        <button id='reviewButtonOne'> Write a customer review</button>
+      </NavLink>
+    );
+  } else {
+    reviewForm = (
+      <NavLink to={`/reviews/${product.id}`}>
+        <button id='reviewButtonOne'> Write a customer review</button>
+      </NavLink>
+    );
+  }
 
 
   if (!loaded) {
@@ -104,6 +137,9 @@ const ProductIndexItem = () => {
     setQuantity(parseInt(e.target.value, 10));
   };
   
+
+
+
 
   return (
     <div className="productIndexItemPage">
@@ -178,8 +214,31 @@ const ProductIndexItem = () => {
 
       <div className='reviewContainer'>
         <div className="reviewDivider"></div>
+        <div id='productReviewOuterDiv'>
+          <div id='productReviewDiv'>
+            <h1>Customer Reviews</h1>
+            <div id='customerRatingsDiv'>
+              <div id='customerRatingsDivInner'>
+                <Rating rating={product.rating}></Rating>
+                <h1>{reviewAverage} out of 5</h1>
+              </div>
+              <h1>{reviewAmount}</h1>
+            </div>
+          </div>
+
+          <div id='writeReviewDiv'>
+            <h1>Review this product</h1>
+            <h1>Share your thoughts with other customers</h1>
+            <div id='createReviewDiv'>
+              {reviewForm}
+            </div>
+          </div>
+        </div>
+
+
         <div className="reviewDivider2"></div>
         <div className="reviewDivider"></div>
+        <></>
       </div>
 
 
