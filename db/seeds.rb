@@ -20,8 +20,8 @@ ApplicationRecord.connection.reset_pk_sequence!('order_items')
 puts "Creating users..."
 # Create one user with an easy to remember username, email, and password:
 User.create!(
-  username: 'Demo-lition', 
-  email: 'demo@user.io', 
+  username: 'Demo-User', 
+  email: 'demo1@user.io', 
   password: 'password'
 )
 
