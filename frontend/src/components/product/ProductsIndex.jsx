@@ -81,3 +81,53 @@ const ProductsIndex = () => {
 export default ProductsIndex;
 
 
+
+
+
+
+
+
+
+
+
+
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import { fetchProducts, selectProductsArray } from '../../store/product';
+// import ProductItem from './ProductItem';
+// import git from '../../images/github.png';
+// import linkedin from '../../images/linkedin.png';
+// import loading from '../../images/loading.gif';
+// import './ProductsIndex.css';
+
+// const ProductsIndex = () => {
+//   const dispatch = useDispatch();
+//   const products = useSelector(selectProductsArray);
+
+
+//   useEffect(() => {
+//     dispatch(fetchProducts())
+//   }, [dispatch]);
+
+
+
+
+//   return (
+//     <ul className='productsIndexPage'>
+//       <div className="productsIndexDivider"></div>
+//       <div className="productsContainer">
+//         {products.map((product, index) => (
+//           <div key={`${product.id}_${index}`}>
+//             <ProductItem product={product}/>
+//           </div>
+          
+//         ))}
+//       </div>
+//     </ul>
+//   );
+// };
+
+// export default ProductsIndex;
+
+

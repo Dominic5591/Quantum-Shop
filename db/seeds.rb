@@ -29,6 +29,7 @@ User.create!(
 # db/seeds.rb
 
 # Categories
+
 puts "Creating products..."
 
 
@@ -39,6 +40,13 @@ puts "Creating products..."
 
 ############################ Electronics:
 
+
+
+Product.create(
+  name: "Razer Ornata V3 X Gaming Keyboard: Low-Profile Keys - Silent Membrane Switches - Spill Resistant - Chroma RGB Lighting - Ergonomic Wrist Rest - Classic Black",
+  category: 'electronics',
+  rating: 5,
+)
 
 
 
