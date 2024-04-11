@@ -267,22 +267,6 @@
   gap: 12px;
 }
 
-.writeReviewBtn {
-  width: 30%;
-  padding: 12px;
-  background-color: #ffffff;
-  color: #464646;
-  font-weight: bold;
-  border: 1px solid #d3d2d2;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
-}
-
-.writeReviewBtn:hover {
-  background-color: #f1f1f1;
-}
 
 .topIndexPageDivider {
   position: relative;
@@ -307,4 +291,67 @@
   position: relative;
   display: block;
 
+}
+
+
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#reviewAverageSpan {
+  padding-left: 12px;
+  position: relative;
+  bottom: 3px;
+}
+
+#productReviewOuterDiv {
+  display: flex;
+  gap: 142px;
+  margin-left: 90px
+}
+
+#reviewAmountH1 {
+  padding-top: 18px;
+  font-size: 18px;
+}
+
+#customerReviewsH1 {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-family: Amazon Ember Lite;
+  font-weight: bold;
+}
+
+
+#reviewButtonOne {
+  margin-top: 20px;
+  width: 80%;
+  padding: 12px;
+  background-color: #ffffff;
+  color: #464646;
+  font-weight: bold;
+  border: 1px solid #d3d2d2;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+#reviewButtonOne:hover {
+  background-color: #f1f1f1;
+}
+
+#reviewProductTextH1 {
+  font-size: 20px;
+  font-family: Amazon Ember Lite;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+#shareYourThoughtsH1 {
+  font-family: Amazon Ember Lite;
+  font-weight: bold;
 }

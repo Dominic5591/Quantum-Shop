@@ -1,11 +1,10 @@
 import { useParams, NavLink  } from 'react-router-dom';
-import Rating from './Rating';
+import { Rating } from './Rating';
 import './ProductsIndex.css';
 
 const ProductItem = (({ product }) => {
   const { category } = useParams();
-
-    
+  
   if ((product.category !== category) && (category !== "all")) {
     return null;
   }

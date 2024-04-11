@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import Rating from './Rating';
-import { fetchProduct, selectProduct } from '../../store/product';
-import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { ReviewRating, Rating } from './Rating';
 import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
+import { fetchProduct, selectProduct } from '../../store/product';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchReviews } from '../../store/review';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
-import { fetchReviews } from '../../store/review';
 
 
 const ProductIndexItem = () => {
@@ -37,7 +37,7 @@ const ProductIndexItem = () => {
     dispatch(fetchReviews());
   }, [dispatch, product_id]);
 
-  const reviews = useSelector(state => Object.values(state.reviews));
+  let reviews = useSelector(state => Object.values(state.reviews));
 
   reviews.forEach(review => {
     if (review && product) {
@@ -60,11 +60,11 @@ const ProductIndexItem = () => {
 
   if (reviewCount === 1) {
     reviewAmount = (
-      <h1>{reviewCount} rating</h1>
+      <span id='reviewAmountH1'>{reviewCount} rating</span>
     );
   } else {
     reviewAmount = (
-      <h1>{reviewCount} ratings</h1>
+      <span id='reviewAmountH1'>{reviewCount} ratings</span>
     );
   }
 
@@ -72,20 +72,20 @@ const ProductIndexItem = () => {
 
   if (sessionUser && !hasReview) {
     reviewForm = (
-      <NavLink to={`/reviews/${product.id}`}>
-        <button id='reviewButtonOne'> Write a customer review</button>
+      <NavLink to={`/reviews/${productId}`}>
+        <button id='reviewButtonOne'>Write a customer review</button>
       </NavLink>
     );
   } else if (sessionUser) {
     reviewForm = (
-      <NavLink to={`/reviews/${product.id}`}>
-        <button id='reviewButtonOne'> Write a customer review</button>
+      <NavLink to={`/reviews/${productId}`}>
+        <button id='reviewButtonOne'>Write a customer review</button>
       </NavLink>
     );
   } else {
     reviewForm = (
-      <NavLink to={`/reviews/${product.id}`}>
-        <button id='reviewButtonOne'> Write a customer review</button>
+      <NavLink to={`/reviews/${productId}`}>
+        <button id='reviewButtonOne'>Write a customer review</button>
       </NavLink>
     );
   }
@@ -190,7 +190,6 @@ const ProductIndexItem = () => {
             name="quantity"
             value={quantity}
             onChange={handleQuantityChange}
-
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -208,37 +207,33 @@ const ProductIndexItem = () => {
         <div className='addToCartBtnDiv'>
           <button onClick={handleAddCartItem} className='addToCartBtn'>Add to cart</button>
         </div>
-        
       </div>
 
+
+      <div className="reviewDivider2"></div>
 
       <div className='reviewContainer'>
         <div className="reviewDivider"></div>
         <div id='productReviewOuterDiv'>
           <div id='productReviewDiv'>
-            <h1>Customer Reviews</h1>
+            <h1 id='customerReviewsH1'>Customer Reviews</h1>
             <div id='customerRatingsDiv'>
               <div id='customerRatingsDivInner'>
-                <Rating rating={product.rating}></Rating>
-                <h1>{reviewAverage} out of 5</h1>
+                <ReviewRating ReviewRating={product.rating} />
+                <span id='reviewAverageSpan'>{reviewAverage}   out of 5</span>
               </div>
-              <h1>{reviewAmount}</h1>
+              <h1 id='reviewAmountH1'>{reviewAmount}</h1>
             </div>
           </div>
-
           <div id='writeReviewDiv'>
-            <h1>Review this product</h1>
-            <h1>Share your thoughts with other customers</h1>
+            <h1 id='reviewProductTextH1'>Review this product</h1>
+            <h1 id='shareYourThoughtsH1'>Share your thoughts with other customers</h1>
             <div id='createReviewDiv'>
               {reviewForm}
             </div>
           </div>
         </div>
-
-
-        <div className="reviewDivider2"></div>
         <div className="reviewDivider"></div>
-        <></>
       </div>
 
 
@@ -266,77 +261,3 @@ const ProductIndexItem = () => {
 };
 
 export default ProductIndexItem;
-
-
-
-
-
-// import { useEffect, useState } from 'react';
-// import { NavLink, useParams } from 'react-router-dom';
-// import Rating from './Rating';
-// import { fetchProduct, selectProduct } from '../../store/product';
-// import { useSelector, useDispatch } from 'react-redux';
-// import loading from '../../images/loading.gif';
-// import './ProductIndexItem.css';
-
-// const ProductIndexItem = () => {
-//   const dispatch = useDispatch();
-//   const { productId } = useParams();
-//   const product_id = parseInt(productId);
-//   const [loaded, setLoaded] = useState(false);
-//   const product = useSelector(selectProduct(productId));
-
-
-
-
-//   useEffect(() => {
-//     dispatch(fetchProduct(product_id))
-//       .then(() => setLoaded(true))
-//       .catch(() => setLoaded(true));
-//     dispatch(fetchReviews());
-//   }, [dispatch, product_id]);
-
-
-//   if (!loaded) {
-//     return (
-//       <div>
-//         <img src={loading} alt="loading" className='loadingGif' />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="productIndexItemPage">
-//       <div className='productImageContainer'>
-//         <img className='productImgShow' src={placeholder} alt={product.name} />
-//       </div>
-//       <div className="cardContentItem">
-//         <div className='middleProductPriceDiv'>
-//           <h3 className='middleProductPriceH3'>{product.name}</h3>
-//         </div>
-//         <div className='middleRatingDiv'>
-//           <span className='ratingsNum'>{product.rating}.0 </span>
-//         </div>
-//         <div>
-//           <p className='aboutItemP'>About this item:</p>
-//           <p>{product.description}</p>
-//         </div>  
-//       </div>
-//       <div className='addToCartDiv'>
-//         <div className='buyNowDiv'>
-//           <h3 className='buyNowH3'>Buy new:</h3>
-//         </div>
-//         <div className='productPriceDiv'>
-//           <h1 className='productPriceH1'>${product.price}</h1>
-//         </div>
-
-//         <div className='inStockDiv'>
-//           <h1 className='inStockH1'>In Stock</h1>
-//         </div>
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductIndexItem;

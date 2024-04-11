@@ -1,29 +1,8 @@
-# class Api::OrdersController < ApplicationController
-#   def index
-#     @orders = current_user.orders
-#     render :index
-#   end
-
-#   def create
-#     @order = current_user.orders.build
-
-#     if @order.save
-#       render :show
-#     else
-#       render json: @order.errors, status: :unprocessable_entity
-#     end
-#   end
-# end
-
-
-
 class Api::OrdersController < ApplicationController
-  before_action :require_logged_in, only: [:index]
+  # before_action :require_logged_in, only: [:index]
   def index
-    if current_user 
       @orders = current_user.orders
       render :index
-    end
   end
 
 
