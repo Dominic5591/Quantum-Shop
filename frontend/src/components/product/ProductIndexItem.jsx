@@ -208,9 +208,10 @@ const ProductIndexItem = () => {
         <div className='addToCartBtnDiv'>
           <button onClick={handleAddCartItem} className='addToCartBtn'>Add to cart</button>
         </div>
-        
       </div>
 
+
+      <div className="reviewDivider2"></div>
 
       <div className='reviewContainer'>
         <div className="reviewDivider"></div>
@@ -219,13 +220,12 @@ const ProductIndexItem = () => {
             <h1>Customer Reviews</h1>
             <div id='customerRatingsDiv'>
               <div id='customerRatingsDivInner'>
-                <Rating rating={product.rating}></Rating>
-                <h1>{reviewAverage} out of 5</h1>
+                <Rating rating={product.rating} />
+                <span id='reviewAverageSpan'>{reviewAverage}   out of 5</span>
               </div>
               <h1>{reviewAmount}</h1>
             </div>
           </div>
-
           <div id='writeReviewDiv'>
             <h1>Review this product</h1>
             <h1>Share your thoughts with other customers</h1>
@@ -234,11 +234,7 @@ const ProductIndexItem = () => {
             </div>
           </div>
         </div>
-
-
-        <div className="reviewDivider2"></div>
         <div className="reviewDivider"></div>
-        <></>
       </div>
 
 
@@ -266,77 +262,3 @@ const ProductIndexItem = () => {
 };
 
 export default ProductIndexItem;
-
-
-
-
-
-// import { useEffect, useState } from 'react';
-// import { NavLink, useParams } from 'react-router-dom';
-// import Rating from './Rating';
-// import { fetchProduct, selectProduct } from '../../store/product';
-// import { useSelector, useDispatch } from 'react-redux';
-// import loading from '../../images/loading.gif';
-// import './ProductIndexItem.css';
-
-// const ProductIndexItem = () => {
-//   const dispatch = useDispatch();
-//   const { productId } = useParams();
-//   const product_id = parseInt(productId);
-//   const [loaded, setLoaded] = useState(false);
-//   const product = useSelector(selectProduct(productId));
-
-
-
-
-//   useEffect(() => {
-//     dispatch(fetchProduct(product_id))
-//       .then(() => setLoaded(true))
-//       .catch(() => setLoaded(true));
-//     dispatch(fetchReviews());
-//   }, [dispatch, product_id]);
-
-
-//   if (!loaded) {
-//     return (
-//       <div>
-//         <img src={loading} alt="loading" className='loadingGif' />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="productIndexItemPage">
-//       <div className='productImageContainer'>
-//         <img className='productImgShow' src={placeholder} alt={product.name} />
-//       </div>
-//       <div className="cardContentItem">
-//         <div className='middleProductPriceDiv'>
-//           <h3 className='middleProductPriceH3'>{product.name}</h3>
-//         </div>
-//         <div className='middleRatingDiv'>
-//           <span className='ratingsNum'>{product.rating}.0 </span>
-//         </div>
-//         <div>
-//           <p className='aboutItemP'>About this item:</p>
-//           <p>{product.description}</p>
-//         </div>  
-//       </div>
-//       <div className='addToCartDiv'>
-//         <div className='buyNowDiv'>
-//           <h3 className='buyNowH3'>Buy new:</h3>
-//         </div>
-//         <div className='productPriceDiv'>
-//           <h1 className='productPriceH1'>${product.price}</h1>
-//         </div>
-
-//         <div className='inStockDiv'>
-//           <h1 className='inStockH1'>In Stock</h1>
-//         </div>
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductIndexItem;

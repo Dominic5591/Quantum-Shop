@@ -308,3 +308,20 @@
   display: block;
 
 }
+
+
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#reviewAverageSpan {
+  padding-left: 12px;
+}
+
+#productReviewOuterDiv {
+  display: flex;
+  gap: 142px;
+}
