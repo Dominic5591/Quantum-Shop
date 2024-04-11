@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ReviewRating, Rating } from './Rating';
-import { fetchProduct, selectProduct } from '../../store/product';
-import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
+import { fetchProduct, selectProduct } from '../../store/product';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchReviews } from '../../store/review';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
-import { fetchReviews } from '../../store/review';
 
 
 const ProductIndexItem = () => {
@@ -226,8 +226,8 @@ const ProductIndexItem = () => {
             </div>
           </div>
           <div id='writeReviewDiv'>
-            <h1>Review this product</h1>
-            <h1>Share your thoughts with other customers</h1>
+            <h1 id='reviewProductTextH1'>Review this product</h1>
+            <h1 id='shareYourThoughtsH1'>Share your thoughts with other customers</h1>
             <div id='createReviewDiv'>
               {reviewForm}
             </div>
