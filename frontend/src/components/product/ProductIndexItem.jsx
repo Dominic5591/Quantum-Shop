@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import Rating from './Rating';
+import { ReviewRating, Rating } from './Rating';
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,7 +37,7 @@ const ProductIndexItem = () => {
     dispatch(fetchReviews());
   }, [dispatch, product_id]);
 
-  const reviews = useSelector(state => Object.values(state.reviews));
+  let reviews = useSelector(state => Object.values(state.reviews));
 
   reviews.forEach(review => {
     if (review && product) {
@@ -60,11 +60,11 @@ const ProductIndexItem = () => {
 
   if (reviewCount === 1) {
     reviewAmount = (
-      <h1>{reviewCount} rating</h1>
+      <span id='reviewAmountH1'>{reviewCount} rating</span>
     );
   } else {
     reviewAmount = (
-      <h1>{reviewCount} ratings</h1>
+      <span id='reviewAmountH1'>{reviewCount} ratings</span>
     );
   }
 
@@ -72,20 +72,20 @@ const ProductIndexItem = () => {
 
   if (sessionUser && !hasReview) {
     reviewForm = (
-      <NavLink to={`/reviews/${product.id}`}>
-        <button id='reviewButtonOne'> Write a customer review</button>
+      <NavLink to={`/reviews/${productId}`}>
+        <button id='reviewButtonOne'>Write a customer review</button>
       </NavLink>
     );
   } else if (sessionUser) {
     reviewForm = (
-      <NavLink to={`/reviews/${product.id}`}>
-        <button id='reviewButtonOne'> Write a customer review</button>
+      <NavLink to={`/reviews/${productId}`}>
+        <button id='reviewButtonOne'>Write a customer review</button>
       </NavLink>
     );
   } else {
     reviewForm = (
-      <NavLink to={`/reviews/${product.id}`}>
-        <button id='reviewButtonOne'> Write a customer review</button>
+      <NavLink to={`/reviews/${productId}`}>
+        <button id='reviewButtonOne'>Write a customer review</button>
       </NavLink>
     );
   }
@@ -190,7 +190,6 @@ const ProductIndexItem = () => {
             name="quantity"
             value={quantity}
             onChange={handleQuantityChange}
-
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -217,13 +216,13 @@ const ProductIndexItem = () => {
         <div className="reviewDivider"></div>
         <div id='productReviewOuterDiv'>
           <div id='productReviewDiv'>
-            <h1>Customer Reviews</h1>
+            <h1 id='customerReviewsH1'>Customer Reviews</h1>
             <div id='customerRatingsDiv'>
               <div id='customerRatingsDivInner'>
-                <Rating rating={product.rating} />
+                <ReviewRating ReviewRating={product.rating} />
                 <span id='reviewAverageSpan'>{reviewAverage}   out of 5</span>
               </div>
-              <h1>{reviewAmount}</h1>
+              <h1 id='reviewAmountH1'>{reviewAmount}</h1>
             </div>
           </div>
           <div id='writeReviewDiv'>

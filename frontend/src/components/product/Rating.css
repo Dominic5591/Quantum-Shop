@@ -1,6 +1,25 @@
 .star-rating {
   display: inline-block;
   padding-top: 10px;
+  font-size: 24px;
+}
+
+.star-rating {
+  display: inline-block;
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+.star-rating .star {
+  display: inline-block;
+  padding-top: 10px;  
+  font-size: 12px;
+}
+
+.star-rating-review .star {
+  display: inline-block;
+  padding-top: 10px;
+  font-size: 24px;
 }
 
 .star {

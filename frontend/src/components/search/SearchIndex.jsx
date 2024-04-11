@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { fetchSearch } from "../../store/search";
 import { NavLink } from 'react-router-dom';
-import Rating from "../product/Rating";
+import { Rating } from "../product/Rating";
 import _debounce from 'lodash.debounce';
 import loading from '../../images/loading.gif';
 import git from '../../images/github.png';

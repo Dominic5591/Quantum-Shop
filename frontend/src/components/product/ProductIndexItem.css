@@ -325,3 +325,15 @@
   display: flex;
   gap: 142px;
 }
+
+#reviewAmountH1 {
+  padding-top: 5px;
+}
+
+#customerReviewsH1 {
+  font-size: 24px;
+}
+
+#reviewButtonOne {
+  margin-top: 50px;
+}
