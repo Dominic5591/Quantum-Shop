@@ -11,3 +11,4 @@ class CreateReviews < ActiveRecord::Migration[7.0]
     add_index :reviews, [:user_id, :product_id], unique: true
   end
 end
+

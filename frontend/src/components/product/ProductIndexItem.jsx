@@ -5,11 +5,12 @@ import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../s
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchReviews } from '../../store/review';
+import { selectReviewArray } from '../../store/review';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
+import ReviewIndex from '../review/ReviewIndex';
 
 
 const ProductIndexItem = () => {
@@ -31,13 +32,13 @@ const ProductIndexItem = () => {
 
 
   useEffect(() => {
+    // dispatch(fetchReviews());
     dispatch(fetchProduct(product_id))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
-    dispatch(fetchReviews());
   }, [dispatch, product_id]);
 
-  let reviews = useSelector(state => Object.values(state.reviews));
+  let reviews = useSelector(selectReviewArray);
 
   reviews.forEach(review => {
     if (review && product) {
@@ -234,6 +235,7 @@ const ProductIndexItem = () => {
           </div>
         </div>
         <div className="reviewDivider"></div>
+        <ReviewIndex product={product} />
       </div>
 
 
