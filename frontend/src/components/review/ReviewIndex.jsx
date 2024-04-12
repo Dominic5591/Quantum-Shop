@@ -1,7 +1,7 @@
 import { selectReviewArray } from "../../store/review";
 import { useSelector } from 'react-redux';
 import ReviewItem from "./ReviewItem";
-import 'ReviewIndex.css';
+import './ReviewIndex.css';
 
 const ReviewIndex = ({ product }) => {
   const reviews = useSelector(selectReviewArray);
@@ -12,7 +12,7 @@ const ReviewIndex = ({ product }) => {
         if (review.product_id == product.id) {
           return (
             <div className="reviewIndexDiv" key={`${review.id}_${index}`}>
-              <ReviewItem  />
+              <ReviewItem  review={review}/>
             </div>
           );
         }

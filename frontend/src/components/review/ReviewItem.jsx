@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ReviewRating } from "../product/Rating";
 import { deleteReview } from "../../store/review";
-
+import './ReviewItem.css';
 
 const ReviewItem = ({ review }) => {
   const dispatch = useDispatch();
