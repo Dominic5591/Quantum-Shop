@@ -8,7 +8,6 @@ const ReviewIndex = ({ product }) => {
 
   return (
     <div className="reviewIndexPageMain">
-      <h1>reviews</h1>
       {reviews.map((review, index) => {
         if (review.productId == product.id) {
           return (

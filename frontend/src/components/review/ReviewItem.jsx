@@ -20,10 +20,11 @@ const ReviewItem = ({ review }) => {
     userReviews = (
       <div>
         <div>
-          <h1>{review.username}</h1>
+          <img id='reviewProfilePreset' src={profile} alt="" />
+          <span id="userReviewUsername">{review.username}</span>
           <div className="reviewTitleDiv">
             <ReviewRating ReviewRating={review.rating} />
-            <h1 className="reviewTitleH1">{review.title}</h1>
+            <span className="reviewTitleSpan">{review.title}</span>
           </div>
           <div className="reviewBodyDiv">{review.body}</div>
           <div>
@@ -41,7 +42,7 @@ const ReviewItem = ({ review }) => {
           <span id="userReviewUsername">{review.username}</span>
           <div className="reviewTitleDiv">
             <ReviewRating ReviewRating={review.rating} />
-            <h1 className="reviewTitleH1">{review.title}</h1>
+            <span className="reviewTitleSpan">{review.title}</span>
           </div>
           <div className="reviewBodyDiv">{review.body}</div>
         </div>
@@ -51,7 +52,6 @@ const ReviewItem = ({ review }) => {
 
   return (
     <>
-
       {userReviews}
     </>
   );
