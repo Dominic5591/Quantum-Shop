@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ReviewRating } from "../product/Rating";
 import { deleteReview } from "../../store/review";
+import profile from '../../images/user32.png';
 import './ReviewItem.css';
 
 const ReviewItem = ({ review }) => {
@@ -19,7 +20,7 @@ const ReviewItem = ({ review }) => {
     userReviews = (
       <div>
         <div>
-          <h1>Your reviews</h1>
+          <h1>{review.username}</h1>
           <div className="reviewTitleDiv">
             <ReviewRating ReviewRating={review.rating} />
             <h1 className="reviewTitleH1">{review.title}</h1>
@@ -34,8 +35,10 @@ const ReviewItem = ({ review }) => {
     );
   } else {
     userReviews = (
-      <div>
-        <div>
+      <div id="customerReviewItemDivMain">
+        <div id="customerReviewItemDiv">
+          <img id='reviewProfilePreset' src={profile} alt="" />
+          <span id="userReviewUsername">{review.username}</span>
           <div className="reviewTitleDiv">
             <ReviewRating ReviewRating={review.rating} />
             <h1 className="reviewTitleH1">{review.title}</h1>
