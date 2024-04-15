@@ -13,15 +13,17 @@ const ReviewItem = ({ review }) => {
     dispatch(deleteReview(review.id));
   };
 
+  console.log(review.rating);
+
   let userReviews;
 
-  if (sessionUser && sessionUser.id === review.user_id) {
+  if (sessionUser && sessionUser.id === review.userId) {
     userReviews = (
       <div>
         <div>
           <h1>Your reviews</h1>
           <div className="reviewTitleDiv">
-            <ReviewRating rating={review.rating} />
+            <ReviewRating ReviewRating={review.rating} />
             <h1 className="reviewTitleH1">{review.title}</h1>
           </div>
           <div className="reviewBodyDiv">{review.body}</div>
@@ -48,7 +50,10 @@ const ReviewItem = ({ review }) => {
   }
 
   return (
-    {userReviews}
+    <>
+    
+      {userReviews}
+    </>
   );
 };
 

@@ -11,6 +11,7 @@ import linkedin from '../../images/linkedin.png';
 import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
 import ReviewIndex from '../review/ReviewIndex';
+import { fetchReviews } from '../../store/review';
 
 
 const ProductIndexItem = () => {
@@ -32,10 +33,10 @@ const ProductIndexItem = () => {
 
 
   useEffect(() => {
-    // dispatch(fetchReviews());
     dispatch(fetchProduct(product_id))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
+    dispatch(fetchReviews());
   }, [dispatch, product_id]);
 
   let reviews = useSelector(selectReviewArray);
