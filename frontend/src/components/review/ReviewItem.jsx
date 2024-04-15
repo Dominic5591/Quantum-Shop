@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ReviewRating } from "../product/Rating";
 import { deleteReview } from "../../store/review";
+import profile from '../../images/user32.png';
 import './ReviewItem.css';
 
 const ReviewItem = ({ review }) => {
@@ -15,14 +16,15 @@ const ReviewItem = ({ review }) => {
 
   let userReviews;
 
-  if (sessionUser && sessionUser.id === review.user_id) {
+  if (sessionUser && sessionUser.id === review.userId) {
     userReviews = (
       <div>
         <div>
-          <h1>Your reviews</h1>
+          <img id='reviewProfilePreset' src={profile} alt="" />
+          <span id="userReviewUsername">{review.username}</span>
           <div className="reviewTitleDiv">
-            <ReviewRating rating={review.rating} />
-            <h1 className="reviewTitleH1">{review.title}</h1>
+            <ReviewRating ReviewRating={review.rating} />
+            <span className="reviewTitleSpan">{review.title}</span>
           </div>
           <div className="reviewBodyDiv">{review.body}</div>
           <div>
@@ -34,12 +36,13 @@ const ReviewItem = ({ review }) => {
     );
   } else {
     userReviews = (
-      <div>
-        <div>
-          <h1>Reviews</h1>
+      <div id="customerReviewItemDivMain">
+        <div id="customerReviewItemDiv">
+          <img id='reviewProfilePreset' src={profile} alt="" />
+          <span id="userReviewUsername">{review.username}</span>
           <div className="reviewTitleDiv">
-            <ReviewRating rating={review.rating} />
-            <h1 className="reviewTitleH1">{review.title}</h1>
+            <ReviewRating ReviewRating={review.rating} />
+            <span className="reviewTitleSpan">{review.title}</span>
           </div>
           <div className="reviewBodyDiv">{review.body}</div>
         </div>
@@ -48,7 +51,9 @@ const ReviewItem = ({ review }) => {
   }
 
   return (
-    {userReviews}
+    <>
+      {userReviews}
+    </>
   );
 };
 

@@ -9,10 +9,10 @@ const ReviewIndex = ({ product }) => {
   return (
     <div className="reviewIndexPageMain">
       {reviews.map((review, index) => {
-        if (review.product_id == product.id) {
+        if (review.productId == product.id) {
           return (
             <div className="reviewIndexDiv" key={`${review.id}_${index}`}>
-              <ReviewItem  review={review}/>
+              <ReviewItem review={review}/>
             </div>
           );
         }

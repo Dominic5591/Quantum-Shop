@@ -36,6 +36,16 @@ export const selectReviewArray = createSelector(
   (reviews) => Object.values(reviews)
 );
 
+
+export const selectReviewProductArray = createSelector(
+  [selectReviewState, (state, productId) => productId],
+  (reviews, productId) => {
+    return Object.values(reviews).filter(
+      (review) => review.productId === productId
+    );
+  }
+);
+
 export const fetchReviews = () => async dispatch => {
   const res = await csrfFetch('/api/reviews');
   if (res.ok) {

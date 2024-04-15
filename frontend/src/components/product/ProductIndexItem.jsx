@@ -5,12 +5,13 @@ import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../s
 import { fetchProduct, selectProduct } from '../../store/product';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { selectReviewArray } from '../../store/review';
+import { selectReviewProductArray } from '../../store/review';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
 import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
 import ReviewIndex from '../review/ReviewIndex';
+import { fetchReviews } from '../../store/review';
 
 
 const ProductIndexItem = () => {
@@ -25,31 +26,37 @@ const ProductIndexItem = () => {
   const navigate = useNavigate();
 
   let reviewSum = 0;
-  let reviewCount = 0;
+  // let reviewCount = 0;
   let reviewAverage = 0;
   let hasReview = false;
 
 
 
   useEffect(() => {
-    // dispatch(fetchReviews());
     dispatch(fetchProduct(product_id))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
+    dispatch(fetchReviews());
   }, [dispatch, product_id]);
 
-  let reviews = useSelector(selectReviewArray);
+  let reviews = useSelector(state => selectReviewProductArray(state, product_id));
+  let reviewCount = 0;  
+  let userReviewCount = 0;
 
   reviews.forEach(review => {
-    if (review && product) {
-      reviewSum += review.rating;
-      reviewCount += 1;
-    } else if (sessionUser) {
-      if (review.productId === product.id && review.userId === sessionUser.id) {
-        hasReview = true;
+    reviewSum += review.rating;
+    reviewCount += 1;
+    if (sessionUser && review.userId === sessionUser.id) {
+      userReviewCount += 1;
+      if (userReviewCount > 1) {
+        reviewCount -= 1;
       }
     }
+  
   });
+
+
+
 
   if (reviewCount > 0) {
     reviewAverage = reviewSum / reviewCount;
@@ -140,6 +147,7 @@ const ProductIndexItem = () => {
   
 
 
+  
 
 
   return (
