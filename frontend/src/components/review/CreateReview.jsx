@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './CreateReview.css';
-import { fetchProduct } from '../../store/product';
-import loading from '../../images/loading.gif';
-import { createReview } from '../../store/review';
+// import { fetchProduct } from '../../store/product';
+// import loading from '../../images/loading.gif';
+import { createReview, fetchReviews } from '../../store/review';
 import Modal from '../modal/Modal';
 import * as modalActions from '../../store/modal';
 import { CreateReviewRating } from '../product/Rating';
 
 const CreateReview = ({ productId }) => {
   // const { productId } = useParams();
-  const product_id = parseInt(productId);
+  // const product_id = parseInt(productId);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const userId = sessionUser.id;
@@ -19,26 +19,23 @@ const CreateReview = ({ productId }) => {
   const [body, setBody] = useState("");
   const [rating, setRating] = useState(0);
   // const [error, setError] = useState(null)
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    dispatch(fetchProduct(product_id))
-      .then(() => setLoaded(true))
-      .catch(() => setLoaded(true));
-  }, [dispatch, product_id]);
+  // const [loaded, setLoaded] = useState(false);
 
 
-  if (!loaded) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
-  } 
+
+
+  // if (!loaded) {
+  //   return (
+  //     <div>
+  //       <img src={loading} alt="loading" className='loadingGif' />
+  //     </div>
+  //   );
+  // } 
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(createReview({
       title,
       body,
@@ -46,7 +43,11 @@ const CreateReview = ({ productId }) => {
       userId,
       productId,
       username,
-    }));
+    }))
+      .then(() => {
+        dispatch(fetchReviews(productId));
+      });
+    dispatch(modalActions.hideModal());
   };
 
   const handleCloseReview = (e) => {
@@ -60,6 +61,7 @@ const CreateReview = ({ productId }) => {
     <Modal id='reviewModal'>
       <div id='modalWrapper'>
         <div id='reviewModalContent'>
+          <CreateReviewRating rating={rating} setRating={setRating} />
           <button id='closeReviewBtn' onClick={handleCloseReview}>&#x2715;</button>
           <input type="text" 
             placeholder='Title'
@@ -77,9 +79,8 @@ const CreateReview = ({ productId }) => {
               setBody(e.target.value);
             }}
           />
-          <CreateReviewRating rating={rating} setRating={setRating} />
 
-          <button onClick={handleSubmit}></button>
+          <button id='submitReviewBtn' onClick={handleSubmit}>Submit Review</button>
         </div>
       </div>
     </Modal>

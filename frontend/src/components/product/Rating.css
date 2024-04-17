@@ -17,7 +17,13 @@
 .filled {
   color: gold;
 }
-.star-rating-review .reviewStar:hover {
+
+
+.create-star-rating-review {
+  font-size: 38px;
+
+}
+.create-star-rating-review .reviewStar:hover {
   cursor: pointer;
 }
 .reviewStar {

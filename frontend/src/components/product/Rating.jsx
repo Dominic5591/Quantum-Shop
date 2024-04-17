@@ -45,6 +45,6 @@ export const CreateReviewRating = ({ rating, setRating }) => {
     return stars;
   };
 
-  return <div className="star-rating-review">{renderStars()}</div>;
+  return <div className="create-star-rating-review">{renderStars()}</div>;
 };
 
