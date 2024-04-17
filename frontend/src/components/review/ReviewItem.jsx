@@ -7,7 +7,7 @@ import './ReviewItem.css';
 const ReviewItem = ({ review }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  
+
 
   const removeReview = (e) => {
     e.preventDefault();
@@ -18,8 +18,8 @@ const ReviewItem = ({ review }) => {
 
   if (sessionUser && sessionUser.id === review.userId) {
     userReviews = (
-      <div>
-        <div>
+      <div id="customerReviewItemDivMain">
+        <div id="customerReviewItemDiv">
           <img id='reviewProfilePreset' src={profile} alt="" />
           <span id="userReviewUsername">{review.username}</span>
           <div className="reviewTitleDiv">

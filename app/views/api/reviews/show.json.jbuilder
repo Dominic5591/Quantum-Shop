@@ -3,6 +3,5 @@ json.reviews do
   json.extract! @review.user, :username, :email
   json.product do
     json.extract! @review.product, :name, :price, :category, :description
-    json.photoUrl url_for(@review.product.image) if @review.product.image.attached?
   end
 end

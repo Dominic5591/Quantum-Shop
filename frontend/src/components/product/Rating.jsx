@@ -35,7 +35,7 @@ export const CreateReviewRating = ({ rating, setRating }) => {
       stars.push(
         <span
           key={i}
-          className={i < rating ? 'star filled' : 'star'}
+          className={i < rating ? 'star filled' : 'reviewStar'}
           onClick={() => setRating(i + 1)}
         >
           &#9733;

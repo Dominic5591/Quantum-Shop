@@ -17,6 +17,9 @@
 .filled {
   color: gold;
 }
-.star-rating-review .star:hover {
+.star-rating-review .reviewStar:hover {
   cursor: pointer;
+}
+.reviewStar {
+  color: #979797;
 }

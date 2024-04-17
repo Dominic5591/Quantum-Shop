@@ -30,7 +30,6 @@ const ProductIndexItem = () => {
   const navigate = useNavigate();
 
   let reviewSum = 0;
-  // let reviewCount = 0;
   let reviewAverage = 0;
   // let hasReview = false;
 
@@ -174,9 +173,9 @@ const ProductIndexItem = () => {
           <h3 className='middleProductPriceH3'>{product.name}</h3>
         </div>
         <div className='middleRatingDiv'>
-          <span className='ratingsNum'>{product.rating}.0 </span>
+          <span className='ratingsNum'>{reviewAverage}  </span>
           <Rating rating={product.rating} />
-          <span className='numRatings'>1 rating</span>
+          <span className='numRatings'>{reviewAmount}</span>
         </div>
         <div className="middlePriceDivider"></div>
         <div className='middleProductPriceDiv'>
