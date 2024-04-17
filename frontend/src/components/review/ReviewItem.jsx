@@ -7,7 +7,7 @@ import './ReviewItem.css';
 const ReviewItem = ({ review }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-
+  
 
   const removeReview = (e) => {
     e.preventDefault();

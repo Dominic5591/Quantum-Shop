@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ReviewRating, Rating } from './Rating';
 import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
 import { fetchProduct, selectProduct } from '../../store/product';
@@ -12,6 +12,8 @@ import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
 import ReviewIndex from '../review/ReviewIndex';
 import { fetchReviews } from '../../store/review';
+import * as modalActions from '../../store/modal';
+import CreateReview from '../review/CreateReview';
 
 
 const ProductIndexItem = () => {
@@ -23,12 +25,14 @@ const ProductIndexItem = () => {
   const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
   const sessionUser = useSelector(state => state.session.user);
+  const modalType = useSelector((state) => state.modal.type === "SHOW_REVIEW_MODAL")
+
   const navigate = useNavigate();
 
   let reviewSum = 0;
   // let reviewCount = 0;
   let reviewAverage = 0;
-  let hasReview = false;
+  // let hasReview = false;
 
 
 
@@ -76,27 +80,27 @@ const ProductIndexItem = () => {
     );
   }
 
-  let reviewForm;
+  // let reviewForm;
 
-  if (sessionUser && !hasReview) {
-    reviewForm = (
-      <NavLink to={`/reviews/${productId}`}>
-        <button id='reviewButtonOne'>Write a customer review</button>
-      </NavLink>
-    );
-  } else if (sessionUser) {
-    reviewForm = (
-      <NavLink to={`/reviews/${productId}`}>
-        <button id='reviewButtonOne'>Write a customer review</button>
-      </NavLink>
-    );
-  } else {
-    reviewForm = (
-      <NavLink to={`/reviews/${productId}`}>
-        <button id='reviewButtonOne'>Write a customer review</button>
-      </NavLink>
-    );
-  }
+  // if (sessionUser && !hasReview) {
+  //   reviewForm = (
+  //     <NavLink to={`/reviews/${productId}`}>
+  //       <button id='reviewButtonOne'>Write a customer review</button>
+  //     </NavLink>
+  //   );
+  // } else if (sessionUser) {
+  //   reviewForm = (
+  //     <NavLink to={`/reviews/${productId}`}>
+  //       <button id='reviewButtonOne'>Write a customer review</button>
+  //     </NavLink>
+  //   );
+  // } else {
+  //   reviewForm = (
+  //     <NavLink to={`/reviews/${productId}`}>
+  //       <button id='reviewButtonOne'>Write a customer review</button>
+  //     </NavLink>
+  //   );
+  // }
 
 
   if (!loaded) {
@@ -145,6 +149,15 @@ const ProductIndexItem = () => {
     setQuantity(parseInt(e.target.value, 10));
   };
   
+
+
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(modalActions.showModal("SHOW_REVIEW_MODAL"));
+  };
+
+
 
 
   
@@ -238,7 +251,12 @@ const ProductIndexItem = () => {
             <h1 id='reviewProductTextH1'>Review this product</h1>
             <h1 id='shareYourThoughtsH1'>Share your thoughts with other customers</h1>
             <div id='createReviewDiv'>
-              {reviewForm}
+              {modalType && <CreateReview productId={product_id}/>}
+              {sessionUser ? 
+                <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
+                :
+                <p></p>
+              } 
             </div>
           </div>
         </div>

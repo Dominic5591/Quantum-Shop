@@ -28,3 +28,23 @@ export const ReviewRating = ({ ReviewRating }) => {
 };
 
 
+export const CreateReviewRating = ({ rating, setRating }) => {
+  const renderStars = () => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <span
+          key={i}
+          className={i < rating ? 'star filled' : 'star'}
+          onClick={() => setRating(i + 1)}
+        >
+          &#9733;
+        </span>
+      );
+    }
+    return stars;
+  };
+
+  return <div className="star-rating-review">{renderStars()}</div>;
+};
+

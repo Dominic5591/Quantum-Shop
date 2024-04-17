@@ -17,3 +17,6 @@
 .filled {
   color: gold;
 }
+.star-rating-review .star:hover {
+  cursor: pointer;
+}
