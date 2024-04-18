@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './CreateReview.css';
-// import { fetchProduct } from '../../store/product';
-// import loading from '../../images/loading.gif';
-import { createReview, fetchReviews } from '../../store/review';
+import { createReview } from '../../store/review';
+import { CreateReviewRating } from '../product/Rating';
 import Modal from '../modal/Modal';
 import * as modalActions from '../../store/modal';
-import { CreateReviewRating } from '../product/Rating';
+import './CreateReview.css';
 
 const CreateReview = ({ productId }) => {
-  // const { productId } = useParams();
-  // const product_id = parseInt(productId);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const userId = sessionUser.id;
@@ -18,21 +14,6 @@ const CreateReview = ({ productId }) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [rating, setRating] = useState(0);
-  // const [error, setError] = useState(null)
-  // const [loaded, setLoaded] = useState(false);
-
-
-
-
-  // if (!loaded) {
-  //   return (
-  //     <div>
-  //       <img src={loading} alt="loading" className='loadingGif' />
-  //     </div>
-  //   );
-  // } 
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,10 +24,7 @@ const CreateReview = ({ productId }) => {
       userId,
       productId,
       username,
-    }))
-      .then(() => {
-        dispatch(fetchReviews(productId));
-      });
+    }));
     dispatch(modalActions.hideModal());
   };
 
@@ -54,8 +32,6 @@ const CreateReview = ({ productId }) => {
     e.preventDefault();
     dispatch(modalActions.hideModal());
   };
-
-
 
   return (
     <Modal id='reviewModal'>

@@ -59,26 +59,30 @@ export const fetchReview = reviewId => async dispatch => {
   const res = await csrfFetch(`/api/review/${reviewId}`);
   if (res.ok) {
     const data = await res.json();
-    dispatch(receiveReviews(data.reviews));
+    dispatch(receiveReviews(data));
   }
 };
 
 
-export const createReview = review => async dispatch => {
-  const res = await csrfFetch('/api/reviews', {
+export const createReview = (review) => async (dispatch) => {
+  const res = await csrfFetch("/api/reviews", {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(review),
   });
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(receiveReview(data.review));
+    console.log(data.reviews); // Temporarily log the server response
+    dispatch(receiveReview(data.reviews)); // Correctly dispatching the review object
     dispatch(fetchProduct(data.product));
+  } else {
+    console.error("Failed to create review:", res.status, res.statusText);
   }
 };
+
 
 
 export const updateReview = review => async dispatch => {
@@ -115,9 +119,10 @@ const reviewReducer = (state = {}, action) => {
   const newState = { ...state };
   switch (action.type) {
   case RECEIVE_REVIEW:
-    return { ...state, [action.review.id]: action.review };
+    console.log(action.id);
+    return { ...state, [action.id]: action.review };
   case RECEIVE_REVIEWS:
-    return { ...state, ...action.reviews };
+    return action.reviews || {};
   case REMOVE_REVIEW:
     delete newState[action.reviewId];
     return newState;

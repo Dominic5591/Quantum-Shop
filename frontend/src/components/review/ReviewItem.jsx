@@ -1,13 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ReviewRating } from "../product/Rating";
-import { deleteReview } from "../../store/review";
+import { deleteReview, fetchReviews } from "../../store/review";
 import profile from '../../images/user32.png';
+import { useEffect } from "react";
 import './ReviewItem.css';
 
 const ReviewItem = ({ review }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [dispatch]);
+  
 
   const removeReview = (e) => {
     e.preventDefault();
