@@ -23,6 +23,11 @@
   font-size: 38px;
 
 }
+.create-star-rating-review:hover {
+  cursor: pointer;
+}
+
+
 .create-star-rating-review .reviewStar:hover {
   cursor: pointer;
 }

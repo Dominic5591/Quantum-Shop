@@ -27,9 +27,6 @@
   border-radius: 10px;
 }
 
-
-
-
 #modalEditContent {
   min-width: 500px;
   min-height: 600px;
@@ -37,7 +34,6 @@
   background-color: white;
   border-radius: 10px;
 }
-
 
 #modalEditBackground {
   position: fixed;
@@ -47,7 +43,6 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
 
 #modalMainEdit {
   position: fixed;

@@ -36,7 +36,6 @@ export const selectReviewArray = createSelector(
   (reviews) => Object.values(reviews)
 );
 
-
 export const selectReviewProductArray = createSelector(
   [selectReviewState, (state, productId) => productId],
   (reviews, productId) => {
@@ -54,7 +53,6 @@ export const fetchReviews = () => async dispatch => {
   }
 };
 
-
 export const fetchReview = reviewId => async dispatch => {
   const res = await csrfFetch(`/api/review/${reviewId}`);
   if (res.ok) {
@@ -62,7 +60,6 @@ export const fetchReview = reviewId => async dispatch => {
     dispatch(receiveReviews(data));
   }
 };
-
 
 export const createReview = (review) => async (dispatch) => {
   const res = await csrfFetch("/api/reviews", {
@@ -75,15 +72,13 @@ export const createReview = (review) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    console.log(data.reviews); // Temporarily log the server response
-    dispatch(receiveReview(data.reviews)); // Correctly dispatching the review object
+    console.log(data.reviews); 
+    dispatch(receiveReview(data.reviews));
     dispatch(fetchProduct(data.product));
   } else {
     console.error("Failed to create review:", res.status, res.statusText);
   }
 };
-
-
 
 export const updateReview = review => async dispatch => {
   const res = await csrfFetch(`/api/reviews/${review.id}`, {
@@ -96,7 +91,7 @@ export const updateReview = review => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(receiveReview(data.review));
+    dispatch(receiveReview(data.reviews));
   }
 };
 
@@ -114,13 +109,11 @@ export const deleteReview = reviewId => async dispatch => {
   }
 };
 
-
 const reviewReducer = (state = {}, action) => {
   const newState = { ...state };
   switch (action.type) {
   case RECEIVE_REVIEW:
-    console.log(action.id);
-    return { ...state, [action.id]: action.review };
+    return { ...state, [action.review.id]: action.review };
   case RECEIVE_REVIEWS:
     return action.reviews || {};
   case REMOVE_REVIEW:

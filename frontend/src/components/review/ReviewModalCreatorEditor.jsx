@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createReview } from '../../store/review';
+import { createReview, updateReview } from '../../store/review';
 import { CreateReviewRating } from '../product/Rating';
 import Modal from '../modal/Modal';
 import * as modalActions from '../../store/modal';
@@ -22,16 +22,31 @@ const ReviewModalCreatorEditor = ({ productId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createReview({
-      title,
-      body,
-      rating,
-      userId,
-      productId,
-      username,
-    }));
+
+    if (isEditing) {
+      dispatch(updateReview({
+        id: isEditing ? reviewData.id : undefined,
+        title,
+        body,
+        rating,
+        userId,
+        productId,
+        username,
+      }));
+    } else {
+      dispatch(createReview({
+        title,
+        body,
+        rating,
+        userId,
+        productId,
+        username,
+      }));
+    }
+
     dispatch(modalActions.hideModal());
   };
+
 
   const handleCloseReview = (e) => {
     e.preventDefault();
