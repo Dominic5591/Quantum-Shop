@@ -13,7 +13,7 @@ import './ProductIndexItem.css';
 import ReviewIndex from '../review/ReviewIndex';
 import { fetchReviews } from '../../store/review';
 import * as modalActions from '../../store/modal';
-import CreateReview from '../review/CreateReview';
+import ReviewModalCreatorEditor from '../review/ReviewModalCreatorEditor';
 
 
 const ProductIndexItem = () => {
@@ -206,7 +206,7 @@ const ProductIndexItem = () => {
             <h1 id='reviewProductTextH1'>Review this product</h1>
             <h1 id='shareYourThoughtsH1'>Share your thoughts with other customers</h1>
             <div id='createReviewDiv'>
-              {modalType && <CreateReview productId={product_id}/>}
+              {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
               {sessionUser ? 
                 <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
                 :

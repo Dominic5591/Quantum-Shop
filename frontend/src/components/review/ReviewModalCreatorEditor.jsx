@@ -4,16 +4,21 @@ import { createReview } from '../../store/review';
 import { CreateReviewRating } from '../product/Rating';
 import Modal from '../modal/Modal';
 import * as modalActions from '../../store/modal';
-import './CreateReview.css';
+import './ReviewModalCreatorEditor.css';
 
-const CreateReview = ({ productId }) => {
+const ReviewModalCreatorEditor = ({ productId }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const modalState = useSelector(state => state.modal);
+  const isEditing = modalState.type === "SHOW_EDIT_MODAL";
+  const reviewData = modalState.modalData.review || {};
+  const [title, setTitle] = useState(isEditing ? reviewData.title : "");
+  const [body, setBody] = useState(isEditing ? reviewData.body : "");
+  const [rating, setRating] = useState(isEditing ? reviewData.rating : 0);
+
   const userId = sessionUser.id;
   const username = sessionUser.username;
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [rating, setRating] = useState(0);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +39,7 @@ const CreateReview = ({ productId }) => {
   };
 
   return (
-    <Modal id='reviewModal'>
+    <Modal id='reviewModal' isEditing={isEditing ? true : false}>
       <div id='modalWrapper'>
         <div id='reviewModalContent'>
           <CreateReviewRating rating={rating} setRating={setRating} />
@@ -63,4 +68,4 @@ const CreateReview = ({ productId }) => {
   );
 };
 
-export default CreateReview;
+export default ReviewModalCreatorEditor;
