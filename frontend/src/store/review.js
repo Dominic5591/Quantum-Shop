@@ -36,7 +36,6 @@ export const selectReviewArray = createSelector(
   (reviews) => Object.values(reviews)
 );
 
-
 export const selectReviewProductArray = createSelector(
   [selectReviewState, (state, productId) => productId],
   (reviews, productId) => {
@@ -54,32 +53,32 @@ export const fetchReviews = () => async dispatch => {
   }
 };
 
-
 export const fetchReview = reviewId => async dispatch => {
   const res = await csrfFetch(`/api/review/${reviewId}`);
   if (res.ok) {
     const data = await res.json();
-    dispatch(receiveReviews(data.reviews));
+    dispatch(receiveReviews(data));
   }
 };
 
-
-export const createReview = review => async dispatch => {
-  const res = await csrfFetch('/api/reviews', {
+export const createReview = (review) => async (dispatch) => {
+  const res = await csrfFetch("/api/reviews", {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(review),
   });
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(receiveReview(data.review));
+    console.log(data.reviews); 
+    dispatch(receiveReview(data.reviews));
     dispatch(fetchProduct(data.product));
+  } else {
+    console.error("Failed to create review:", res.status, res.statusText);
   }
 };
-
 
 export const updateReview = review => async dispatch => {
   const res = await csrfFetch(`/api/reviews/${review.id}`, {
@@ -92,7 +91,7 @@ export const updateReview = review => async dispatch => {
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(receiveReview(data.review));
+    dispatch(receiveReview(data.reviews));
   }
 };
 
@@ -110,14 +109,13 @@ export const deleteReview = reviewId => async dispatch => {
   }
 };
 
-
 const reviewReducer = (state = {}, action) => {
   const newState = { ...state };
   switch (action.type) {
   case RECEIVE_REVIEW:
     return { ...state, [action.review.id]: action.review };
   case RECEIVE_REVIEWS:
-    return { ...state, ...action.reviews };
+    return action.reviews || {};
   case REMOVE_REVIEW:
     delete newState[action.reviewId];
     return newState;

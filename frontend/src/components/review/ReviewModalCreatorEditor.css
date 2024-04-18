@@ -1,0 +1,48 @@
+#reviewModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 30px;
+}
+
+#closeReviewBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#reviewTitleInput,
+#reviewTextarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#reviewTextarea {
+  resize: none;
+  height: 300px;
+}
+
+#submitReviewBtn {
+  width: 60%;
+    height: 33px;
+    padding: 1px 6px;
+    background-color: #FFD814;
+    color: #464646;
+    font-weight: 400;
+    text-align: center;
+    line-height: 19px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#submitReviewBtn:hover {
+  background-color: #f8d318;
+}

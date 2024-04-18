@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ReviewRating, Rating } from './Rating';
 import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
 import { fetchProduct, selectProduct } from '../../store/product';
@@ -12,6 +12,8 @@ import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
 import ReviewIndex from '../review/ReviewIndex';
 import { fetchReviews } from '../../store/review';
+import * as modalActions from '../../store/modal';
+import ReviewModalCreatorEditor from '../review/ReviewModalCreatorEditor';
 
 
 const ProductIndexItem = () => {
@@ -23,48 +25,34 @@ const ProductIndexItem = () => {
   const [quantity, setQuantity] = useState(1);
   const product = useSelector(selectProduct(productId));
   const sessionUser = useSelector(state => state.session.user);
+  const modalType = useSelector((state) => state.modal.type === "SHOW_REVIEW_MODAL");
   const navigate = useNavigate();
 
   let reviewSum = 0;
-  // let reviewCount = 0;
   let reviewAverage = 0;
-  let hasReview = false;
-
-
 
   useEffect(() => {
+    dispatch(fetchReviews());
     dispatch(fetchProduct(product_id))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
-    dispatch(fetchReviews());
   }, [dispatch, product_id]);
 
   let reviews = useSelector(state => selectReviewProductArray(state, product_id));
   let reviewCount = 0;  
-  let userReviewCount = 0;
 
   reviews.forEach(review => {
     reviewSum += review.rating;
     reviewCount += 1;
-    if (sessionUser && review.userId === sessionUser.id) {
-      userReviewCount += 1;
-      if (userReviewCount > 1) {
-        reviewCount -= 1;
-      }
-    }
+
   
   });
 
-
-
-
   if (reviewCount > 0) {
-    reviewAverage = reviewSum / reviewCount;
+    reviewAverage = (reviewSum / reviewCount).toFixed(1);
   }
 
   let reviewAmount;
-
-
 
   if (reviewCount === 1) {
     reviewAmount = (
@@ -75,29 +63,6 @@ const ProductIndexItem = () => {
       <span id='reviewAmountH1'>{reviewCount} ratings</span>
     );
   }
-
-  let reviewForm;
-
-  if (sessionUser && !hasReview) {
-    reviewForm = (
-      <NavLink to={`/reviews/${productId}`}>
-        <button id='reviewButtonOne'>Write a customer review</button>
-      </NavLink>
-    );
-  } else if (sessionUser) {
-    reviewForm = (
-      <NavLink to={`/reviews/${productId}`}>
-        <button id='reviewButtonOne'>Write a customer review</button>
-      </NavLink>
-    );
-  } else {
-    reviewForm = (
-      <NavLink to={`/reviews/${productId}`}>
-        <button id='reviewButtonOne'>Write a customer review</button>
-      </NavLink>
-    );
-  }
-
 
   if (!loaded) {
     return (
@@ -141,13 +106,16 @@ const ProductIndexItem = () => {
 
   const parsedDescription = JSON.parse(product.description[0]);
 
+
   const handleQuantityChange = (e) => {
     setQuantity(parseInt(e.target.value, 10));
   };
-  
 
 
-  
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(modalActions.showModal("SHOW_REVIEW_MODAL"));
+  };
 
 
   return (
@@ -161,9 +129,9 @@ const ProductIndexItem = () => {
           <h3 className='middleProductPriceH3'>{product.name}</h3>
         </div>
         <div className='middleRatingDiv'>
-          <span className='ratingsNum'>{product.rating}.0 </span>
+          <span className='ratingsNum'>{reviewAverage}  </span>
           <Rating rating={product.rating} />
-          <span className='numRatings'>1 rating</span>
+          <span className='numRatings'>{reviewAmount}</span>
         </div>
         <div className="middlePriceDivider"></div>
         <div className='middleProductPriceDiv'>
@@ -238,7 +206,12 @@ const ProductIndexItem = () => {
             <h1 id='reviewProductTextH1'>Review this product</h1>
             <h1 id='shareYourThoughtsH1'>Share your thoughts with other customers</h1>
             <div id='createReviewDiv'>
-              {reviewForm}
+              {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
+              {sessionUser ? 
+                <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
+                :
+                <p></p>
+              } 
             </div>
           </div>
         </div>
@@ -254,12 +227,12 @@ const ProductIndexItem = () => {
         <div className='loginLinks'>
           <span className='loginGit'>
             <a href="https://github.com/Dominic5591">
-              <img src={git} alt="" />
+              <img src={git} alt="Github" />
             </a>
           </span>
           <span className='loginLinkedin'>
             <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
-              <img src={linkedin} alt="" />
+              <img src={linkedin} alt="LinkedIn" />
             </a>
             
           </span>

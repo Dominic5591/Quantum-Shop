@@ -1,0 +1,57 @@
+#modalMain {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#modalBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modalContent {
+  min-width: 500px;
+  min-height: 600px;
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#modalEditContent {
+  min-width: 500px;
+  min-height: 600px;
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#modalEditBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modalMainEdit {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}

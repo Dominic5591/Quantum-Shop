@@ -6,6 +6,7 @@ import cartReducer from './cartItem';
 import searchReducer from './search';
 import orderReducer from './order';
 import reviewReducer from './review';
+import modalsReducer from "./modal";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   search: searchReducer,
   orders: orderReducer,
   reviews: reviewReducer,
+  modal: modalsReducer,
 });
 
 

@@ -21,6 +21,7 @@
 .reviewTitleSpan {
   font-size: 24px;
   margin-left: 24px;
+  /* margin-right: 1050px; */
   font-family: Amazon Ember;
 
 }
@@ -31,6 +32,42 @@
   padding-right: 12px;
   display: inline;
 }
+
 .reviewBodyDiv {
   margin-top: 24px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.editDeleteReviewBtn {
+  margin-top: 24px;
+  height: 40px;
+  padding: 12px;
+  margin-right: 12px;
+  background-color: #ffffff;
+  color: #464646;
+  font-weight: bold;
+  border: 1px solid #d3d2d2;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: Amazon Ember Lite;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.editDeleteReviewBtn:hover {
+  background-color: #f1f1f1;
+}
+

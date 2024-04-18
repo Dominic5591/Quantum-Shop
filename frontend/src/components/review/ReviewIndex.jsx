@@ -1,10 +1,17 @@
-import { selectReviewArray } from "../../store/review";
-import { useSelector } from 'react-redux';
+import { fetchReviews, selectReviewArray } from "../../store/review";
+import {  useDispatch, useSelector } from 'react-redux';
 import ReviewItem from "./ReviewItem";
 import './ReviewIndex.css';
+import { useEffect } from "react";
 
 const ReviewIndex = ({ product }) => {
   const reviews = useSelector(selectReviewArray);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [dispatch]);
+  
 
   return (
     <div className="reviewIndexPageMain">
