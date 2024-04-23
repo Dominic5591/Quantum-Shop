@@ -11,6 +11,7 @@ const ReviewModalCreatorEditor = ({ productId }) => {
   const sessionUser = useSelector(state => state.session.user);
   const modalState = useSelector(state => state.modal);
   const isEditing = modalState.type === "SHOW_EDIT_MODAL";
+  
   const reviewData = modalState.modalData.review || {};
   const [title, setTitle] = useState(isEditing ? reviewData.title : "");
   const [body, setBody] = useState(isEditing ? reviewData.body : "");

@@ -57,6 +57,7 @@ export const fetchReview = reviewId => async dispatch => {
   const res = await csrfFetch(`/api/review/${reviewId}`);
   if (res.ok) {
     const data = await res.json();
+
     dispatch(receiveReviews(data));
   }
 };
@@ -72,11 +73,8 @@ export const createReview = (review) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    console.log(data.reviews); 
     dispatch(receiveReview(data.reviews));
     dispatch(fetchProduct(data.product));
-  } else {
-    console.error("Failed to create review:", res.status, res.statusText);
   }
 };
 
