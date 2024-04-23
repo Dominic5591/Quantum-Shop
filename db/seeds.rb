@@ -545,11 +545,7 @@ book1.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/pro
 
 
 book2 = Product.create(
-name: 'The 48 Laws of Power',
-description: [
-  'Amoral, cunning, ruthless, and instructive, this multi-million-copy New York Times bestseller is the definitive manual for anyone interested in gaining, observing, or defending against ultimate control from the author of The Laws of Human Nature.',
-  'In the book that People magazine proclaimed “beguiling” and “fascinating,” Robert Greene and Joost Elffers have distilled three thousand years of the history of power into 48 essential laws by drawing from the philosophies of Machiavelli, Sun Tzu, and Carl Von Clausewitz and also from the lives of figures ranging from Henry Kissinger to P.T. Barnum.'
-],
+name: 'The 48 Laws of Power',   
 price: 14.99,
 category: 'books',
 rating: 2
