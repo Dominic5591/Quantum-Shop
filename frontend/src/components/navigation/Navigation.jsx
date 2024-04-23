@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { memoizedSelectCartItems, fetchCart } from '../../store/cartItem';
 import * as sessionActions from '../../store/session';
 import SearchBar from './SearchBar';
-import cart from '../../images/cart.png';
+import cart from '../../images/navbar/cart3.svg';
 import arrow from '../../images/arrow.png';
 import './Navigation.css';
 
@@ -66,14 +66,13 @@ function Navigation() {
             {sessionLinks}
           </div>
         </li>
-        <div>
-          <NavLink to="cart">
-            <div className='cartDivOne'>
-              <p className='cartNum'>{totalQuantity}</p>
-              <img src={cart} alt="cart" className='cartPng'/>
-            </div>
-          </NavLink>
-        </div>
+        <NavLink id='cartNavLink' to="cart">
+          <li className='cartDivOne'>
+            <p className='cartNum'>{totalQuantity}</p>
+            <img src={cart} alt="cart" className='cartPng'/>
+            Your Cart
+          </li>
+        </NavLink>
       </ul>
       <ul className='lowerNavBar'>
 

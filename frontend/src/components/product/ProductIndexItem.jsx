@@ -64,7 +64,17 @@ const ProductIndexItem = () => {
     );
   }
 
-  if (!loaded) {
+  if (!product) {
+    return (
+      <div>
+        <img src={loading} alt="loading" className='loadingGif' />
+      </div>
+    );
+  }
+  
+  const parsedDescription = JSON.parse(product.description[0]);
+
+  if (!loaded && !parsedDescription) {
     return (
       <div>
         <img src={loading} alt="loading" className='loadingGif' />
@@ -104,7 +114,6 @@ const ProductIndexItem = () => {
     }
   };
 
-  const parsedDescription = JSON.parse(product.description[0]);
 
 
   const handleQuantityChange = (e) => {

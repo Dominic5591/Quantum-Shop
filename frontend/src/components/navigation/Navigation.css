@@ -13,9 +13,10 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  gap: 44px;
   justify-content: center;
   width: 100%;
-  height: 60px;
+  height: 65px;
 }
 
 .lowerNavBar {
@@ -31,9 +32,9 @@
   height: 38px;
 }
 
-li:not(#starthere) {
+/* li:not(#starthere) {
   margin-left: auto;
-}
+} */
 
 .liPlaceholder {
   color: #FFFFFF;
@@ -64,12 +65,13 @@ a {
 .dropbtn {
   background-color: #131921;
   color: white;
-  padding: 10px;
+  /* padding: 10px; */
   border: none;
   cursor: pointer;
-  margin-right: 25px;
+  /* margin-right: 25px; */
+  /* margin-left: 25px; */
   max-height: 60px;
-  max-width: 100px;
+  max-width: 120px;
 }
 
 .dropdown-content {
@@ -158,6 +160,18 @@ a {
   margin-left: 0;
 }
 
+
+
+
+
+#cartNavLink {
+  margin: 0;
+}
+
+
+
+
+/* 
 .cartNum {
   color: orange;
   font-size: 20px;
@@ -165,35 +179,32 @@ a {
   position: relative;
   top: 10px;
   right: 1.5px
-}
+} */
 
-.cartPng {
+/* .cartPng {
+  width: 20px;
   position: relative;
   margin-bottom: 10px;
-}
+} */
 
-.home {
+/* .home {
   margin-left: 50px;
   margin-top: 60px;
-}
+} */
 
-.ProductIndexLink {
-  margin-bottom: 60px;
-}
-
-.cartDivOne {
+/* .cartDivOne {
   margin-right: 150px;
   margin-left: 10px;
-}
-
+} */
+/* 
 .homeArrow {
   position: relative;
   bottom: 30px;
   margin-left: 150px;
   margin-right: 0px;
-}
+} */
 
-
+/* 
 @media screen and (min-width: 1700px) {
 
   .homeArrow {
@@ -204,4 +215,4 @@ a {
   }
 
 
-}
+} */
