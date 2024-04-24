@@ -142,7 +142,7 @@ const SearchBar = () => {
           {products.slice(0, maxResultsToShow).map((product, index) => (
             <div key={`${product.id}_${index}`} className='searchProductResult'>
               <NavLink className='searchProductResultLink' to={`/products/${product.id}`}>
-                {truncateName(product.name, 100)}
+                {truncateName(product.name, 105)}
               </NavLink>
             </div>
           ))}

@@ -70,6 +70,7 @@
 }
 
 .searchProductResult {
+  margin-top: 4px;
   color: black;
   padding: 9px;
   cursor: pointer;
@@ -78,10 +79,6 @@
 
 .searchProductResultLink {
   color: black;
-}
-
-.searchProductResult:hover {
-  background-color: #f5f5f5;
 }
 
 .searchProductResult:hover {
