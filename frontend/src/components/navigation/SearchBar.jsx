@@ -17,7 +17,7 @@ const SearchBar = () => {
   const products = Object.values(searchResults);
   const dropdownRef = useRef(null);
   const searchTimeoutRef = useRef(null);
-  const maxResultsToShow = 9;
+  const maxResultsToShow = 6;
   
   
   const magImgDivRef = useRef(null);
@@ -142,7 +142,7 @@ const SearchBar = () => {
           {products.slice(0, maxResultsToShow).map((product, index) => (
             <div key={`${product.id}_${index}`} className='searchProductResult'>
               <NavLink className='searchProductResultLink' to={`/products/${product.id}`}>
-                {truncateName(product.name, 105)}
+                <span className='searchResultArrowSpan'>&#8623; </span> {truncateName(product.name, 105)}
               </NavLink>
             </div>
           ))}

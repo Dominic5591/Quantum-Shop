@@ -57,20 +57,14 @@ function Navigation() {
     <div className='navMain'>
       <ul className='navBar'>
         <div className='home'>
-          <NavLink to="/">
-            <img src={arrow} alt="arrow" className='homeArrow' />
-          </NavLink>
+          <NavLink to="/"><img src={arrow} alt="arrow" className='homeArrow' /></NavLink>
         </div>
         <SearchBar />
         <div className='dropdownBorderDiv'>
-
           <li className="dropdown">
             <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
-            <div className="dropdown-content">
-              {sessionLinks}
-            </div>
+            <div className="dropdownContent">{sessionLinks}</div>
           </li>
-
         </div>
         <NavLink id='cartNavLink' to="cart">
           <div className='cartContainer'>
@@ -79,8 +73,6 @@ function Navigation() {
             <p className='cartNum'>{totalQuantity}</p>
           </div>
         </NavLink>
-
-
       </ul>
       <ul className='lowerNavBar'>
 

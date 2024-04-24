@@ -18,7 +18,7 @@
   flex-grow: 1;
   padding: 10px;
   border: 1px solid #ccc;
-  border-left: 2px solid #FF9900;
+  border-left: 3px solid #FF9900;
 }
 
 .magImg {
@@ -51,7 +51,7 @@
   bottom: 0;
   left: 0;
   border-radius: 6px;
-  border: 2px solid #FF9900;
+  border: 3px solid #FF9900;
   border-left: none;
   pointer-events: none;
 }
@@ -70,7 +70,6 @@
 }
 
 .searchProductResult {
-  margin-top: 4px;
   color: black;
   padding: 9px;
   cursor: pointer;
@@ -79,8 +78,18 @@
 
 .searchProductResultLink {
   color: black;
+  align-items: center;
+  text-align: center;
 }
 
 .searchProductResult:hover {
   background-color: #f0f0f0;
+}
+
+
+.searchResultArrowSpan {
+  display: inline-block;
+  transform: rotate(-130deg);
+  font-size: 30px;
+  margin-right: 10px;
 }
