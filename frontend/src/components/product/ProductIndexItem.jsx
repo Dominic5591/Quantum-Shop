@@ -72,7 +72,7 @@ const ProductIndexItem = () => {
     );
   }
   
-  const parsedDescription = JSON.parse(product.description[0]);
+  let parsedDescription = JSON.parse(product.description[0]);
 
   if (!loaded && !parsedDescription) {
     return (
