@@ -23,10 +23,9 @@ const SearchBar = () => {
   
   const magImgDivRef = useRef(null);
   const searchBarRef = useRef(null);
-  
+  const categoryDropdownRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const categories = ['Electronics', 'Books', 'Home Goods', 'Fashion'];
-
 
 
 
@@ -35,10 +34,12 @@ const SearchBar = () => {
   useEffect(() => {
     const handleFocus = () => {
       magImgDivRef.current.classList.add('focused');
+      categoryDropdownRef.current.classList.add('focused');
     };
 
     const handleBlur = () => {
       magImgDivRef.current.classList.remove('focused');
+      categoryDropdownRef.current.classList.remove('focused');
     };
 
     const searchBar = searchBarRef.current;
@@ -134,12 +135,13 @@ const SearchBar = () => {
   return (
     <div className='searchBarMain' ref={dropdownRef}>
       <SearchBarCategoryDropdown
+        ref={categoryDropdownRef}
         categories={categories}
         selectedCategory={selectedCategory}
         onCategoryChange={(category) => setSelectedCategory(category)}
       />
       <input
-        placeholder=' Search QuantumShop'
+        placeholder='Search QuantumShop'
         className='searchBar'
         type="text"
         ref={searchBarRef}
