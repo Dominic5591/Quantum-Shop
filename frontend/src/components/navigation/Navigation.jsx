@@ -7,6 +7,7 @@ import SearchBar from './SearchBar';
 import cart from '../../images/navbar/cart3.svg';
 import arrow from '../../images/arrow.png';
 import './Navigation.css';
+import { fetchProducts } from '../../store/product';
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function Navigation() {
   };
   
   useEffect(() => {
+    dispatch(fetchProducts());
     if (sessionUser) {
       dispatch(fetchCart());
     }
@@ -34,19 +36,19 @@ function Navigation() {
   const sessionLinks = sessionUser ? (
     <ul>
       <li>
-        <button className='dropdwnSignoutBtn' onClick={logout}>Log Out</button>
+        <NavLink id='sessionLinks' to='/orders'>Your Orders</NavLink>
       </li>
       <li>
-        <NavLink id='yourOrdersLink' to='/orders'>Your Orders</NavLink>
+        <button id='sessionLinkBtn' onClick={logout}>Log Out</button>
       </li>
     </ul>
   ) : (
     <ul>
       <li className='dropdwnSign'>
-        <NavLink id='dropdwnLoginBtn' to='/login'>Log in</NavLink>
+        <NavLink id='sessionLinks' to='/login'>Log in</NavLink>
       </li>
       <li>
-        <NavLink id='signup' to="/signup">New costumer? Start here</NavLink>
+        <NavLink id='sessionLinks' to="/signup">New costumer? Start here</NavLink>
       </li>
     </ul>
   );
@@ -60,19 +62,25 @@ function Navigation() {
           </NavLink>
         </div>
         <SearchBar />
-        <li className="dropdown">
-          <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
-          <div className="dropdown-content">
-            {sessionLinks}
-          </div>
-        </li>
-        <NavLink id='cartNavLink' to="cart">
-          <li className='cartDivOne'>
-            <p className='cartNum'>{totalQuantity}</p>
-            <img src={cart} alt="cart" className='cartPng'/>
-            Your Cart
+        <div className='dropdownBorderDiv'>
+
+          <li className="dropdown">
+            <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
+            <div className="dropdown-content">
+              {sessionLinks}
+            </div>
           </li>
+
+        </div>
+        <NavLink id='cartNavLink' to="cart">
+          <div className='cartContainer'>
+            <img src={cart} alt="cart" className='cartPng'/>
+            <span className='cartText'>Cart</span>
+            <p className='cartNum'>{totalQuantity}</p>
+          </div>
         </NavLink>
+
+
       </ul>
       <ul className='lowerNavBar'>
 
