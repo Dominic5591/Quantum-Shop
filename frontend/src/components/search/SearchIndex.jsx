@@ -19,6 +19,7 @@ const SearchIndex = () => {
     dispatch(fetchSearch(query));
   }, 5000)).current;
 
+
   useEffect(() => {
     const query = location.search.split("=")[1];
     if (query) {
@@ -26,13 +27,16 @@ const SearchIndex = () => {
     }
   }, [debouncedDispatchRef, location]);
 
+  
+
   const results = useSelector((state) => state.search);
   const searchResults = results?.search || [];
   const products = Object.values(searchResults);
 
+
   if (products.length === 0) {
     return (
-      <div>
+      <div id="loadingGifDiv">
         <img src={loading} alt="loading" className='loadingGif' />
       </div>
     );
@@ -77,7 +81,6 @@ const SearchIndex = () => {
             <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
               <img src={linkedin} alt="" />
             </a>
-            
           </span>
           <p className='loginLinkP'>2024 QuantumShop</p>
         </div>

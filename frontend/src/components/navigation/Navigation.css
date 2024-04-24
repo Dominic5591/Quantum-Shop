@@ -125,14 +125,13 @@
   pointer-events: none;
 }
 
-
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
 
-.dropdown-content {
+.dropdownContent {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -143,7 +142,7 @@
 }
 
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdownContent {
   display: block;
 }
 

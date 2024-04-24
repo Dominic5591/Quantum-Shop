@@ -73,7 +73,7 @@ keyboard.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/
 
 
 monitor = Product.create(
-name: 'SAMSUNG 32" Odyssey G65B QHD 240Hz 1ms (GTG) HDR 600 Gaming Hub 1000R Curved Gaming Monitor,Black',
+name: 'SAMSUNG 32" Odyssey G65B QHD 240Hz 1ms (GTG) HDR 600 Gaming Hub 1000R Curved Gaming Monitor, Black',
 description: [
   'QHD RESOLUTION: Your gaming world will be more life like than ever before. Packing in 1.7 times the pixel density of Full HD, QHD resolution boasts incrediblydetailed, pin-sharp images. Experience a fuller view with more space to take in all the action..Operating Temperature : 10~40 ℃',
   'DISPLAY HDR 600: Reveal the whole picture. DisplayHDR 600 delivers more contrast, with deeper blacks and brighter whites to help you uncover enemies orsecrets lurking in the shadows. Even in dark scenes, every detail shines with clarity.',

@@ -16,9 +16,13 @@ class Product < ApplicationRecord
     dependent: :destroy
 
 
-  def self.search_names(query)
-    where("lower(name) LIKE ?", "%#{sanitize_sql_like(query)}%")
+  def self.search_names(query, category)
+    lowercase_query = query.downcase
+
+    if category == 'All'
+      where("lower(name) LIKE ?", "%#{sanitize_sql_like(lowercase_query)}%")
+    else
+      where("lower(name) LIKE ? AND lower(category) = ?", "%#{sanitize_sql_like(lowercase_query)}%", category.downcase)
+    end
   end
-
-
 end

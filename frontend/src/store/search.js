@@ -7,8 +7,10 @@ export const receiveSearch = (results) => ({
   results,
 });
 
-export const fetchSearch = (query) => async (dispatch) => {
-  const res = await csrfFetch(`/api/products/search?q=${query}`);
+export const fetchSearch = (params) => async (dispatch) => {
+  const res = await csrfFetch(
+    `/api/products/search?q=${params.query}&category=${params.category}`
+  );
 
   if (res.ok) {
     const searchData = await res.json();

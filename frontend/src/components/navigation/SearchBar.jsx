@@ -5,6 +5,7 @@ import { fetchSearch } from '../../store/search';
 import { useNavigate, NavLink } from 'react-router-dom'; 
 import { debounce } from 'lodash';
 import './SearchBar.css';
+import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -17,20 +18,29 @@ const SearchBar = () => {
   const products = Object.values(searchResults);
   const dropdownRef = useRef(null);
   const searchTimeoutRef = useRef(null);
-  const maxResultsToShow = 9;
+  const maxResultsToShow = 6;
   
   
   const magImgDivRef = useRef(null);
   const searchBarRef = useRef(null);
+  const categoryDropdownRef = useRef(null);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const categories = ['Electronics', 'Books', 'Home Goods', 'Fashion'];
+
+
 
 
   useEffect(() => {
     const handleFocus = () => {
       magImgDivRef.current.classList.add('focused');
+      categoryDropdownRef.current.classList.add('focused');
+      document.getElementById('searchOverlay').style.display = 'block';
     };
 
     const handleBlur = () => {
       magImgDivRef.current.classList.remove('focused');
+      categoryDropdownRef.current.classList.remove('focused');
+      document.getElementById('searchOverlay').style.display = 'none';
     };
 
     const searchBar = searchBarRef.current;
@@ -75,8 +85,8 @@ const SearchBar = () => {
 
 
 
-  const debouncedSearch = debounce((query) => {
-    dispatch(fetchSearch(query));
+  const debouncedSearch = debounce((params) => {
+    dispatch(fetchSearch(params));
     setShowModal(true);
   }, 1000);
 
@@ -85,7 +95,7 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearch(query);
-    debouncedSearch(query);
+    debouncedSearch({ query, category: selectedCategory });
 
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
@@ -125,8 +135,16 @@ const SearchBar = () => {
 
   return (
     <div className='searchBarMain' ref={dropdownRef}>
+      <div id="searchOverlay" className="searchOverlay"></div>
+
+      <SearchBarCategoryDropdown
+        ref={categoryDropdownRef}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={(category) => setSelectedCategory(category)}
+      />
       <input
-        placeholder=' Search QuantumShop'
+        placeholder='Search QuantumShop'
         className='searchBar'
         type="text"
         ref={searchBarRef}
@@ -142,7 +160,7 @@ const SearchBar = () => {
           {products.slice(0, maxResultsToShow).map((product, index) => (
             <div key={`${product.id}_${index}`} className='searchProductResult'>
               <NavLink className='searchProductResultLink' to={`/products/${product.id}`}>
-                {truncateName(product.name, 105)}
+                <span className='searchResultArrowSpan'>&#8623; </span> {truncateName(product.name, 105)}
               </NavLink>
             </div>
           ))}
