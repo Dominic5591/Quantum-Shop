@@ -3,6 +3,7 @@
   display: flex;
   width: 100%;
   max-width: 900px;
+  z-index: 1005;
 }
 
 
@@ -11,6 +12,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   outline: none;
+  z-index: 1005;
 }
 
 
@@ -18,6 +20,7 @@
   flex-grow: 1;
   padding: 10px;
   border: 1px solid #ccc;
+  z-index: 1005;
 }
 
 
@@ -30,6 +33,7 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
+  z-index: 1005;
 }
 
 #magImdDiv {
@@ -40,6 +44,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  z-index: 1005;
 }
 
 
@@ -54,6 +59,7 @@
   border: 3px solid #FF9900;
   border-left: none;
   pointer-events: none;
+  z-index: 1005;
 }
 
 
@@ -66,13 +72,14 @@
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 200;
+  z-index: 1005;
 }
 
 .searchProductResult {
   color: black;
   padding: 9px;
   cursor: pointer;
+  z-index: 1005;
 }
 
 
@@ -80,10 +87,12 @@
   color: black;
   align-items: center;
   text-align: center;
+  z-index: 1005;
 }
 
 .searchProductResult:hover {
   background-color: #f0f0f0;
+  z-index: 1005;
 }
 
 
@@ -92,6 +101,7 @@
   transform: rotate(-130deg);
   font-size: 30px;
   margin-right: 10px;
+  z-index: 1005;
 }
 .searchBarCategoryDropdown {
   border: 1px solid #ccc;
@@ -109,13 +119,28 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   border: 3px solid transparent;
+  z-index: 1005;
 }
 
 .searchBarCategoryDropdown.focused {
   border-left: 3px solid #FF9900;
+  z-index: 1005;
 }
 
 
 .searchBarCategoryDropdown:focus {
   border: 3px solid #FF9900;
+  z-index: 1005;
+}
+
+
+.searchOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }

@@ -30,16 +30,17 @@ const SearchBar = () => {
 
 
 
-
   useEffect(() => {
     const handleFocus = () => {
       magImgDivRef.current.classList.add('focused');
       categoryDropdownRef.current.classList.add('focused');
+      document.getElementById('searchOverlay').style.display = 'block';
     };
 
     const handleBlur = () => {
       magImgDivRef.current.classList.remove('focused');
       categoryDropdownRef.current.classList.remove('focused');
+      document.getElementById('searchOverlay').style.display = 'none';
     };
 
     const searchBar = searchBarRef.current;
@@ -134,6 +135,8 @@ const SearchBar = () => {
 
   return (
     <div className='searchBarMain' ref={dropdownRef}>
+      <div id="searchOverlay" className="searchOverlay"></div>
+
       <SearchBarCategoryDropdown
         ref={categoryDropdownRef}
         categories={categories}

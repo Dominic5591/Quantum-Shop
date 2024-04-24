@@ -19,7 +19,6 @@ function Navigation() {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-
     navigate("/home");
   };
   
@@ -75,7 +74,6 @@ function Navigation() {
         </NavLink>
       </ul>
       <ul className='lowerNavBar'>
-
         <NavLink className='navBarCategory' to='/categories/electronics'>
           <li className='liPlaceholder'>Electronics</li>
         </NavLink>
