@@ -75,8 +75,8 @@ function Navigation() {
         <NavLink id='cartNavLink' to="cart">
           <div className='cartContainer'>
             <img src={cart} alt="cart" className='cartPng'/>
-            <p className='cartNum'>{totalQuantity}</p>
             <span className='cartText'>Cart</span>
+            <p className='cartNum'>{totalQuantity}</p>
           </div>
         </NavLink>
 
