@@ -16,7 +16,7 @@ class Api::ProductsController < ApplicationController
 
 
   def search
-    @products = Product.search_names(params[:q])
+    @products = Product.search_names(params[:q], params[:category])
     render :search
   end
 

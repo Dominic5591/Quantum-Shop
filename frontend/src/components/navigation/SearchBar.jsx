@@ -5,6 +5,7 @@ import { fetchSearch } from '../../store/search';
 import { useNavigate, NavLink } from 'react-router-dom'; 
 import { debounce } from 'lodash';
 import './SearchBar.css';
+import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,13 @@ const SearchBar = () => {
   
   const magImgDivRef = useRef(null);
   const searchBarRef = useRef(null);
+  
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const categories = ['Electronics', 'Books', 'Home Goods', 'Fashion'];
+
+
+
+
 
 
   useEffect(() => {
@@ -75,8 +83,8 @@ const SearchBar = () => {
 
 
 
-  const debouncedSearch = debounce((query) => {
-    dispatch(fetchSearch(query));
+  const debouncedSearch = debounce((params) => {
+    dispatch(fetchSearch(params));
     setShowModal(true);
   }, 1000);
 
@@ -85,7 +93,7 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearch(query);
-    debouncedSearch(query);
+    debouncedSearch({ query, category: selectedCategory });
 
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
@@ -125,6 +133,11 @@ const SearchBar = () => {
 
   return (
     <div className='searchBarMain' ref={dropdownRef}>
+      <SearchBarCategoryDropdown
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={(category) => setSelectedCategory(category)}
+      />
       <input
         placeholder=' Search QuantumShop'
         className='searchBar'
