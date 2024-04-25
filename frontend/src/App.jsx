@@ -16,6 +16,9 @@ import Homepage from './components/homepage/Homepage';
 import SearchIndex from './components/search/SearchIndex';
 import Orders from './components/order/Orders';
 
+
+import { LocaleProvider } from './LocalProvider';
+
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -103,7 +106,11 @@ const router = createBrowserRouter([
 
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <LocaleProvider>
+      <RouterProvider router={router} />
+    </LocaleProvider>
+  );
 }
 
 export default App;

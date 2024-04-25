@@ -1,16 +1,13 @@
 // import { useState } from "react";
-
-
-const LanguageSwitch = ({ currentLanguage, onLanguageChange }) => {
-
+const LanguageSwitch = ({ setLocale }) => {
   const languages = ['English', 'Spanish', 'French'];
 
   return (
     <div className="language-switch">
-      <button>{currentLanguage}</button>
+      <button>{setLocale}</button>
       <ul className="language-options">
         {languages.map((language) => (
-          <li key={language} onClick={() => onLanguageChange(language)}>
+          <li key={language} onClick={() => setLocale(language)}>
             {language}
           </li>
         ))}
