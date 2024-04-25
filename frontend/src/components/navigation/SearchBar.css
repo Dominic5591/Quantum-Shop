@@ -64,6 +64,8 @@
 
 
 .searchDropdown {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 100%;
   left: 0;
@@ -103,12 +105,14 @@
   margin-right: 10px;
   z-index: 1005;
 }
+
+
 .searchBarCategoryDropdown {
   border: 1px solid #ccc;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   min-width: 50px;
-  width: auto;
+  /* width: auto; */
   padding: 10px;
   outline: none;
   background-color: #E6E6E6;
@@ -121,6 +125,7 @@
   border: 3px solid transparent;
   z-index: 1005;
 }
+
 
 .searchBarCategoryDropdown.focused {
   border-left: 3px solid #FF9900;

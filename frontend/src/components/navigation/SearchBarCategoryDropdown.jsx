@@ -2,21 +2,25 @@ import { useEffect, forwardRef } from 'react';
 import './SearchBar.css';
 
 const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, onCategoryChange }, ref) => {
-  useEffect(() => {
+  // Adjust the width based on the selected category
+  const adjustDropdownWidth = () => {
     const select = ref.current;
     if (select) {
-      const tempElement = document.createElement('span');
-      tempElement.style.visibility = 'hidden';
-      tempElement.style.whiteSpace = 'nowrap';
-      tempElement.style.font = window.getComputedStyle(select).font;
-      document.body.appendChild(tempElement);
-
-      const selectedOption = select.options[select.selectedIndex];
-      tempElement.textContent = selectedOption.textContent;
-      const width = tempElement.offsetWidth;
-      document.body.removeChild(tempElement);
-      select.style.width = `${width + 30}px`;
+      // Define a mapping of categories to widths
+      const categoryWidths = {
+        'Electronics': '100px',
+        'Books': '70px',
+        'Home': '70px',
+        'Fashion': '80px',
+        'All': '50px',
+      };
+      // Set the width based on the selected category
+      select.style.width = categoryWidths[selectedCategory] || 'auto';
     }
+  };
+
+  useEffect(() => {
+    adjustDropdownWidth();
   }, [selectedCategory, ref]);
 
   return (
