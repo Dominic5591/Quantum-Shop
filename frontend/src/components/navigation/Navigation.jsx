@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { memoizedSelectCartItems, fetchCart } from '../../store/cartItem';
@@ -8,8 +8,17 @@ import cart from '../../images/navbar/cart3.svg';
 import arrow from '../../images/arrow.png';
 import './Navigation.css';
 import { fetchProducts } from '../../store/product';
+import LanguageSwitch from './LanguageSwitch';
 
 function Navigation() {
+
+
+  // Inside your Navigation component, before the return statement
+  const [currentLanguage, setCurrentLanguage] = useState('English');
+
+
+
+
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const cartItems = useSelector(memoizedSelectCartItems);
@@ -59,6 +68,7 @@ function Navigation() {
           <NavLink to="/"><img src={arrow} alt="arrow" className='homeArrow' /></NavLink>
         </div>
         <SearchBar />
+        <LanguageSwitch currentLanguage={currentLanguage} onLanguageChange={setCurrentLanguage} />
         <div className='dropdownBorderDiv'>
           <li className="dropdown">
             <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
