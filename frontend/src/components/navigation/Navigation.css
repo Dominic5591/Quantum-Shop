@@ -102,6 +102,7 @@
   border: none;
   outline: none;
   padding: 8px;
+  cursor: pointer;
 }
 
 
@@ -136,11 +137,11 @@
   position: absolute;
   background-color: #f9f9f9;
   width: 150px;
-  height: 120px;
+  height: 130px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  z-index: 1100;
+  margin-top: 10px;
 }
-
 
 .dropdown:hover .dropdownContent {
   display: block;
@@ -148,41 +149,59 @@
 
 
 #sessionLinks {
-  margin-top: 7px;
-  color: #007185;
+  margin-top: 4px;
+  color: #3b3b3b;
   padding: 12px;
-  padding-top: 18px;
+  padding-top: 14px;
   text-decoration: none;
   display: block;
   padding-bottom: 0;
   margin-bottom: 0;
+  font-family: Amazon Ember Lite;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 
-#sessionLinkBtn {
+#sessionLinksLoggedOut {
+  margin-top: 4px;
+  color: #3b3b3b;
   padding: 12px;
   padding-top: 24px;
-  margin-top: 12px;
   text-decoration: none;
   display: block;
   padding-bottom: 0;
   margin-bottom: 0;
-  color: #007185;
-  background: none;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  font-weight: 700;
+  font-family: Amazon Ember Lite;
+  font-weight: 600;
 }
 
-
-#sessionLinks:hover, #sessionLinkBtn:hover {
-  color: #856200;
+#sessionLinks:hover, #sessionLinksLoggedOut:hover {
+  color: #c08121;
   margin-right: auto;
   margin-left: 0;
+  text-decoration: underline;
 }
 
 
 a {
   text-decoration: none;
+}
+
+#youAccText {
+  padding: 5px;
+
+  margin-top: 4px;
+}
+
+
+#youAccText {
+  color: black;
+  font-weight: bold;
+  font-family: Amazon Ember Lite;
+}
+
+#youAccLi {
+  margin-top: 10px;
+  padding: 5px;
 }

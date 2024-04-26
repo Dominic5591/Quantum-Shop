@@ -18,7 +18,7 @@ const SearchBar = () => {
   const [dropdownSuggestions, setDropdownSuggestions] = useState([]);
   const dropdownProducts = useSelector(selectProductsArray);
   const dropdownRef = useRef(null);
-  const maxResultsToShow = 6;
+  const maxResultsToShow = 5;
   
   
   const magImgDivRef = useRef(null);
@@ -171,7 +171,7 @@ const SearchBar = () => {
           {dropdownSuggestions.slice(0, maxResultsToShow).map((product, index) => (
             <div key={`${product.id}_${index}`} className='searchProductResult'>
               <NavLink className='searchProductResultLink' to={`/products/${product.id}`}>
-                <span className='searchResultArrowSpan'>&#8623; </span> {truncateName(product.name, 100)}
+                <span className='searchResultArrowSpan'>&#8623; </span> {truncateName(product.name, 75)}
               </NavLink>
             </div>
           ))}

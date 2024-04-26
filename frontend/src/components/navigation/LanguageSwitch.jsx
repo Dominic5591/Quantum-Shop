@@ -1,10 +1,11 @@
-// import { useState } from "react";
-const LanguageSwitch = ({ setLocale }) => {
-  const languages = ['English', 'Spanish', 'French'];
+import { useLocale } from '../../LocalProvider';
+const LanguageSwitch = () => {
+  const { locale, setLocale } = useLocale();
+  const languages = ['en', 'es', 'fr'];
 
   return (
     <div className="language-switch">
-      <button>{setLocale}</button>
+      <button>{locale}</button>
       <ul className="language-options">
         {languages.map((language) => (
           <li key={language} onClick={() => setLocale(language)}>
@@ -15,6 +16,5 @@ const LanguageSwitch = ({ setLocale }) => {
     </div>
   );
 };
-
 
 export default LanguageSwitch;
