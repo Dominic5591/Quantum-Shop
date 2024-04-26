@@ -34,23 +34,29 @@ function Navigation() {
   
   const sessionLinks = sessionUser ? (
     <ul>
-      <li>
-        <NavLink id='sessionLinks' to='/orders'>Your Orders</NavLink>
+      <li id='youAccLi'>
+        <span id='youAccText'>Your account</span>
       </li>
       <li>
-        <button id='sessionLinkBtn' onClick={logout}>Log Out</button>
+        <NavLink id='sessionLinks' to='/orders'>Orders</NavLink>
+      </li>
+      <li>
+        <span id='sessionLinks' onClick={logout}>Sign out</span>
       </li>
     </ul>
   ) : (
     <ul>
       <li className='dropdwnSign'>
-        <NavLink id='sessionLinks' to='/login'>Log in</NavLink>
+        <NavLink id='sessionLinksLoggedOut' to='/login'>Log in</NavLink>
       </li>
       <li>
-        <NavLink id='sessionLinks' to="/signup">New costumer? Start here</NavLink>
+        <NavLink id='sessionLinksLoggedOut' to="/signup">New costumer? Start here</NavLink>
       </li>
     </ul>
   );
+
+
+
 
   return (
     <div className='navMain'>
@@ -61,10 +67,22 @@ function Navigation() {
         <SearchBar />
         <div className='dropdownBorderDiv'>
           <li className="dropdown">
-            <button className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</button>
+            <span className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</span>
             <div className="dropdownContent">{sessionLinks}</div>
           </li>
         </div>
+        {
+          sessionUser ? 
+            <NavLink to='/orders'>
+              <div className='dropdownBorderDiv'>
+                <li className='sessionOrdersLink'>Your Orders</li>
+              </div>
+            </NavLink>
+            :
+            null
+        }
+
+
         <NavLink id='cartNavLink' to="cart">
           <div className='cartContainer'>
             <img src={cart} alt="cart" className='cartPng'/>

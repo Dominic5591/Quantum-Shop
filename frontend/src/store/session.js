@@ -31,11 +31,6 @@ export const restoreSession = () => async dispatch => {
   storeCSRFToken(response);
   const data = await response.json();
   dispatch(setUser(data.user));
-
-
-  // dispatch(fetchOrders());
-  // dispatch(fetchCart());
-  // dispatch(fetchProducts());
   return response;
 };
 
@@ -45,11 +40,8 @@ export const login = ({ credential, password }) => async dispatch => {
     body: JSON.stringify({ credential, password }),
   });
   const data = await response.json();
-  dispatch(setUser(data.user));
-  dispatch(fetchOrders());
-
-  // dispatch(fetchProducts());
-  // dispatch(fetchCart());
+  await dispatch(setUser(data.user))
+    .then(dispatch(fetchOrders()));
   return response;
 };
 
@@ -74,7 +66,6 @@ export const logout = () => async (dispatch) => {
     method: "DELETE",
   });
   dispatch(removeUser());
-  // dispatch(fetchCart());
   return response;
 };
 
