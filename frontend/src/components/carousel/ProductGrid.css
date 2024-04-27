@@ -1,0 +1,58 @@
+.productGridContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 65px;
+}
+
+.largeProductGridCard {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  width: calc(25% - 100px);
+  min-height: 400px;
+  max-height: 450px;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.productGridCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+.productGridImg {
+  width: 100%;
+  max-width: 100px;
+  max-height: 150px;
+  height: auto;
+  object-fit: cover;
+}
+
+.cardGridContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.productGridPrice {
+  font-size: 14px;
+  color: #333;
+}
