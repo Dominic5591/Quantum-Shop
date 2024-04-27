@@ -32,8 +32,11 @@
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: linear-gradient(to bottom, #0E8684, #E3E6E6);;
+  background-color: #E3E6E6;
 }
+
+
+
 
 .electronicsH1 {
   margin-bottom: 20px;

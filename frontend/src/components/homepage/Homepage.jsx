@@ -1,15 +1,16 @@
-
-import { NavLink } from 'react-router-dom';
-import electronics from '../../images/electronics.jpg';
-import books from '../../images/books.jpg';
-import fashion from '../../images/fashion.jpg';
-import homeGoods from '../../images/home-goods.jpg';
 import git from '../../images/github.png';
 import linkedin from '../../images/linkedin.png';
+import { selectProductsArray } from '../../store/product';
+import { useSelector } from 'react-redux';
 import './Homepage.css';
-
+import ProductGrid from '../carousel/ProductGrid';
+import BooksCarousel from '../carousel/BooksCarousel';
 
 const Homepage = () => {
+  const products = useSelector(selectProductsArray);
+
+  console.log(products);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -20,30 +21,8 @@ const Homepage = () => {
   return (
     
     <div className='homepageMain'>
-      <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/electronics`}>
-          <h1 className='electronicsH1'>Best sellers in electronics</h1>
-          <img className='electImgs' src={electronics} alt="" />
-        </NavLink>
-      </div>
-      <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/books`}>
-          <h1 className='electronicsH1'>Shop the best selling books</h1>
-          <img className='electImg' src={books} alt="" />
-        </NavLink>
-      </div>
-      <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/fashion`}>
-          <h1 className='electronicsH1'>Shop the latest fashion trends</h1>
-          <img className='electImg' src={fashion} alt="" />
-        </NavLink>
-      </div>
-      <div className='categoryElectronicsDiv'>
-        <NavLink className='electronics' to={`/categories/home`}>
-          <h1 className='electronicsH1'>Essential home goods</h1>
-          <img className='electImg' src={homeGoods} alt="" />
-        </NavLink>
-      </div>
+      <BooksCarousel products={products}/>
+      <ProductGrid products={products} />
       <ul className='upperHomeFooter' onClick={scrollToTop}>
         <p className='backToTopP'>Back to top</p>
       </ul>
