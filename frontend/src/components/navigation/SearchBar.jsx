@@ -136,10 +136,7 @@ const SearchBar = () => {
     }
     return name;
   };
-
-
-  console.log(dropdownSuggestions);
-
+  
   return (
     <div className='searchBarMain' ref={dropdownRef}>
       <div id="searchOverlay" className="searchOverlay" style={{ display: isSearchOverlayVisible ? 'block' : 'none' }}></div>

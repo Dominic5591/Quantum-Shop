@@ -9,8 +9,6 @@ import BooksCarousel from '../carousel/BooksCarousel';
 const Homepage = () => {
   const products = useSelector(selectProductsArray);
 
-  console.log(products);
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -19,7 +17,6 @@ const Homepage = () => {
   };
 
   return (
-    
     <div className='homepageMain'>
       <BooksCarousel products={products}/>
       <ProductGrid products={products} />

@@ -1,34 +1,15 @@
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { memoizedSelectCartItems } from '../../store/cartItem';
 import linkedin from '../../images/linkedin.png';
 import git from '../../images/github.png';
 import './Checkout.css';
 
 
 const Checkout = () => {
-  // const dispatch = useDispatch();
-  // const cartItems = useSelector(memoizedSelectCartItems);
-
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   };
-
-  // useEffect(() => {
-
-  //   cartItems.forEach(item => {
-  //     console.log(item);
-  //     dispatch(deleteCartItem(item.id));
-  //   });
-  // }, []);
-
-
-
-
 
   return (
     <>
