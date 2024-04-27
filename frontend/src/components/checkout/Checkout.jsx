@@ -25,12 +25,12 @@ const Checkout = () => {
       <ul className='cartFooter'>
         <div className='loginLinks'>
           <span className='loginGit'>
-            <a href="https://github.com/Dominic5591">
+            <a href="https://github.com/Dominic5591" target="_blank" rel='noreferrer'>
               <img src={git} alt="" />
             </a>
           </span>
           <span className='loginLinkedin'>
-            <a href="https://www.linkedin.com/in/dominic-c-1076322a8/">
+            <a href="https://www.linkedin.com/in/dominic-c-1076322a8/" target="_blank" rel='noreferrer'>
               <img src={linkedin} alt="" />
             </a>
           </span>
