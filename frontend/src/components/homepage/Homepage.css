@@ -1,67 +1,56 @@
 .homepageMain {
   display: flex;
   flex-direction: column;
-  /* Stack elements vertically */
   align-items: center;
   justify-content: center;
   padding-top: 60px;
-  height: 100%;
-  width: 100%;
+  padding-bottom: 60px;
   min-height: 100vh;
-  overflow: hidden;
-  background-color: #E3E6E6;
-  gap: 20px;
-  /* Add some gap between elements */
-}
-
-.homeFooter {
-  background-color: #232F3E;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* Spread out the elements */
   width: 100%;
-  height: 250px;
-  padding: 20px;
-  /* Add some padding */
+  overflow: hidden;
+  gap: 20px;
 }
 
-.upperHomeFooter {
-  list-style: none;
-  position: relative;
-  top: 50px;
-  padding: 11px;
-  background-color: #37475A;
+
+.pageContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  width: 100%;
-  height: 30px;
-  margin-bottom: 20px;
-  /* Add some margin at the bottom */
+  overflow: hidden;
+  background-color: #E3E6E6;
+  background: linear-gradient(to bottom, #FFC267 0%, #E3E6E6 45%);
 }
 
-.upperHomeFooter:hover {
-  background-color: #4b5968;
-  cursor: pointer;
-}
 
-/* Add media queries for responsiveness */
+
 @media (max-width: 768px) {
   .homepageMain {
     padding-top: 30px;
   }
 
-  .homeFooter {
-    flex-direction: column;
+  .BooksCarousel,
+  .ProductGrid {
+    width: 100%;
+  }
+}
 
-    /* Stack elements vertically on smaller screens */
-    height: auto;
+@media (max-width: 480px) {
+  .homepageMain {
+    padding-top: 20px;
+  }
+}
+
+
+@media (min-width: 1920px) {
+  .homepageMain {
+    padding-top: 150px;
+    padding:  70px;
   }
 
-  .loginLinks {
-    flex-direction: column;
-    /* Stack social links vertically */
+  .BooksCarousel,
+  .ProductGrid {
+    width: 80%;
+    margin: 0 auto;
   }
 }

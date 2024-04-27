@@ -23,8 +23,13 @@ const BooksCarousel = ({ products }) => {
     } else if (direction === 'right') {
       newScrollPosition = currentScrollPosition + scrollAmount;
     }
-    carousel.scrollLeft = newScrollPosition;
+
+    carousel.scrollTo({
+      left: newScrollPosition,
+      behavior: 'smooth',
+    });
   };
+
 
   return (
     <div className='recommendedProductsCarouselContainer'>
