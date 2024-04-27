@@ -1,5 +1,5 @@
 import csrfFetch from './csrf';
-import { fetchOrders } from './order';
+// import { fetchOrders } from './order';
 
 
 const SET_USER = "session/setUser";
@@ -40,8 +40,8 @@ export const login = ({ credential, password }) => async dispatch => {
     body: JSON.stringify({ credential, password }),
   });
   const data = await response.json();
-  await dispatch(setUser(data.user))
-    .then(dispatch(fetchOrders()));
+  await dispatch(setUser(data.user));
+
   return response;
 };
 

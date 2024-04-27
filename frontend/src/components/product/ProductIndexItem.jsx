@@ -6,14 +6,13 @@ import { fetchProduct, selectProduct } from '../../store/product';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectReviewProductArray } from '../../store/review';
-import git from '../../images/github.png';
-import linkedin from '../../images/linkedin.png';
 import loading from '../../images/loading.gif';
 import './ProductIndexItem.css';
 import ReviewIndex from '../review/ReviewIndex';
 import { fetchReviews } from '../../store/review';
 import * as modalActions from '../../store/modal';
 import ReviewModalCreatorEditor from '../review/ReviewModalCreatorEditor';
+import Footer from '../footer/Footer';
 
 
 const ProductIndexItem = () => {
@@ -81,14 +80,6 @@ const ProductIndexItem = () => {
       </div>
     );
   }
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
 
   const handleAddCartItem = async (e) => {
     e.preventDefault();
@@ -228,26 +219,7 @@ const ProductIndexItem = () => {
         <ReviewIndex product={product} />
       </div>
 
-
-      <ul className='upperProductFooter' onClick={scrollToTop}>
-        <p className='backToTopP'>Back to top</p>
-      </ul>
-      <ul className='productFooter'>
-        <div className='loginLinks'>
-          <span className='loginGit'>
-            <a href="https://github.com/Dominic5591" target="_blank" rel='noreferrer'>
-              <img src={git} alt="Github" />
-            </a>
-          </span>
-          <span className='loginLinkedin'>
-            <a href="https://www.linkedin.com/in/dominic-c-1076322a8/" target="_blank" rel='noreferrer'>
-              <img src={linkedin} alt="LinkedIn" />
-            </a>
-            
-          </span>
-          <p className='loginLinkP'>2024 QuantumShop</p>
-        </div>
-      </ul>
+      <Footer />
     </div>
   );
 };

@@ -1,8 +1,7 @@
-
 .homepageMain {
-  gap: 0px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  /* Stack elements vertically */
   align-items: center;
   justify-content: center;
   padding-top: 60px;
@@ -11,15 +10,20 @@
   min-height: 100vh;
   overflow: hidden;
   background-color: #E3E6E6;
+  gap: 20px;
+  /* Add some gap between elements */
 }
 
 .homeFooter {
   background-color: #232F3E;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  /* Spread out the elements */
   width: 100%;
   height: 250px;
+  padding: 20px;
+  /* Add some padding */
 }
 
 .upperHomeFooter {
@@ -34,6 +38,8 @@
   cursor: pointer;
   width: 100%;
   height: 30px;
+  margin-bottom: 20px;
+  /* Add some margin at the bottom */
 }
 
 .upperHomeFooter:hover {
@@ -41,3 +47,21 @@
   cursor: pointer;
 }
 
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .homepageMain {
+    padding-top: 30px;
+  }
+
+  .homeFooter {
+    flex-direction: column;
+
+    /* Stack elements vertically on smaller screens */
+    height: auto;
+  }
+
+  .loginLinks {
+    flex-direction: column;
+    /* Stack social links vertically */
+  }
+}
