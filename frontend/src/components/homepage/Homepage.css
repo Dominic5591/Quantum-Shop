@@ -1,43 +1,56 @@
-
 .homepageMain {
-  gap: 0px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 60px;
-  height: 100%;
-  width: 100%;
+  padding-bottom: 60px;
   min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  gap: 20px;
+}
+
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background-color: #E3E6E6;
+  background: linear-gradient(to bottom, #FFC267 0%, #E3E6E6 45%);
 }
 
-.homeFooter {
-  background-color: #232F3E;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 250px;
+
+
+@media (max-width: 768px) {
+  .homepageMain {
+    padding-top: 30px;
+  }
+
+  .BooksCarousel,
+  .ProductGrid {
+    width: 100%;
+  }
 }
 
-.upperHomeFooter {
-  list-style: none;
-  position: relative;
-  top: 50px;
-  padding: 11px;
-  background-color: #37475A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  width: 100%;
-  height: 30px;
+@media (max-width: 480px) {
+  .homepageMain {
+    padding-top: 20px;
+  }
 }
 
-.upperHomeFooter:hover {
-  background-color: #4b5968;
-  cursor: pointer;
-}
 
+@media (min-width: 1920px) {
+  .homepageMain {
+    padding-top: 150px;
+    padding:  70px;
+  }
+
+  .BooksCarousel,
+  .ProductGrid {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

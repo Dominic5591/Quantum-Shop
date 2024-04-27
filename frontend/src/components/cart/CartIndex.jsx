@@ -4,12 +4,11 @@ import { NavLink } from 'react-router-dom';
 import { fetchCart, memoizedSelectCartItems, deleteCartItem } from '../../store/cartItem';
 import { selectProductsArray } from '../../store/product';
 import CartIndexItem from './CartIndexItem';
-import git from '../../images/github.png';
-import linkedin from '../../images/linkedin.png';
 import cartImg from '../../images/empty-cart.svg';
 import loading from '../../images/loading.gif';
 import './CartIndex.css';
 import { createOrder } from '../../store/order';
+import Footer from '../footer/Footer';
 
 const CartIndex = () => {
   const dispatch = useDispatch();
@@ -58,14 +57,6 @@ const CartIndex = () => {
     };
 
     dispatch(createOrder({ order: order }));
-  };
-
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
   };
 
   return (
@@ -130,25 +121,7 @@ const CartIndex = () => {
 
       </div>
     
-      <ul className='upperCartFooter' onClick={scrollToTop}>
-        <p className='backToTopP'>Back to top</p>
-      </ul>
-      <ul className='cartFooter'>
-        <div className='loginLinks'>
-          <span className='loginGit'>
-            <a href="https://github.com/Dominic5591" target="_blank" rel='noreferrer'>
-              <img src={git} alt="" />
-            </a>
-          </span>
-          <span className='loginLinkedin'>
-            <a href="https://www.linkedin.com/in/dominic-c-1076322a8/" target="_blank" rel='noreferrer'>
-              <img src={linkedin} alt=""  />
-            </a>
-          </span>
-          <p className='loginLinkP'>2024 QuantumShop</p>
-        </div>
-      </ul>
-    
+      <Footer />
     </>
 
   );
