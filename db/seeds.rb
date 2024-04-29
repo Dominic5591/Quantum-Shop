@@ -1,7 +1,7 @@
 
 require 'open-uri'
 
-puts "Destroying tables..."
+puts "Destroying Tables..."
 # Unnecessary if using `rails db:seed:replant`
 User.destroy_all
 OrderItem.destroy_all
@@ -9,14 +9,14 @@ Order.destroy_all
 Product.destroy_all
 
 
-puts "Resetting primary keys..."
+puts "Resetting Primary Keys..."
 # For easy testing, so that after seeding, the first `User` has `id` of 1
 ApplicationRecord.connection.reset_pk_sequence!('users')
 ApplicationRecord.connection.reset_pk_sequence!('products')
 ApplicationRecord.connection.reset_pk_sequence!('orders')
 ApplicationRecord.connection.reset_pk_sequence!('order_items')
 
-puts "Creating users..."
+puts "Creating Users..."
 # Create one user with an easy to remember username, email, and password:
 User.create!(
   username: 'Demo-User', 
@@ -41,7 +41,7 @@ end
 
 # Categories
 
-puts "Creating products..."
+puts "Creating Products..."
 
 
 
@@ -653,17 +653,21 @@ price: 18.99,
 category: 'books',
 rating: 4
 )
-book10 = Product.create(
-name: 'Psychology of the Unconscious',
-description: [
-  'In this, his most famous and influential work, Carl Jung made a dramatic break from the psychoanalytic tradition established by his mentor, Sigmund Freud. Rather than focusing on psychopathology and its symptoms, the Swiss psychiatrist studied dreams, mythology, and literature to define the universal patterns of the psyche.'
-],
-price: 18.99,
-category: 'books',
-rating: 4
-)
 
 book10.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book10.jpg'), filename: 'book10.jpg')
+
+
+# book11 = Product.create(
+# name: 'Psychology of the Unconscious',
+# description: [
+#   'In this, his most famous and influential work, Carl Jung made a dramatic break from the psychoanalytic tradition established by his mentor, Sigmund Freud. Rather than focusing on psychopathology and its symptoms, the Swiss psychiatrist studied dreams, mythology, and literature to define the universal patterns of the psyche.'
+# ],
+# price: 18.99,
+# category: 'books',
+# rating: 4
+# )
+
+# book11.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book10.jpg'), filename: 'book10.jpg')
 
 
 
@@ -675,7 +679,7 @@ book10.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/pr
 ########################### Electronics Reviews
 
 
-puts 'Creating Reviews for Electronics!'
+puts 'Creating Reviews'
 
 # Reviews for the keyboard
 Review.create!(
