@@ -653,6 +653,15 @@ price: 18.99,
 category: 'books',
 rating: 4
 )
+book10 = Product.create(
+name: 'Psychology of the Unconscious',
+description: [
+  'In this, his most famous and influential work, Carl Jung made a dramatic break from the psychoanalytic tradition established by his mentor, Sigmund Freud. Rather than focusing on psychopathology and its symptoms, the Swiss psychiatrist studied dreams, mythology, and literature to define the universal patterns of the psyche.'
+],
+price: 18.99,
+category: 'books',
+rating: 4
+)
 
 book10.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book10.jpg'), filename: 'book10.jpg')
 

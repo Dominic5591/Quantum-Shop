@@ -29,7 +29,7 @@ class ApplicationController < ActionController::API
   end
 
   def require_logged_in
-      if !logged_in?
+      if logged_in?
           render json: {errors: ['Must be logged in']}, status: :unauthorized
       end
   end
