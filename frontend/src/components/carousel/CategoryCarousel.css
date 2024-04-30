@@ -2,7 +2,7 @@
 .recommendedProductsCarouselContainer {
   background-color: #ffffff;
   display: flex;
-  height: 330px;
+  height: 270px;
   width: 92%;
   align-items: center;
   margin-bottom: 30px;
@@ -20,13 +20,33 @@
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   padding: 20px 0;
-  gap: 20px;
-  scrollbar-width: none;
+  gap: 10px;
 }
 
+
+
 .recommendedProductsCarousel::-webkit-scrollbar {
-  display: none;
+  width: 40%;
+  padding: 10px;
+  height: 6px;
 }
+
+
+
+.recommendedProductsCarousel::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 6px;
+
+}
+
+
+.recommendedProductsCarousel::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+
+
+
 
 .carouselArrow {
   position: absolute;
@@ -77,15 +97,13 @@
   min-width: 200px;
   min-height: 220px;
   background-color: rgb(255, 255, 255);
-  padding: 10px;
+  padding: 5px;
 }
 
 
 
 .recommendedProductImg {
-  width: 100%;
-  max-width: 150px;
-  max-height: 230px;
-  /* min-height: 120px; */
+  max-width: 140px;
+  max-height: 170px;
 }
 
