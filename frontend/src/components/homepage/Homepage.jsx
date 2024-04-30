@@ -42,10 +42,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-
-// const categories = [
-//   { name: 'Books', image: 'src/images/navbar/booksCategory.jpg' },
-//   { name: 'Electronics', image: 'src/images/navbar/electronicsCategory.jpg' },
-//   { name: 'Clothing', image: 'src/images/navbar/fashionCategory.jpg' },
-//   { name: 'Home', image: 'src/images/navbar/homeCategory.jpg' },
-// ];

@@ -1,3 +1,6 @@
+
+// Going to implement this in the future
+
 // import { NavLink } from 'react-router-dom';
 // import './CategoryCards.css';
 

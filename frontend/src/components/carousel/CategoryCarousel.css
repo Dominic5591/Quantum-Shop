@@ -1,17 +1,12 @@
-
 .recommendedProductsCarouselContainer {
   background-color: #ffffff;
   display: flex;
   height: 270px;
   width: 92%;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
   position: relative;
 }
-
-
-
-
 
 .recommendedProductsCarousel {
   display: flex;
@@ -19,7 +14,6 @@
   justify-content: center;
   overflow: auto;
   overflow: scroll;
-  /* overflow-x: auto; */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
@@ -50,9 +44,6 @@
 .recommendedProductsCarousel.show-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
-
-
-
 
 .carouselArrow {
   position: absolute;

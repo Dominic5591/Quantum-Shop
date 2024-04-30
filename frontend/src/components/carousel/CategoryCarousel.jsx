@@ -15,7 +15,7 @@ const CategoryCarousel = ({ products, category, message }) => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
-    const scrollAmount = 200;
+    const scrollAmount = 300;
     const currentScrollPosition = carousel.scrollLeft;
 
     let newScrollPosition;
