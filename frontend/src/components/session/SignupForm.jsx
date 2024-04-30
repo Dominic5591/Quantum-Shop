@@ -53,8 +53,6 @@ function SignupForm() {
 
 
   return (
-
-
     <div className='signUpPage'>
       <div className='signupHome'>
         <NavLink to='/'>

@@ -2,14 +2,18 @@
 .recommendedProductsCarouselContainer {
   background-color: #ffffff;
   display: flex;
-  height: 300px;
+  height: 330px;
   width: 92%;
   align-items: center;
   margin-bottom: 30px;
+  margin-top: 30px;
+  position: relative;
 }
 
 .recommendedProductsCarousel {
   display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: auto;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -26,7 +30,7 @@
 
 .carouselArrow {
   position: absolute;
-  top: 18%;
+  top: 50%;
   transform: translateY(-50%);
   background: rgba(233, 233, 233, 0.7);
   padding: 20px;
@@ -38,17 +42,28 @@
   transition: opacity 0.5s ease-in-out;
 }
 
+
+.carouselMessage {
+  position: absolute;
+  top: 8%;
+  transform: translateY(-50%);
+  padding: 20px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .recommendedProductsCarouselContainer:hover .carouselArrow {
   opacity: 1;
 }
 
 
 .carouselArrow.left {
-  left: 80px;
+  left: 30px;
 }
 
 .carouselArrow.right {
-  right: 80px;
+  right: 30px;
 }
 
 
@@ -56,10 +71,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: inherit;
   min-width: 200px;
-  min-height: 250px;
+  min-height: 220px;
   background-color: rgb(255, 255, 255);
   padding: 10px;
 }
@@ -69,5 +85,7 @@
 .recommendedProductImg {
   width: 100%;
   max-width: 150px;
+  max-height: 230px;
+  /* min-height: 120px; */
 }
 

@@ -1,12 +1,14 @@
 
 
 .cartIndexItem {
+  margin-top: 50px;
   margin-bottom: 10px;
   width: 70%;
   padding: 10px;
   border-radius: 5px;
   background-color: #FFFFFF;
   min-width: 800px;
+  min-height: 300px;
 }
 
 .cartIndexItem div {

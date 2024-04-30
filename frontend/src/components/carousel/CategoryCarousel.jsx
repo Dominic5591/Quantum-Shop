@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { useRef } from 'react';
-import './BooksCarousel.css';
+import './CategoryCarousel.css';
 
-const BooksCarousel = ({ products }) => {
-  const books = products.filter(product => product.category === 'books');
-  const maxBooks = books.slice(0, 40);
+const CategoryCarousel = ({ products, category, message }) => {
+
+  const filteredProducts = products.filter(product => product.category === category);
+  const maxProducts = filteredProducts.slice(0, 40);
 
   const carouselRef = useRef(null);
   const prevArrowRef = useRef(null);
@@ -30,12 +31,12 @@ const BooksCarousel = ({ products }) => {
     });
   };
 
-
   return (
     <div className='recommendedProductsCarouselContainer'>
+      <span className='carouselMessage'>{message}</span>
       <button ref={prevArrowRef} className='carouselArrow left' onClick={() => scrollTo('left')}>&#10094;</button>
       <div ref={carouselRef} className='recommendedProductsCarousel'>
-        {maxBooks.map((product) => (
+        {maxProducts.map((product) => (
           <NavLink key={product.id} className="recommendedProductCard" to={`/products/${product.id}`}>
             <img className='recommendedProductImg' src={product.photoUrl} alt={product.name} />
           </NavLink>
@@ -46,4 +47,4 @@ const BooksCarousel = ({ products }) => {
   );
 };
 
-export default BooksCarousel;
+export default CategoryCarousel;
