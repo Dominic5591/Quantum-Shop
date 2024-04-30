@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 695px;
+  /* height: 100%; */
   justify-content: flex-start;
   margin: 0;
+  overflow: hidden;
 
 }
 

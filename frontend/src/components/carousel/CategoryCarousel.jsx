@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { useRef } from 'react';
-import './BooksCarousel.css';
+import { useRef, useEffect } from 'react';
+import './CategoryCarousel.css';
 
-const BooksCarousel = ({ products }) => {
-  const books = products.filter(product => product.category === 'books');
-  const maxBooks = books.slice(0, 40);
+const CategoryCarousel = ({ products, category, message }) => {
+
+  const filteredProducts = products.filter(product => product.category === category);
+  const maxProducts = filteredProducts.slice(0, 40);
 
   const carouselRef = useRef(null);
   const prevArrowRef = useRef(null);
@@ -14,7 +15,7 @@ const BooksCarousel = ({ products }) => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
-    const scrollAmount = 400;
+    const scrollAmount = 300;
     const currentScrollPosition = carousel.scrollLeft;
 
     let newScrollPosition;
@@ -30,12 +31,36 @@ const BooksCarousel = ({ products }) => {
     });
   };
 
+  useEffect(() => {
+    const carousel = carouselRef.current;
+
+    const handleMouseEnter = () => {
+      carousel.classList.add('show-scrollbar');
+    };
+
+    const handleMouseLeave = () => {
+      carousel.classList.remove('show-scrollbar');
+    };
+
+    if (carousel) {
+      carousel.addEventListener('mouseenter', handleMouseEnter);
+      carousel.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (carousel) {
+        carousel.removeEventListener('mouseenter', handleMouseEnter);
+        carousel.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, []);
 
   return (
     <div className='recommendedProductsCarouselContainer'>
+      <span className='carouselMessage'>{message}</span>
       <button ref={prevArrowRef} className='carouselArrow left' onClick={() => scrollTo('left')}>&#10094;</button>
-      <div ref={carouselRef} className='recommendedProductsCarousel'>
-        {maxBooks.map((product) => (
+      <div ref={carouselRef} className='recommendedProductsCarousel hide-scrollbar'>
+        {maxProducts.map((product) => (
           <NavLink key={product.id} className="recommendedProductCard" to={`/products/${product.id}`}>
             <img className='recommendedProductImg' src={product.photoUrl} alt={product.name} />
           </NavLink>
@@ -46,4 +71,4 @@ const BooksCarousel = ({ products }) => {
   );
 };
 
-export default BooksCarousel;
+export default CategoryCarousel;

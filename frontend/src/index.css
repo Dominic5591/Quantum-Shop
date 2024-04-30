@@ -13,6 +13,7 @@ body {
 }
 
 #root {
+    /* background-color: #E3E6E6; */
   font-family: Amazon Ember;
   display: flex;
   justify-content: center;
@@ -20,5 +21,4 @@ body {
   flex-wrap: wrap;
   margin: auto;
   position: relative;
-  overflow-x: hidden;
 }

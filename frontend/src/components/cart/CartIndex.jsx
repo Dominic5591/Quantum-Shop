@@ -21,9 +21,11 @@ const CartIndex = () => {
   let amount = 25;
 
   useEffect(() => {
-    dispatch(fetchCart())
-      .then(() => setLoaded(true))
-      .catch(() => setLoaded(true));
+    if (sessionUser) {
+      dispatch(fetchCart())
+        .then(() => setLoaded(true))
+        .catch(() => setLoaded(true));      
+    } else setLoaded(true);
   }, [dispatch, sessionUser]);
 
   if (!loaded) {
@@ -67,11 +69,9 @@ const CartIndex = () => {
             <img src={cartImg} alt="" />
           </div>
           :
-          <p></p>
+          null
         }
-        <br />
-        <br />
-        <br />
+
         {cartItems.length === 0 ? (
           <div className='emptyCartDiv'>
             <div className='emptyCartDealsDiv'>
@@ -89,7 +89,7 @@ const CartIndex = () => {
                   <button className='emptyCartBtnSignUp'>Sign up now</button>  
                 </NavLink>
               </div>
-              : <p></p>
+              : null
             }
           </div>
         ) : (
@@ -118,11 +118,9 @@ const CartIndex = () => {
             <NavLink className='checkoutBtn' to=''>Checkout</NavLink>
           }
         </div>
-
+        <Footer />
       </div>
-    
-      <Footer />
-    </>
+      </>
 
   );
 };

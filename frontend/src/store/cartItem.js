@@ -26,6 +26,7 @@ export const selectCartItem = (cartItemId) => state => {
   return state?.cartItems ? state.cartItems[cartItemId] : null;
 };
 
+
 const selectCartItems = (state) => state?.cartItems || {};
 
 export const memoizedSelectCartItems = createSelector(

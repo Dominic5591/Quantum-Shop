@@ -1,26 +1,41 @@
+.pageContainer {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  justify-items: center;
+  align-items: center;
+  height: 2600px;
+  overflow: hidden;
+  background-color: #E3E6E6;
+}
+
+.homeBannerContainer {
+  width: 95%;
+  height: 900px;
+  z-index: 1;
+  background: linear-gradient(to bottom, #EC9E91 65%, #E3E6E6 100%);
+}
+
+.homepageBanner {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
 .homepageMain {
+  position: relative;
+  top: -320px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  min-height: 100vh;
+  align-items: center;
   width: 100%;
   overflow: hidden;
   gap: 20px;
+  z-index: 2;
 }
 
-
-.pageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: #E3E6E6;
-  background: linear-gradient(to bottom, #FFC267 0%, #E3E6E6 45%);
-}
 
 
 
@@ -29,10 +44,7 @@
     padding-top: 30px;
   }
 
-  .BooksCarousel,
-  .ProductGrid {
-    width: 100%;
-  }
+
 }
 
 @media (max-width: 480px) {
@@ -46,11 +58,23 @@
   .homepageMain {
     padding-top: 150px;
     padding:  70px;
+    width: 85%;
   }
 
-  .BooksCarousel,
-  .ProductGrid {
+
+  .homeBannerContainer {
     width: 80%;
-    margin: 0 auto;
+    height: 900px;
+    z-index: 1;
+    background: linear-gradient(to bottom, #EC9E91 65%, #E3E6E6 100%);
   }
+
+  .homepageBanner {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+
 }

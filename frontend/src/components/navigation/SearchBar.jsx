@@ -38,6 +38,7 @@ const SearchBar = () => {
       magImgDivRef.current.classList.remove('focused');
       categoryDropdownRef.current.classList.remove('focused');
       setIsSearchOverlayVisible(false);
+      setShowModal(false);
     };
 
     const searchBar = searchBarRef.current;
@@ -77,6 +78,7 @@ const SearchBar = () => {
   useEffect(() => {
     if (clickedOutside) {
       setShowModal(false);
+      setIsSearchOverlayVisible(false);
     }
   }, [clickedOutside]);
 
@@ -140,8 +142,6 @@ const SearchBar = () => {
   return (
     <div className='searchBarMain' ref={dropdownRef}>
       <div id="searchOverlay" className="searchOverlay" style={{ display: isSearchOverlayVisible ? 'block' : 'none' }}></div>
-
-
       <SearchBarCategoryDropdown
         ref={categoryDropdownRef}
         categories={categories}

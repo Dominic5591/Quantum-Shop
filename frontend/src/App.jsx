@@ -48,7 +48,6 @@ function Layout() {
   return (
     <>
       {showNavigation && <Navigation />}
-
       {showHomePage && <Homepage />}
       {isLoaded && <Outlet />}
     </>

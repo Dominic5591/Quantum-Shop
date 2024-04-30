@@ -1,12 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import './ProductGrid.css';
 
-const ProductGrid = ({ products }) => {
-  const maxProducts = products.slice(0, 32);
+const ProductGrid = ({ products, productRange }) => {
+  // Parse the productRange prop to get the start and end indices
+  const [startIndex, endIndex] = productRange.split(',').map(Number);
+
+  // Slice the products array to get the desired range of products
+  const slicedProducts = products.slice(startIndex, endIndex);
 
   const largeCards = [];
-  for (let i = 0; i < maxProducts.length; i += 4) {
-    largeCards.push(maxProducts.slice(i, i + 4));
+  for (let i = 0; i < slicedProducts.length; i += 4) {
+    largeCards.push(slicedProducts.slice(i, i + 4));
   }
 
   const truncateName = (name, maxLength) => {
@@ -15,8 +19,6 @@ const ProductGrid = ({ products }) => {
     }
     return name;
   };
-
-
 
   return (
     <div className='productGridContainer'>
@@ -40,4 +42,3 @@ const ProductGrid = ({ products }) => {
 };
 
 export default ProductGrid;
-
