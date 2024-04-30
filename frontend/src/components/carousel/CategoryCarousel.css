@@ -5,45 +5,51 @@
   height: 270px;
   width: 92%;
   align-items: center;
-  margin-bottom: 30px;
   margin-top: 30px;
   position: relative;
 }
+
+
+
+
 
 .recommendedProductsCarousel {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: auto;
-  overflow-x: auto;
+  overflow: scroll;
+  /* overflow-x: auto; */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  padding: 20px 0;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-left: 20px;
   gap: 10px;
+  width: 100%;
 }
 
 
-
-.recommendedProductsCarousel::-webkit-scrollbar {
-  width: 40%;
-  padding: 10px;
+.recommendedProductsCarousel.hide-scrollbar::-webkit-scrollbar {
+  width: 10px;
   height: 6px;
 }
 
 
+.recommendedProductsCarousel.show-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 6px;
+}
 
-.recommendedProductsCarousel::-webkit-scrollbar-thumb {
+.recommendedProductsCarousel.show-scrollbar::-webkit-scrollbar-thumb {
   background: #aaa;
   border-radius: 6px;
-
 }
 
-
-.recommendedProductsCarousel::-webkit-scrollbar-thumb:hover {
+.recommendedProductsCarousel.show-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
-
 
 
 
@@ -94,10 +100,11 @@
   justify-content: center;
   text-decoration: none;
   color: inherit;
-  min-width: 200px;
+  min-width: 150px;
   min-height: 220px;
   background-color: rgb(255, 255, 255);
   padding: 5px;
+  margin: 0 5px;
 }
 
 
