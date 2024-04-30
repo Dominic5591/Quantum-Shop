@@ -3,7 +3,7 @@ import { selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
 import homepageBanner from '../../images/navbar/homepageBanner.jpg';
-// import Footer from '../footer/Footer';
+import Footer from '../footer/Footer';
 import loading from '../../images/loading.gif';
 import './Homepage.css';
 import { useNavigate } from 'react-router-dom';
@@ -36,6 +36,7 @@ const Homepage = () => {
         <ProductGrid products={products} productRange="16, 32" />
         <CategoryCarousel products={products} category="electronics" message="Recommended electronics"/>
       </div>
+      <Footer />
     </div>
   );
 };

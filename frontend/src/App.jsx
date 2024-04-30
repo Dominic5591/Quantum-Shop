@@ -18,12 +18,12 @@ import Orders from './components/order/Orders';
 
 
 import { LocaleProvider } from './LocalProvider';
-import Footer from './components/footer/Footer';
 
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [showNavigation, setShowNavigation] = useState(true);
+  const [showHomePage, setShowHomePage] = useState(true);
   const location = useLocation();
 
 
@@ -33,15 +33,24 @@ function Layout() {
     });
   }, [dispatch]);
 
+  useEffect(() => {
 
+    const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
+    setShowNavigation(!isAuthPage);
+  }, [location.pathname]);
+
+  useEffect(() => {
+
+    const isAuthPage = location.pathname === '/';
+    setShowHomePage(isAuthPage);
+  }, [location.pathname]);
 
   return (
-
     <>
-      {location.pathname !== '/login' && location.pathname !== '/signup' && <Navigation />}
-      {location.pathname === '/' && <Homepage />}
+      {showNavigation && <Navigation />}
+
+      {showHomePage && <Homepage />}
       {isLoaded && <Outlet />}
-      {location.pathname === '/' && <Footer />}
     </>
   );
 }
