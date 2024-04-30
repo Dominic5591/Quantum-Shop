@@ -1,0 +1,27 @@
+/* 
+.categoryCardsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 100%;
+  background-color: #E3E6E6;
+}
+
+.categoryCard {
+  width: 300px;
+
+  margin: 10px;
+  text-align: center;
+}
+
+
+.categoryCardImage {
+  width: 100%;
+  max-height: 400px;
+  border-radius: 10px 10px 0 0;
+  /* clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%); */
+  /* Rounded top corners */
+
+

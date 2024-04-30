@@ -2,12 +2,15 @@ import { useSelector } from 'react-redux';
 import { selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
-import Footer from '../footer/Footer';
+import homepageBanner from '../../images/navbar/homepageBanner.jpg';
+// import Footer from '../footer/Footer';
 import loading from '../../images/loading.gif';
 import './Homepage.css';
+import { useNavigate } from 'react-router-dom';
+
 const Homepage = () => {
   const products = useSelector(selectProductsArray);
-
+  const navigate = useNavigate();
   if (!products) {
     return (
       <div>
@@ -15,21 +18,33 @@ const Homepage = () => {
       </div>
     );
   }
-  
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate('./categories/home');
+  };
 
   return (
     <div className="pageContainer">
+      <div className='homeBannerContainer'>
+        <img src={homepageBanner} alt="Homepage Banner" className="homepageBanner" onClick={handleClick}/>
+      </div>
       <div className='homepageMain'>
         <CategoryCarousel products={products} category="books" message="Recommended books for you"/>
         <ProductGrid products={products} productRange="0, 16" />
         <CategoryCarousel products={products} category="fashion" message="Trending Fashion"/>
-        <ProductGrid products={products}  productRange="16, 32" />
-        <CategoryCarousel products={products} category="electronics"message="Recommended electronics"/>
+        <ProductGrid products={products} productRange="16, 32" />
+        <CategoryCarousel products={products} category="electronics" message="Recommended electronics"/>
       </div>
-      <Footer />
     </div>
   );
 };
 
-
 export default Homepage;
+
+// const categories = [
+//   { name: 'Books', image: 'src/images/navbar/booksCategory.jpg' },
+//   { name: 'Electronics', image: 'src/images/navbar/electronicsCategory.jpg' },
+//   { name: 'Clothing', image: 'src/images/navbar/fashionCategory.jpg' },
+//   { name: 'Home', image: 'src/images/navbar/homeCategory.jpg' },
+// ];
