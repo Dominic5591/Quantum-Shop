@@ -1,0 +1,41 @@
+.productGridContainerSkeleton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 65px;
+  margin-top: 20px;
+}
+
+
+.largeProductGridCardSkeleton {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  width: calc(25% - 100px);
+  min-height: 400px;
+  max-height: 450px;
+}
+
+
+.productGridSkeleton {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.productGridCardSkeleton {
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 90%;
+}

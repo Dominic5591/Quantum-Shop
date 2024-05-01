@@ -4,12 +4,7 @@ import ProductGridSkeleton from "./ProductGridSkeleton";
 import CategoryCarouselSkeleton from "./CategoryCarouselSkeleton";
 import './SkeletonHomepage.css';
 
-
-
 const SkeletonHomepage = () => {
-
-
-
   return (
     <div className="pageContainerSkeleton">
       <div className='homeBannerContainerSkeleton'>

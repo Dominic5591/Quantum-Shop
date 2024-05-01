@@ -1,88 +1,19 @@
+import Skeleton from 'react-loading-skeleton';
+import './ProductGridSkeleton.css';
+
 
 const ProductGridSkeleton = () => (
-  <div className="productGridContainer">
-    <div className="largeProductGridCard">
-      <div className="productGrid">
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
+  <div className="productGridContainerSkeleton">
+    {[...Array(4)].map((_, i) => (
+      <div key={i} className="largeProductGridCardSkeleton">
+        <div className="productGridSkeleton">
+          {[...Array(4)].map((_, i) => (
+            <Skeleton key={i} className="productGridCardSkeleton" enableAnimation={true} />
+          ))}
+        </div>
       </div>
-    </div>
-    <div className="largeProductGridCard">
-      <div className="productGrid">
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-      </div>
-    </div>
-    <div className="largeProductGridCard">
-      <div className="productGrid">
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-      </div>
-    </div>
-    <div className="largeProductGridCard">
-      <div className="productGrid">
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-        <div
-          className="productGridCard"
-          style={{ width: "100%", height: "150px" }}
-        />
-      </div>
-    </div>
+    ))}
   </div>
 );
-
 
 export default ProductGridSkeleton;
