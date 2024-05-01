@@ -1,3 +1,6 @@
+require 'open-uri'
+
+
 puts "Creating Books"
 
 

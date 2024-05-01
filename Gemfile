@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.1"
 
+gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
 
 gem 'aws-sdk-s3'
 
