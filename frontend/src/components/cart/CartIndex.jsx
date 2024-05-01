@@ -120,7 +120,7 @@ const CartIndex = () => {
         </div>
         <Footer />
       </div>
-      </>
+    </>
 
   );
 };

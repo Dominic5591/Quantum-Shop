@@ -19,6 +19,7 @@ const ProductsIndex = () => {
       .catch(() => setLoaded(true));
   }, [dispatch]);
 
+
   if (!loaded) {
     return (
       <div>
@@ -43,7 +44,6 @@ const ProductsIndex = () => {
           <div key={`${product.id}_${index}`}>
             <ProductItem product={product}/>
           </div>
-          
         ))}
       </div>
       <Footer />

@@ -1,21 +1,40 @@
-import { useSelector } from 'react-redux';
-import { selectProductsArray } from '../../store/product';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
 import homepageBanner from '../../images/navbar/homepageBanner.jpg';
 import Footer from '../footer/Footer';
-import loading from '../../images/loading.gif';
+import 'react-loading-skeleton/dist/skeleton.css';
 import './Homepage.css';
-import { useNavigate } from 'react-router-dom';
+
+
+import SkeletonHomepage from '../skeleton/SkeletonHomepage';
 
 const Homepage = () => {
   const products = useSelector(selectProductsArray);
   const navigate = useNavigate();
-  if (!products) {
+  const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await dispatch(fetchProducts());
+        setLoaded(true);
+      } catch (error) {
+        setLoaded(true);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
+  
+
+  if (!loaded) {
     return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
+      <SkeletonHomepage />
     );
   }
 

@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { memoizedSelectCartItems, fetchCart } from '../../store/cartItem';
+import { memoizedSelectCartItems } from '../../store/cartItem';
 import * as sessionActions from '../../store/session';
 import SearchBar from './SearchBar';
 import cart from '../../images/navbar/cart3.svg';
 import arrow from '../../images/arrow.png';
 import './Navigation.css';
-import { fetchProducts } from '../../store/product';
+// import { fetchProducts } from '../../store/product';
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -22,13 +22,13 @@ function Navigation() {
     navigate("/home");
   };
   
-  useEffect(() => {
-    dispatch(fetchProducts());
-    if (sessionUser) {
-      dispatch(fetchCart());
-    }
+  // useEffect(() => {
+  //   dispatch(fetchProducts());
+  //   if (sessionUser) {
+  //     dispatch(fetchCart());
+  //   }
 
-  }, [dispatch, sessionUser]);
+  // }, [dispatch, sessionUser]);
 
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   
