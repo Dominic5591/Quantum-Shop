@@ -67,8 +67,8 @@ function Navigation() {
         <SearchBar />
         <div className='dropdownBorderDiv'>
           <li className="dropdown">
-            <span className="dropbtn">{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</span>
-            <div className="dropdownContent">{sessionLinks}</div>
+            <span className={sessionUser ? "dropbtn" : "dropbtnLoggedOut"}>{sessionUser ? `Hello, ${sessionUser.username}` : "Hello, sign in"}</span>
+            <div className={ sessionUser ? "dropdownContent" : "dropdownContentLoggedOut"}>{sessionLinks}</div>
           </li>
         </div>
         {
