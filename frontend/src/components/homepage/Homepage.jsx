@@ -6,11 +6,16 @@ import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
 import homepageBanner from '../../images/navbar/homepageBanner.jpg';
 import Footer from '../footer/Footer';
+// import { lazy, Suspense } from 'react';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './Homepage.css';
 
 
 import SkeletonHomepage from '../skeleton/SkeletonHomepage';
+// import CategoryCarouselSkeleton from '../skeleton/CategoryCarouselSkeleton';
+
+// const ProductGrid = lazy(() => import('../carousel/ProductGrid'));
+// const CategoryCarousel = lazy(() => import('../carousel/CategoryCarousel'));
 
 const Homepage = () => {
   const products = useSelector(selectProductsArray);
@@ -50,10 +55,19 @@ const Homepage = () => {
       </div>
       <div className='homepageMain'>
         <CategoryCarousel products={products} category="books" message="Recommended books for you"/>
+
+
         <ProductGrid products={products} productRange="0, 16" />
+
+
         <CategoryCarousel products={products} category="fashion" message="Trending Fashion"/>
+
+
         <ProductGrid products={products} productRange="16, 32" />
+
+
         <CategoryCarousel products={products} category="electronics" message="Recommended electronics"/>
+
       </div>
       <Footer />
     </div>
