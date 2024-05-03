@@ -166,6 +166,6 @@
 
 
 /* SearchBar.css */
-.searchBarCategoryDropdown.focused.dropdownOption[disabled] {
+.searchBarCategoryDropdown:focus.dropdownOption[disabled] {
   display: none;
 } 

@@ -29,7 +29,7 @@ const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, on
       onChange={(e) => onCategoryChange(e.target.value)}
     >
       {/* <label className="dropdownOption" value="All">All &#x25BE;</label> */}
-      <option className="dropdownOption" value="All" label=''>All <span>&#x25BE;</span></option>
+      <option  value="All" label=''>All<span className="dropdownOption">&#x25BE;</span></option>
       {categories.map((category) => (
         <option key={category} value={category}>{category}</option>
       ))}
