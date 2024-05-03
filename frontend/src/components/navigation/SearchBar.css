@@ -120,7 +120,7 @@
   border: 1px solid #ccc;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  min-width: 60px;
+  min-width: 55px;
   padding: 10px;
   outline: none;
   background-color: #E6E6E6;
@@ -165,7 +165,7 @@
 }
 
 
-/* SearchBar.css */
+
 .searchBarCategoryDropdown:focus.dropdownOption[disabled] {
   display: none;
 } 
