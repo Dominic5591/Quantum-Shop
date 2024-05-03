@@ -28,6 +28,14 @@
   height: 300px;
 }
 
+
+.loginLinksContainer {
+  display: flex;
+  flex-direction: row; /* Stacks items vertically */
+  align-items: center; /* Centers items horizontally */
+}
+
+
 .loginLinks {
   display: flex;
   align-items: center;
