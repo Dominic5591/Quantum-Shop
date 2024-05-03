@@ -1,5 +1,5 @@
 import { useEffect, forwardRef } from 'react';
-import './SearchBar.css';
+import './SearchBar.css'; // Ensure this import is correct
 
 const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, onCategoryChange }, ref) => {
   const adjustDropdownWidth = () => {
@@ -28,7 +28,8 @@ const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, on
       value={selectedCategory}
       onChange={(e) => onCategoryChange(e.target.value)}
     >
-      <option value="All">All</option>
+      {/* <label className="dropdownOption" value="All">All &#x25BE;</label> */}
+      <option className="dropdownOption" value="All" label=''>All <span>&#x25BE;</span></option>
       {categories.map((category) => (
         <option key={category} value={category}>{category}</option>
       ))}
@@ -39,3 +40,4 @@ const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, on
 SearchBarCategoryDropdown.displayName = 'SearchBarCategoryDropdown';
 
 export default SearchBarCategoryDropdown;
+  

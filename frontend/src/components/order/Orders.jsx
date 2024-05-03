@@ -38,7 +38,7 @@ const Orders = () => {
   }
 
   const calculateTotalPrice = (order) => {
-    let total =   0;
+    let total = 0;
     order.items.forEach(item => {
       const product = products.find(product => product.id === item.productId);
       if (product) {
@@ -57,7 +57,7 @@ const Orders = () => {
 
 
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
-
+  console.log(calculateTotalPrice());
   return (
     <>
       <div id='ordersMainPage'>
@@ -67,7 +67,7 @@ const Orders = () => {
             userOrders.map((order, index) => (
               <div key={`${order.id}_${index}`} className="orderDiv">
                 <div className="orderTotalBar">
-                  <p>Total: ${calculateTotalPrice(order).toFixed(2)}</p>
+                  <p>Total: ${calculateTotalPrice(order)}</p>
                 </div>
                 <ul className="orderItemsList">
                   {order.items.map((item, index) => {
