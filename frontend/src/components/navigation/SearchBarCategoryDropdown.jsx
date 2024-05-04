@@ -41,7 +41,7 @@ const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, on
       onBlur={handleBlur}
     >
       <option value="All" label=''>
-        All{!isFocused ? <span className="dropdownOption"> &#x25BE;</span> : null}
+        All{!isFocused ? <> &#x25BE;</> : null}
       </option>
       {categories.map((category) => (
         <option key={category} value={category}>{category}</option>
