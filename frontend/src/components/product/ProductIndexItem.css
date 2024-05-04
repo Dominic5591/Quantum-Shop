@@ -49,54 +49,39 @@
   }
 }
 
-.buyNowDiv {
-  padding-bottom: 5px
-}
 
 .buyNowH3 {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 550;
   line-height: 20px;
-  text-decoration: none solid rgb(15, 17, 17);
   color:#0F1111;
-  font-stretch: 100%;
-  text-transform: none;
+  padding-bottom: 5px
 }
 
-.productPriceDiv {
-  padding-bottom: 30px;
-  padding-top: 5px;
-  font-weight: 750;
-  font-family: Amazon Ember Lite;
-}
 
 .productPriceH1 {
+  padding-bottom: 30px;
+  padding-top: 5px;
   font-size: 28px;
-  text-decoration: none;
-  font-weight: lighter;
+  font-weight: 750;
   color: #0F1111;
-}
-
-.inStockDiv {
-  padding-bottom: 40px;
+  font-family: Amazon Ember Lite;
 }
 
 .inStockH1 {
   color: #007600;
   font-size: 18px;
   line-height: 24px;
+  padding-bottom: 40px;
 }
 
-.quantityDiv {
-  padding-bottom: 12px;
-}
 
 .quantityDropDown {
-  width: 60px;
+  margin-left: 15px;
+  width: 65px;
   background-color: #F0F2F2;
-  border: none;
+  border: 1px solid #c9c7c7;
   border-radius: 6px;
-  box-shadow:  1px 2px 6px  #b4b4b4;
 }
 
 .quantityDropDown:focus {
@@ -118,22 +103,17 @@
   border-radius: 10px;
   cursor: pointer;
   margin-bottom: 10px;
+  margin-top: 60px;
 }
 
-.addToCartBtnDiv {
-  padding-top: 120px;
-}
+
 
 .addToCartBtn:hover {
   background-color: #f8d318;
 }
 
-.middleProductPriceDiv {
-  display: flex;
-  align-items: center;
-}
 
-.middleProductPriceH3 {
+.middleProductNameH3 {
   font-size: 26px;
   line-height: 32px;
 }
@@ -192,24 +172,18 @@
   font-weight: bold;
 }
 
-.reviewDivider {
-  width: 100%;
-  height: 0.5px;
-  margin: 30px 0;
-  background: linear-gradient(to right,#d1d1d1, #d1d1d1, #d1d1d1);
-  box-shadow:  1px 4px 8px  #ffffff;
-}
 
-.reviewDivider2 {
-  width: 100%;
-  height: 0.5px;
-  margin-top: 200px;
-}
 
 .reviewContainer {
-  width: 100%;
-  display: block;
-  justify-content: center;
+  width: 60%;
+
+  flex-direction: row;
+
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  align-items: center;
 }
 
 .reviewItemsDiv {
@@ -239,23 +213,11 @@
   display: block;
 }
 
-.reviewContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 #reviewAverageSpan {
   padding-left: 12px;
   position: relative;
   bottom: 3px;
-}
-
-#productReviewOuterDiv {
-  display: flex;
-  gap: 142px;
-  margin-left: 90px
 }
 
 #reviewAmountH1 {
@@ -293,10 +255,14 @@
   font-size: 20px;
   font-family: Amazon Ember Lite;
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 #shareYourThoughtsH1 {
   font-family: Amazon Ember Lite;
   font-weight: bold;
+}
+
+#productReviewDiv {
+  margin-left: 100px;
 }
