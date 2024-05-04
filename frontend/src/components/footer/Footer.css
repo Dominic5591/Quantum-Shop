@@ -31,8 +31,8 @@
 
 .loginLinksContainer {
   display: flex;
-  flex-direction: row; /* Stacks items vertically */
-  align-items: center; /* Centers items horizontally */
+  flex-direction: row;
+  align-items: center;
 }
 
 
@@ -53,4 +53,5 @@
   margin-top: 10px;
   color: #fff;
   margin-left: 10px;
+  font-family: Amazon Ember Lite;
 }

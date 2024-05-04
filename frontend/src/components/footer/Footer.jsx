@@ -3,7 +3,6 @@ import linkedin from '../../images/linkedin.png';
 import './Footer.css';
 
 const Footer = () => {
-
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -35,7 +34,6 @@ const Footer = () => {
           <p className='loginLinkP'>{currentYear} QuantumShop</p>
         </ul>
       </div>
-
     </>
   );
 };

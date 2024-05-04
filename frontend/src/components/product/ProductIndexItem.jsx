@@ -41,6 +41,7 @@ const ProductIndexItem = () => {
   reviews.forEach(review => {
     reviewSum += review.rating;
     reviewCount += 1;
+
   });
 
   if (reviewCount > 0) {
@@ -115,69 +116,71 @@ const ProductIndexItem = () => {
 
 
   return (
-    <div className="productIndexItemPage">
-      <div className="productImageContainer">
-        <img className='productImgShow' src={product.photoUrl} alt={product.name} />
-      </div>
-      <div className="cardContentItem">
-        <h3 className='middleProductNameH3'>{product.name}</h3>
-        <div className='middleRatingDiv'>
-          <span className='ratingsNum'>{reviewAverage}  </span>
-          <Rating rating={product.rating} />
-          <span className='numRatings'>{reviewAmount}</span>
+    <>
+      <div className="productIndexItemPage">
+        <div className="productImageContainer">
+          <img className='productImgShow' src={product.photoUrl} alt={product.name} />
         </div>
-        <div className="middlePriceDivider"></div>
-        <p className='middleProductPriceP'><span className='salePrice'>-10%  </span>${product.price}</p>
-        <div className="middlePriceDivider"></div>
-        <p className='aboutItemP'>About this item:</p>
-        <ul className='productDetailList'>
-          {parsedDescription.map((detail, index) => (
-            <li className='productDetail' key={`${product.id}_${index}`}>{detail}</li>
-          ))}
-        </ul>
-      </div>
-      <div className='addToCartDiv'>
-        <h3 className='buyNowH3'>Buy new:</h3>
-        <h1 className='productPriceH1'>${product.price}</h1>
-        <h1 className='inStockH1'>In Stock</h1>
-        <span>Quantity:</span>
-        <select 
-          className='quantityDropDown'
-          name="quantity"
-          value={quantity}
-          onChange={handleQuantityChange}
-        >
-          {[...Array(10).keys()].map((i) => (
-            <option key={i} value={i + 1}>{i + 1}</option>
-          ))}
-        </select>
-        <button onClick={handleAddCartItem} className='addToCartBtn'>Add to cart</button>
-      </div>
-      <div className='reviewContainer'>
-        <div id='productReviewDiv'>
-          <h1 id='customerReviewsH1'>Customer Reviews</h1>
-          <ReviewRating ReviewRating={product.rating} />
-          <span id='reviewAverageSpan'>{reviewAverage} out of 5</span>
-          <h1 id='reviewAmountH1'>{reviewAmount}</h1>
+        <div className="cardContentItem">
+          <h3 className='middleProductNameH3'>{product.name}</h3>
+          <div className='middleRatingDiv'>
+            <span className='ratingsNum'>{reviewAverage}  </span>
+            <Rating rating={product.rating} />
+            <span className='numRatings'>{reviewAmount}</span>
+          </div>
+          <div className="middlePriceDivider"></div>
+          <p className='middleProductPriceP'><span className='salePrice'>-10%  </span>${product.price}</p>
+          <div className="middlePriceDivider"></div>
+          <p className='aboutItemP'>About this item:</p>
+          <ul className='productDetailList'>
+            {parsedDescription.map((detail, index) => (
+              <li className='productDetail' key={`${product.id}_${index}`}>{detail}</li>
+            ))}
+          </ul>
         </div>
-        <div id='writeReviewDiv'>
-          <h1 id='reviewProductTextH1'>Review this product</h1>
-          <h1 id='shareYourThoughtsH1'>{ sessionUser ? "Share your thoughts with other customers" : "Sign in to review this product"}</h1>
-          {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
-          {sessionUser ? 
-            <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
-            :
-            <>
-              <button id='reviewButtonOne' onClick={() => navigate("/login")}>Sign in</button>
-              <button id='reviewButtonOne' onClick={() => navigate("/signup")}>Create Account</button>
-            </>
-          } 
+        <div className='addToCartDiv'>
+          <h3 className='buyNowH3'>Buy new:</h3>
+          <h1 className='productPriceH1'>${product.price}</h1>
+          <h1 className='inStockH1'>In Stock</h1>
+          <span>Quantity:</span>
+          <select 
+            className='quantityDropDown'
+            name="quantity"
+            value={quantity}
+            onChange={handleQuantityChange}
+          >
+            {[...Array(10).keys()].map((i) => (
+              <option key={i} value={i + 1}>{i + 1}</option>
+            ))}
+          </select>
+          <button onClick={handleAddCartItem} className='addToCartBtn'>Add to cart</button>
         </div>
-        <ReviewIndex product={product} />
       </div>
-
+        <div className='reviewContainer'>
+          <div id='productReviewDiv'>
+            <h1 id='customerReviewsH1'>Customer Reviews</h1>
+            <ReviewRating ReviewRating={product.rating} />
+            <span id='reviewAverageSpan'>{reviewAverage} out of 5</span>
+            <h1 id='reviewAmountH1'>{reviewAmount}</h1>
+          </div>
+          <div id='writeReviewDiv'>
+            <h1 id='reviewProductTextH1'>Review this product</h1>
+            <h1 id='shareYourThoughtsH1'>{ sessionUser ? "Share your thoughts with other customers" : "Sign in to review this product"}</h1>
+            {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
+            {sessionUser ? 
+              <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
+              :
+              <>
+                <button id='reviewButtonOne' onClick={() => navigate("/login")}>Sign in</button>
+                <button id='reviewButtonOne' onClick={() => navigate("/signup")}>Create Account</button>
+              </>
+            } 
+          </div>
+        </div>
+      <ReviewIndex product={product} />
       <Footer />
-    </div>
+    </>
+
   );
 };
 
