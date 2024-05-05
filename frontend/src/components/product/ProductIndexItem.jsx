@@ -118,9 +118,7 @@ const ProductIndexItem = () => {
   return (
     <>
       <div className="productIndexItemPage">
-        <div className="productImageContainer">
-          <img className='productImgShow' src={product.photoUrl} alt={product.name} />
-        </div>
+        <img className='productImgShow' src={product.photoUrl} alt={product.name} />
         <div className="cardContentItem">
           <h3 className='middleProductNameH3'>{product.name}</h3>
           <div className='middleRatingDiv'>
@@ -156,27 +154,27 @@ const ProductIndexItem = () => {
           <button onClick={handleAddCartItem} className='addToCartBtn'>Add to cart</button>
         </div>
       </div>
-        <div className='reviewContainer'>
-          <div id='productReviewDiv'>
-            <h1 id='customerReviewsH1'>Customer Reviews</h1>
-            <ReviewRating ReviewRating={product.rating} />
-            <span id='reviewAverageSpan'>{reviewAverage} out of 5</span>
-            <h1 id='reviewAmountH1'>{reviewAmount}</h1>
-          </div>
-          <div id='writeReviewDiv'>
-            <h1 id='reviewProductTextH1'>Review this product</h1>
-            <h1 id='shareYourThoughtsH1'>{ sessionUser ? "Share your thoughts with other customers" : "Sign in to review this product"}</h1>
-            {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
-            {sessionUser ? 
-              <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
-              :
-              <>
-                <button id='reviewButtonOne' onClick={() => navigate("/login")}>Sign in</button>
-                <button id='reviewButtonOne' onClick={() => navigate("/signup")}>Create Account</button>
-              </>
-            } 
-          </div>
+      <div className='reviewContainer'>
+        <div id='productReviewDiv'>
+          <h1 id='customerReviewsH1'>Customer Reviews</h1>
+          <ReviewRating ReviewRating={product.rating} />
+          <span id='reviewAverageSpan'>{reviewAverage} out of 5</span>
+          <h1 id='reviewAmountH1'>{reviewAmount}</h1>
         </div>
+        <div id='writeReviewDiv'>
+          <h1 id='reviewProductTextH1'>Review this product</h1>
+          <h1 id='shareYourThoughtsH1'>{ sessionUser ? "Share your thoughts with other customers" : "Sign in to review this product"}</h1>
+          {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
+          {sessionUser ? 
+            <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
+            :
+            <>
+              <button id='reviewButtonOneSignIn' onClick={() => navigate("/login")}>Sign in to your account</button>
+              <button id='reviewButtonOne' onClick={() => navigate("/signup")}>Sign up now</button>
+            </>
+          } 
+        </div>
+      </div>
       <ReviewIndex product={product} />
       <Footer />
     </>

@@ -4,39 +4,29 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 100%;
-  z-index: 1;
 }
-
-.productImageContainer {
-  z-index: 2;
-  /* position: absolute; */
-  top: 15%;
-  right: 75%;
-  border: 1px solid black;
-}
-
 
 .productImgShow {
-  z-index: 4;
-  width: 250px;
+  max-width: 250px;
+  margin-top: 150px;
 }
 
-.cardContentItem {
-  padding: 24px;
-  width: 35%;
-}
+
+
+/* CART  */
+
 
 .addToCartDiv {
+  margin-top: 150px;
   border: 1px solid rgb(170, 170, 170);
   border-radius: 10px;
   width: 200px;
   height: 350px;
   padding: 12px;
 }
-
 
 .buyNowH3 {
   font-size: 14px;
@@ -45,7 +35,6 @@
   color:#0F1111;
   padding-bottom: 5px
 }
-
 
 .productPriceH1 {
   padding-bottom: 30px;
@@ -62,7 +51,6 @@
   line-height: 24px;
   padding-bottom: 40px;
 }
-
 
 .quantityDropDown {
   margin-left: 15px;
@@ -94,12 +82,20 @@
   margin-top: 60px;
 }
 
-
-
 .addToCartBtn:hover {
   background-color: #f8d318;
 }
 
+
+/* MIDDLE */
+
+
+.cardContentItem {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  width: 40%;
+}
 
 .middleProductNameH3 {
   margin-top: 80px;
@@ -112,13 +108,14 @@
 }
 
 .ratingsNum {
-  margin-top: 9px;
   padding-right: 5px;
 }
 
 .numRatings {
   margin-top: 9px;
   padding-left: 25px;
+  font-family: Amazon Ember Lite;
+  font-weight: 600;
   color: #68ABB7
 }
 
@@ -146,7 +143,7 @@
 }
 
 .productDetail {
-  padding: 4px;
+  padding: 6px;
 }
 
 .salePrice {
@@ -158,19 +155,31 @@
 }
 
 
-
+/* REVIEW STYLING */
 
 
 .reviewContainer {
-  width: 60%;
+  margin-top: 120px;
+  width: 100%;
   flex-direction: row;
-  border: 1px solid black;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 324px;
   padding: 24px;
   align-items: center;
 }
 
+#reviewButtonOneSignIn {
+  background-color: #FFD814;
+  margin-top: 20px;
+  width: 80%;
+  padding: 12px;
+  color: #464646;
+  font-weight: bold;
+  border: 1px solid #d3d2d2;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 #reviewAverageSpan {
   padding-left: 12px;
@@ -195,14 +204,17 @@
   margin-top: 20px;
   width: 80%;
   padding: 12px;
-  background-color: #ffffff;
+  background-color: #ffffffe1;
   color: #464646;
   font-weight: bold;
   border: 1px solid #d3d2d2;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
+}
+
+#reviewButtonOneSignIn:hover {
+  background-color: #f8d318;
 }
 
 #reviewButtonOne:hover {
