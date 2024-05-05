@@ -157,7 +157,7 @@ const ProductIndexItem = () => {
       <div className='reviewContainer'>
         <div id='productReviewDiv'>
           <h1 id='customerReviewsH1'>Customer Reviews</h1>
-          <ReviewRating ReviewRating={product.rating} />
+          <ReviewRating ReviewRating={reviewAverage} />
           <span id='reviewAverageSpan'>{reviewAverage} out of 5</span>
           <h1 id='reviewAmountH1'>{reviewAmount}</h1>
         </div>
