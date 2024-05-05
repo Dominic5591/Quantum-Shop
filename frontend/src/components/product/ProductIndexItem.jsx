@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useParams  } from 'react-router-dom';
 import { ReviewRating, Rating } from './Rating';
 import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
 import { fetchProduct, selectProduct } from '../../store/product';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { selectReviewProductArray } from '../../store/review';
+import { selectReviewProductArray, fetchReviews } from '../../store/review';
 import loading from '../../images/loading.gif';
-import './ProductIndexItem.css';
 import ReviewIndex from '../review/ReviewIndex';
-import { fetchReviews } from '../../store/review';
 import * as modalActions from '../../store/modal';
 import ReviewModalCreatorEditor from '../review/ReviewModalCreatorEditor';
 import Footer from '../footer/Footer';
+import './ProductIndexItem.css';
 
 
 const ProductIndexItem = () => {
@@ -44,7 +42,6 @@ const ProductIndexItem = () => {
     reviewSum += review.rating;
     reviewCount += 1;
 
-  
   });
 
   if (reviewCount > 0) {
@@ -119,108 +116,69 @@ const ProductIndexItem = () => {
 
 
   return (
-    <div className="productIndexItemPage">
-      <div className='topIndexPageDivider'></div>
-      <div className='productImageContainer'>
+    <>
+      <div className="productIndexItemPage">
         <img className='productImgShow' src={product.photoUrl} alt={product.name} />
-      </div>
-      <div className="cardContentItem">
-        <div className='middleProductPriceDiv'>
-          <h3 className='middleProductPriceH3'>{product.name}</h3>
-        </div>
-        <div className='middleRatingDiv'>
-          <span className='ratingsNum'>{reviewAverage}  </span>
-          <Rating rating={product.rating} />
-          <span className='numRatings'>{reviewAmount}</span>
-        </div>
-        <div className="middlePriceDivider"></div>
-        <div className='middleProductPriceDiv'>
+        <div className="cardContentItem">
+          <h3 className='middleProductNameH3'>{product.name}</h3>
+          <div className='middleRatingDiv'>
+            <span className='ratingsNum'>{reviewAverage}  </span>
+            <Rating rating={product.rating} />
+            <span className='numRatings'>{reviewAmount}</span>
+          </div>
+          <div className="middlePriceDivider"></div>
           <p className='middleProductPriceP'><span className='salePrice'>-10%  </span>${product.price}</p>
-        </div>
-        <div className="middlePriceDivider"></div>
-        <div>
+          <div className="middlePriceDivider"></div>
           <p className='aboutItemP'>About this item:</p>
           <ul className='productDetailList'>
             {parsedDescription.map((detail, index) => (
               <li className='productDetail' key={`${product.id}_${index}`}>{detail}</li>
             ))}
           </ul>
-          
         </div>
-        
-      </div>
-      <div className='addToCartDiv'>
-        <div className='buyNowDiv'>
+        <div className='addToCartDiv'>
           <h3 className='buyNowH3'>Buy new:</h3>
-        </div>
-        <div className='productPriceDiv'>
           <h1 className='productPriceH1'>${product.price}</h1>
-        </div>
-        <div className='inStockDiv'>
           <h1 className='inStockH1'>In Stock</h1>
-        </div>
-        <div className='quantityDiv'>
-          <form></form>
-          <span>Quantity: </span>
+          <span>Quantity:</span>
           <select 
             className='quantityDropDown'
             name="quantity"
             value={quantity}
             onChange={handleQuantityChange}
           >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+            {[...Array(10).keys()].map((i) => (
+              <option key={i} value={i + 1}>{i + 1}</option>
+            ))}
           </select>
-        </div>
-
-        <div className='addToCartBtnDiv'>
           <button onClick={handleAddCartItem} className='addToCartBtn'>Add to cart</button>
         </div>
       </div>
-
-
-      <div className="reviewDivider2"></div>
-
       <div className='reviewContainer'>
-        <div className="reviewDivider"></div>
-        <div id='productReviewOuterDiv'>
-          <div id='productReviewDiv'>
-            <h1 id='customerReviewsH1'>Customer Reviews</h1>
-            <div id='customerRatingsDiv'>
-              <div id='customerRatingsDivInner'>
-                <ReviewRating ReviewRating={product.rating} />
-                <span id='reviewAverageSpan'>{reviewAverage}   out of 5</span>
-              </div>
-              <h1 id='reviewAmountH1'>{reviewAmount}</h1>
-            </div>
-          </div>
-          <div id='writeReviewDiv'>
-            <h1 id='reviewProductTextH1'>Review this product</h1>
-            <h1 id='shareYourThoughtsH1'>Share your thoughts with other customers</h1>
-            <div id='createReviewDiv'>
-              {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
-              {sessionUser ? 
-                <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
-                :
-                <p></p>
-              } 
-            </div>
-          </div>
+        <div id='productReviewDiv'>
+          <h1 id='customerReviewsH1'>Customer Reviews</h1>
+          <ReviewRating ReviewRating={reviewAverage} />
+          <span id='reviewAverageSpan'>{reviewAverage} out of 5</span>
+          <h1 id='reviewAmountH1'>{reviewAmount}</h1>
         </div>
-        <div className="reviewDivider"></div>
-        <ReviewIndex product={product} />
+        <div id='writeReviewDiv'>
+          <h1 id='reviewProductTextH1'>Review this product</h1>
+          <h1 id='shareYourThoughtsH1'>{ sessionUser ? "Share your thoughts with other customers" : "Sign in to review this product"}</h1>
+          {modalType && <ReviewModalCreatorEditor productId={product_id}/>}
+          {sessionUser ? 
+            <button id='reviewButtonOne' onClick={handleClick}>Write a customer review</button>
+            :
+            <>
+              <button id='reviewButtonOneSignIn' onClick={() => navigate("/login")}>Sign in to your account</button>
+              <button id='reviewButtonOne' onClick={() => navigate("/signup")}>Sign up now</button>
+            </>
+          } 
+        </div>
       </div>
-
+      <ReviewIndex product={product} />
       <Footer />
-    </div>
+    </>
+
   );
 };
 

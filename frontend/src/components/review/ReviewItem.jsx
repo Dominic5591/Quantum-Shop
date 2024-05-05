@@ -41,7 +41,6 @@ const ReviewItem = ({ review }) => {
             <span className="reviewTitleSpan">{review.title}</span>
             {modalType && <ReviewModalCreatorEditor productId={review.productId} />}
           </div>
-
           <div className="reviewBodyDiv">{review.body}</div>
           <button className='editDeleteReviewBtn' onClick={editReview}>Edit</button>
           <button className='editDeleteReviewBtn' onClick={removeReview}>Delete</button>
