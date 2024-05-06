@@ -178,7 +178,6 @@ const ProductIndexItem = () => {
       <ReviewIndex product={product} />
       <Footer />
     </>
-
   );
 };
 

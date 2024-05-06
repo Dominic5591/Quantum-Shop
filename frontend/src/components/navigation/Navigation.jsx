@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { memoizedSelectCartItems } from '../../store/cartItem';
 import * as sessionActions from '../../store/session';
 import SearchBar from './SearchBar';
-import cart from '../../images/navbar/cart3.svg';
+import cart from '../../images/cart3.svg';
 import arrow from '../../images/arrow.png';
 import './Navigation.css';
 // import { fetchProducts } from '../../store/product';

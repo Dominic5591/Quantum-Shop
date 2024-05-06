@@ -1,5 +1,5 @@
 import Footer from "../footer/Footer";
-import homepageBanner from '../../images/navbar/homepageBanner.jpg';
+import homepageBanner from '../../images/homepageBanner.jpg';
 import ProductGridSkeleton from "./ProductGridSkeleton";
 import CategoryCarouselSkeleton from "./CategoryCarouselSkeleton";
 import './SkeletonHomepage.css';

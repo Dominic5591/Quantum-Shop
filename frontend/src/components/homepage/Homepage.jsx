@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
-import homepageBanner from '../../images/navbar/homepageBanner.jpg';
+import homepageBanner from '../../images/homepageBanner.jpg';
 import Footer from '../footer/Footer';
 // import { lazy, Suspense } from 'react';
 import 'react-loading-skeleton/dist/skeleton.css';

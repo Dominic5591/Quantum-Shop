@@ -19,7 +19,7 @@ category: 'home',
 rating: 4
 )
 
-towel.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/towel.jpg'), filename: 'towel.jpg')
+towel.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/towel.webp'), filename: 'towel.webp')
 
 air = Product.create(
 name: 'VEWIOR Air Purifiers for Home, HEPA Air Purifiers for Large Room up to 600 sq.ft, H13 True HEPA Air Filter with Fragrance Sponge 6 Timers Quiet Air Cleaner for Pets Dander Odor Dust Smoke Pollen',
@@ -34,7 +34,7 @@ category: 'home',
 rating: 3
 )
 
-air.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/air.jpg'), filename: 'air.jpg')
+air.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/air.webp'), filename: 'air.webp')
 
 
 lamp = Product.create(
@@ -50,7 +50,7 @@ category: 'home',
 rating: 2
 )
 
-lamp.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/lamp.jpg'), filename: 'lamp.jpg')
+lamp.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/lamp.webp'), filename: 'lamp.webp')
 
 
 coaster = Product.create(
@@ -66,7 +66,7 @@ category: 'home',
 rating: 4
 )
 
-coaster.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/coaster.jpg'), filename: 'coaster.jpg')
+coaster.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/coaster.webp'), filename: 'coaster.webp')
 
 
 cutting = Product.create(
@@ -83,7 +83,7 @@ category: 'home',
 rating: 5
 )
 
-cutting.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/cutting.jpg'), filename: 'cutting')
+cutting.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/cutting.webp'), filename: 'cutting')
 
 
 silverware = Product.create(
@@ -100,7 +100,7 @@ category: 'home',
 rating: 3
 )
 
-silverware.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/silverware.jpg'), filename: 'silverware.jpg')
+silverware.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/silverware.webp'), filename: 'silverware.webp')
 
 
 scale = Product.create(
@@ -117,7 +117,7 @@ rating: 2
 )
 
 
-scale.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/scale.jpg'), filename: 'scale.jpg')
+scale.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/scale.webp'), filename: 'scale.webp')
 
 containers = Product.create(
 name: 'Vtopmart Airtight Food Storage Containers Set with Lids, 15pcs BPA Free Plastic Dry Food Canisters for Kitchen Pantry Organization and Storage, Dishwasher safe,Include 24 Labels, Grey',
@@ -132,7 +132,7 @@ category: 'home',
 rating: 4
 )
 
-containers.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/containers.jpg'), filename: 'containers.jpg')
+containers.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/containers.webp'), filename: 'containers.webp')
 
 
 wood = Product.create(
@@ -149,7 +149,7 @@ category: 'home',
 rating: 5
 )
 
-wood.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/wood.jpg'), filename: 'wood.jpg')
+wood.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/wood.webp'), filename: 'wood.webp')
 
 
 broom = Product.create(
@@ -168,7 +168,7 @@ rating: 5
 )
 
 
-broom.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/broom.jpg'), filename: 'broom.jpg')
+broom.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/broom.webp'), filename: 'broom.webp')
 
 
 
@@ -188,7 +188,7 @@ category: 'home',
 rating: 4
 )
 
-towel2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/towel.jpg'), filename: 'towel.jpg')
+towel2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/towel.webp'), filename: 'towel.webp')
 
 air2 = Product.create(
 name: 'VEWIOR Air Purifiers for Home, HEPA Air Purifiers for Large Room up to 600 sq.ft, H13 True HEPA Air Filter with Fragrance Sponge 6 Timers Quiet Air Cleaner for Pets Dander Odor Dust Smoke Pollen',
@@ -203,7 +203,7 @@ category: 'home',
 rating: 3
 )
 
-air2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/air.jpg'), filename: 'air.jpg')
+air2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/air.webp'), filename: 'air.webp')
 
 
 lamp2 = Product.create(
@@ -219,7 +219,7 @@ category: 'home',
 rating: 2
 )
 
-lamp2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/lamp.jpg'), filename: 'lamp.jpg')
+lamp2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/lamp.webp'), filename: 'lamp.webp')
 
 
 coaster2 = Product.create(
@@ -235,7 +235,7 @@ category: 'home',
 rating: 4
 )
 
-coaster2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/coaster.jpg'), filename: 'coaster.jpg')
+coaster2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/coaster.webp'), filename: 'coaster.webp')
 
 
 cutting2 = Product.create(
@@ -252,7 +252,7 @@ category: 'home',
 rating: 5
 )
 
-cutting2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/cutting.jpg'), filename: 'cutting')
+cutting2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/cutting.webp'), filename: 'cutting')
 
 
 silverware2 = Product.create(
@@ -269,7 +269,7 @@ category: 'home',
 rating: 3
 )
 
-silverware2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/silverware.jpg'), filename: 'silverware.jpg')
+silverware2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/silverware.webp'), filename: 'silverware.webp')
 
 
 scale2 = Product.create(
@@ -286,7 +286,7 @@ rating: 2
 )
 
 
-scale2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/scale.jpg'), filename: 'scale.jpg')
+scale2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/scale.webp'), filename: 'scale.webp')
 
 containers2 = Product.create(
 name: 'Vtopmart Airtight Food Storage Containers Set with Lids, 15pcs BPA Free Plastic Dry Food Canisters for Kitchen Pantry Organization and Storage, Dishwasher safe,Include 24 Labels, Grey',
@@ -301,7 +301,7 @@ category: 'home',
 rating: 4
 )
 
-containers2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/containers.jpg'), filename: 'containers.jpg')
+containers2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/containers.webp'), filename: 'containers.webp')
 
 
 wood2 = Product.create(
@@ -318,7 +318,7 @@ category: 'home',
 rating: 5
 )
 
-wood2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/wood.jpg'), filename: 'wood.jpg')
+wood2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/wood.webp'), filename: 'wood.webp')
 
 
 broom2 = Product.create(
@@ -337,7 +337,7 @@ rating: 5
 )
 
 
-broom2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/broom.jpg'), filename: 'broom.jpg')
+broom2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/broom.webp'), filename: 'broom.webp')
 
 
 

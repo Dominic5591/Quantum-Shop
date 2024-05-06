@@ -22,8 +22,8 @@ rating: 4
 )
 
 
-# product.photos.attach(io: URI.open('your_photo_url.jpg'), filename: 'your_photo_filename.jpg')
-keyboard.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/keyboard.jpg'), filename: 'keyboard.jpg')
+# product.photos.attach(io: URI.open('your_photo_url.webp'), filename: 'your_photo_filename.jpg')
+keyboard.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/keyboard.webp'), filename: 'keyboard.webp')
 
 
 monitor = Product.create(
@@ -39,7 +39,7 @@ category: 'electronics',
 rating: 5
 )
 
-monitor.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/monitor.jpg'), filename: 'monitor.jpg')
+monitor.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/monitor.webp'), filename: 'monitor.webp')
 
 tv = Product.create(
 name: 'VIZIO 40-inch D-Series Full HD 1080p Smart TV with AMD FreeSync, Apple AirPlay and Chromecast Built-in, Alexa Compatibility, D40f-J09, 2022 Model',
@@ -56,7 +56,7 @@ rating: 4
 )
 
 
-tv.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/vizio-tv.jpg'), filename: 'vizio-tv.jpg')
+tv.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/vizio-tv.webp'), filename: 'vizio-tv.webp')
 
 
 ssd = Product.create(
@@ -74,7 +74,7 @@ rating: 5
 )
 
 
-ssd.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ssdm2.jpg'), filename: 'ssdm2.jpg')
+ssd.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ssdm2.webp'), filename: 'ssdm2.webp')
 
 
 mouse = Product.create(
@@ -93,7 +93,7 @@ rating: 4
 
 
 
-mouse.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/mouse.jpg'), filename: 'mouse.jpg')
+mouse.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/mouse.webp'), filename: 'mouse.webp')
 
 
 laptop = Product.create(
@@ -110,7 +110,7 @@ category: 'electronics',
 rating: 3
 )
 
-laptop.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/laptop.jpg'), filename: 'laptop.jpg')
+laptop.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/laptop.webp'), filename: 'laptop.webp')
 
 power = Product.create(
 name: 'Thermaltake Toughpower GX3 850W 80Plus Gold SLI/Crossfire Ready ATX 3.0 Power Supply; PCIe5 12VHPWR Connector Included; 5 Year Warranty; PS-TPD-0850NNFAGU-3',
@@ -125,7 +125,7 @@ category: 'electronics',
 rating: 2
 )
 
-power.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/powersupply.jpg'), filename: 'powersupply.jpg')
+power.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/powersupply.webp'), filename: 'powersupply.webp')
 
 ram = Product.create(
 name: 'Corsair VENGEANCE LPX DDR4 RAM 32GB (2x16GB) 3200MHz CL16 Intel XMP 2.0 Computer Memory - Black (CMK32GX4M2E3200C16)',
@@ -142,7 +142,7 @@ category: 'electronics',
 rating: 5
 )
 
-ram.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ram.jpg'), filename: 'ram.jpg')
+ram.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ram.webp'), filename: 'ram.webp')
 
 headphones = Product.create(
 name: 'Sony WH-CH720N Noise Canceling Wireless Headphones Bluetooth Over The Ear Headset with Microphone and Alexa Built-in, Black New',
@@ -159,7 +159,7 @@ category: 'electronics',
 rating: 5
 )
 
-headphones.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/headphones.jpg'), filename: 'headphones.jpg')
+headphones.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/headphones.webp'), filename: 'headphones.webp')
 
 pad = Product.create(
 name: 'Novation Launchpad X Grid Controller for Ableton Live',
@@ -174,7 +174,7 @@ category: 'electronics',
 rating: 4
 )
 
-pad.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/launchpad.jpg'), filename: 'launchpad.jpg')
+pad.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/launchpad.webp'), filename: 'launchpad.webp')
 
 
 
@@ -195,8 +195,8 @@ rating: 4
 )
 
 
-# product.photos.attach(io: URI.open('your_photo_url.jpg'), filename: 'your_photo_filename.jpg')
-keyboard2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/keyboard.jpg'), filename: 'keyboard.jpg')
+# product.photos.attach(io: URI.open('your_photo_url.webp'), filename: 'your_photo_filename.webp')
+keyboard2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/keyboard.webp'), filename: 'keyboard.webp')
 
 
 monitor2 = Product.create(
@@ -212,7 +212,7 @@ category: 'electronics',
 rating: 5
 )
 
-monitor2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/monitor.jpg'), filename: 'monitor.jpg')
+monitor2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/monitor.webp'), filename: 'monitor.webp')
 
 tv2 = Product.create(
 name: 'VIZIO 40-inch D-Series Full HD 1080p Smart TV with AMD FreeSync, Apple AirPlay and Chromecast Built-in, Alexa Compatibility, D40f-J09, 2022 Model',
@@ -229,7 +229,7 @@ rating: 4
 )
 
 
-tv2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/vizio-tv.jpg'), filename: 'vizio-tv.jpg')
+tv2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/vizio-tv.webp'), filename: 'vizio-tv.webp')
 
 
 ssd2 = Product.create(
@@ -247,7 +247,7 @@ rating: 5
 )
 
 
-ssd2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ssdm2.jpg'), filename: 'ssdm2.jpg')
+ssd2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ssdm2.webp'), filename: 'ssdm2.webp')
 
 
 mouse2 = Product.create(
@@ -266,7 +266,7 @@ rating: 4
 
 
 
-mouse2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/mouse.jpg'), filename: 'mouse.jpg')
+mouse2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/mouse.webp'), filename: 'mouse.webp')
 
 
 laptop2 = Product.create(
@@ -283,7 +283,7 @@ category: 'electronics',
 rating: 3
 )
 
-laptop2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/laptop.jpg'), filename: 'laptop.jpg')
+laptop2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/laptop.webp'), filename: 'laptop.webp')
 
 power2 = Product.create(
 name: 'Thermaltake Toughpower GX3 850W 80Plus Gold SLI/Crossfire Ready ATX 3.0 Power Supply; PCIe5 12VHPWR Connector Included; 5 Year Warranty; PS-TPD-0850NNFAGU-3',
@@ -298,7 +298,7 @@ category: 'electronics',
 rating: 2
 )
 
-power2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/powersupply.jpg'), filename: 'powersupply.jpg')
+power2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/powersupply.webp'), filename: 'powersupply.webp')
 
 ram2 = Product.create(
 name: 'Corsair VENGEANCE LPX DDR4 RAM 32GB (2x16GB) 3200MHz CL16 Intel XMP 2.0 Computer Memory - Black (CMK32GX4M2E3200C16)',
@@ -315,7 +315,7 @@ category: 'electronics',
 rating: 5
 )
 
-ram2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ram.jpg'), filename: 'ram.jpg')
+ram2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/ram.webp'), filename: 'ram.webp')
 
 headphones2 = Product.create(
 name: 'Sony WH-CH720N Noise Canceling Wireless Headphones Bluetooth Over The Ear Headset with Microphone and Alexa Built-in, Black New',
@@ -332,7 +332,7 @@ category: 'electronics',
 rating: 5
 )
 
-headphones2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/headphones.jpg'), filename: 'headphones.jpg')
+headphones2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/headphones.webp'), filename: 'headphones.webp')
 
 pad2 = Product.create(
 name: 'Novation Launchpad X Grid Controller for Ableton Live',
@@ -347,4 +347,4 @@ category: 'electronics',
 rating: 4
 )
 
-pad2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/launchpad.jpg'), filename: 'launchpad.jpg')
+pad2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/launchpad.webp'), filename: 'launchpad.webp')

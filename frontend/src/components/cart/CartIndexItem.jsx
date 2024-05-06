@@ -41,7 +41,7 @@ const CartIndexItem = ({ cartItem }) => {
         <NavLink to={`/products/${product.id}`}>
           <div className="cartItemImgDiv">
             <img
-              className='productImg'
+              className='cartProductImg'
               src={product.photoUrl}
               alt=""
               onLoad={handleImageLoad}
@@ -75,7 +75,7 @@ const CartIndexItem = ({ cartItem }) => {
           </div>
         )}
       </div>
-      <div className="cartItemIndexDivider"></div>
+      {/* <div className="cartItemIndexDivider"></div> */}
     </div>
   );
 };

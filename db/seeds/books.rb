@@ -19,7 +19,7 @@ category: 'books',
 rating: 4
 )
 
-book1.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book1.jpg'), filename: 'book1.jpg')
+book1.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book1.webp'), filename: 'book1.webp')
 
 
 
@@ -30,7 +30,7 @@ category: 'books',
 rating: 2
 )
 
-book2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book2.jpg'), filename: 'book2.jpg')
+book2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book2.webp'), filename: 'book2.webp')
 
 book3 = Product.create(
 name: 'True Hallucinations: Being an Account of the Authors Extraordinary Adventures in the Devils Paradise',
@@ -42,7 +42,7 @@ category: 'books',
 rating: 5
 )
 
-book3.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book3.jpg'), filename: 'book3.jpg')
+book3.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book3.webp'), filename: 'book3.webp')
 
 book4 = Product.create(
 name: 'A Happy Death',
@@ -56,7 +56,7 @@ category: 'books',
 rating: 4
 )
 
-book4.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book4.jpg'), filename: 'book4.jpg')
+book4.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book4.webp'), filename: 'book4.webp')
 
 book5 = Product.create(
 name: 'Animal Farm: 75th Anniversary Edition ',
@@ -71,7 +71,7 @@ category: 'books',
 rating: 5
 )
 
-book5.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book5.jpg'), filename: 'book5.jpg')
+book5.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book5.webp'), filename: 'book5.webp')
 
 book6 = Product.create(
 name: 'Brave New World',
@@ -84,7 +84,7 @@ category: 'books',
 rating: 4
 )
 
-book6.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book6.jpg'), filename: 'book6.jpg')
+book6.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book6.webp'), filename: 'book6.webp')
 
 book7 = Product.create(
 name: 'Become What You Are',
@@ -96,7 +96,7 @@ category: 'books',
 rating: 3
 )
 
-book7.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book7.jpg'), filename: 'book7.jpg')
+book7.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book7.webp'), filename: 'book7.webp')
 
 
 book8 = Product.create(
@@ -109,7 +109,7 @@ category: 'books',
 rating: 5
 )
 
-book8.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book8.jpg'), filename: 'book8.jpg')
+book8.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book8.webp'), filename: 'book8.webp')
 
 book9 = Product.create(
 name: 'Fourth Wing (The Empyrean, 1)',
@@ -121,7 +121,7 @@ category: 'books',
 rating: 5
 )
 
-book9.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book9.jpg'), filename: 'book9.jpg')
+book9.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book9.webp'), filename: 'book9.webp')
 
 book10 = Product.create(
 name: 'Psychology of the Unconscious',
@@ -133,7 +133,30 @@ category: 'books',
 rating: 4
 )
 
-book10.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book10.jpg'), filename: 'book10.jpg')
+book10.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book10.webp'), filename: 'book10.webp')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -149,7 +172,7 @@ category: 'books',
 rating: 4
 )
 
-book11.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book1.jpg'), filename: 'book1.jpg')
+book11.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book1.webp'), filename: 'book1.webp')
 
 
 
@@ -160,7 +183,7 @@ category: 'books',
 rating: 2
 )
 
-book12.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book2.jpg'), filename: 'book2.jpg')
+book12.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book2.webp'), filename: 'book2.webp')
 
 book13 = Product.create(
 name: 'True Hallucinations: Being an Account of the Authors Extraordinary Adventures in the Devils Paradise',
@@ -172,7 +195,7 @@ category: 'books',
 rating: 5
 )
 
-book13.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book3.jpg'), filename: 'book3.jpg')
+book13.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book3.webp'), filename: 'book3.webp')
 
 book14 = Product.create(
 name: 'A Happy Death',
@@ -186,7 +209,7 @@ category: 'books',
 rating: 4
 )
 
-book14.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book4.jpg'), filename: 'book4.jpg')
+book14.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book4.webp'), filename: 'book4.webp')
 
 book15 = Product.create(
 name: 'Animal Farm: 75th Anniversary Edition ',
@@ -201,7 +224,7 @@ category: 'books',
 rating: 5
 )
 
-book15.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book5.jpg'), filename: 'book5.jpg')
+book15.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book5.webp'), filename: 'book5.webp')
 
 book16 = Product.create(
 name: 'Brave New World',
@@ -214,7 +237,7 @@ category: 'books',
 rating: 4
 )
 
-book16.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book6.jpg'), filename: 'book6.jpg')
+book16.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book6.webp'), filename: 'book6.webp')
 
 book17 = Product.create(
 name: 'Become What You Are',
@@ -226,7 +249,7 @@ category: 'books',
 rating: 3
 )
 
-book17.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book7.jpg'), filename: 'book7.jpg')
+book17.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book7.webp'), filename: 'book7.webp')
 
 
 book18 = Product.create(
@@ -239,7 +262,7 @@ category: 'books',
 rating: 5
 )
 
-book18.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book8.jpg'), filename: 'book8.jpg')
+book18.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book8.webp'), filename: 'book8.webp')
 
 book19 = Product.create(
 name: 'Fourth Wing (The Empyrean, 1)',
@@ -251,7 +274,7 @@ category: 'books',
 rating: 5
 )
 
-book19.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book9.jpg'), filename: 'book9.jpg')
+book19.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book9.webp'), filename: 'book9.webp')
 
 book20 = Product.create(
 name: 'Psychology of the Unconscious',
@@ -263,5 +286,5 @@ category: 'books',
 rating: 4
 )
 
-book20.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book10.jpg'), filename: 'book10.jpg')
+book20.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/book10.webp'), filename: 'book10.webp')
 

@@ -20,7 +20,7 @@ category: 'fashion',
 rating: 3
 )
 
-hoodie.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/hoodie.jpg'), filename: 'hoodie.jpg')
+hoodie.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/hoodie.webp'), filename: 'hoodie.webp')
 
 sweater = Product.create(
 name: 'MAGCOMSEN Sweater 1/4 Zip Up Casual Turtleneck Pullover Polo Sweaters Fall Winter Sweatshirts',
@@ -36,7 +36,7 @@ category: 'fashion',
 rating: 4
 )
 
-sweater.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/sweater.jpg'), filename: 'sweater.jpg')
+sweater.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/sweater.webp'), filename: 'sweater.webp')
 
 
 watch = Product.create(
@@ -53,7 +53,7 @@ rating: 5
 )
 
 
-watch.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/watch.jpg'), filename: 'watch.jpg')
+watch.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/watch.webp'), filename: 'watch.webp')
 
 beanie = Product.create(
 name: 'PAGE ONE Womens Winter Ribbed Beanie Crossed Cap Chunky Cable Knit Pompom Soft Warm Hat',
@@ -68,7 +68,7 @@ category: 'fashion',
 rating: 4
 )
 
-beanie.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/beanie.jpg'), filename: 'beanie.jpg')
+beanie.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/beanie.webp'), filename: 'beanie.webp')
 
 
 gloves = Product.create(
@@ -85,7 +85,7 @@ rating: 3
 )
 
 
-gloves.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/gloves.jpg'), filename: 'gloves.jpg')
+gloves.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/gloves.webp'), filename: 'gloves.webp')
 
 jacket = Product.create(
 name: 'MOERDENG Womens Waterproof Ski Jacket Warm Winter Snow Coat Mountain Windbreaker Hooded Raincoat Jacket',
@@ -100,7 +100,7 @@ category: 'fashion',
 rating: 4
 )
 
-jacket.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket.jpg'), filename: 'jacket.jpg')
+jacket.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket.webp'), filename: 'jacket.webp')
 
 
 jacket2 = Product.create(
@@ -117,7 +117,7 @@ rating: 5
 )
 
 
-jacket2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket2.jpg'), filename: 'jacket2.jpg')
+jacket2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket2.webp'), filename: 'jacket2.webp')
 
 
 
@@ -137,7 +137,7 @@ category: 'fashion',
 rating: 3
 )
 
-hoodie2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/hoodie.jpg'), filename: 'hoodie.jpg')
+hoodie2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/hoodie.webp'), filename: 'hoodie.webp')
 
 sweater2 = Product.create(
 name: 'MAGCOMSEN Sweater 1/4 Zip Up Casual Turtleneck Pullover Polo Sweaters Fall Winter Sweatshirts',
@@ -153,7 +153,7 @@ category: 'fashion',
 rating: 4
 )
 
-sweater2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/sweater.jpg'), filename: 'sweater.jpg')
+sweater2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/sweater.webp'), filename: 'sweater.webp')
 
 
 watch2 = Product.create(
@@ -170,7 +170,7 @@ rating: 5
 )
 
 
-watch2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/watch.jpg'), filename: 'watch.jpg')
+watch2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/watch.webp'), filename: 'watch.webp')
 
 beanie2 = Product.create(
 name: 'PAGE ONE Womens Winter Ribbed Beanie Crossed Cap Chunky Cable Knit Pompom Soft Warm Hat',
@@ -185,7 +185,7 @@ category: 'fashion',
 rating: 4
 )
 
-beanie2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/beanie.jpg'), filename: 'beanie.jpg')
+beanie2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/beanie.webp'), filename: 'beanie.webp')
 
 
 gloves2 = Product.create(
@@ -202,7 +202,7 @@ rating: 3
 )
 
 
-gloves2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/gloves.jpg'), filename: 'gloves.jpg')
+gloves2.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/gloves.webp'), filename: 'gloves.webp')
 
 jacket3 = Product.create(
 name: 'MOERDENG Womens Waterproof Ski Jacket Warm Winter Snow Coat Mountain Windbreaker Hooded Raincoat Jacket',
@@ -217,7 +217,7 @@ category: 'fashion',
 rating: 4
 )
 
-jacket3.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket.jpg'), filename: 'jacket.jpg')
+jacket3.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket.webp'), filename: 'jacket.webp')
 
 
 jacket4 = Product.create(
@@ -234,6 +234,6 @@ rating: 5
 )
 
 
-jacket4.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket2.jpg'), filename: 'jacket2.jpg')
+jacket4.photo.attach(io: URI.open('https://quantum-shop-seeds.s3.amazonaws.com/product-seeds/jacket2.webp'), filename: 'jacket2.webp')
 
 
