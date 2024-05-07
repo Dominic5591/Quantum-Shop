@@ -6,26 +6,30 @@ import ProductItem from './ProductItem';
 import loading from '../../images/loading.gif';
 import './ProductsIndex.css';
 import Footer from '../footer/Footer';
-
+import PageSelector from './PageSelector';
 const ProductsIndex = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProductsArray);
   const { category } = useParams();
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(2);
 
 
 
   useEffect(() => {
-    dispatch(fetchProducts(page))
-      .then(() => setLoaded(true))
+    dispatch(fetchProducts(page, category))
+      .then((data) => {
+        setTotalPages(data.total_pages);
+        setLoaded(true);
+      })
       .catch(() => setLoaded(true));
-  }, [dispatch, page]);
+  }, [dispatch, page, category]);
 
 
-  const handleLoadMore = (e) => {
-    e.preventDefault();
-    setPage(page + 1);
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
 
@@ -55,7 +59,11 @@ const ProductsIndex = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleLoadMore}>Load More</button>
+      <PageSelector
+        currentPage={page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
       <Footer />
     </ul>
   );

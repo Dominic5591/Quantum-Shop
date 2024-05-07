@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show] do
       collection do
         get 'search', to: 'products#search'
-        get 'index', to: 'products#index', defaults: { page: 1, per_page: 10 }
+        get ':category', to: 'products#index', defaults: { page: 1, per_page: 10 }
       end
     end
   end

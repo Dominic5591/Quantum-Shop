@@ -62,8 +62,8 @@ export const fetchAllProducts = () => async (dispatch) => {
 };
 
 
-export const fetchProducts = (page) => async (dispatch) => {
-  const res = await fetch(`/api/products?page=${page}`, {
+export const fetchProducts = (page = 1, category = "all") => async (dispatch) => {
+  const res = await fetch(`/api/products?page=${page}&category=${category}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
