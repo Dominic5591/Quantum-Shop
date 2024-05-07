@@ -15,40 +15,40 @@ export const receiveProduct = (product) => ({
   product,
 });
 
+const selectProductsState = (state) => state.products;
 
-const selectProductState = (state) => state.products;
+export const selectProductsArray = createSelector(
+  [selectProductsState],
+  (products) => {
+    return Object.values(products).reduce((acc, val) => acc.concat(val), []);
+  }
+);
+
+export const selectProductsArrayCat = createSelector(
+  [selectProductsArray],
+  (products) => products
+);
 
 export const selectProductById = (productId) =>
-  createSelector(
-    [selectProductState],
-    (products) => products[productId] || null
-  );
-
+  createSelector([selectProductsState], (products) => {
+    for (const pageProducts of Object.values(products)) {
+      const product = pageProducts.find((p) => p.id === productId);
+      if (product) {
+        return product;
+      }
+    }
+    return null;
+  });
 
 export const isProductDescriptionArray = (productId) =>
   createSelector([selectProductById(productId)], (product) =>
     Array.isArray(product?.description)
   );
 
+
 export const selectProduct = (productId) => (state) => {
   return state?.products[productId] || null;
 };
-
-const selectProductsState = (state) => state.products;
-const selectProductsStateCat = (state) => state.products.undefined;
-
-export const selectProductsArray = createSelector(
-  [selectProductsState],
-  (products) => Object.values(products)
-);
-
-
-export const selectProductsArrayCat = createSelector(
-  [selectProductsStateCat],
-  (products) => Object.values(products)
-);
-
-
 
 export const fetchAllProducts = () => async (dispatch) => {
   const res = await fetch(`/api/products`, {
@@ -82,13 +82,13 @@ export const fetchProduct = (productId) => async (dispatch) => {
 };
 
 
-const productReducer = (state = { 1: [] }, action) => {
+const productReducer = (state = { }, action) => {
   const newState = { ...state };
 
   switch (action.type) {
   case RECEIVE_PRODUCTS: {
-    newState[action.page] = action.products;
-    return newState;
+    console.log(action);
+    return action.products;
   } 
   case RECEIVE_PRODUCT: {
     newState[action.product.id] = action.product;
