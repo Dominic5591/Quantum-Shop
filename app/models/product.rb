@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   validates :name, :description, :price, :category, presence: true
-  validates :rating, inclusion: {in: 1..5}, presence: true
+  validates :rating, inclusion: { in: 1..5 }, presence: true
+
 
   has_one_attached :photo
 
@@ -25,4 +26,10 @@ class Product < ApplicationRecord
       where("lower(name) LIKE ? AND lower(category) = ?", "%#{sanitize_sql_like(lowercase_query)}%", category.downcase)
     end
   end
+
+
+
+      scope :paginated, ->(page, per_page) {
+    order(created_at: :desc).page(page).per(per_page)
+  }
 end

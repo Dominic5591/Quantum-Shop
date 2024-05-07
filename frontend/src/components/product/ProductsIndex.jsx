@@ -13,6 +13,13 @@ const ProductsIndex = () => {
   const { category } = useParams();
   const [loaded, setLoaded] = useState(false);
 
+
+
+  // const [items, setItems] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [page, setPage] = useState(1);
+
   useEffect(() => {
     dispatch(fetchProducts())
       .then(() => setLoaded(true))
