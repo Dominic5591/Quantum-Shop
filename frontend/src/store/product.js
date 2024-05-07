@@ -50,8 +50,8 @@ export const selectProductsArrayCat = createSelector(
 
 
 
-export const fetchProducts = () => async (dispatch) => {
-  const res = await fetch("/api/products", {
+export const fetchAllProducts = () => async (dispatch) => {
+  const res = await fetch(`/api/products`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -62,6 +62,19 @@ export const fetchProducts = () => async (dispatch) => {
 };
 
 
+export const fetchProducts = (page) => async (dispatch) => {
+  const res = await fetch(`/api/products?page=${page}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const productData = await res.json();
+  dispatch(receiveProducts(productData));
+};
+
+
+
 export const fetchProduct = (productId) => async (dispatch) => {
   const res = await fetch(`/api/products/${productId}`);
   const productData = await res.json();
@@ -69,12 +82,13 @@ export const fetchProduct = (productId) => async (dispatch) => {
 };
 
 
-const productReducer = (state = {}, action) => {
+const productReducer = (state = { 1: [] }, action) => {
   const newState = { ...state };
 
   switch (action.type) {
   case RECEIVE_PRODUCTS: {
-    return { ...state, ...action.products };
+    newState[action.page] = action.products;
+    return newState;
   } 
   case RECEIVE_PRODUCT: {
     newState[action.product.id] = action.product;

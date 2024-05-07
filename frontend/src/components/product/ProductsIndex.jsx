@@ -12,19 +12,21 @@ const ProductsIndex = () => {
   const products = useSelector(selectProductsArray);
   const { category } = useParams();
   const [loaded, setLoaded] = useState(false);
+  const [page, setPage] = useState(1);
 
 
-
-  // const [items, setItems] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
-  // const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchProducts())
+    dispatch(fetchProducts(page))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, page]);
+
+
+  const handleLoadMore = (e) => {
+    e.preventDefault();
+    setPage(page + 1);
+  };
 
 
   if (!loaded) {
@@ -53,6 +55,7 @@ const ProductsIndex = () => {
           </div>
         ))}
       </div>
+      <button onClick={handleLoadMore}>Load More</button>
       <Footer />
     </ul>
   );

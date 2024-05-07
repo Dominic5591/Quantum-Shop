@@ -1,8 +1,9 @@
 class Api::ProductsController < ApplicationController
   
   def index 
-    @products = Product.all 
-    render :index
+    @page = [(params[:page] || 1).to_i, 1].max
+    @per_page = 10
+    @products = Product.paginated(@page, @per_page)
   end
 
   def show 

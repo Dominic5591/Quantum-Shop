@@ -28,8 +28,9 @@ class Product < ApplicationRecord
   end
 
 
+  def self.paginated(page, per_page)
+    offset = (page.to_i - 1.to_i) * per_page
+    Product.order(id: :desc).limit(per_page).offset(offset)
+  end
 
-      scope :paginated, ->(page, per_page) {
-    order(created_at: :desc).page(page).per(per_page)
-  }
 end
