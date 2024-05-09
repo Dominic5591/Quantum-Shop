@@ -1,11 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
 import './ProductGrid.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../../store/product';
+import { selectProductsArray } from '../../store/product';
 
-const ProductGrid = ({ products, productRange }) => {
-  // Parse the productRange prop to get the start and end indices
+const ProductGrid = ({ page, category, productRange }) => {
+  const dispatch = useDispatch();
+  const products = useSelector(selectProductsArray);
   const [startIndex, endIndex] = productRange.split(',').map(Number);
 
-  // Slice the products array to get the desired range of products
   const slicedProducts = products.slice(startIndex, endIndex);
 
   const largeCards = [];
@@ -19,6 +23,11 @@ const ProductGrid = ({ products, productRange }) => {
     }
     return name;
   };
+
+
+  useEffect(() => {
+    dispatch(fetchProducts(page, category));
+  }, [dispatch, page, category]);
 
   return (
     <div className='productGridContainer'>

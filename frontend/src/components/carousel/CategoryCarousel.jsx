@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { useRef, useEffect } from 'react';
+import { fetchProducts, selectProductsArray } from '../../store/product';
+import { useDispatch, useSelector } from 'react-redux';
 import './CategoryCarousel.css';
 
-const CategoryCarousel = ({ products, category, message }) => {
-
-  const filteredProducts = products.filter(product => product.category === category);
-  const maxProducts = filteredProducts.slice(0, 40);
+const CategoryCarousel = ({ page, category, message }) => {
+  const dispatch = useDispatch();
+  const products = useSelector(selectProductsArray);
 
   const carouselRef = useRef(null);
   const prevArrowRef = useRef(null);
@@ -55,12 +56,19 @@ const CategoryCarousel = ({ products, category, message }) => {
     };
   }, []);
 
+
+
+  useEffect(() => {
+    dispatch(fetchProducts(page, category));
+  }, [dispatch, page, category]);
+  
+
   return (
     <div className='recommendedProductsCarouselContainer'>
       <span className='carouselMessage'>{message}</span>
       <button ref={prevArrowRef} className='carouselArrow left' onClick={() => scrollTo('left')}>&#10094;</button>
       <div ref={carouselRef} className='recommendedProductsCarousel hide-scrollbar'>
-        {maxProducts.map((product) => (
+        {products.map((product) => (
           <NavLink key={product.id} className="recommendedProductCard" to={`/products/${product.id}`}>
             <img className='recommendedProductImg' src={product.photoUrl} alt={product.name} />
           </NavLink>
