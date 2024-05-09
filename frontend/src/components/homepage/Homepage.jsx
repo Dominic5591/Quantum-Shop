@@ -1,52 +1,58 @@
-// import { useDispatch} from 'react-redux';
-// import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { fetchProducts } from '../../store/product';
+import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
 import homepageBanner from '../../images/homepageBanner.jpg';
 import Footer from '../footer/Footer';
-// import { lazy, Suspense } from 'react';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './Homepage.css';
 
 
-// import SkeletonHomepage from '../skeleton/SkeletonHomepage';
-// import CategoryCarouselSkeleton from '../skeleton/CategoryCarouselSkeleton';
+import SkeletonHomepage from '../skeleton/SkeletonHomepage';
 
-// const ProductGrid = lazy(() => import('../carousel/ProductGrid'));
-// const CategoryCarousel = lazy(() => import('../carousel/CategoryCarousel'));
 
 const Homepage = () => {
-  // const products = useSelector(selectProductsArray);
+  const products = useSelector(selectProductsArray);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       await dispatch(fetchProducts());
-  //       setLoaded(true);
-  //     } catch (error) {
-  //       setLoaded(true);
-  //     }
-  //   };
 
-  //   fetchData();
-  // }, [dispatch]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await dispatch(fetchProducts(page));
+        setLoaded(true);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+        setLoaded(true);
+      }
+    };
+
+    fetchData();
+  }, [dispatch, page]);
+
+  const loadMoreProducts = () => {
+    setPage(prevPage => prevPage + 1);
+  };
   
 
-  // if (!loaded) {
-  //   return (
-  //     <SkeletonHomepage />
-  //   );
-  // }
+  if (!loaded) {
+    return (
+      <SkeletonHomepage />
+    );
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
     navigate('./categories/home');
   };
+
+  console.log(products);
 
   return (
     <div className="pageContainer">
@@ -54,27 +60,24 @@ const Homepage = () => {
         <img src={homepageBanner} alt="Homepage Banner" className="homepageBanner" onClick={handleClick}/>
       </div>
       <div className='homepageMain'>
-        <CategoryCarousel page={3} category="books" message="Recommended books for you"/>
+        <CategoryCarousel products={products} category="books" message="Recommended books for you"/>
 
 
-        <ProductGrid page={1}  category="electronics" productRange="0, 16" />
-        <ProductGrid page={1}  category="electronics" productRange="32, 48" />
-        <ProductGrid page={1}  category="electronics" productRange="32, 48" />
-        <ProductGrid page={1}  category="electronics" productRange="32, 48" />
+        <ProductGrid products={products} productRange="0, 16" />
 
 
-        <CategoryCarousel page={1} category="fashion" message="Trending Fashion"/>
+        <CategoryCarousel products={products} category="fashion" message="Trending Fashion"/>
 
 
-        <ProductGrid page={1}  category="electronics" productRange="16, 32" />
-        <ProductGrid page={1}  category="electronics" productRange="16, 32" />
-        <ProductGrid page={1}  category="electronics" productRange="16, 32" />
-        <ProductGrid page={1}  category="electronics" productRange="16, 32" />
+        <ProductGrid products={products} productRange="16, 32" />
 
 
-        <CategoryCarousel page={1} category="electronics" message="Recommended electronics"/>
+        <CategoryCarousel products={products} category="electronics" message="Recommended electronics"/>
 
       </div>
+      {products && products.length > 0 && (
+        <button onClick={loadMoreProducts}>Load More</button>
+      )}
       <Footer />
     </div>
   );

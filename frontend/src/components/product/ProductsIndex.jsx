@@ -16,7 +16,6 @@ const ProductsIndex = () => {
   const [totalPages, setTotalPages] = useState(2);
 
 
-
   useEffect(() => {
     dispatch(fetchProducts(page, category))
       .then((data) => {

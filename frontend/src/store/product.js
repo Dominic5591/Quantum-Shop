@@ -19,10 +19,9 @@ const selectProductsState = (state) => state.products;
 
 export const selectProductsArray = createSelector(
   [selectProductsState],
-  (products) => {
-    return Object.values(products).reduce((acc, val) => acc.concat(val), []);
-  }
+  (products) => Object.values(products)
 );
+
 
 export const selectProductsArrayCat = createSelector(
   [selectProductsArray],
@@ -87,10 +86,12 @@ const productReducer = (state = { }, action) => {
 
   switch (action.type) {
   case RECEIVE_PRODUCTS: {
-    console.log(action);
-    // const newState = action.products
-    return action.products;
-  } 
+    return {
+      ...state,
+      ...state.products,
+      ...action.products,
+    };
+  }
   case RECEIVE_PRODUCT: {
     newState[action.product.id] = action.product;
     return newState;
@@ -101,3 +102,6 @@ const productReducer = (state = { }, action) => {
 };
 
 export default productReducer;
+
+
+
