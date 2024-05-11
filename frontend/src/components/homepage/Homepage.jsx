@@ -51,6 +51,7 @@ const Homepage = () => {
     e.preventDefault();
     navigate('./categories/home');
   };
+  
 
   console.log(products);
 
