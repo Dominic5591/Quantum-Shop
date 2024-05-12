@@ -15,27 +15,7 @@ export const receiveProduct = (product) => ({
   product,
 });
 
-
-const selectProductState = (state) => state.products;
-
-export const selectProductById = (productId) =>
-  createSelector(
-    [selectProductState],
-    (products) => products[productId] || null
-  );
-
-
-export const isProductDescriptionArray = (productId) =>
-  createSelector([selectProductById(productId)], (product) =>
-    Array.isArray(product?.description)
-  );
-
-export const selectProduct = (productId) => (state) => {
-  return state?.products[productId] || null;
-};
-
 const selectProductsState = (state) => state.products;
-const selectProductsStateCat = (state) => state.products.undefined;
 
 export const selectProductsArray = createSelector(
   [selectProductsState],
@@ -44,14 +24,33 @@ export const selectProductsArray = createSelector(
 
 
 export const selectProductsArrayCat = createSelector(
-  [selectProductsStateCat],
-  (products) => Object.values(products)
+  [selectProductsArray],
+  (products) => products
 );
 
+export const selectProductById = (productId) =>
+  createSelector([selectProductsState], (products) => {
+    for (const pageProducts of Object.values(products)) {
+      const product = pageProducts.find((p) => p.id === productId);
+      if (product) {
+        return product;
+      }
+    }
+    return null;
+  });
+
+export const isProductDescriptionArray = (productId) =>
+  createSelector([selectProductById(productId)], (product) =>
+    Array.isArray(product?.description)
+  );
 
 
-export const fetchProducts = () => async (dispatch) => {
-  const res = await fetch("/api/products", {
+export const selectProduct = (productId) => (state) => {
+  return state?.products[productId] || null;
+};
+
+export const fetchAllProducts = () => async (dispatch) => {
+  const res = await fetch(`/api/products`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -62,6 +61,19 @@ export const fetchProducts = () => async (dispatch) => {
 };
 
 
+export const fetchProducts = (page = 1, category = "all") => async (dispatch) => {
+  const res = await fetch(`/api/products?page=${page}&category=${category}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const productData = await res.json();
+  dispatch(receiveProducts(productData));
+};
+
+
+
 export const fetchProduct = (productId) => async (dispatch) => {
   const res = await fetch(`/api/products/${productId}`);
   const productData = await res.json();
@@ -69,13 +81,17 @@ export const fetchProduct = (productId) => async (dispatch) => {
 };
 
 
-const productReducer = (state = {}, action) => {
+const productReducer = (state = { }, action) => {
   const newState = { ...state };
 
   switch (action.type) {
   case RECEIVE_PRODUCTS: {
-    return { ...state, ...action.products };
-  } 
+    return {
+      ...state,
+      ...state.products,
+      ...action.products,
+    };
+  }
   case RECEIVE_PRODUCT: {
     newState[action.product.id] = action.product;
     return newState;
@@ -86,3 +102,6 @@ const productReducer = (state = {}, action) => {
 };
 
 export default productReducer;
+
+
+

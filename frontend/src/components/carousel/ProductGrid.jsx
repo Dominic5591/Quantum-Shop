@@ -2,10 +2,7 @@ import { NavLink } from 'react-router-dom';
 import './ProductGrid.css';
 
 const ProductGrid = ({ products, productRange }) => {
-  // Parse the productRange prop to get the start and end indices
   const [startIndex, endIndex] = productRange.split(',').map(Number);
-
-  // Slice the products array to get the desired range of products
   const slicedProducts = products.slice(startIndex, endIndex);
 
   const largeCards = [];
