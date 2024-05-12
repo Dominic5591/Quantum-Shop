@@ -2,7 +2,7 @@ class Api::ProductsController < ApplicationController
   
 def index 
   @page = [(params[:page] || 1).to_i, 1].max
-  @per_page = 10
+  @per_page = 60
   @category = params[:category] || 'all'
   @products = Product.paginated(@page, @per_page, @category)
 end

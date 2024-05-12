@@ -6,11 +6,13 @@ import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
 import homepageBanner from '../../images/homepageBanner.jpg';
 import Footer from '../footer/Footer';
-import InfiniteScroll from 'react-infinite-scroll-component'; // Import InfiniteScroll
+import InfiniteScroll from 'react-infinite-scroll-component';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './Homepage.css';
 
 import SkeletonHomepage from '../skeleton/SkeletonHomepage';
+// import CategoryCarouselSkeleton from '../skeleton/CategoryCarouselSkeleton';
+// import ProductGridSkeleton from '../skeleton/ProductGridSkeleton';
 
 const Homepage = () => {
   const products = useSelector(selectProductsArray);
@@ -54,29 +56,37 @@ const Homepage = () => {
   }
 
   return (
-    <div className="pageContainer">
+    <InfiniteScroll
+      dataLength={products.length}
+      next={loadMore}
+      hasMore={true}
+      scrollThreshold={0.5}
+      style={{
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <div className="pageContainer">
         <div className='homeBannerContainer'>
           <img src={homepageBanner} alt="Homepage Banner" className="homepageBanner" onClick={() => navigate('./categories/home')} />
         </div>
         <div className='homepageMain'>
-        <InfiniteScroll
-          scrollableTarget="homepageMain"
-          dataLength={products.length} // This is important field to render the next data
-          next={loadMore} // Required - A function which gets executed when you reach to the bottom of this list
-          hasMore={true} // A boolean indicating whether there are more items to load
-          loader={<h1>loading</h1>} // A UI loader to display while loading more posts
-          scrollThreshold={0.5}
-        >
+          {/* <CategoryCarouselSkeleton /> */}
+          {/* <ProductGridSkeleton /> */}
           <CategoryCarousel products={products} category="books" message="Recommended books for you"/>
           <ProductGrid products={products} productRange="0, 16"/>
+          {/* <CategoryCarouselSkeleton /> */}
+          {/* <ProductGridSkeleton /> */}
           <CategoryCarousel products={products} category="fashion" message="Trending Fashion"/>
           <ProductGrid products={products} productRange="16, 32"/>
+          {/* <CategoryCarouselSkeleton /> */}
+          {/* <ProductGridSkeleton /> */}
           <CategoryCarousel products={products} category="electronics" message="Recommended electronics"/>
-          <ProductGrid products={products} productRange="32, 48"/>
-    </InfiniteScroll>
         </div>
         <Footer />
       </div>
+    </InfiniteScroll>
   );
 };
 
