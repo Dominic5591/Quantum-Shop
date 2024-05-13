@@ -10,6 +10,9 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './Homepage.css';
 
+
+import CategoryCarouselSkeleton from '../skeleton/CategoryCarouselSkeleton';
+import ProductGridSkeleton from '../skeleton/ProductGridSkeleton';
 import SkeletonHomepage from '../skeleton/SkeletonHomepage';
 
 const Homepage = () => {
@@ -70,11 +73,13 @@ const Homepage = () => {
           <img src={homepageBanner} alt="Homepage Banner" className="homepageBanner" onClick={() => navigate('./categories/home')} />
         </div>
         <div className='homepageMain'>
-          <CategoryCarousel products={products} category="books" message="Recommended books for you" style={{ height: '300px' }} />
-          <ProductGrid products={products} productRange="0, 16" style={{ height: '600px' }} />
-          <CategoryCarousel products={products} category="fashion" message="Trending Fashion" style={{ height: '300px' }} />
-          <ProductGrid products={products} productRange="16, 32" style={{ height: '600px' }} />
-          <CategoryCarousel products={products} category="electronics" message="Recommended electronics" style={{ height: '300px' }} />
+          {/* {!loaded && <CategoryCarouselSkeleton />} */}
+          {!loaded && <ProductGridSkeleton />}
+          {loaded ? <CategoryCarousel products={products} category="books" message="Recommended books for you" /> : <CategoryCarouselSkeleton />}
+          {loaded ? <ProductGrid products={products} productRange="0, 16" /> : <ProductGridSkeleton />}
+          {loaded ? <CategoryCarousel products={products} category="fashion" message="Trending Fashion" /> : <CategoryCarouselSkeleton />}
+          {loaded ? <ProductGrid products={products} productRange="16, 32" /> : <ProductGridSkeleton />}
+          {loaded ? <CategoryCarousel products={products} category="electronics" message="Recommended electronics" /> : <CategoryCarouselSkeleton />}
         </div>
         <Footer />
       </div>
