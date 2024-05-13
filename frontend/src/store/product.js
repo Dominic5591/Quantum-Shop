@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 
 export const RECEIVE_PRODUCT = 'products/RECEIVE_PRODUCT';
 export const RECEIVE_PRODUCTS = 'products/RECEIVE_PRODUCTS';
+export const CLEAR_PRODUCTS = "products/CLEAR_PRODUCTS";
 
 
 export const receiveProducts = (products) => ({
@@ -14,6 +15,12 @@ export const receiveProduct = (product) => ({
   type: RECEIVE_PRODUCT,
   product,
 });
+
+
+export const clearProducts = () => ({
+  type: CLEAR_PRODUCTS,
+});
+
 
 const selectProductsState = (state) => state.products;
 
@@ -60,9 +67,12 @@ export const fetchAllProducts = () => async (dispatch) => {
   dispatch(receiveProducts(productData));
 };
 
-
-export const fetchProducts = (page = 1, category = "all") => async (dispatch) => {
-  const res = await fetch(`/api/products?page=${page}&category=${category}`, {
+export const fetchProducts = (page = 1, category = "all", searchQuery = null) => async (dispatch) => {
+  let url = `/api/products?page=${page}&category=${category}`;
+  if (searchQuery) {
+    url += `&q=${searchQuery}`;
+  }
+  const res = await fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -95,6 +105,10 @@ const productReducer = (state = { }, action) => {
   case RECEIVE_PRODUCT: {
     newState[action.product.id] = action.product;
     return newState;
+  }
+  case CLEAR_PRODUCTS: {
+    return {};
+
   }
   default:
     return state;

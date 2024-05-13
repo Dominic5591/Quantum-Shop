@@ -6,7 +6,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { debounce } from 'lodash';
 import './SearchBar.css';
 import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
-import { selectProductsArray } from '../../store/product';
+import { fetchProducts, selectProductsArray } from '../../store/product';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -27,6 +27,8 @@ const SearchBar = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const categories = ['Electronics', 'Books', 'Home', 'Fashion'];
 
+
+
   useEffect(() => {
     const handleFocus = () => {
       magImgDivRef.current.classList.add('focused');
@@ -38,7 +40,6 @@ const SearchBar = () => {
       magImgDivRef.current.classList.remove('focused');
       categoryDropdownRef.current.classList.remove('focused');
       setIsSearchOverlayVisible(false);
-      setShowModal(false);
     };
 
     const searchBar = searchBarRef.current;
@@ -85,7 +86,7 @@ const SearchBar = () => {
 
 
   const debouncedSearch = debounce((params) => {
-    dispatch(fetchSearch(params));
+    dispatch(fetchProducts(null, null, params));
     setShowModal(true);
   }, 500);
 
@@ -103,21 +104,21 @@ const SearchBar = () => {
 
 
   const updateDropdownSuggestions = (query) => {
-    const filteredProducts = dropdownProducts.filter(product => 
-      product.name.toLowerCase().includes(query.toLowerCase()) && 
-        (selectedCategory === 'All' || product.category === selectedCategory.toLowerCase())
-    );
-    setDropdownSuggestions(filteredProducts);
+    if (query.trim() !== '') {
+      dispatch(fetchProducts(null, query));
+    } else {
+      // If the query is empty, clear the dropdown suggestions
+      dispatch(fetchProducts(null, null));
+    }
   };
 
-
-  const handleSearchEnter = (e) => {
+  const handleSearchEnter = async (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       dispatch(fetchSearch({ query: search, category: selectedCategory }));
-      navigate(`/products/search?q=${search}`);
-      setShowModal(false);
-      setIsSearchOverlayVisible(false);
+      await navigate(`/products/search?q=${search}`)
+        .then(setShowModal(false))
+        .then(setIsSearchOverlayVisible(false));
     }
   };
 
@@ -156,7 +157,9 @@ const SearchBar = () => {
         value={search}
         onChange={(e) => {
           handleSearch(e);
-          updateDropdownSuggestions(e.target.value);
+          if (e.target.value) {
+            updateDropdownSuggestions(e.target.value);
+          }
         }}
         onKeyDown={handleSearchEnter}
       />

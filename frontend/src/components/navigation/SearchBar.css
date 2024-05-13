@@ -14,6 +14,26 @@
     max-width: 950px;
     height: 70%;
   }
+
+
+
+  .searchBarCategoryDropdown {
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    min-width: 52px;
+    padding: 15px;
+    outline: none;
+    background-color: #E6E6E6;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 3px solid transparent;
+    z-index: 1005;
+  }
 }
 
 .searchBar {
@@ -83,7 +103,7 @@
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1005;
+  z-index: 1006;
 }
 
 .searchProductResult {
@@ -98,12 +118,12 @@
   color: black;
   align-items: center;
   text-align: center;
-  z-index: 1005;
+  z-index: 3000;
 }
 
+
 .searchProductResult:hover {
-  background-color: #f0f0f0;
-  z-index: 1005;
+  background-color: #eaeaea;
 }
 
 
@@ -120,7 +140,7 @@
   border: 1px solid #ccc;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  min-width: 52px;
+  min-width: 55px;
   padding: 10px;
   outline: none;
   background-color: #E6E6E6;
