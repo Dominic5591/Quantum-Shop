@@ -1,11 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import './ProductGrid.css';
-import ProductGridSkeleton from '../skeleton/ProductGridSkeleton';
+// import ProductGridSkeleton from '../skeleton/ProductGridSkeleton';
+import Skeleton from 'react-loading-skeleton';
 
 const ProductGrid = ({ products, productRange }) => {
-
-  
-
   const [startIndex, endIndex] = productRange.split(',').map(Number);
   const slicedProducts = products.slice(startIndex, endIndex);
 
@@ -20,13 +18,8 @@ const ProductGrid = ({ products, productRange }) => {
     }
     return name;
   };
-  
 
-  if (!products) {
-    return (
-      <ProductGridSkeleton />
-    );
-  }
+
 
   return (
     <div className='productGridContainer'>
@@ -35,11 +28,17 @@ const ProductGrid = ({ products, productRange }) => {
           <div className="productGrid">
             {largeCard.map((product) => (
               <NavLink key={product.id} className="productGridCard" to={`/products/${product.id}`}>
-                <img className='productGridImg' src={product.photoUrl} alt={product.name} />
-                <div className="cardGridContent">
-                  <p className='productGridPrice'>{truncateName(product.name, 10)}</p>
-                  <p className='productGridPrice'>${product.price}</p>
-                </div>
+                {product.photoUrl ? (
+                  <>
+                    <img className='productGridImg' src={product.photoUrl} alt={product.name} />
+                    <div className="cardGridContent">
+                      <p className='productGridPrice'>{truncateName(product.name, 10)}</p>
+                      <p className='productGridPrice'>${product.price}</p>
+                    </div>
+                  </>
+                ) : (
+                  <Skeleton key={product.id} className="productGridCardSkeleton" enableAnimation={true} />
+                )}
               </NavLink>
             ))}
           </div>

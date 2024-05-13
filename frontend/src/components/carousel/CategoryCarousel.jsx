@@ -1,13 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { useRef, useEffect } from 'react';
 import './CategoryCarousel.css';
-import CategoryCarouselSkeleton from '../skeleton/CategoryCarouselSkeleton';
+
 const CategoryCarousel = ({ products, category, message }) => {
 
-
-
   const filteredProducts = products.filter(product => product.category === category);
-  const maxProducts = filteredProducts.slice(0, 80);
+  const maxProducts = filteredProducts.slice(0, 40);
 
   const carouselRef = useRef(null);
   const prevArrowRef = useRef(null);
@@ -56,13 +54,6 @@ const CategoryCarousel = ({ products, category, message }) => {
       }
     };
   }, []);
-
-
-  if (!products) {
-    return (
-      <CategoryCarouselSkeleton />
-    );
-  }
 
   return (
     <div className='recommendedProductsCarouselContainer'>

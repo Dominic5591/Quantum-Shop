@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {  fetchProducts, selectProductsArray } from '../../store/product';
+import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
 import homepageBanner from '../../images/homepageBanner.jpg';
@@ -11,8 +11,6 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import './Homepage.css';
 
 import SkeletonHomepage from '../skeleton/SkeletonHomepage';
-// import CategoryCarouselSkeleton from '../skeleton/CategoryCarouselSkeleton';
-// import ProductGridSkeleton from '../skeleton/ProductGridSkeleton';
 
 const Homepage = () => {
   const products = useSelector(selectProductsArray);
@@ -20,8 +18,6 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(1);
-
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,17 +70,11 @@ const Homepage = () => {
           <img src={homepageBanner} alt="Homepage Banner" className="homepageBanner" onClick={() => navigate('./categories/home')} />
         </div>
         <div className='homepageMain'>
-          {/* <CategoryCarouselSkeleton /> */}
-          {/* <ProductGridSkeleton /> */}
-          <CategoryCarousel products={products} category="books" message="Recommended books for you"/>
-          <ProductGrid products={products} productRange="0, 16"/>
-          {/* <CategoryCarouselSkeleton /> */}
-          {/* <ProductGridSkeleton /> */}
-          <CategoryCarousel products={products} category="fashion" message="Trending Fashion"/>
-          <ProductGrid products={products} productRange="16, 32"/>
-          {/* <CategoryCarouselSkeleton /> */}
-          {/* <ProductGridSkeleton /> */}
-          <CategoryCarousel products={products} category="electronics" message="Recommended electronics"/>
+          <CategoryCarousel products={products} category="books" message="Recommended books for you" style={{ height: '300px' }} />
+          <ProductGrid products={products} productRange="0, 16" style={{ height: '600px' }} />
+          <CategoryCarousel products={products} category="fashion" message="Trending Fashion" style={{ height: '300px' }} />
+          <ProductGrid products={products} productRange="16, 32" style={{ height: '600px' }} />
+          <CategoryCarousel products={products} category="electronics" message="Recommended electronics" style={{ height: '300px' }} />
         </div>
         <Footer />
       </div>
