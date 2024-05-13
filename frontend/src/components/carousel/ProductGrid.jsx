@@ -1,7 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import './ProductGrid.css';
+import ProductGridSkeleton from '../skeleton/ProductGridSkeleton';
 
 const ProductGrid = ({ products, productRange }) => {
+
+  
+
   const [startIndex, endIndex] = productRange.split(',').map(Number);
   const slicedProducts = products.slice(startIndex, endIndex);
 
@@ -16,6 +20,13 @@ const ProductGrid = ({ products, productRange }) => {
     }
     return name;
   };
+  
+
+  if (!products) {
+    return (
+      <ProductGridSkeleton />
+    );
+  }
 
   return (
     <div className='productGridContainer'>

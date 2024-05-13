@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { clearProducts, fetchProducts, selectProductsArray } from '../../store/product';
+import { useNavigate } from 'react-router-dom';
+import {  fetchProducts, selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
 import homepageBanner from '../../images/homepageBanner.jpg';
@@ -20,12 +20,8 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(1);
-  const location = useLocation();
 
-  useEffect(() => {
-    dispatch(clearProducts());
-  }, [dispatch, location]);
-  
+
 
   useEffect(() => {
     const fetchData = async () => {

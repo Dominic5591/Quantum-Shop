@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import csrfFetch from './csrf';
 
 export const RECEIVE_PRODUCT = 'products/RECEIVE_PRODUCT';
 export const RECEIVE_PRODUCTS = 'products/RECEIVE_PRODUCTS';
@@ -72,7 +73,7 @@ export const fetchProducts = (page = 1, category = "all", searchQuery = null) =>
   if (searchQuery) {
     url += `&q=${searchQuery}`;
   }
-  const res = await fetch(url, {
+  const res = await csrfFetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
