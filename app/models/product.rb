@@ -31,8 +31,8 @@ class Product < ApplicationRecord
   def self.paginated(page, per_page, category)
     page_num = page.to_i.positive? ? page.to_i : 1
     offset = (page_num - 1) * per_page
-    if category == 'all'
-      Product.order(id: :desc).limit(per_page).offset(offset)
+    if category == 'homepage'
+      Product.order(id: :desc)
     else
       Product.where(category: category).order(id: :desc).limit(per_page).offset(offset)
     end
