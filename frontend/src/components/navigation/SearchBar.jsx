@@ -23,7 +23,6 @@ const SearchBar = () => {
   const categoryDropdownRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const categories = ['Electronics', 'Books', 'Home', 'Fashion'];
-
   useEffect(() => {
     const handleFocus = () => {
       magImgDivRef.current.classList.add('focused');
@@ -35,6 +34,7 @@ const SearchBar = () => {
       magImgDivRef.current.classList.remove('focused');
       categoryDropdownRef.current.classList.remove('focused');
       setIsSearchOverlayVisible(false);
+      setShowModal(false);
     };
 
     const searchBar = searchBarRef.current;
@@ -73,11 +73,9 @@ const SearchBar = () => {
     }
   }, [clickedOutside]);
 
-
   const debouncedSearch = useRef(debounce((query, category) => {
     dispatch(fetchSearchResults(query, category));
   }, 1000)).current;
-
 
   const handleSearch = (e) => {
     const query = e.target.value;
@@ -90,7 +88,6 @@ const SearchBar = () => {
     }
   };
 
-
   useEffect(() => {
     if (search!== '') {
       debouncedSearch(search, selectedCategory);
@@ -100,7 +97,7 @@ const SearchBar = () => {
   }, [search, selectedCategory, debouncedSearch]);
 
 
-  const handleSearchEnter = async (e) => {
+  const handleSearchEnter = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       dispatch(fetchSearchResults(search, selectedCategory));
