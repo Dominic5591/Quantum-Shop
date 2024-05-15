@@ -2,7 +2,7 @@ import magnifying from '../../images/hiclipart.com.png';
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchResults, selectSearchResultsArray } from '../../store/search';
-import { useNavigate, NavLink } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import { debounce } from 'lodash';
 import './SearchBar.css';
 import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
@@ -34,7 +34,6 @@ const SearchBar = () => {
       magImgDivRef.current.classList.remove('focused');
       categoryDropdownRef.current.classList.remove('focused');
       setIsSearchOverlayVisible(false);
-      setShowModal(false);
     };
 
     const searchBar = searchBarRef.current;
@@ -109,10 +108,11 @@ const SearchBar = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(fetchSearchResults(search, selectedCategory));
-    navigate(`/products/search?q=${search}`);
     setShowModal(false);
+    dispatch(fetchSearchResults(search, selectedCategory));
+    navigate(`/products/search?q=${search}`);      
   };
+
 
   const truncateName = (name, maxLength) => {
     if (name.length > maxLength) {
@@ -150,9 +150,15 @@ const SearchBar = () => {
         <div className="searchDropdown" key={search}> {/* Added key prop */}
           {dropdownProducts.slice(0, maxResultsToShow).map((product, index) => (
             <div key={`${product.id}_${index}`} className='searchProductResult'>
-              <NavLink className='searchProductResultLink' to={`/products/${product.id}`}>
-                <span className='searchResultArrowSpan'>&#8623; </span> {truncateName(product.name, 75)}
-              </NavLink>
+              <div
+                className='searchProductResultLink'
+                onClick={() => {
+                  setShowModal(false);
+                  navigate(`/products/${product.id}`); 
+                }}
+              >
+                <span className='searchResultArrowSpan'>&#8623;</span> {truncateName(product.name, 75)}
+              </div>
             </div>
           ))}
         </div>
