@@ -22,13 +22,7 @@ function Navigation() {
     navigate("/home");
   };
   
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  //   if (sessionUser) {
-  //     dispatch(fetchCart());
-  //   }
 
-  // }, [dispatch, sessionUser]);
 
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   

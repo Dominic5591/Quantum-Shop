@@ -1,33 +1,79 @@
+import { createSelector } from "reselect";
 import csrfFetch from "./csrf";
 
-export const RECEIVE_SEARCH = 'search/RECEIVE_SEARCH';
+export const RECEIVE_SEARCH_RESULTS = "products/RECEIVE_SEARCH_RESULTS";
+export const RECEIVE_SEARCH_RESULT = "products/RECEIVE_SEARCH_RESULT";
 
-export const receiveSearch = (results) => ({
-  type: RECEIVE_SEARCH,
+
+
+
+export const receiveSearchResults = (results) => ({
+  type: RECEIVE_SEARCH_RESULTS,
   results,
 });
 
-export const fetchSearch = (params) => async (dispatch) => {
-  const res = await csrfFetch(
-    `/api/products/search?q=${params.query}&category=${params.category}`
-  );
+export const receiveSearchResult = (result) => ({
+  type: RECEIVE_SEARCH_RESULT,
+  result,
+});
 
-  if (res.ok) {
-    const searchData = await res.json();
-    dispatch(receiveSearch(searchData));
-  }
+
+const selectSearchResultState = (state) => state.search;
+
+console.log(selectSearchResultState);
+
+export const selectSearchResultsArray = createSelector(
+  [selectSearchResultState],
+  (results) => Object.values(results)
+);
+
+
+// export const selectSearchResultById = (resultId) =>
+//   createSelector([selectSearchResults], (results) =>
+//     results.find((result) => result.id === resultId)
+//   );
+
+
+
+export const fetchSearchResults = (query, category) => async (dispatch) => {
+  const res = await csrfFetch(
+    `/api/products/search?q=${query}&category=${category}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const searchData = await res.json();
+  dispatch(receiveSearchResults(searchData));
 };
 
+export const fetchSearchResult = (productId) => async (dispatch) => {
+  const res = await fetch(`/api/products/${productId}`);
+  const searchData = await res.json();
+  dispatch(receiveSearchResult(searchData));
+};
 
 const searchReducer = (state = {}, action) => {
+
+
   switch (action.type) {
-  case RECEIVE_SEARCH:
-    return action.results;
+  case RECEIVE_SEARCH_RESULTS: {
+    // console.log(action.results);
+    return {
+      ...action.results,
+    };
+  }
+  case RECEIVE_SEARCH_RESULT: {
+    return {
+      ...state,
+      ...action.result,
+    };
+  }
   default:
     return state;
   }
 };
 
 export default searchReducer;
-
-
