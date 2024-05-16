@@ -16,7 +16,7 @@ const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, on
           'All': '50px',
         };
 
-        select.style.width = categoryWidths[selectedCategory] || 'auto';
+        select.style.width = categoryWidths[selectedCategory];
       }
     };
 
@@ -40,7 +40,7 @@ const SearchBarCategoryDropdown = forwardRef(({ categories, selectedCategory, on
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <option value="All" label=''>
+      <option value="All" label='' className='AllOptionCatgeoryDropdown'>
         All{!isFocused ? <> &#x25BE;</> : null}
       </option>
       {categories.map((category) => (

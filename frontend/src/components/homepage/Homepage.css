@@ -4,6 +4,7 @@
   justify-items: center;
   align-items: center;
   height: 2600px;
+  min-height: 2600px;
   overflow: hidden;
   background-color: #E3E6E6;
 }

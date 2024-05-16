@@ -1,11 +1,11 @@
 class Api::ProductsController < ApplicationController
   
-def index 
-  @page = [(params[:page] || 1).to_i, 1].max
-  @per_page = 60
-  @category = params[:category] || 'all'
-  @products = Product.paginated(@page, @per_page, @category)
-end
+  def index 
+    @page = [(params[:page] || 1).to_i, 1].max
+    @per_page = 10
+    @category = params[:category] || 'all'
+    @products = Product.paginated(@page, @per_page, @category)
+  end
 
 
   def show 
@@ -22,7 +22,7 @@ end
     @products = Product.search_names(params[:q], params[:category])
     render :search
   end
-
+  
   private
 
   def set_product
