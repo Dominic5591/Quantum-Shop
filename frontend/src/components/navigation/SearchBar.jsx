@@ -1,11 +1,11 @@
-import magnifying from '../../images/hiclipart.com.png';
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchResult, fetchSearchResults, selectSearchResultsArray } from '../../store/search';
+import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
 import { useNavigate } from 'react-router-dom'; 
+import magnifying from '../../images/hiclipart.com.png';
 import { debounce } from 'lodash';
 import './SearchBar.css';
-import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -17,12 +17,13 @@ const SearchBar = () => {
   const dropdownProducts = useSelector(selectSearchResultsArray);
   const dropdownRef = useRef(null);
   const maxResultsToShow = 5;
-
   const magImgDivRef = useRef(null);
   const searchBarRef = useRef(null);
   const categoryDropdownRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const categories = ['Electronics', 'Books', 'Home', 'Fashion'];
+
+
   useEffect(() => {
     const handleFocus = () => {
       magImgDivRef.current.classList.add('focused');
@@ -121,7 +122,6 @@ const SearchBar = () => {
     return name;
   };
 
-  console.log(dropdownProducts);
 
   return (
     <div className='searchBarMain' ref={dropdownRef}>

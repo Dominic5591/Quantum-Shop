@@ -57,28 +57,17 @@ export const selectProduct = (productId) => (state) => {
   return state?.products[productId] || null;
 };
 
-export const fetchAllProducts = () => async (dispatch) => {
-  const res = await fetch(`/api/products`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const productData = await res.json();
-  dispatch(receiveProducts(productData));
-};
 
-export const fetchProducts = (page = 1, category = "all", searchQuery = null) => async (dispatch) => {
-  let url = `/api/products?page=${page}&category=${category}`;
-  if (searchQuery) {
-    url += `&q=${searchQuery}`;
-  }
-  const res = await csrfFetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+
+export const fetchProducts = (page = 1, category = "all") => async (dispatch) => {
+  const res = await csrfFetch(`/api/products?page=${page}&category=${category}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   const productData = await res.json();
   dispatch(receiveProducts(productData));
 };
@@ -98,7 +87,6 @@ const productReducer = (state = { }, action) => {
   switch (action.type) {
   case RECEIVE_PRODUCTS: {
     return {
-      ...state,
       ...state.products,
       ...action.products,
     };
