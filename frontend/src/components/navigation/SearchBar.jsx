@@ -1,7 +1,7 @@
 import magnifying from '../../images/hiclipart.com.png';
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSearchResults, selectSearchResultsArray } from '../../store/search';
+import { fetchSearchResult, fetchSearchResults, selectSearchResultsArray } from '../../store/search';
 import { useNavigate } from 'react-router-dom'; 
 import { debounce } from 'lodash';
 import './SearchBar.css';
@@ -153,6 +153,7 @@ const SearchBar = () => {
               <div
                 className='searchProductResultLink'
                 onClick={() => {
+                  dispatch(fetchSearchResult(product.id));
                   setShowModal(false);
                   navigate(`/products/${product.id}`); 
                 }}

@@ -14,26 +14,6 @@
     max-width: 950px;
     height: 70%;
   }
-
-
-
-  .searchBarCategoryDropdown {
-    border: 1px solid #ccc;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    min-width: 52px;
-    padding: 15px;
-    outline: none;
-    background-color: #E6E6E6;
-    color: #333;
-    font-size: 14px;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: 3px solid transparent;
-    z-index: 1005;
-  }
 }
 
 .searchBar {
@@ -141,7 +121,8 @@
   border: 1px solid #ccc;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  min-width: 55px;
+  min-width: 54px;
+  width: 40px;
   padding: 10px;
   outline: none;
   background-color: #E6E6E6;
@@ -190,3 +171,9 @@
 .searchBarCategoryDropdown:focus.dropdownOption[disabled] {
   display: none;
 } 
+
+
+.AllOptionCatgeoryDropdown {
+  width: 10px;
+  border: 1px solid black;
+}

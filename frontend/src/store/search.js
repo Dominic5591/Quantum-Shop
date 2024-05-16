@@ -66,8 +66,8 @@ const searchReducer = (state = {}, action) => {
     };
   }
   case RECEIVE_SEARCH_RESULT: {
+    console.log(action.result);
     return {
-      ...state,
       ...action.result,
     };
   }
