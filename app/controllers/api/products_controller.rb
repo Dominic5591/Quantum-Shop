@@ -19,7 +19,11 @@ class Api::ProductsController < ApplicationController
 
 
   def search
-    @products = Product.search_names(params[:q], params[:category])
+    @page = [(params[:page] || 1).to_i, 1].max
+    @per_page = 10
+    @q = params[:q]
+    @category = params[:category] || 'all'
+    @products = Product.search_names(@q, @category, @page, @per_page)
     render :search
   end
   

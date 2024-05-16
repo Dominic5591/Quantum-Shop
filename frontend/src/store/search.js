@@ -35,9 +35,9 @@ export const selectSearchResultsArray = createSelector(
 
 
 
-export const fetchSearchResults = (query, category) => async (dispatch) => {
+export const fetchSearchResults = (query, category, page = 1) => async (dispatch) => {
   const res = await csrfFetch(
-    `/api/products/search?q=${query}&category=${category}`,
+    `/api/products/search?q=${query}&category=${category}&page=${page}`,
     {
       method: "GET",
       headers: {
