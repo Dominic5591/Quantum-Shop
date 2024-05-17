@@ -1,10 +1,10 @@
 class Api::CartItemsController < ApplicationController
   wrap_parameters include: CartItem.attribute_names + ['quantity', 'userId', 'productId']
-  before_action :require_logged_in, only: [:index]
 
   
   
   def index 
+
     @cart_items = current_user.cart_items 
     render :index
   end 

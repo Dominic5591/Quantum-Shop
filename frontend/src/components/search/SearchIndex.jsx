@@ -20,6 +20,8 @@ const SearchIndex = () => {
   console.log(totalPages);
   const [currentPage, setCurrentPage] = useState(page);
 
+  const searchProducts = Object.values(products);
+
   useEffect(() => {
     dispatch(fetchSearchResults(query, category, page));
   }, [dispatch, query, category, page]); 
@@ -43,7 +45,7 @@ const SearchIndex = () => {
     <ul className='productsIndexPage'>
       <div className="productsIndexDivider"></div>
       <div className="productsContainer">
-        {products.map((product, index) => (
+        {searchProducts.map((product, index) => (
           <NavLink key={`${product.id}_${index}`} to={`/products/${product.id}`}>
             <div className="productCard">
               <img className='productImg' src={product.photoUrl} />
@@ -59,7 +61,7 @@ const SearchIndex = () => {
       <PageSelector
         currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={(newPage) => handlePageChange(newPage)} // Pass newPage to handlePageChange
+        onPageChange={(newPage) => handlePageChange(newPage)}
       />
       <Footer />
     </ul>

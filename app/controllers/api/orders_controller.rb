@@ -1,5 +1,4 @@
 class Api::OrdersController < ApplicationController
-  before_action :require_logged_in, only: [:index]
   
   def index
     if current_user
@@ -11,6 +10,7 @@ class Api::OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build
+
     if @order.save
       order_items_params[:items].each do |item_params|
         @order.order_items.create(item_params)

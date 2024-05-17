@@ -1,7 +1,9 @@
 class Api::OrderItemsController < ApplicationController
+  before_action :require_logged_in, only: [:index]
+
   def index
     @order_items = current_user.order_items
-    render 'index.json.jbuilder', status: :ok
+    render :index
   end
 
   def create

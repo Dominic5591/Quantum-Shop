@@ -14,6 +14,8 @@ const Orders = () => {
   const sessionUser = useSelector(state => state.session.user);
   const [loaded, setLoaded] = useState(false);
 
+  const orderss = Object.values(orders)
+
   useEffect(() => {
     dispatch(fetchOrders());
     dispatch(fetchProducts())
@@ -37,16 +39,16 @@ const Orders = () => {
     );
   }
 
-  const calculateTotalPrice = (order) => {
-    let total = 0;
-    order.items.forEach(item => {
-      const product = products.find(product => product.id === item.productId);
-      if (product) {
-        total += product.price * item.quantity;
-      }
-    });
-    return total;
-  };
+  // const calculateTotalPrice = (order) => {
+  //   let total = 0;
+  //   order.forEach(item => {
+  //     const product = products.find(product => product.id === item.productId);
+  //     if (product) {
+  //       total += product.price * item.quantity;
+  //     }
+  //   });
+  //   return total;
+  // };
 
   const truncateName = (name, maxLength) => {
     if (name.length > maxLength) {
@@ -57,7 +59,9 @@ const Orders = () => {
 
 
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
-  console.log(calculateTotalPrice());
+  // console.log(calculateTotalPrice());
+
+  
   return (
     <>
       <div id='ordersMainPage'>
@@ -67,10 +71,10 @@ const Orders = () => {
             userOrders.map((order, index) => (
               <div key={`${order.id}_${index}`} className="orderDiv">
                 <div className="orderTotalBar">
-                  <p>Total: ${calculateTotalPrice(order)}</p>
+                  {/* <p>Total: ${calculateTotalPrice(order)}</p> */}
                 </div>
                 <ul className="orderItemsList">
-                  {order.items.map((item, index) => {
+                  {orderss.items.map((item, index) => {
                     const product = products.find(product => product.id === item.productId);
                     if (product) {
                       return (

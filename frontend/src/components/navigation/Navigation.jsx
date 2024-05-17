@@ -7,7 +7,8 @@ import SearchBar from './SearchBar';
 import cart from '../../images/cart3.svg';
 import arrow from '../../images/arrow.png';
 import './Navigation.css';
-// import { fetchProducts } from '../../store/product';
+import { useEffect } from 'react';
+import { fetchOrders } from '../../store/order';
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -19,8 +20,17 @@ function Navigation() {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    navigate("/home");
+    navigate("/");
   };
+  
+
+  useEffect(() => {
+    if (sessionUser) {
+
+      dispatch(fetchOrders());
+    }
+  
+  }, [dispatch, sessionUser]);
   
 
 
