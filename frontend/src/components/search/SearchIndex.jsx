@@ -1,15 +1,28 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { Rating } from "../product/Rating";
 import loading from '../../images/loading.gif';
 import '../../index.css';
 import Footer from "../footer/Footer";
+import { fetchSearchResults, selectSearchResultsArray } from "../../store/search";
+import PageSelector from "../product/PageSelector";
+import { useState, useEffect } from "react";
+import { useSearchParams } from 'react-router-dom';
 
 const SearchIndex = () => {
-  const results = useSelector((state) => state.search);
-  const searchResults = results?.search || [];
-  const products = Object.values(searchResults);
+  const dispatch = useDispatch();
+  const products = useSelector(selectSearchResultsArray);
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get('category');
+  const page = searchParams.get('page');
+  const query = searchParams.get('q');
+  const totalPages = useSelector(state => state.search.totalPages);
+  console.log(totalPages);
+  const [currentPage, setCurrentPage] = useState(page);
 
+  useEffect(() => {
+    dispatch(fetchSearchResults(query, category, page));
+  }, [dispatch, query, category, page]); 
 
   if (products.length === 0) {
     return (
@@ -18,6 +31,12 @@ const SearchIndex = () => {
       </div>
     );
   }
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    dispatch(fetchSearchResults(query, category, newPage));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
 
   return (
@@ -37,6 +56,11 @@ const SearchIndex = () => {
           </NavLink>
         ))}
       </div>
+      <PageSelector
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={(newPage) => handlePageChange(newPage)} // Pass newPage to handlePageChange
+      />
       <Footer />
     </ul>
   );

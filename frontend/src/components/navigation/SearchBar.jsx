@@ -1,11 +1,11 @@
-import magnifying from '../../images/hiclipart.com.png';
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchResult, fetchSearchResults, selectSearchResultsArray } from '../../store/search';
+import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
 import { useNavigate } from 'react-router-dom'; 
+import magnifying from '../../images/hiclipart.com.png';
 import { debounce } from 'lodash';
 import './SearchBar.css';
-import SearchBarCategoryDropdown from './SearchBarCategoryDropdown';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -17,12 +17,13 @@ const SearchBar = () => {
   const dropdownProducts = useSelector(selectSearchResultsArray);
   const dropdownRef = useRef(null);
   const maxResultsToShow = 5;
-
   const magImgDivRef = useRef(null);
   const searchBarRef = useRef(null);
   const categoryDropdownRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const categories = ['Electronics', 'Books', 'Home', 'Fashion'];
+  const page = 1;
+
   useEffect(() => {
     const handleFocus = () => {
       magImgDivRef.current.classList.add('focused');
@@ -72,8 +73,8 @@ const SearchBar = () => {
     }
   }, [clickedOutside]);
 
-  const debouncedSearch = useRef(debounce((query, category) => {
-    dispatch(fetchSearchResults(query, category));
+  const debouncedSearch = useRef(debounce((query, category, page) => {
+    dispatch(fetchSearchResults(query, category, page));
   }, 1000)).current;
 
   const handleSearch = (e) => {
@@ -81,7 +82,7 @@ const SearchBar = () => {
     setSearch(query);
     if (query!== '') {
       setShowModal(true);
-      debouncedSearch(query, selectedCategory);
+      debouncedSearch(query, selectedCategory, page);
     } else {
       setShowModal(false);
     }
@@ -89,7 +90,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     if (search!== '') {
-      debouncedSearch(search, selectedCategory);
+      debouncedSearch(search, selectedCategory, page);
     } else {
       setShowModal(false);
     }
@@ -100,7 +101,7 @@ const SearchBar = () => {
     if (e.key === 'Enter') {
       e.preventDefault();
       dispatch(fetchSearchResults(search, selectedCategory));
-      navigate(`/products/search?q=${search}`);
+      navigate(`/products/search?q=${search}&category=${selectedCategory}&page=1`);
       setShowModal(false);
       setIsSearchOverlayVisible(false);
     }
@@ -110,7 +111,7 @@ const SearchBar = () => {
     e.preventDefault();
     setShowModal(false);
     dispatch(fetchSearchResults(search, selectedCategory));
-    navigate(`/products/search?q=${search}`);      
+    navigate(`/products/search?q=${search}&category=${selectedCategory}&page=1`);      
   };
 
 
@@ -121,7 +122,6 @@ const SearchBar = () => {
     return name;
   };
 
-  console.log(dropdownProducts);
 
   return (
     <div className='searchBarMain' ref={dropdownRef}>
