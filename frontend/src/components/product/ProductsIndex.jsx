@@ -4,9 +4,11 @@ import { useParams } from 'react-router-dom';
 import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductItem from './ProductItem';
 import loading from '../../images/loading.gif';
-import './ProductsIndex.css';
 import Footer from '../footer/Footer';
 import PageSelector from './PageSelector';
+import './ProductsIndex.css';
+
+
 const ProductsIndex = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProductsArray);
@@ -32,15 +34,7 @@ const ProductsIndex = () => {
   };
 
 
-  if (!loaded) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
-  }
-
-  if (category !== 'electronics' && category !== 'books' &&  category !== 'home' && category !== 'fashion' && category !== 'all') {
+  if (!loaded || category !== 'electronics' && category !== 'books' &&  category !== 'home' && category !== 'fashion' && category !== 'all') {
     return (
       <div>
         <img src={loading} alt="loading" className='loadingGif' />

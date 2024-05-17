@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductGrid from '../carousel/ProductGrid';
 import CategoryCarousel from '../carousel/CategoryCarousel';
@@ -17,21 +17,24 @@ const Homepage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(fetchProducts(1, "homepage"));
-        setLoaded(true);
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-        setLoaded(true);
-      }
-    };
+    // Only call fetchData if the pathname is '/'
+    if (location.pathname === '/') {
+      const fetchData = async () => {
+        try {
+          await dispatch(fetchProducts(1, "homepage"));
+          setLoaded(true);
+        } catch (error) {
+          console.error("Failed to fetch products:", error);
+          setLoaded(true);
+        }
+      };
 
-    fetchData();
-  }, [dispatch]);
-
+      fetchData();
+    }
+  }, [dispatch, location]);
 
 
 

@@ -24,8 +24,12 @@ console.log(selectSearchResultState);
 
 export const selectSearchResultsArray = createSelector(
   [selectSearchResultState],
-  (results) => Object.values(results)
+  (searchResults) => {
+    if (!searchResults.results) return []; // Return an empty array if searchResults is undefined or null
+    return Object.values(searchResults.results);
+  }
 );
+
 
 
 // export const selectSearchResultById = (resultId) =>
@@ -35,9 +39,9 @@ export const selectSearchResultsArray = createSelector(
 
 
 
-export const fetchSearchResults = (query, category) => async (dispatch) => {
+export const fetchSearchResults = (query, category, page = 1) => async (dispatch) => {
   const res = await csrfFetch(
-    `/api/products/search?q=${query}&category=${category}`,
+    `/api/products/search?q=${query}&category=${category}&page=${page}`,
     {
       method: "GET",
       headers: {
@@ -60,8 +64,9 @@ const searchReducer = (state = {}, action) => {
 
   switch (action.type) {
   case RECEIVE_SEARCH_RESULTS: {
-    // console.log(action.results);
+    console.log(action.results);
     return {
+      ...state,
       ...action.results,
     };
   }

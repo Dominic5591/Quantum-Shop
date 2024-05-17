@@ -17,16 +17,21 @@ class Product < ApplicationRecord
     dependent: :destroy
 
 
-  def self.search_names(query, category)
+  def self.search_names(query, category, page, per_page)
     lowercase_query = query.downcase
+    page_num = page.to_i.positive? ? page.to_i : 1
+    offset = (page_num - 1) * per_page
 
     if category == 'all'
-      where("lower(name) LIKE ?", "%#{sanitize_sql_like(lowercase_query)}%")
+      where("lower(name) LIKE?", "%#{sanitize_sql_like(lowercase_query)}%").order(id: :desc).limit(per_page).offset(offset)
     else
-      where("lower(name) LIKE ?", "%#{sanitize_sql_like(lowercase_query)}%").where("lower(category) = ?", category.downcase)
+      where("lower(name) LIKE?", "%#{sanitize_sql_like(lowercase_query)}%").where("lower(category) =?", category.downcase).order(id: :desc).limit(per_page).offset(offset)
     end
   end
 
+  def self.products_in_category_with_search(search_term, category_name)
+    where(category: category_name).or(where('name LIKE?', "%#{search_term}%")).count
+  end
 
   def self.paginated(page, per_page, category)
     page_num = page.to_i.positive? ? page.to_i : 1
