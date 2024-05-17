@@ -33,6 +33,5 @@ group :development do
   gem "pry-rails"
   gem "better_errors"
   gem "binding_of_caller"
-  gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
 end
 
