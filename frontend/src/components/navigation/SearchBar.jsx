@@ -116,7 +116,7 @@ const SearchBar = () => {
 
 
   const truncateName = (name, maxLength) => {
-    if (name.length > maxLength) {
+    if (dropdownProducts && name.length > maxLength) {
       return `${name.slice(0, maxLength)}...`;
     }
     return name;
