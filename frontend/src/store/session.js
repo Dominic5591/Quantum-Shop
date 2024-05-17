@@ -69,6 +69,19 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+
+export const fetchTotalPages = async () => {
+  try {
+    const response = await fetch("/api/pagination-metadata");
+    const data = await response.json();
+    return data.totalPages; // Assuming the API returns an object with a 'totalPages' property
+  } catch (error) {
+    console.error("Failed to fetch total pages:", error);
+    return null; // Or throw an error, depending on your error handling strategy
+  }
+};
+
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {

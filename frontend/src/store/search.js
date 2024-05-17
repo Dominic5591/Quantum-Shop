@@ -60,7 +60,7 @@ const searchReducer = (state = {}, action) => {
 
   switch (action.type) {
   case RECEIVE_SEARCH_RESULTS: {
-    // console.log(action.results);
+    console.log(action.results);
     return {
       ...action.results,
     };

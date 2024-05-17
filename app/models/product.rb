@@ -29,7 +29,9 @@ class Product < ApplicationRecord
     end
   end
 
-
+  def self.products_in_category_with_search(search_term, category_name)
+    where(category: category_name).or(where('name LIKE?', "%#{search_term}%")).count
+  end
 
   def self.paginated(page, per_page, category)
     page_num = page.to_i.positive? ? page.to_i : 1

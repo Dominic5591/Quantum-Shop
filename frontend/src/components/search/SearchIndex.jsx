@@ -6,7 +6,6 @@ import '../../index.css';
 import Footer from "../footer/Footer";
 import { fetchSearchResults, selectSearchResultsArray } from "../../store/search";
 import PageSelector from "../product/PageSelector";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'react-router-dom';
 
@@ -17,18 +16,13 @@ const SearchIndex = () => {
   const category = searchParams.get('category');
   const page = searchParams.get('page');
   const query = searchParams.get('q');
-
-
+  const totalPages = useSelector(state => state.search.totalPages);
+  console.log(totalPages);
+  const [currentPage, setCurrentPage] = useState(page);
 
   useEffect(() => {
-    dispatch(fetchSearchResults(query, category, page))
-      .then((data) => {
-        setTotalPages(data.total_pages);
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(true));
-  }, [dispatch, page, category, query]);
-
+    dispatch(fetchSearchResults(query, category, page));
+  }, [dispatch, query, category, page]); 
 
   if (products.length === 0) {
     return (
@@ -38,9 +32,9 @@ const SearchIndex = () => {
     );
   }
 
-
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
+    dispatch(fetchSearchResults(query, category, newPage));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -63,9 +57,9 @@ const SearchIndex = () => {
         ))}
       </div>
       <PageSelector
-        currentPage={page}
+        currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={handlePageChange}
+        onPageChange={(newPage) => handlePageChange(newPage)} // Pass newPage to handlePageChange
       />
       <Footer />
     </ul>
