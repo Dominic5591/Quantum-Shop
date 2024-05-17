@@ -23,16 +23,9 @@ def search
   @per_page = 10
   @q = params[:q]
   @category = params[:category] || 'all'
-
   total_products = Product.products_in_category_with_search(@q, @category)
-
   @total_pages = (total_products.to_f / @per_page.to_f).ceil
-
-  puts "Total Pages: #{@total_pages}"
-
-  # Fetch paginated products
   @products = Product.search_names(@q, @category, @page, @per_page)
-
   render :search
 end
 

@@ -24,8 +24,12 @@ console.log(selectSearchResultState);
 
 export const selectSearchResultsArray = createSelector(
   [selectSearchResultState],
-  (results) => Object.values(results)
+  (searchResults) => {
+    if (!searchResults.results) return []; // Return an empty array if searchResults is undefined or null
+    return Object.values(searchResults.results);
+  }
 );
+
 
 
 // export const selectSearchResultById = (resultId) =>
@@ -62,6 +66,7 @@ const searchReducer = (state = {}, action) => {
   case RECEIVE_SEARCH_RESULTS: {
     console.log(action.results);
     return {
+      ...state,
       ...action.results,
     };
   }
