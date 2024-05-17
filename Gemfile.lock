@@ -77,10 +77,8 @@ GEM
       aws-sigv4 (~> 1.8)
       jmespath (~> 1, >= 1.6.1)
     aws-sdk-kms (1.81.0)
-    aws-sdk-kms (1.81.0)
       aws-sdk-core (~> 3, >= 3.193.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.151.0)
     aws-sdk-s3 (1.151.0)
       aws-sdk-core (~> 3, >= 3.194.0)
       aws-sdk-kms (~> 1)
@@ -110,24 +108,11 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
-    i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
-    kaminari (1.2.2)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.2)
-      kaminari-activerecord (= 1.2.2)
-      kaminari-core (= 1.2.2)
-    kaminari-actionview (1.2.2)
-      actionview
-      kaminari-core (= 1.2.2)
-    kaminari-activerecord (1.2.2)
-      activerecord
-      kaminari-core (= 1.2.2)
-    kaminari-core (1.2.2)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -140,9 +125,7 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.23.0)
-    minitest (5.23.0)
     msgpack (1.7.2)
-    net-imap (0.4.11)
     net-imap (0.4.11)
       date
       net-protocol
@@ -152,8 +135,6 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.3)
-    nokogiri (1.16.5-x86_64-linux)
     nio4r (2.7.3)
     nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
@@ -210,7 +191,6 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.6.14)
-    zeitwerk (2.6.14)
 
 PLATFORMS
   x86_64-linux
@@ -225,7 +205,6 @@ DEPENDENCIES
   byebug
   faker
   jbuilder
-  kaminari
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)
