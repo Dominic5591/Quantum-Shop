@@ -30,14 +30,6 @@ export const selectSearchResultsArray = createSelector(
 );
 
 
-
-// export const selectSearchResultById = (resultId) =>
-//   createSelector([selectSearchResults], (results) =>
-//     results.find((result) => result.id === resultId)
-//   );
-
-
-
 export const fetchSearchResults = (query, category = 'all', page = 1) => async (dispatch) => {
   const res = await csrfFetch(
     `/api/products/search?q=${query}&category=${category}&page=${page}`,

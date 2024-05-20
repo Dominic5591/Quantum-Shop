@@ -115,6 +115,8 @@ const SearchBar = () => {
   };
 
 
+
+
   const truncateName = (name, maxLength) => {
     if (dropdownProducts && name.length > maxLength) {
       return `${name.slice(0, maxLength)}...`;
@@ -147,7 +149,7 @@ const SearchBar = () => {
         <img onClick={handleClick} className='magImg' src={magnifying} alt="Search" />
       </div>
       {showModal && (
-        <div className="searchDropdown" key={search}> {/* Added key prop */}
+        <div className="searchDropdown" key={search}>
           {dropdownProducts.slice(0, maxResultsToShow).map((product, index) => (
             <div key={`${product.id}_${index}`} className='searchProductResult'>
               <div
