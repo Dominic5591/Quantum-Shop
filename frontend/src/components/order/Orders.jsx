@@ -57,7 +57,6 @@ const Orders = () => {
 
 
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
-  console.log(calculateTotalPrice());
   return (
     <>
       <div id='ordersMainPage'>

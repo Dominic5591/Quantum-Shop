@@ -18,9 +18,8 @@ export const receiveSearchResult = (result) => ({
 });
 
 
-const selectSearchResultState = (state) => state.search;
+const selectSearchResultState = (state) => state?.search || {};
 
-console.log(selectSearchResultState);
 
 export const selectSearchResultsArray = createSelector(
   [selectSearchResultState],
@@ -39,7 +38,7 @@ export const selectSearchResultsArray = createSelector(
 
 
 
-export const fetchSearchResults = (query, category, page = 1) => async (dispatch) => {
+export const fetchSearchResults = (query, category = 'all', page = 1) => async (dispatch) => {
   const res = await csrfFetch(
     `/api/products/search?q=${query}&category=${category}&page=${page}`,
     {
@@ -64,14 +63,12 @@ const searchReducer = (state = {}, action) => {
 
   switch (action.type) {
   case RECEIVE_SEARCH_RESULTS: {
-    console.log(action.results);
     return {
       ...state,
       ...action.results,
     };
   }
   case RECEIVE_SEARCH_RESULT: {
-    console.log(action.result);
     return {
       ...action.result,
     };

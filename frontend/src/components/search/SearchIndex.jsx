@@ -17,7 +17,6 @@ const SearchIndex = () => {
   const page = searchParams.get('page');
   const query = searchParams.get('q');
   const totalPages = useSelector(state => state.search.totalPages);
-  console.log(totalPages);
   const [currentPage, setCurrentPage] = useState(page);
 
   useEffect(() => {
