@@ -24,7 +24,7 @@ const selectSearchResultState = (state) => state?.search || {};
 export const selectSearchResultsArray = createSelector(
   [selectSearchResultState],
   (searchResults) => {
-    if (!searchResults.results) return []; // Return an empty array if searchResults is undefined or null
+    if (!searchResults.results) return [];
     return Object.values(searchResults.results);
   }
 );
