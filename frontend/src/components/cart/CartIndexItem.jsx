@@ -75,7 +75,6 @@ const CartIndexItem = ({ cartItem }) => {
           </div>
         )}
       </div>
-      {/* <div className="cartItemIndexDivider"></div> */}
     </div>
   );
 };
