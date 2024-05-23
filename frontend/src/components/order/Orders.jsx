@@ -16,7 +16,7 @@ const Orders = () => {
 
   useEffect(() => {
     dispatch(fetchOrders());
-    dispatch(fetchProducts())
+    dispatch(fetchProducts(1, "homepage"))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(true));
   }, [dispatch]);
@@ -40,7 +40,9 @@ const Orders = () => {
   const calculateTotalPrice = (order) => {
     let total = 0;
     order.items.forEach(item => {
+      console.log(item);
       const product = products.find(product => product.id === item.productId);
+      console.log(product);
       if (product) {
         total += product.price * item.quantity;
       }
@@ -57,8 +59,11 @@ const Orders = () => {
 
 
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
+
+  console.log(orders.items);
+
   return (
-    <>
+    <div className='ordersMain'>
       <div id='ordersMainPage'>
         <div className="ordersContainer">
           <h2 className="ordersTitle">Your orders</h2>
@@ -110,7 +115,7 @@ const Orders = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

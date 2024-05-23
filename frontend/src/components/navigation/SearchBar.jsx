@@ -22,7 +22,7 @@ const SearchBar = () => {
   const categoryDropdownRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const categories = ['Electronics', 'Books', 'Home', 'Fashion'];
-  const page = 1;
+  const page = 3;
 
   useEffect(() => {
     const handleFocus = () => {
@@ -160,7 +160,7 @@ const SearchBar = () => {
                   navigate(`/products/${product.id}`); 
                 }}
               >
-                <span className='searchResultArrowSpan'>&#8623;</span> {truncateName(product.name, 75)}
+                <span className='searchResultArrowSpan'>&#8623;</span> {truncateName(product.name, 79)}
               </div>
             </div>
           ))}
