@@ -118,8 +118,8 @@ const CartIndex = () => {
             <NavLink className='checkoutBtn' to=''>Checkout</NavLink>
           }
         </div>
-      </div>
       <Footer />
+      </div>
     </>
 
   );
