@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { fetchOrders } from '../../store/order';
 import { fetchProducts, selectProductsArray } from '../../store/product';
 import loading from '../../images/loading.gif';
@@ -12,6 +12,7 @@ const Orders = () => {
   const products = useSelector(selectProductsArray);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const navigate = useNavigate();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -21,15 +22,7 @@ const Orders = () => {
       .catch(() => setLoaded(true));
   }, [dispatch]);
 
-  if (!loaded) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
-  }
-
-  if (!products) {
+  if (!loaded || !products) {
     return (
       <div>
         <img src={loading} alt="loading" className='loadingGif' />
@@ -39,10 +32,11 @@ const Orders = () => {
 
   const calculateTotalPrice = (order) => {
     let total = 0;
+
     order.items.forEach(item => {
-      console.log(item);
       const product = products.find(product => product.id === item.productId);
       console.log(product);
+
       if (product) {
         total += product.price * item.quantity;
       }
@@ -59,8 +53,6 @@ const Orders = () => {
 
 
   const userOrders = sessionUser ? Object.values(orders).filter(order => order.userId === sessionUser.id) : [];
-
-  console.log(orders.items);
 
   return (
     <div className='ordersMain'>
@@ -80,9 +72,9 @@ const Orders = () => {
                       return (
                         <li key={`${item.productId}_${index}`} className="orderItem">
                           <div className="orderItemInfo">
-                            <img src={product.photoUrl} alt="productImg" className="orderImg" />
+                            <img src={product.photoUrl} alt="productImg" className="orderImg"  onClick={() => navigate(`/products/${product.id}`)}/>
                             <div className="productInfo">
-                              <span><NavLink className='orderProductName' to={`/products/${product.id}`}>{truncateName(product.name,   100)}</NavLink></span>
+                              <span className='orderProductName' onClick={() => navigate(`/products/${product.id}`)}>{truncateName(product.name, 100)}</span>
                               <span>${product.price}</span>
                               <span>Quantity: {item.quantity}</span>
                             </div>
@@ -94,7 +86,6 @@ const Orders = () => {
                     }
                   })}
                 </ul>
-                <br />
               </div>
             ))
           ) : (
@@ -108,7 +99,7 @@ const Orders = () => {
                     <button className='emptyCartBtnSignUp'>Sign up now</button>  
                   </NavLink>
                 </div>
-                : <p></p>
+                : null
               }
             </div>
           )}
