@@ -5,11 +5,11 @@ import { ReviewRating, Rating } from './Rating';
 import { createCartItem, memoizedSelectCartItems, updateCartItem } from '../../store/cartItem';
 import { fetchProduct, selectProduct } from '../../store/product';
 import { selectReviewProductArray, fetchReviews } from '../../store/review';
-import loading from '../../images/loading.gif';
 import ReviewIndex from '../review/ReviewIndex';
 import * as modalActions from '../../store/modal';
 import ReviewModalCreatorEditor from '../review/ReviewModalCreatorEditor';
 import Footer from '../footer/Footer';
+import Loader from '../loaders/Loader';
 import './ProductIndexItem.css';
 
 
@@ -61,21 +61,13 @@ const ProductIndexItem = () => {
   }
 
   if (!product) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
+    return <Loader />;
   }
   
   let parsedDescription = JSON.parse(product.description[0]);
 
   if (!loaded && !parsedDescription) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
+    return <Loader />;
   }
 
   const handleAddCartItem = async (e) => {
@@ -123,7 +115,7 @@ const ProductIndexItem = () => {
           <h3 className='middleProductNameH3'>{product.name}</h3>
           <div className='middleRatingDiv'>
             <span className='ratingsNum'>{reviewAverage}  </span>
-            <Rating rating={product.rating} />
+            <Rating rating={reviewAverage} />
             <span className='numRatings'>{reviewAmount}</span>
           </div>
           <div className="middlePriceDivider"></div>

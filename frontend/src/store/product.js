@@ -87,7 +87,7 @@ const productReducer = (state = { }, action) => {
   switch (action.type) {
   case RECEIVE_PRODUCTS: {
     return {
-      ...state.products,
+      // ...state.products,
       ...action.products,
     };
   }

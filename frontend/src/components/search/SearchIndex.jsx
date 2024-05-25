@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { Rating } from "../product/Rating";
-import loading from '../../images/loading.gif';
-import '../../index.css';
 import Footer from "../footer/Footer";
 import { fetchSearchResults, selectSearchResultsArray } from "../../store/search";
 import PageSelector from "../product/PageSelector";
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'react-router-dom';
+import Loader from "../loaders/Loader";
 
 const SearchIndex = () => {
   const dispatch = useDispatch();
@@ -23,12 +22,8 @@ const SearchIndex = () => {
     dispatch(fetchSearchResults(query, category, page));
   }, [dispatch, query, category, page]); 
 
-  if (products.length === 0) {
-    return (
-      <div id="loadingGifDiv">
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
+  if (!products) {
+    return <Loader />;
   }
 
   const handlePageChange = (newPage) => {

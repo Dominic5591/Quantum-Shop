@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchCart, memoizedSelectCartItems, deleteCartItem } from '../../store/cartItem';
-import { selectProductsArray } from '../../store/product';
+import { fetchProducts, selectProductsArray } from '../../store/product';
+import { createOrder } from '../../store/order';
 import CartIndexItem from './CartIndexItem';
 import cartImg from '../../images/empty-cart.svg';
-import loading from '../../images/loading.gif';
-import './CartIndex.css';
-import { createOrder } from '../../store/order';
+import Loader from '../loaders/Loader';
 import Footer from '../footer/Footer';
+import './CartIndex.css';
 
 const CartIndex = () => {
   const dispatch = useDispatch();
@@ -21,20 +21,16 @@ const CartIndex = () => {
   let amount = 25;
 
   useEffect(() => {
-    if (sessionUser) {
-      dispatch(fetchCart())
-        .then(() => setLoaded(true))
-        .catch(() => setLoaded(true));      
-    } else setLoaded(true);
+    dispatch(fetchCart());
+    dispatch(fetchProducts(1, 'homepage'))
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true)); 
   }, [dispatch, sessionUser]);
 
-  if (!loaded) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
+  if (!products || !cartItems || !loaded) {
+    return <Loader />;
   }
+
 
   cartItems.forEach(item => {
     products.forEach(product => {

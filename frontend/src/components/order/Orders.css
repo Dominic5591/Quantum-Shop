@@ -77,12 +77,15 @@
 .orderProductName {
   display: inline-block;
   color: black;
+  cursor: pointer;
 }
 
 
 .orderImg {
   margin-top: 30px;
-  width: 65px;
+  cursor: pointer;
+  width: auto;
+  height: auto;
 }
 
 .orderItemInfo {

@@ -53,6 +53,7 @@ for pages of products in the query fetch 25 */
   font-weight: 700;
   margin-right: 0px;
   font-family: Amazon Ember Lite;
+  cursor: pointer;
 }
 
 
@@ -105,10 +106,12 @@ for pages of products in the query fetch 25 */
 }
 
 .cartProductImg {
+  margin-top: 75px;
   width: auto;
   height: auto;
   max-width: 150px;
   max-height: 150px;
+  cursor: pointer;
 }
 
 
