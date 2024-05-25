@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   resources :products, only: [:index, :show, :search] do
     collection do
+      get ':id', to: 'products#show'
       get 'search', to: 'products#search'
       get ':category', to: 'products#index', defaults: { page: 1, per_page: 10 }
       end

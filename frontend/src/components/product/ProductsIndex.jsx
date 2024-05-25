@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { fetchProducts, selectProductsArray } from '../../store/product';
 import ProductItem from './ProductItem';
-import loading from '../../images/loading.gif';
-import Footer from '../footer/Footer';
 import PageSelector from './PageSelector';
+import Loader from '../loaders/Loader';
+import Footer from '../footer/Footer';
 import './ProductsIndex.css';
 
 
@@ -35,11 +35,7 @@ const ProductsIndex = () => {
 
 
   if (!loaded || category !== 'electronics' && category !== 'books' &&  category !== 'home' && category !== 'fashion' && category !== 'all') {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
