@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { fetchOrders } from '../../store/order';
 import { fetchProducts, selectProductsArray } from '../../store/product';
-import loading from '../../images/loading.gif';
+// import loading from '../../images/loading.gif';
+import Loader from '../loaders/Loader';
 import './Orders.css';
 import Footer from '../footer/Footer';
 
@@ -23,11 +24,7 @@ const Orders = () => {
   }, [dispatch]);
 
   if (!loaded || !products) {
-    return (
-      <div>
-        <img src={loading} alt="loading" className='loadingGif' />
-      </div>
-    );
+    return <Loader />;
   }
 
   const calculateTotalPrice = (order) => {
