@@ -21,15 +21,13 @@ const CartIndex = () => {
   let amount = 25;
 
   useEffect(() => {
-    if (sessionUser) {
-      dispatch(fetchProducts(1, 'homepage'));
-      dispatch(fetchCart())
-        .then(() => setLoaded(true))
-        .catch(() => setLoaded(true));      
-    } else setLoaded(true);
+    dispatch(fetchCart());
+    dispatch(fetchProducts(1, 'homepage'))
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true)); 
   }, [dispatch, sessionUser]);
 
-  if (!loaded) {
+  if (!products || !cartItems || !loaded) {
     return <Loader />;
   }
 
@@ -116,8 +114,8 @@ const CartIndex = () => {
             <NavLink className='checkoutBtn' to=''>Checkout</NavLink>
           }
         </div>
-        <Footer />
       </div>
+      <Footer />
     </>
 
   );
