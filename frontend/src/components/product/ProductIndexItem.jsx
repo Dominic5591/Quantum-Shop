@@ -115,7 +115,7 @@ const ProductIndexItem = () => {
           <h3 className='middleProductNameH3'>{product.name}</h3>
           <div className='middleRatingDiv'>
             <span className='ratingsNum'>{reviewAverage}  </span>
-            <Rating rating={product.rating} />
+            <Rating rating={reviewAverage} />
             <span className='numRatings'>{reviewAmount}</span>
           </div>
           <div className="middlePriceDivider"></div>
