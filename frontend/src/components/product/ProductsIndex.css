@@ -1,14 +1,14 @@
 .cardContent {
-  margin-top: 30px;
+  margin-top: 10px;
   border-radius: 10px;
 }
 
 .productCard {
-  border: 1px solid rgb(190, 190, 190);
+  border: 1px solid rgb(197, 197, 197);
   border-radius: 7px;
   padding: 35px;
   margin-right: 70px;
-  margin-top: 35px;
+  margin-top: 55px;
   max-width: 250px;
   display: flex;
   flex-wrap: wrap;
