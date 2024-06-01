@@ -36,7 +36,19 @@ function LoginForm() {
 
   const loginDemo = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}));
+    setErrors([]);
+    dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}))
+      .catch(async (res) => {
+        let data;
+        try {
+          data = await res.clone().json();
+        } catch {
+          data = await res.text();
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
+      });
   };
 
 
