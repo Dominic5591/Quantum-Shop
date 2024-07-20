@@ -4,10 +4,7 @@ import { Outlet, createBrowserRouter, RouterProvider, useLocation } from 'react-
 import LoginForm from './components/session/LoginForm';
 import SignupForm from './components/session/SignupForm';
 import Navigation from './components/navigation/Navigation';
-// import SearchBar from './components/navigation/SearchBar';
 import * as sessionActions from './store/session';
-
-
 import ProductsIndex from './components/product/ProductsIndex';
 import ProductIndexItem from './components/product/ProductIndexItem';
 import CartIndex from './components/cart/CartIndex';
@@ -15,8 +12,6 @@ import Checkout from './components/checkout/Checkout';
 import Homepage from './components/homepage/Homepage';
 import SearchIndex from './components/search/SearchIndex';
 import Orders from './components/order/Orders';
-
-
 import { LocaleProvider } from './LocalProvider';
 
 function Layout() {
