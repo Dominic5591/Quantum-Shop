@@ -1,7 +1,9 @@
 .ordersMain {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   width: 100%;
+  height: 3000px;
+  min-height: 1000px;
   overflow: hidden;
 }
 
@@ -12,7 +14,7 @@
   width: 100%;
   z-index: 2;
   overflow-y: scroll;
-   overflow-x: visible;
+  overflow-x: visible;
 }
 
 .ordersContainer {

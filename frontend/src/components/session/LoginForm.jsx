@@ -15,7 +15,11 @@ function LoginForm() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Navigate to="/" replace={true} />;
-
+  console.log(sessionUser);
+  if (sessionUser === undefined) {
+    console.log("session user is once again Undefined!!");
+    
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);

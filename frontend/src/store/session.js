@@ -39,8 +39,14 @@ export const login = ({ credential, password }) => async dispatch => {
     method: "POST",
     body: JSON.stringify({ credential, password }),
   });
-  const data = await response.json();
-  await dispatch(setUser(data.user));
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data.user));
+
+  } else {
+    throw response;
+  }
 
   return response;
 };
@@ -74,10 +80,10 @@ export const fetchTotalPages = async () => {
   try {
     const response = await fetch("/api/pagination-metadata");
     const data = await response.json();
-    return data.totalPages; // Assuming the API returns an object with a 'totalPages' property
+    return data.totalPages;
   } catch (error) {
     console.error("Failed to fetch total pages:", error);
-    return null; // Or throw an error, depending on your error handling strategy
+    return null;
   }
 };
 
@@ -85,8 +91,12 @@ export const fetchTotalPages = async () => {
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
+  console.log(state);
+  
   switch (action.type) {
   case SET_USER:
+    console.log(action.payload);
+    
     return { ...state, user: action.payload };
   case REMOVE_USER:
     return { ...state, user: null };
