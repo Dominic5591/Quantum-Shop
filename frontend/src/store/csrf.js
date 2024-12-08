@@ -10,7 +10,7 @@ export async function restoreCSRF() {
 }
 
 
-async function csrfFetch(url, options = {}) {
+export async function csrfFetch(url, options = {}) {
   options.method = options.method || 'GET';
   options.headers = options.headers || {};
 
@@ -21,7 +21,7 @@ async function csrfFetch(url, options = {}) {
   }
 
   const res = await fetch(url, options);
-  // if (res.status >= 400) throw res;
+  if (res.status >= 400) throw res;
   return res;
 }
 

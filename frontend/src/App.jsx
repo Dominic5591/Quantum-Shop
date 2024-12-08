@@ -12,7 +12,6 @@ import Checkout from './components/checkout/Checkout';
 import Homepage from './components/homepage/Homepage';
 import SearchIndex from './components/search/SearchIndex';
 import Orders from './components/order/Orders';
-import { LocaleProvider } from './LocalProvider';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -101,9 +100,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <LocaleProvider>
-      <RouterProvider router={router} />
-    </LocaleProvider>
+    <RouterProvider router={router} />
   );
 }
 
